@@ -1,0 +1,290 @@
+[gd_scene format=3 uid="uid://ckd5xwhthbw1b"]
+
+[ext_resource type="PackedScene" uid="uid://ksmjsf3pj0rq" path="res://res/cenas/slot_inventario.tscn" id="1_jr85b"]
+[ext_resource type="Script" uid="uid://byth05cdm25ek" path="res://script/menu_inventario.gd" id="1_moyox"]
+[ext_resource type="Texture2D" uid="uid://ximbp84brf4q" path="res://icon.svg" id="1_rydth"]
+[ext_resource type="Resource" uid="uid://cxo424nhg741p" path="res://res/item/chip_dano.tres" id="2_83une"]
+[ext_resource type="Resource" uid="uid://cdhcxj83hllo" path="res://res/item/extintor.tres" id="3_ye3co"]
+[ext_resource type="Resource" uid="uid://c0f5ljjhfcqb5" path="res://res/item/roda.tres" id="4_y253g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rydth"]
+bg_color = Color(0.60784316, 0.68235296, 0.60784316, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 4
+border_width_bottom = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_no1mi"]
+bg_color = Color(0.21960784, 0.2627451, 0.36078432, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_moyox"]
+bg_color = Color(0.21960784, 0.2627451, 0.36078432, 1)
+border_width_left = 2
+border_width_top = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_83une"]
+bg_color = Color(0.21960784, 0.2627451, 0.36078432, 1)
+border_width_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ye3co"]
+bg_color = Color(0.17254902, 0.29411766, 0.22745098, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8627451, 0.93333334, 0.8392157, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y253g"]
+bg_color = Color(0.078431375, 0.14901961, 0.12156863, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.89411765, 0.9607843, 0.8745098, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d510y"]
+bg_color = Color(0.078431375, 0.14901961, 0.12156863, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.89411765, 0.9607843, 0.8745098, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jyusc"]
+bg_color = Color(0.078431375, 0.14901961, 0.12156863, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.89411765, 0.9607843, 0.8745098, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="InventoryMenu" type="Control" unique_id=1694092285]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_moyox")
+item_teste_1 = ExtResource("4_y253g")
+item_teste_2 = ExtResource("3_ye3co")
+item_teste_3 = ExtResource("2_83une")
+
+[node name="FundoEscuro" type="ColorRect" parent="." unique_id=1240495946]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+
+[node name="PainelPrincipal" type="Panel" parent="." unique_id=899507578]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 300.0
+offset_top = 40.0
+offset_right = -202.0
+offset_bottom = -200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rydth")
+
+[node name="BotãoFechar" type="Button" parent="PainelPrincipal" unique_id=1886576173]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 0
+offset_left = 610.0
+offset_right = 642.0
+offset_bottom = 32.0
+scale = Vector2(1.2865944, 1.2724779)
+theme_override_styles/normal = SubResource("StyleBoxFlat_no1mi")
+text = "X	"
+
+[node name="Conteudo" type="HBoxContainer" parent="PainelPrincipal" unique_id=953678422]
+layout_mode = 0
+offset_right = 622.0
+offset_bottom = 380.0
+theme_override_constants/separation = 24
+
+[node name="PainelEsquerdo" type="VBoxContainer" parent="PainelPrincipal/Conteudo" unique_id=822491824]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 2
+
+[node name="PainelAvatar" type="Panel" parent="PainelPrincipal/Conteudo/PainelEsquerdo" unique_id=1437941328]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_moyox")
+
+[node name="ImagemAvatar" type="TextureRect" parent="PainelPrincipal/Conteudo/PainelEsquerdo/PainelAvatar" unique_id=1701051504]
+layout_mode = 1
+offset_left = 7.0
+offset_top = 5.0
+offset_right = 131.0
+offset_bottom = 129.0
+rotation = -6.2831855
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_rydth")
+expand_mode = 1
+
+[node name="PainelArma" type="Panel" parent="PainelPrincipal/Conteudo/PainelEsquerdo" unique_id=677057331]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_83une")
+
+[node name="ImagemArma" type="TextureRect" parent="PainelPrincipal/Conteudo/PainelEsquerdo/PainelArma" unique_id=1606350163]
+custom_minimum_size = Vector2(90, 72)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ChipsArma" type="HBoxContainer" parent="PainelPrincipal/Conteudo/PainelEsquerdo" unique_id=1958956979]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="SlotInventario" parent="PainelPrincipal/Conteudo/PainelEsquerdo/ChipsArma" unique_id=1141151258 instance=ExtResource("1_jr85b")]
+custom_minimum_size = Vector2(64, 48)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ye3co")
+tipo_slot = "chip"
+
+[node name="SlotInventario2" parent="PainelPrincipal/Conteudo/PainelEsquerdo/ChipsArma" unique_id=2016897959 instance=ExtResource("1_jr85b")]
+layout_mode = 2
+tipo_slot = "chip"
+
+[node name="SlotInventario3" parent="PainelPrincipal/Conteudo/PainelEsquerdo/ChipsArma" unique_id=1307466296 instance=ExtResource("1_jr85b")]
+layout_mode = 2
+tipo_slot = "chip"
+
+[node name="PainelDireito" type="VBoxContainer" parent="PainelPrincipal/Conteudo" unique_id=1575411234]
+layout_mode = 2
+alignment = 2
+
+[node name="GradeInventario" type="GridContainer" parent="PainelPrincipal/Conteudo/PainelDireito" unique_id=1929723620]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 5
+
+[node name="SlotInventario" parent="PainelPrincipal/Conteudo/PainelDireito/GradeInventario" unique_id=1418951907 instance=ExtResource("1_jr85b")]
+layout_mode = 2
+
+[node name="SlotInventario2" parent="PainelPrincipal/Conteudo/PainelDireito/GradeInventario" unique_id=1607446155 instance=ExtResource("1_jr85b")]
+layout_mode = 2
+
+[node name="SlotInventario3" parent="PainelPrincipal/Conteudo/PainelDireito/GradeInventario" unique_id=2077597000 instance=ExtResource("1_jr85b")]
+layout_mode = 2
+
+[node name="SlotInventario4" parent="PainelPrincipal/Conteudo/PainelDireito/GradeInventario" unique_id=513906765 instance=ExtResource("1_jr85b")]
+layout_mode = 2
+
+[node name="SlotInventario5" parent="PainelPrincipal/Conteudo/PainelDireito/GradeInventario" unique_id=1423457034 instance=ExtResource("1_jr85b")]
+layout_mode = 2
+
+[node name="SlotInventario6" parent="PainelPrincipal/Conteudo/PainelDireito/GradeInventario" unique_id=414876895 instance=ExtResource("1_jr85b")]
+layout_mode = 2
+
+[node name="SlotInventario7" parent="PainelPrincipal/Conteudo/PainelDireito/GradeInventario" unique_id=746680471 instance=ExtResource("1_jr85b")]
+layout_mode = 2
+
+[node name="SlotInventario8" parent="PainelPrincipal/Conteudo/PainelDireito/GradeInventario" unique_id=1064370232 instance=ExtResource("1_jr85b")]
+layout_mode = 2
+
+[node name="SlotInventario9" parent="PainelPrincipal/Conteudo/PainelDireito/GradeInventario" unique_id=1567340659 instance=ExtResource("1_jr85b")]
+layout_mode = 2
+
+[node name="SlotInventario10" parent="PainelPrincipal/Conteudo/PainelDireito/GradeInventario" unique_id=1573683560 instance=ExtResource("1_jr85b")]
+layout_mode = 2
+
+[node name="SlotInventario11" parent="PainelPrincipal/Conteudo/PainelDireito/GradeInventario" unique_id=1140853956 instance=ExtResource("1_jr85b")]
+layout_mode = 2
+
+[node name="SlotInventario12" parent="PainelPrincipal/Conteudo/PainelDireito/GradeInventario" unique_id=849159202 instance=ExtResource("1_jr85b")]
+layout_mode = 2
+
+[node name="SlotInventario13" parent="PainelPrincipal/Conteudo/PainelDireito/GradeInventario" unique_id=753807194 instance=ExtResource("1_jr85b")]
+layout_mode = 2
+
+[node name="SlotInventario14" parent="PainelPrincipal/Conteudo/PainelDireito/GradeInventario" unique_id=2021049710 instance=ExtResource("1_jr85b")]
+layout_mode = 2
+
+[node name="SlotInventario15" parent="PainelPrincipal/Conteudo/PainelDireito/GradeInventario" unique_id=1656343337 instance=ExtResource("1_jr85b")]
+layout_mode = 2
+
+[node name="SlotInventario16" parent="PainelPrincipal/Conteudo/PainelDireito/GradeInventario" unique_id=413958524 instance=ExtResource("1_jr85b")]
+layout_mode = 2
+
+[node name="SlotInventario17" parent="PainelPrincipal/Conteudo/PainelDireito/GradeInventario" unique_id=2082646383 instance=ExtResource("1_jr85b")]
+layout_mode = 2
+
+[node name="SlotInventario18" parent="PainelPrincipal/Conteudo/PainelDireito/GradeInventario" unique_id=2129060003 instance=ExtResource("1_jr85b")]
+layout_mode = 2
+
+[node name="SlotInventario19" parent="PainelPrincipal/Conteudo/PainelDireito/GradeInventario" unique_id=1924980428 instance=ExtResource("1_jr85b")]
+layout_mode = 2
+
+[node name="SlotInventario20" parent="PainelPrincipal/Conteudo/PainelDireito/GradeInventario" unique_id=1410521301 instance=ExtResource("1_jr85b")]
+layout_mode = 2
+
+[node name="SlotsEquipamento" type="HBoxContainer" parent="PainelPrincipal/Conteudo/PainelDireito" unique_id=985632196]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="SloEquipamento" parent="PainelPrincipal/Conteudo/PainelDireito/SlotsEquipamento" unique_id=8666026 instance=ExtResource("1_jr85b")]
+custom_minimum_size = Vector2(90, 64)
+layout_mode = 2
+tipo_slot = "equipamento"
+
+[node name="SlotEquipamento2" parent="PainelPrincipal/Conteudo/PainelDireito/SlotsEquipamento" unique_id=879926795 instance=ExtResource("1_jr85b")]
+custom_minimum_size = Vector2(90, 64)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_y253g")
+tipo_slot = "equipamento"
+bloqueado = true
+
+[node name="SlotEquipamento3" parent="PainelPrincipal/Conteudo/PainelDireito/SlotsEquipamento" unique_id=1007448344 instance=ExtResource("1_jr85b")]
+custom_minimum_size = Vector2(90, 64)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_d510y")
+tipo_slot = "equipamento"
+bloqueado = true
+
+[node name="SlotEquipamento4" parent="PainelPrincipal/Conteudo/PainelDireito/SlotsEquipamento" unique_id=187654425 instance=ExtResource("1_jr85b")]
+custom_minimum_size = Vector2(90, 64)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jyusc")
+tipo_slot = "equipamento"
+bloqueado = true
+
+[connection signal="pressed" from="PainelPrincipal/BotãoFechar" to="." method="_on_botao_fechar_pressed"]
