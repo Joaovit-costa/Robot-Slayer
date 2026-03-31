@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dw5vop8713vt3"]
+
+[ext_resource type="Script" uid="uid://bfxhp256xsiuk" path="res://script/inimigos.gd" id="1_mos2c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bnseq"]
+size = Vector2(56, 60)
+
+[sub_resource type="QuadMesh" id="QuadMesh_hubl8"]
+
+[node name="Inimigo" type="CharacterBody2D" unique_id=1858431150]
+script = ExtResource("1_mos2c")
+forca = 13
+cooldowns = [1.0, 3.0, 4.0]
+multiplicadores = [1.0, 1.4, 2.0]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1323380247]
+position = Vector2(0.25, 0.25000763)
+shape = SubResource("RectangleShape2D_bnseq")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=167926820]
+position = Vector2(0.25, 0.25)
+scale = Vector2(56.5, 60.5)
+mesh = SubResource("QuadMesh_hubl8")
