@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://3fo7wfjq87vc"]
 
-[ext_resource type="PackedScene" uid="uid://dw5vop8713vt3" path="res://res/Cenas/inimigo.tscn" id="1_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://crm7vecx3vhjy" path="res://res/Cenas/protagonista.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://dw5vop8713vt3" path="res://res/Cenas/entidades/inimigo.tscn" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://crm7vecx3vhjy" path="res://res/Cenas/entidades/protagonista.tscn" id="2_h2yge"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(1167, 20)
@@ -16,7 +16,13 @@ shape = SubResource("RectangleShape2D_1bvp3")
 
 [node name="Inimigo" parent="." unique_id=849815010 node_paths=PackedStringArray("protagonista_ref") instance=ExtResource("1_0xm2m")]
 position = Vector2(227, 173)
+vitalidade = 300
+defesa = null
+velocidade = null
+inteligencia = null
+temperamento = null
 protagonista_ref = NodePath("../Protagonista")
 
-[node name="Protagonista" parent="." unique_id=792860468 instance=ExtResource("2_h2yge")]
+[node name="Protagonista" parent="." unique_id=792860468 node_paths=PackedStringArray("alvo") instance=ExtResource("2_h2yge")]
 position = Vector2(521, 161)
+alvo = NodePath("../Inimigo")
