@@ -1,0 +1,290 @@
+[gd_scene format=3 uid="uid://mnt8tq7ix0xp"]
+
+[ext_resource type="Script" uid="uid://bxvdl56hqp0k1" path="res://script/menu_status.gd" id="1_5rlmu"]
+[ext_resource type="StyleBox" uid="uid://clgcjihh1s203" path="res://cor_botao.tres" id="1_ffdi4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wynuo"]
+bg_color = Color(0.47058824, 0.7411765, 0.4509804, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(6.016344e-07, 0.43228054, 0.2830888, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+corner_detail = 1
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ffdi4"]
+bg_color = Color(0.27450982, 0.38039216, 0.28235295, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="MenuStatus" type="Control" unique_id=2147151198]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5rlmu")
+
+[node name="FundoEscuro" type="ColorRect" parent="." unique_id=1379210983]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+
+[node name="PainelPrincipal" type="Panel" parent="." unique_id=162799037]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.135
+anchor_right = 0.342
+anchor_bottom = 0.497
+offset_left = -29.520004
+offset_top = 86.0
+offset_right = 512.016
+offset_bottom = 193.944
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wynuo")
+
+[node name="BotaoFechar" type="Button" parent="PainelPrincipal" unique_id=807814895]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -53.0
+offset_top = 15.0
+offset_right = -13.0
+offset_bottom = 56.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.9098039, 0.9607843, 0.9098039, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_ffdi4")
+text = "x"
+
+[node name="Margem" type="MarginContainer" parent="PainelPrincipal" unique_id=213567245]
+layout_mode = 0
+offset_right = 236.0
+offset_bottom = 332.0
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 24
+
+[node name="ConteudoStatus" type="VBoxContainer" parent="PainelPrincipal/Margem" unique_id=1790238983]
+layout_mode = 2
+theme_override_constants/separation = 26
+
+[node name="TextoPontosStatus" type="Label" parent="PainelPrincipal/Margem/ConteudoStatus" unique_id=144869763]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9529412, 1, 0.9529412, 1)
+theme_override_font_sizes/font_size = 24
+text = "Pontos de Status: 0"
+
+[node name="LinhaForca" type="HBoxContainer" parent="PainelPrincipal/Margem/ConteudoStatus" unique_id=1074539147]
+custom_minimum_size = Vector2(42, 0)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="BotaoAdicionarForca" type="Button" parent="PainelPrincipal/Margem/ConteudoStatus/LinhaForca" unique_id=397364333]
+custom_minimum_size = Vector2(34, 34)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9019608, 0.9607843, 0.9019608, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("1_ffdi4")
+text = "+"
+
+[node name="TextoForca" type="Label" parent="PainelPrincipal/Margem/ConteudoStatus/LinhaForca" unique_id=2138153051]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+theme_override_font_sizes/font_size = 20
+text = "Força "
+
+[node name="TextoPontilhado" type="Label" parent="PainelPrincipal/Margem/ConteudoStatus/LinhaForca" unique_id=2022240698]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.01906409, 0.05962575, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = "..................................."
+
+[node name="EspacoForca" type="Control" parent="PainelPrincipal/Margem/ConteudoStatus/LinhaForca" unique_id=1575754656]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ValorForca" type="Label" parent="PainelPrincipal/Margem/ConteudoStatus/LinhaForca" unique_id=1519538710]
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "0"
+horizontal_alignment = 2
+
+[node name="LinhaDefesa" type="HBoxContainer" parent="PainelPrincipal/Margem/ConteudoStatus" unique_id=1499252240]
+custom_minimum_size = Vector2(42, 0)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="BotaoAdicionarDefesa" type="Button" parent="PainelPrincipal/Margem/ConteudoStatus/LinhaDefesa" unique_id=39690800]
+custom_minimum_size = Vector2(34, 34)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9019608, 0.9607843, 0.9019608, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("1_ffdi4")
+text = "+"
+
+[node name="TextoDefesa" type="Label" parent="PainelPrincipal/Margem/ConteudoStatus/LinhaDefesa" unique_id=791541236]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+theme_override_font_sizes/font_size = 20
+text = "Defesa"
+
+[node name="TextoPontilhado" type="Label" parent="PainelPrincipal/Margem/ConteudoStatus/LinhaDefesa" unique_id=1660768145]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.01906409, 0.05962575, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = ".................................."
+
+[node name="EspacoDefesa" type="Control" parent="PainelPrincipal/Margem/ConteudoStatus/LinhaDefesa" unique_id=1780547573]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ValorDefesa" type="Label" parent="PainelPrincipal/Margem/ConteudoStatus/LinhaDefesa" unique_id=1912665314]
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "0"
+horizontal_alignment = 2
+
+[node name="LinhaVitalidade" type="HBoxContainer" parent="PainelPrincipal/Margem/ConteudoStatus" unique_id=1407878396]
+custom_minimum_size = Vector2(42, 0)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="BotaoAdicionarVitalidade" type="Button" parent="PainelPrincipal/Margem/ConteudoStatus/LinhaVitalidade" unique_id=819810964]
+custom_minimum_size = Vector2(34, 34)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9019608, 0.9607843, 0.9019608, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("1_ffdi4")
+text = "+"
+
+[node name="TextoVitalidade" type="Label" parent="PainelPrincipal/Margem/ConteudoStatus/LinhaVitalidade" unique_id=1079172574]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+theme_override_font_sizes/font_size = 20
+text = "Vitalidade"
+
+[node name="TextoPontilhado" type="Label" parent="PainelPrincipal/Margem/ConteudoStatus/LinhaVitalidade" unique_id=1140749847]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.01906409, 0.05962575, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = "..........................."
+
+[node name="EspacoVitalidade" type="Control" parent="PainelPrincipal/Margem/ConteudoStatus/LinhaVitalidade" unique_id=628382312]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ValorVitalidade" type="Label" parent="PainelPrincipal/Margem/ConteudoStatus/LinhaVitalidade" unique_id=444710452]
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "0"
+horizontal_alignment = 2
+
+[node name="LinhaVelocidade" type="HBoxContainer" parent="PainelPrincipal/Margem/ConteudoStatus" unique_id=1941108720]
+custom_minimum_size = Vector2(42, 0)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="BotaoAdicionarVelocidade" type="Button" parent="PainelPrincipal/Margem/ConteudoStatus/LinhaVelocidade" unique_id=1500317900]
+custom_minimum_size = Vector2(34, 34)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9019608, 0.9607843, 0.9019608, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("1_ffdi4")
+text = "+"
+
+[node name="TextoVelocidade" type="Label" parent="PainelPrincipal/Margem/ConteudoStatus/LinhaVelocidade" unique_id=990056858]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+theme_override_font_sizes/font_size = 20
+text = "Velocidade  "
+
+[node name="TextoPontilhado" type="Label" parent="PainelPrincipal/Margem/ConteudoStatus/LinhaVelocidade" unique_id=1792456758]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.01906409, 0.05962575, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = "........................"
+
+[node name="EspacoVelocidade" type="Control" parent="PainelPrincipal/Margem/ConteudoStatus/LinhaVelocidade" unique_id=1706320319]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ValorVelocidade" type="Label" parent="PainelPrincipal/Margem/ConteudoStatus/LinhaVelocidade" unique_id=1679920850]
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "0"
+horizontal_alignment = 2
+
+[node name="LinhaInteligencia" type="HBoxContainer" parent="PainelPrincipal/Margem/ConteudoStatus" unique_id=546251144]
+custom_minimum_size = Vector2(42, 0)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="BotaoAdicionarInteligencia" type="Button" parent="PainelPrincipal/Margem/ConteudoStatus/LinhaInteligencia" unique_id=1683381727]
+custom_minimum_size = Vector2(34, 34)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9019608, 0.9607843, 0.9019608, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("1_ffdi4")
+text = "+"
+
+[node name="TextoInteligencia" type="Label" parent="PainelPrincipal/Margem/ConteudoStatus/LinhaInteligencia" unique_id=2111428661]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+theme_override_font_sizes/font_size = 20
+text = "Inteligência"
+
+[node name="TextoPontilhado" type="Label" parent="PainelPrincipal/Margem/ConteudoStatus/LinhaInteligencia" unique_id=1316497292]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.01906409, 0.05962575, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = "........................"
+
+[node name="EspacoInteligencia" type="Control" parent="PainelPrincipal/Margem/ConteudoStatus/LinhaInteligencia" unique_id=389123947]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ValorInteligencia" type="Label" parent="PainelPrincipal/Margem/ConteudoStatus/LinhaInteligencia" unique_id=1270597450]
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "0"
+horizontal_alignment = 2
+
+[connection signal="pressed" from="PainelPrincipal/BotaoFechar" to="." method="_on_botao_fechar_pressed"]
+[connection signal="pressed" from="PainelPrincipal/Margem/ConteudoStatus/LinhaForca/BotaoAdicionarForca" to="." method="_on_botao_adicionar_forca_pressed"]
+[connection signal="pressed" from="PainelPrincipal/Margem/ConteudoStatus/LinhaDefesa/BotaoAdicionarDefesa" to="." method="_on_botao_adicionar_defesa_pressed"]
+[connection signal="pressed" from="PainelPrincipal/Margem/ConteudoStatus/LinhaVitalidade/BotaoAdicionarVitalidade" to="." method="_on_botao_adicionar_vitalidade_pressed"]
+[connection signal="pressed" from="PainelPrincipal/Margem/ConteudoStatus/LinhaVelocidade/BotaoAdicionarVelocidade" to="." method="_on_botao_adicionar_velocidade_pressed"]
+[connection signal="pressed" from="PainelPrincipal/Margem/ConteudoStatus/LinhaInteligencia/BotaoAdicionarInteligencia" to="." method="_on_botao_adicionar_inteligencia_pressed"]
