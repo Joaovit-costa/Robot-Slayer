@@ -1,15 +1,17 @@
 [gd_scene format=3 uid="uid://crm7vecx3vhjy"]
 
-[ext_resource type="Script" uid="uid://cdgeykgg3b6sh" path="res://script/protagonista.gd" id="1_uw4sx"]
+[ext_resource type="Script" uid="uid://cdgeykgg3b6sh" path="res://script/entidades/protagonista.gd" id="1_uw4sx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eaitr"]
 size = Vector2(56, 60)
 
 [sub_resource type="QuadMesh" id="QuadMesh_gdo4l"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pl2iv"]
+size = Vector2(118, 118)
+
 [node name="Protagonista" type="CharacterBody2D" unique_id=369473398]
 script = ExtResource("1_uw4sx")
-vitalidade = 100
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1873306950]
 position = Vector2(0.25, 0.25000763)
@@ -19,3 +21,10 @@ shape = SubResource("RectangleShape2D_eaitr")
 position = Vector2(0.25, 0.25)
 scale = Vector2(56.5, 60.5)
 mesh = SubResource("QuadMesh_gdo4l")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1892440205]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1106192527]
+shape = SubResource("RectangleShape2D_pl2iv")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

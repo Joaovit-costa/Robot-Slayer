@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://j2uoiy6rsvsb"]
+
+[ext_resource type="PackedScene" uid="uid://dw5vop8713vt3" path="res://res/Cenas/entidades/inimigo.tscn" id="1_lq783"]
+[ext_resource type="PackedScene" uid="uid://crm7vecx3vhjy" path="res://res/Cenas/entidades/protagonista.tscn" id="2_p8hvh"]
+
+[node name="Teste" type="Node2D" unique_id=1911979741]
+
+[node name="Inimigo" parent="." unique_id=1858431150 node_paths=PackedStringArray("protagonista_ref") instance=ExtResource("1_lq783")]
+position = Vector2(227, 173)
+collision_layer = 2
+collision_mask = 2
+vitalidade = 300
+defesa = null
+velocidade = null
+inteligencia = null
+temperamento = null
+protagonista_ref = NodePath("../Protagonista")
+
+[node name="Protagonista" parent="." unique_id=369473398 node_paths=PackedStringArray("alvo") instance=ExtResource("2_p8hvh")]
+position = Vector2(521, 161)
+collision_layer = 4
+collision_mask = 2
+alvo = NodePath("../Inimigo")

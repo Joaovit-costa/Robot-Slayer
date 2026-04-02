@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name protagonista
 
 @export var alvo: inimigo
+@onready var alcance := Area2D
 
 var vitalidade: int = 100
 var defesa: int = 0
@@ -20,6 +21,9 @@ var mecanicas = Mecanicas.new()
 
 func _ready() -> void:
 	randomize()
+	
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	print("ok")
 
 func _physics_process(delta: float) -> void:
 	var directionx := Input.get_axis("ui_left", "ui_right")
@@ -42,7 +46,7 @@ func _physics_process(delta: float) -> void:
 		cooldown -= delta
 
 	if alvo != null:
-		print(alvo.vitalidade, " ", cooldown)
+		pass
 	else:
 		print("Sem alvo definido", " ", cooldown)
 
