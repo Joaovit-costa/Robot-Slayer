@@ -11,6 +11,7 @@ size = Vector2(56, 60)
 size = Vector2(118, 118)
 
 [node name="Protagonista" type="CharacterBody2D" unique_id=369473398]
+collision_mask = 4
 script = ExtResource("1_uw4sx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1873306950]
@@ -23,6 +24,8 @@ scale = Vector2(56.5, 60.5)
 mesh = SubResource("QuadMesh_gdo4l")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1892440205]
+collision_layer = 8
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1106192527]
 shape = SubResource("RectangleShape2D_pl2iv")

@@ -1,17 +1,19 @@
 [gd_scene format=3 uid="uid://dw5vop8713vt3"]
 
-[ext_resource type="Script" uid="uid://bfxhp256xsiuk" path="res://script/inimigos.gd" id="1_mos2c"]
+[ext_resource type="Script" uid="uid://bfxhp256xsiuk" path="res://script/entidades/inimigos.gd" id="1_mos2c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bnseq"]
 size = Vector2(56, 60)
 
 [sub_resource type="QuadMesh" id="QuadMesh_hubl8"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vhucu"]
+size = Vector2(118, 118)
+
 [node name="Inimigo" type="CharacterBody2D" unique_id=1858431150]
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("1_mos2c")
-forca = 13
-cooldowns = [1.0, 3.0, 4.0]
-multiplicadores = [1.0, 1.4, 2.0]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1323380247]
 position = Vector2(0.25, 0.25000763)
@@ -21,3 +23,9 @@ shape = SubResource("RectangleShape2D_bnseq")
 position = Vector2(0.25, 0.25)
 scale = Vector2(56.5, 60.5)
 mesh = SubResource("QuadMesh_hubl8")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=282631114]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1019499574]
+shape = SubResource("RectangleShape2D_vhucu")
