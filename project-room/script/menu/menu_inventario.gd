@@ -11,6 +11,8 @@ var slots_inventario: Array = []
 var slots_equipamento: Array = []
 
 
+
+
 func _ready() -> void:
 	pegar_slots()
 	configurar_slots()

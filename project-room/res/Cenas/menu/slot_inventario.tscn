@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://ksmjsf3pj0rq"]
 
-[ext_resource type="Script" uid="uid://cdsw7aql660gw" path="res://script/slot_inventario.gd" id="1_2r3tp"]
+[ext_resource type="Texture2D" uid="uid://ciaunlwjm1xei" path="res://res/design/menus/Slot_Inventario.png" id="1_lr04j"]
+[ext_resource type="Script" uid="uid://kbkspeifgn81" path="res://script/menu/slot_inventario.gd" id="1_rahrn"]
+[ext_resource type="Texture2D" uid="uid://du3u5r3yencmh" path="res://res/design/menus/Slot_Trancado_V2.png" id="3_2474y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2r3tp"]
 bg_color = Color(0.17254902, 0.29411766, 0.22745098, 1)
@@ -19,9 +21,18 @@ custom_minimum_size = Vector2(64, 64)
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_2r3tp")
-script = ExtResource("1_2r3tp")
+script = ExtResource("1_rahrn")
 
-[node name="IconeItem" type="TextureRect" parent="." unique_id=489203566]
+[node name="FundoSlot" type="TextureRect" parent="." unique_id=976246926]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_lr04j")
+
+[node name="IconeItem" type="TextureRect" parent="FundoSlot" unique_id=489203566]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,20 +43,19 @@ mouse_filter = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="IconeCadeado" type="TextureRect" parent="." unique_id=1263893643]
+[node name="IconeCadeado" type="TextureRect" parent="FundoSlot" unique_id=1263893643]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+texture = ExtResource("3_2474y")
 expand_mode = 1
 stretch_mode = 3
 
-[node name="Label" type="Label" parent="IconeCadeado" unique_id=1969612062]
+[node name="Label" type="Label" parent="FundoSlot/IconeCadeado" unique_id=1969612062]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

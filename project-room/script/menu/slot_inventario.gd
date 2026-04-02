@@ -20,8 +20,8 @@ var em_hover_drag: bool = false
 var hover_valido: bool = false
 
 # Referências visuais
-@onready var icone_item = $IconeItem
-@onready var icone_cadeado = $IconeCadeado
+@onready var icone_item = $FundoSlot/IconeItem
+@onready var icone_cadeado = $FundoSlot/IconeCadeado
 
 
 func _ready() -> void:
