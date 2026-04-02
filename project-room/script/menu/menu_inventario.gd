@@ -10,14 +10,38 @@ var slots_chips: Array = []
 var slots_inventario: Array = []
 var slots_equipamento: Array = []
 
-
+var inventario = {
+	"inventario": [
+		{
+			"nome": "",
+			"tipo": "",
+			"raridade": "",
+			"quantidade": 0,
+			"descricao": "",
+			"imagem": null,
+			"id_slot": -1
+		}
+	],
+	"equipado": [
+		{
+			"nome": "",
+			"raridade": "",
+			"imagem": null
+		}
+	],
+	"extensor": [
+		{
+			
+		}
+	]
+}
 
 
 func _ready() -> void:
 	pegar_slots()
 	configurar_slots()
 	colocar_itens_teste()
-
+	print(inventario["inventario"])
 
 func pegar_slots() -> void:
 	for slot in $PainelPrincipal/Conteudo/PainelEsquerdo/ChipsArma.get_children():
