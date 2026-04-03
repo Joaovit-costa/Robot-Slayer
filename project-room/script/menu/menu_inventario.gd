@@ -1,9 +1,8 @@
 extends Control
 
 # Itens de teste
-@export var item_teste_1: Item
-@export var item_teste_2: Item
-@export var item_teste_3: Item
+const ListaItensScript = preload("res://script/menu/lista_itens.gd")
+var itens = ListaItensScript.new()
 
 # Arrays para guardar referências dos slots
 var slots_chips: Array = []
@@ -40,11 +39,14 @@ var inventario = {
 func _ready() -> void:
 	pegar_slots()
 	configurar_slots()
-	colocar_itens_teste()
-	print(inventario["inventario"])
 
+	# Coloca os primeiros itens nos slots
+	for i in range(min(slots_inventario.size(), itens.itens.size())):
+		var item = itens.itens[i]
+		slots_inventario[i].definir_item(item)
+	 
 func pegar_slots() -> void:
-	for slot in $PainelPrincipal/Conteudo/PainelEsquerdo/ChipsArma.get_children():
+	for slot in $PainelPrincipal/Conteudo/PainelEsquerdo/SlotsExtensores.get_children():
 		slots_chips.append(slot)
 
 	for slot in $PainelPrincipal/Conteudo/PainelDireito/GradeInventario.get_children():
@@ -68,23 +70,13 @@ func configurar_slots() -> void:
 		slot.definir_bloqueio(false)
 
 	for i in range(slots_equipamento.size()):
-		slots_equipamento[i].tipo_slot = "equipamento"
+		slots_equipamento[0].definir_bloqueio(false)
+		slots_equipamento[1].definir_bloqueio(false)
 
-	slots_equipamento[0].definir_bloqueio(false)
-
-	for i in range(1, slots_equipamento.size()):
+	for i in range(2, slots_equipamento.size()):
 		slots_equipamento[i].definir_bloqueio(true)
 
 
-func colocar_itens_teste() -> void:
-	if item_teste_1 != null and item_teste_1.tipo == "equipamento":
-		slots_inventario[0].definir_item(item_teste_1)
-
-	if item_teste_2 != null and item_teste_2.tipo == "equipamento":
-		slots_inventario[1].definir_item(item_teste_2)
-
-	if item_teste_3 != null and item_teste_3.tipo == "chip":
-		slots_chips[0].definir_item(item_teste_3)
 func _on_botao_fechar_pressed() -> void:
 	# Esconde o menu de inventário
 	hide()

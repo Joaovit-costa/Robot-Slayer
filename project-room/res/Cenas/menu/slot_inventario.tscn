@@ -18,10 +18,14 @@ corner_radius_bottom_left = 12
 
 [node name="SlotInventario" type="Panel" unique_id=1141151258]
 custom_minimum_size = Vector2(64, 64)
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = -1
+anchor_right = 0.055555556
+anchor_bottom = 0.09876543
+offset_right = -24.0
+offset_bottom = -24.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_2r3tp")
 script = ExtResource("1_rahrn")
+metadata/_edit_use_anchors_ = true
 
 [node name="FundoSlot" type="TextureRect" parent="." unique_id=976246926]
 layout_mode = 1

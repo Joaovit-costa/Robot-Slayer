@@ -11,7 +11,7 @@ static var slot_hover_atual = null
 @export var bloqueado: bool = false
 
 # Guarda o item atual do slot
-var item_atual: Item = null
+var item_atual = null
 
 # Indica se este slot está atualmente sob o mouse durante um drag
 var em_hover_drag: bool = false
@@ -30,25 +30,15 @@ func _ready() -> void:
 
 
 func atualizar_visual() -> void:
-	# Mostra ou esconde o cadeado dependendo do estado do slot
 	icone_cadeado.visible = bloqueado
 
-	# Se o slot estiver bloqueado, não mostra item
 	if bloqueado:
 		icone_item.visible = false
 	else:
-		# Se houver item, mostra o ícone
-		if item_atual != null:
-			icone_item.texture = item_atual.icone
-			icone_item.visible = true
-		else:
-			icone_item.visible = false
+		# Caminho 1: por enquanto não mostra imagem
+		icone_item.visible = false
 
-	# Reaplica o estilo visual correto
-	atualizar_estilo()
-
-
-func definir_item(item: Item) -> bool:
+func definir_item(item: Dictionary) -> bool:
 	# Só coloca o item se o slot aceitar esse tipo
 	if not pode_receber_item(item):
 		return false
@@ -70,78 +60,24 @@ func definir_bloqueio(esta_bloqueado: bool) -> void:
 	atualizar_visual()
 
 
-func pode_receber_item(item: Item) -> bool:
+func pode_receber_item(item: Dictionary) -> bool:
 	# Slot bloqueado não recebe nada
 	if bloqueado:
 		return false
 
 	# Slot de inventário aceita qualquer item
-	if tipo_slot == "inventario":
+	if tipo_slot == "normal":
 		return true
 
 	# Slot de chip aceita apenas itens do tipo chip
-	if tipo_slot == "chip":
-		return item.tipo == "chip"
+	if tipo_slot == "extensor":
+		return item["tipo"] == "extensivel"
 
 	# Slot de equipamento aceita apenas itens do tipo equipamento
 	if tipo_slot == "equipamento":
-		return item.tipo == "equipamento"
+		return item["tipo"] == "equipamento"
 
 	return false
-
-
-func aplicar_estilo_slot(cor_fundo: Color, cor_borda: Color, espessura: int = 2) -> void:
-	# Cria um novo estilo visual para o slot
-	var estilo = StyleBoxFlat.new()
-
-	# Cor de fundo
-	estilo.bg_color = cor_fundo
-
-	# Cor e espessura da borda
-	estilo.border_color = cor_borda
-	estilo.set_border_width_all(espessura)
-
-	# Cantos arredondados
-	estilo.set_corner_radius_all(12)
-
-	# Aplica o estilo ao painel
-	add_theme_stylebox_override("panel", estilo)
-
-
-func atualizar_estilo() -> void:
-	# Se o slot estiver bloqueado, usa visual escuro
-	if bloqueado:
-		aplicar_estilo_slot(Color("#14261F"), Color("#E4F5DF"), 2)
-		return
-
-	# Se não estiver em hover de drag, usa o visual normal
-	if not em_hover_drag:
-		aplicar_estilo_slot(Color("#2C4B3A"), Color("#E4F5DF"), 2)
-		return
-
-# Se estiver em hover e for válido, usa verde
-	if hover_valido:
-		aplicar_estilo_slot(Color("#3E6B45"), Color("#7CFF7A"), 2)
-	else:
-		# Se estiver em hover e for inválido, usa vermelho
-		aplicar_estilo_slot(Color("#4A2A2A"), Color("#FF5C5C"), 2)
-
-	# Se estiver em hover e for válido, usa verde
-	if hover_valido:
-		aplicar_estilo_slot(Color("#3E6B45"), Color("#7CFF7A"), 4)
-	else:
-		# Se estiver em hover e for inválido, usa vermelho
-		aplicar_estilo_slot(Color("#4A2A2A"), Color("#FF5C5C"), 4)
-
-
-func limpar_hover_global() -> void:
-	# Se existir algum slot marcado como hover atual, limpa ele
-	if slot_hover_atual != null:
-		slot_hover_atual.em_hover_drag = false
-		slot_hover_atual.hover_valido = false
-		slot_hover_atual.atualizar_estilo()
-		slot_hover_atual = null
-
 
 func _get_drag_data(at_position: Vector2):
 	# Não permite arrastar se o slot estiver bloqueado
@@ -173,12 +109,10 @@ func _get_drag_data(at_position: Vector2):
 func _can_drop_data(at_position: Vector2, data) -> bool:
 	# Valida se os dados recebidos são um dicionário
 	if typeof(data) != TYPE_DICTIONARY:
-		limpar_hover_global()
 		return false
 
 	# Verifica se existe a chave "item"
 	if not data.has("item"):
-		limpar_hover_global()
 		return false
 
 	var item = data["item"]
@@ -196,16 +130,13 @@ func _can_drop_data(at_position: Vector2, data) -> bool:
 	slot_hover_atual = self
 	em_hover_drag = true
 	hover_valido = pode
-	atualizar_estilo()
+	
 
 	# O retorno continua sendo true ou false normalmente
 	return pode
 
 
 func _drop_data(at_position: Vector2, data) -> void:
-	# Limpa o hover ao soltar
-	limpar_hover_global()
-
 	# Valida os dados
 	if typeof(data) != TYPE_DICTIONARY:
 		return
@@ -236,9 +167,3 @@ func _drop_data(at_position: Vector2, data) -> void:
 	# Atualiza os dois slots
 	slot_origem.atualizar_visual()
 	atualizar_visual()
-
-
-func _notification(what: int) -> void:
-	# Quando o drag termina, limpa qualquer destaque que tenha sobrado
-	if what == NOTIFICATION_DRAG_END:
-		limpar_hover_global()

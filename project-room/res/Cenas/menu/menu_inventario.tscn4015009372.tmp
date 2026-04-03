@@ -222,6 +222,7 @@ layout_mode = 2
 
 [node name="SlotInventario10" parent="PainelPrincipal/Conteudo/PainelDireito/GradeInventario" unique_id=1573683560 instance=ExtResource("1_jr85b")]
 layout_mode = 2
+bloqueado = true
 
 [node name="SlotInventario11" parent="PainelPrincipal/Conteudo/PainelDireito/GradeInventario" unique_id=1140853956 instance=ExtResource("1_jr85b")]
 layout_mode = 2
@@ -260,24 +261,22 @@ theme_override_constants/separation = 12
 [node name="SloEquipamento" parent="PainelPrincipal/Conteudo/PainelDireito/SlotsEquipamento" unique_id=8666026 instance=ExtResource("1_jr85b")]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
-tipo_slot = "equipamento"
 
 [node name="SlotEquipamento2" parent="PainelPrincipal/Conteudo/PainelDireito/SlotsEquipamento" unique_id=879926795 instance=ExtResource("1_jr85b")]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_y253g")
-tipo_slot = "equipamento"
 
 [node name="SlotEquipamento3" parent="PainelPrincipal/Conteudo/PainelDireito/SlotsEquipamento" unique_id=1007448344 instance=ExtResource("1_jr85b")]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_d510y")
-tipo_slot = "equipamentp"
+bloqueado = true
 
 [node name="SlotEquipamento4" parent="PainelPrincipal/Conteudo/PainelDireito/SlotsEquipamento" unique_id=187654425 instance=ExtResource("1_jr85b")]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_jyusc")
-tipo_slot = "equipamento"
+bloqueado = true
 
 [connection signal="pressed" from="PainelPrincipal/BotãoFechar" to="." method="_on_botao_fechar_pressed"]
