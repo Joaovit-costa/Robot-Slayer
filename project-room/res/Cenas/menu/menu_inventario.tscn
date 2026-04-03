@@ -170,7 +170,6 @@ stretch_mode = 5
 [node name="ChipsArma" type="HBoxContainer" parent="PainelPrincipal/Conteudo/PainelEsquerdo" unique_id=1958956979]
 layout_mode = 2
 theme_override_constants/separation = 8
-alignment = 1
 
 [node name="SlotChip1" parent="PainelPrincipal/Conteudo/PainelEsquerdo/ChipsArma" unique_id=1141151258 instance=ExtResource("1_jr85b")]
 custom_minimum_size = Vector2(64, 48)
@@ -178,6 +177,9 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ye3co")
 
 [node name="SlotChip2" parent="PainelPrincipal/Conteudo/PainelEsquerdo/ChipsArma" unique_id=2016897959 instance=ExtResource("1_jr85b")]
+layout_mode = 2
+
+[node name="SlotChip3" parent="PainelPrincipal/Conteudo/PainelEsquerdo/ChipsArma" unique_id=1307466296 instance=ExtResource("1_jr85b")]
 layout_mode = 2
 
 [node name="PainelDireito" type="VBoxContainer" parent="PainelPrincipal/Conteudo" unique_id=1575411234]
