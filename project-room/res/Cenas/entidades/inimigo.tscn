@@ -2,30 +2,70 @@
 
 [ext_resource type="Script" uid="uid://bfxhp256xsiuk" path="res://script/entidades/inimigos.gd" id="1_mos2c"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bnseq"]
-size = Vector2(56, 60)
+[sub_resource type="CircleShape2D" id="CircleShape2D_vhucu"]
+radius = 28.75978
 
-[sub_resource type="QuadMesh" id="QuadMesh_hubl8"]
+[sub_resource type="SphereMesh" id="SphereMesh_55jdp"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vhucu"]
-size = Vector2(118, 118)
+[sub_resource type="CircleShape2D" id="CircleShape2D_btc3j"]
+radius = 56.5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vhucu"]
+bg_color = Color(0.10266317, 0.0001457339, 0.20196512, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_55jdp"]
+bg_color = Color(0.6963238, 1.2634322e-05, 0.20534447, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.2187981, 1.0077376e-07, 0.039348368, 1)
+border_blend = true
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [node name="Inimigo" type="CharacterBody2D" unique_id=1858431150]
 collision_layer = 2
-collision_mask = 4
+collision_mask = 3
 script = ExtResource("1_mos2c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1323380247]
 position = Vector2(0.25, 0.25000763)
-shape = SubResource("RectangleShape2D_bnseq")
+shape = SubResource("CircleShape2D_vhucu")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=167926820]
+modulate = Color(0, 0.515329, 0.3690503, 1)
 position = Vector2(0.25, 0.25)
-scale = Vector2(56.5, 60.5)
-mesh = SubResource("QuadMesh_hubl8")
+scale = Vector2(56.5, 56.5)
+mesh = SubResource("SphereMesh_55jdp")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=282631114]
 collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1019499574]
-shape = SubResource("RectangleShape2D_vhucu")
+shape = SubResource("CircleShape2D_btc3j")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=694231464]
+offset_left = -25.0
+offset_top = -43.0
+offset_right = 25.0
+offset_bottom = -36.0
+theme_override_styles/background = SubResource("StyleBoxFlat_vhucu")
+theme_override_styles/fill = SubResource("StyleBoxFlat_55jdp")
+show_percentage = false

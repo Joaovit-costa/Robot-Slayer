@@ -3,19 +3,25 @@
 [ext_resource type="PackedScene" uid="uid://dw5vop8713vt3" path="res://res/Cenas/entidades/inimigo.tscn" id="1_lq783"]
 [ext_resource type="PackedScene" uid="uid://crm7vecx3vhjy" path="res://res/Cenas/entidades/protagonista.tscn" id="2_p8hvh"]
 
-[node name="Teste" type="Node2D" unique_id=1911979741]
+[node name="sala" type="Node2D" unique_id=1911979741]
 
-[node name="Inimigo" parent="." unique_id=1858431150 node_paths=PackedStringArray("protagonista_ref") instance=ExtResource("1_lq783")]
-position = Vector2(227, 173)
-collision_mask = 2
-vitalidade = 300
-defesa = null
-velocidade = null
-inteligencia = null
-temperamento = null
-protagonista_ref = NodePath("../Protagonista")
-
-[node name="Protagonista" parent="." unique_id=369473398 node_paths=PackedStringArray("alvo") instance=ExtResource("2_p8hvh")]
+[node name="Protagonista" parent="." unique_id=369473398 node_paths=PackedStringArray("alvos") instance=ExtResource("2_p8hvh")]
 position = Vector2(521, 161)
 collision_mask = 2
-alvo = NodePath("../Inimigo")
+alvos = [NodePath("../Inimigo"), NodePath("../Inimigo2")]
+
+[node name="Inimigo2" parent="." unique_id=1858431150 node_paths=PackedStringArray("protagonista_ref") instance=ExtResource("1_lq783")]
+position = Vector2(252, 461)
+vitalidade = 4
+defesa = 1
+forca = 3
+inteligencia = 2
+protagonista_ref = NodePath("../Protagonista")
+
+[node name="Inimigo" parent="." unique_id=183813718 node_paths=PackedStringArray("protagonista_ref") instance=ExtResource("1_lq783")]
+position = Vector2(160, 154)
+vitalidade = 4
+defesa = 1
+forca = 3
+inteligencia = 2
+protagonista_ref = NodePath("../Protagonista")

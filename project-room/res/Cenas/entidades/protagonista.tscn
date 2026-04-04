@@ -2,13 +2,43 @@
 
 [ext_resource type="Script" uid="uid://cdgeykgg3b6sh" path="res://script/entidades/protagonista.gd" id="1_uw4sx"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eaitr"]
-size = Vector2(56, 60)
+[sub_resource type="CircleShape2D" id="CircleShape2D_pl2iv"]
+radius = 28.751087
 
-[sub_resource type="QuadMesh" id="QuadMesh_gdo4l"]
+[sub_resource type="SphereMesh" id="SphereMesh_70dtc"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pl2iv"]
-size = Vector2(118, 118)
+[sub_resource type="CircleShape2D" id="CircleShape2D_gsa6n"]
+radius = 56.5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pl2iv"]
+bg_color = Color(0, 0.19174087, 0.0005485823, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.04384221, 0.08335432, 1.2032688e-08, 1)
+border_blend = true
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_70dtc"]
+bg_color = Color(0, 0.7764706, 0.047058824, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.09599405, 0.48593032, 1.92523e-07, 1)
+border_blend = true
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [node name="Protagonista" type="CharacterBody2D" unique_id=369473398]
 collision_mask = 4
@@ -16,18 +46,29 @@ script = ExtResource("1_uw4sx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1873306950]
 position = Vector2(0.25, 0.25000763)
-shape = SubResource("RectangleShape2D_eaitr")
+shape = SubResource("CircleShape2D_pl2iv")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1947461185]
 position = Vector2(0.25, 0.25)
-scale = Vector2(56.5, 60.5)
-mesh = SubResource("QuadMesh_gdo4l")
+scale = Vector2(56.5, 56.5)
+mesh = SubResource("SphereMesh_70dtc")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1892440205]
 collision_layer = 8
-collision_mask = 4
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1106192527]
-shape = SubResource("RectangleShape2D_pl2iv")
+shape = SubResource("CircleShape2D_gsa6n")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=60694657]
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" unique_id=187380626]
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 465.0
+offset_bottom = 45.0
+theme_override_styles/background = SubResource("StyleBoxFlat_pl2iv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_70dtc")
+show_percentage = false
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
