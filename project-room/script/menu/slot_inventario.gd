@@ -1,10 +1,12 @@
 extends Panel
 
-# Guarda qual slot está atualmente com hover de drag
-# Isso evita que vários slots fiquem destacados ao mesmo tempo
+# Sinal emitido quando um item é movido de slot
+signal item_movido
+
+# Guarda qual slot está atualmente em hover durante o drag
 static var slot_hover_atual = null
 
-# Tipo do slot: inventario, chip ou equipamento
+# Tipo do slot: inventario, equipamento ou extensor
 @export var tipo_slot: String = "inventario"
 
 # Define se o slot começa bloqueado
@@ -13,7 +15,7 @@ static var slot_hover_atual = null
 # Guarda o item atual do slot
 var item_atual = null
 
-# Indica se este slot está atualmente sob o mouse durante um drag
+# Indica se este slot está sob o mouse durante um drag
 var em_hover_drag: bool = false
 
 # Indica se o item arrastado pode ser solto neste slot
@@ -30,13 +32,26 @@ func _ready() -> void:
 
 
 func atualizar_visual() -> void:
+	# Mostra ou esconde o cadeado
 	icone_cadeado.visible = bloqueado
 
+	# Se estiver bloqueado, esconde o item
 	if bloqueado:
 		icone_item.visible = false
+		return
+
+	# Se existe item no slot, tenta mostrar a imagem
+	if item_atual != null:
+		# Só tenta mostrar a imagem se a chave existir e não for nula
+		if item_atual.has("imagem") and item_atual["imagem"] != null:
+			icone_item.texture = item_atual["imagem"]
+			icone_item.visible = true
+		else:
+			# Se não tiver imagem, não quebra, só esconde
+			icone_item.visible = false
 	else:
-		# Caminho 1: por enquanto não mostra imagem
 		icone_item.visible = false
+
 
 func definir_item(item: Dictionary) -> bool:
 	# Só coloca o item se o slot aceitar esse tipo
@@ -66,38 +81,45 @@ func pode_receber_item(item: Dictionary) -> bool:
 		return false
 
 	# Slot de inventário aceita qualquer item
-	if tipo_slot == "normal":
+	if tipo_slot == "inventario":
 		return true
 
-	# Slot de chip aceita apenas itens do tipo chip
-	if tipo_slot == "extensor":
-		return item["tipo"] == "extensivel"
-
-	# Slot de equipamento aceita apenas itens do tipo equipamento
+	# Slot de equipamento aceita apenas itens equipáveis
 	if tipo_slot == "equipamento":
-		return item["tipo"] == "equipamento"
+		return item["tipo"] == "equipavel"
+
+	# Slot de extensor aceita apenas itens extensivos
+	if tipo_slot == "extensor":
+		return item["tipo"] == "extensivo"
 
 	return false
 
-func _get_drag_data(at_position: Vector2):
-	# Não permite arrastar se o slot estiver bloqueado
+
+func _get_drag_data(_at_position: Vector2):
+	# Não permite arrastar se estiver bloqueado
 	if bloqueado:
 		return null
 
-	# Não permite arrastar se o slot estiver vazio
+	# Não permite arrastar se estiver vazio
 	if item_atual == null:
 		return null
 
-	# Cria a prévia visual do item sendo arrastado
-	var preview = TextureRect.new()
-	preview.texture = item_atual.icone
-	preview.custom_minimum_size = Vector2(48, 48)
-	preview.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	preview.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	preview.modulate = Color(1, 1, 1, 0.85)
-
-	# Define a prévia do drag
-	set_drag_preview(preview)
+	# Se o item tiver imagem, usa a imagem como preview
+	if item_atual.has("imagem") and item_atual["imagem"] != null:
+		var preview = TextureRect.new()
+		preview.texture = item_atual["imagem"]
+		preview.custom_minimum_size = Vector2(48, 48)
+		preview.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		preview.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		preview.modulate = Color(1, 1, 1, 0.85)
+		set_drag_preview(preview)
+	else:
+		# Se não tiver imagem, usa um preview de texto
+		var preview_container = PanelContainer.new()
+		var preview_label = Label.new()
+		preview_label.text = item_atual["nome"]
+		preview_container.add_child(preview_label)
+		set_drag_preview(preview_container)
 
 	# Retorna os dados do arraste
 	return {
@@ -106,7 +128,7 @@ func _get_drag_data(at_position: Vector2):
 	}
 
 
-func _can_drop_data(at_position: Vector2, data) -> bool:
+func _can_drop_data(_at_position: Vector2, data) -> bool:
 	# Valida se os dados recebidos são um dicionário
 	if typeof(data) != TYPE_DICTIONARY:
 		return false
@@ -120,23 +142,19 @@ func _can_drop_data(at_position: Vector2, data) -> bool:
 	# Verifica se o item pode entrar neste slot
 	var pode = pode_receber_item(item)
 
-	# Se havia outro slot em hover, limpa o anterior
+	# Guarda hover atual
 	if slot_hover_atual != null and slot_hover_atual != self:
 		slot_hover_atual.em_hover_drag = false
 		slot_hover_atual.hover_valido = false
-		slot_hover_atual.atualizar_estilo()
 
-	# Marca este slot como o slot em hover atual
 	slot_hover_atual = self
 	em_hover_drag = true
 	hover_valido = pode
-	
 
-	# O retorno continua sendo true ou false normalmente
 	return pode
 
 
-func _drop_data(at_position: Vector2, data) -> void:
+func _drop_data(_at_position: Vector2, data) -> void:
 	# Valida os dados
 	if typeof(data) != TYPE_DICTIONARY:
 		return
@@ -156,7 +174,7 @@ func _drop_data(at_position: Vector2, data) -> void:
 	if not pode_receber_item(item_origem):
 		return
 
-	# Se houver item no destino, a origem precisa aceitar ele para permitir a troca
+	# Se houver item no destino, a origem precisa aceitar esse item para permitir troca
 	if item_destino != null and not slot_origem.pode_receber_item(item_destino):
 		return
 
@@ -167,3 +185,7 @@ func _drop_data(at_position: Vector2, data) -> void:
 	# Atualiza os dois slots
 	slot_origem.atualizar_visual()
 	atualizar_visual()
+
+	# Avisa que houve mudança no inventário
+	slot_origem.item_movido.emit()
+	item_movido.emit()

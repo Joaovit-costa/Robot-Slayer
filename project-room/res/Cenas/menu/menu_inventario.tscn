@@ -90,10 +90,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 300.0
-offset_top = 40.0
-offset_right = -152.0
-offset_bottom = -148.0
+offset_left = 260.0
+offset_top = 75.0
+offset_right = -192.0
+offset_bottom = -113.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_rydth")
@@ -260,24 +260,20 @@ theme_override_constants/separation = 12
 [node name="SloEquipamento" parent="PainelPrincipal/Conteudo/PainelDireito/SlotsEquipamento" unique_id=8666026 instance=ExtResource("1_jr85b")]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
-tipo_slot = "equipamento"
 
 [node name="SlotEquipamento2" parent="PainelPrincipal/Conteudo/PainelDireito/SlotsEquipamento" unique_id=879926795 instance=ExtResource("1_jr85b")]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_y253g")
-tipo_slot = "equipamento"
 
 [node name="SlotEquipamento3" parent="PainelPrincipal/Conteudo/PainelDireito/SlotsEquipamento" unique_id=1007448344 instance=ExtResource("1_jr85b")]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_d510y")
-tipo_slot = "equipamentp"
 
 [node name="SlotEquipamento4" parent="PainelPrincipal/Conteudo/PainelDireito/SlotsEquipamento" unique_id=187654425 instance=ExtResource("1_jr85b")]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_jyusc")
-tipo_slot = "equipamento"
 
 [connection signal="pressed" from="PainelPrincipal/BotãoFechar" to="." method="_on_botao_fechar_pressed"]
