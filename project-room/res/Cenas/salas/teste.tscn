@@ -2,6 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://dw5vop8713vt3" path="res://res/Cenas/entidades/inimigo.tscn" id="1_lq783"]
 [ext_resource type="PackedScene" uid="uid://crm7vecx3vhjy" path="res://res/Cenas/entidades/protagonista.tscn" id="2_p8hvh"]
+[ext_resource type="Script" uid="uid://b547wbkrtg5cj" path="res://script/data/dataDrops.gd" id="3_p8hvh"]
+
+[sub_resource type="Resource" id="Resource_kpg4u"]
+script = ExtResource("3_p8hvh")
+metadata/_custom_type_script = "uid://b547wbkrtg5cj"
 
 [node name="sala" type="Node2D" unique_id=1911979741]
 
@@ -16,6 +21,9 @@ vitalidade = 4
 defesa = 1
 forca = 3
 inteligencia = 2
+experiencia_min = 50
+experiencia_max = 70
+drops = Array[ExtResource("3_p8hvh")]([SubResource("Resource_kpg4u")])
 protagonista_ref = NodePath("../Protagonista")
 
 [node name="Inimigo" parent="." unique_id=183813718 node_paths=PackedStringArray("protagonista_ref") instance=ExtResource("1_lq783")]
@@ -24,4 +32,6 @@ vitalidade = 4
 defesa = 1
 forca = 3
 inteligencia = 2
+experiencia_min = 50
+experiencia_max = 70
 protagonista_ref = NodePath("../Protagonista")

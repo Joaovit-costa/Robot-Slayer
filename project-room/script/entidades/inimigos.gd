@@ -13,9 +13,17 @@ var vidaInicial: int
 @export var cooldowns: Array[float] = [0.8, 1.2, 1.6]
 @export var multiplicadores: Array[float] = [1.0, 1.3, 1.5]
 
+# Drops do inimigo
+@export_group("drop")
+@export var experiencia_min: int = 0
+@export var experiencia_max: int = 0
+@export var drops: Array[DropData] = []
+@export_group("")
+
 # Distância mínima para parar e bater
 @export var distancia_ataque: float = 86
 var distancia: float
+
 
 # Sistema de cura
 var tomouDano: bool = false
@@ -30,8 +38,8 @@ var cooldownDaCura: float = 0.0
 @onready var barraVida : ProgressBar = $ProgressBar
 @onready var colision : CollisionShape2D = $CollisionShape2D
 
-const Mecanicas = preload("res://script/Mecanicas.gd")
-var mecanicas = Mecanicas.new()
+@onready var Mecanicas = load("res://script/data/Mecanicas.gd")
+@onready var mecanicas = Mecanicas.new()
 # =====================================
 
 
@@ -126,7 +134,6 @@ func _physics_process(delta: float) -> void:
 			vitalidade = vidaInicial
 	elif cooldownDaCura > 0:
 		cooldownDaCura -= delta
-	print(cooldownDaCura)
 	# =================================
 	
 

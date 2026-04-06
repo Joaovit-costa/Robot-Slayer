@@ -30,3 +30,11 @@ func cura(curado, tempoParaCura):
 	curado.vitalidade += int(curado.inteligencia * 1.5)
 	curado.barraVida.value = curado.vitalidade
 	curado.cooldownDaCura += tempoParaCura
+
+
+func subirNivel(player):
+	player.nivel += 1
+	player.experiencia -= player.experienciaNecessaria
+	player.experienciaNecessaria = int(player.nivel * 1.2 + 40)
+	player.barraExperiencia.max_value = player.experienciaNecessaria
+	player.pontosExperiencia += 3
