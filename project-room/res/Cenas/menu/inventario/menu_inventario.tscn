@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dnm2exythe0je" path="res://res/design/menus/Slot_sielecionado.png" id="5_q7nna"]
 [ext_resource type="Script" uid="uid://bu4ch65fqj0s3" path="res://script/menu/Inventario/slot_inventario.gd" id="6_qh40f"]
 [ext_resource type="Texture2D" uid="uid://ximbp84brf4q" path="res://icon.svg" id="7_fbxmg"]
+[ext_resource type="Texture2D" uid="uid://ch73s3u00wfut" path="res://res/design/menus/Slot_Trancado_V2.png" id="8_qh40f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rydth"]
 bg_color = Color(8.856058e-06, 0.7195523, 0.99945563, 1)
@@ -1210,6 +1211,7 @@ size_flags_horizontal = 3
 texture_normal = ExtResource("4_gml74")
 texture_pressed = ExtResource("5_q7nna")
 texture_hover = ExtResource("5_q7nna")
+texture_disabled = ExtResource("8_qh40f")
 stretch_mode = 0
 script = ExtResource("6_qh40f")
 idSlot = 23

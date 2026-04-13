@@ -10,6 +10,9 @@ extends TextureButton
 # ============ DEPENDENCIAS ============
 @export var idSlot: int
 @export var tipo: String
+@onready var inventario:= load("res://script/menu/Inventario/inventario.gd")
+var podeBloquear := [25, 23, 24, 26]
+var bloquear := [false, true, true, true]
 # ======================================
 
 
@@ -43,6 +46,7 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 		return
 	
 	rect.visible = false
+	
 	var preview = TextureRect.new()
 	preview.texture = icon.texture
 	preview.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
@@ -52,8 +56,10 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 	var c = Control.new()
 	c.add_child(preview)
 	preview.position = -preview.size / 2
+	
 	set_drag_preview(c)
 	icon.hide()
+	
 	return icon
 # ====================================================
 
@@ -61,14 +67,21 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 # ============== VER SE O ITEM PODE IR ==============
 func _can_drop_data(_at_position: Vector2, _data: Variant) -> bool:
 	return true
-# ===================================================
 
-
-# =============== MOVER ATÉ OUTRO SLOT ===============
 func _drop_data(_at_position: Vector2, _data: Variant) -> void:
 	var antes = icon.texture
 	icon.texture = _data.texture
 	_data.texture = antes
+	
 	icon.show()
 	_data.show()
+
+	# Atualiza todos os slots
+	for child in get_parent().get_children():
+		if child is TextureButton:
+			child.atualizar_estado()
+# =================================
+
+func atualizar_estado():
+	disabled = !inventario.pode_usar_slot(idSlot)
 # ====================================================

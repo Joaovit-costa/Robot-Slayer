@@ -59,3 +59,33 @@ func remover_item(nome: String) -> bool:
 			return true
 	
 	return false
+
+
+func get_slot(id: int) -> TextureButton:
+	for child in get_parent().get_children():
+		if child is TextureButton and child.idSlot == id:
+			return child
+	return null
+
+
+
+func pode_usar_slot(idSlot: int) -> bool:
+	var slot25 = get_slot(25)
+	var slot26 = get_slot(26)
+
+	var tem25 = slot25 and slot25.icon.texture != null
+	var tem26 = slot26 and slot26.icon.texture != null
+
+	# Se 26 tem item → libera tudo
+	if tem26:
+		return true
+
+	# Se 25 tem item → libera 26 e 23
+	if tem25:
+		return idSlot in [25, 26, 23]
+
+	# Se 25 vazio → bloqueia 26, 23 e 24
+	if idSlot in [26, 23, 24]:
+		return false
+
+	return true
