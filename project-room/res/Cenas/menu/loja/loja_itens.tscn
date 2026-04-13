@@ -1,0 +1,191 @@
+[gd_scene format=3 uid="uid://di077pcysnchw"]
+
+[ext_resource type="Texture2D" uid="uid://do2vcevn4k7gw" path="res://res/design/menus/Slot_Inventario.png" id="1_vlf2k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_krigy"]
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vlf2k"]
+load_path = "res://.godot/imported/Slot_Inventario.png-68722c75105384661a9f7889f1e8d1d1.ctex"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vlf2k"]
+border_width_left = 2
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 2
+border_color = Color(0.39277107, 0.88676614, 0.9152518, 1)
+
+[node name="LojaItens" type="Control" unique_id=1042815808]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Fundo" type="ColorRect" parent="." unique_id=714888318]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.050980393, 0.050980393, 0.050980393, 1)
+
+[node name="PainelPrincipal" type="Panel" parent="." unique_id=1338038105]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 100.0
+offset_right = 1000.0
+offset_bottom = 500.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_krigy")
+
+[node name="MarginContainer" type="MarginContainer" parent="PainelPrincipal" unique_id=922761448]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PainelPrincipal/MarginContainer" unique_id=1205616879]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="GridContainer" type="GridContainer" parent="PainelPrincipal/MarginContainer/HBoxContainer" unique_id=1895451968]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+theme_override_constants/h_separation = 30
+theme_override_constants/v_separation = 30
+columns = 4
+
+[node name="Item1" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=1929743640]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("1_vlf2k")
+
+[node name="Item2" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=844634832]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("1_vlf2k")
+
+[node name="Item3" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=575179199]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = SubResource("CompressedTexture2D_vlf2k")
+
+[node name="Item4" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=1038977247]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = SubResource("CompressedTexture2D_vlf2k")
+
+[node name="Item5" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=102630290]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = SubResource("CompressedTexture2D_vlf2k")
+
+[node name="Item6" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=1714270444]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = SubResource("CompressedTexture2D_vlf2k")
+
+[node name="Item7" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=206952438]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = SubResource("CompressedTexture2D_vlf2k")
+
+[node name="Item8" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=1786295903]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = SubResource("CompressedTexture2D_vlf2k")
+
+[node name="Item9" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=514787251]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = SubResource("CompressedTexture2D_vlf2k")
+
+[node name="Item10" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=2073527254]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = SubResource("CompressedTexture2D_vlf2k")
+
+[node name="Item11" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=1421450728]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = SubResource("CompressedTexture2D_vlf2k")
+
+[node name="Item12" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=739280995]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = SubResource("CompressedTexture2D_vlf2k")
+
+[node name="FundoCarrinho" type="Panel" parent="PainelPrincipal/MarginContainer/HBoxContainer" unique_id=952523976]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_vlf2k")
+
+[node name="MarginContainer" type="MarginContainer" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho" unique_id=1980123629]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer" unique_id=595833878]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CarrinhoLabel" type="Label" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer" unique_id=1353671409]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Carrinho"
+horizontal_alignment = 1
+
+[node name="ListaDeItens" type="VBoxContainer" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer" unique_id=772101856]
+layout_mode = 2
+
+[node name="Item1" type="HBoxContainer" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer/ListaDeItens" unique_id=657840213]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Nome" type="Label" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer/ListaDeItens/Item1" unique_id=1379050924]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Mod de gelo"
+
+[node name="Quantidade" type="Label" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer/ListaDeItens/Item1" unique_id=3424283]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "2"
+
+[node name="Preco" type="Label" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer/ListaDeItens/Item1" unique_id=78564445]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "30,00 R$"
+
+[node name="TotalLabel" type="Label" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer" unique_id=972548154]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Total: 200,00 R$"
+horizontal_alignment = 1
+
+[node name="Separação" type="Control" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer" unique_id=837423088]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BotaoBuy" type="Button" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer" unique_id=1520239654]
+layout_mode = 2
+size_flags_vertical = 2
+text = "Buy"
