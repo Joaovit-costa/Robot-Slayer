@@ -1,0 +1,1397 @@
+[gd_scene format=3 uid="uid://ckd5xwhthbw1b"]
+
+[ext_resource type="Texture2D" uid="uid://4s5dtyt2xg1i" path="res://res/design/menus/Botão_Fechar.png" id="1_2q23n"]
+[ext_resource type="Script" uid="uid://dumuttyku2ajw" path="res://script/menu/Inventario/menu_inventario.gd" id="1_q7nna"]
+[ext_resource type="Texture2D" uid="uid://cbiuirg5w6j5t" path="res://res/design/menus/Slot_Personagem.png" id="2_sfejx"]
+[ext_resource type="Texture2D" uid="uid://cymlbgja8hx1y" path="res://res/design/menus/Slot_Arma.png" id="3_5umxs"]
+[ext_resource type="Texture2D" uid="uid://do2vcevn4k7gw" path="res://res/design/menus/Slot_Inventario.png" id="4_gml74"]
+[ext_resource type="Texture2D" uid="uid://dnm2exythe0je" path="res://res/design/menus/Slot_sielecionado.png" id="5_q7nna"]
+[ext_resource type="Script" uid="uid://bu4ch65fqj0s3" path="res://script/menu/Inventario/slot_inventario.gd" id="6_qh40f"]
+[ext_resource type="Texture2D" uid="uid://ximbp84brf4q" path="res://icon.svg" id="7_fbxmg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rydth"]
+bg_color = Color(8.856058e-06, 0.7195523, 0.99945563, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.08654175, 0.19635564, 1, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aot85"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 1, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_joibv"]
+bg_color = Color(0.14406255, 0.14406255, 0.14406255, 0.69411767)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.7477176, 0.5802745, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bkimw"]
+bg_color = Color(0.109686814, 0, 0.66002303, 1)
+border_width_top = 70
+border_width_bottom = 70
+border_color = Color(0.10980392, 0, 0.65882355, 0)
+border_blend = true
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[node name="InventoryMenu" type="Control" unique_id=1694092285]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q7nna")
+
+[node name="FundoEscuro" type="ColorRect" parent="." unique_id=1240495946]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+
+[node name="PainelPrincipal" type="Panel" parent="." unique_id=899507578]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.00003
+offset_top = -230.0
+offset_right = 350.00003
+offset_bottom = 230.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rydth")
+
+[node name="BotãoFechar" type="TextureButton" parent="PainelPrincipal" unique_id=1743682680]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -71.0
+offset_top = -19.0
+offset_right = -39.0
+offset_bottom = 13.0
+grow_horizontal = 0
+scale = Vector2(1.2865944, 1.2724779)
+texture_normal = ExtResource("1_2q23n")
+texture_pressed = ExtResource("1_2q23n")
+texture_hover = ExtResource("1_2q23n")
+stretch_mode = 0
+
+[node name="Conteudo" type="HBoxContainer" parent="PainelPrincipal" unique_id=953678422]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -327.0
+offset_top = -193.0
+offset_right = 327.0
+offset_bottom = 193.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="PainelEsquerdo" type="VBoxContainer" parent="PainelPrincipal/Conteudo" unique_id=822491824]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/Conteudo/PainelEsquerdo" unique_id=1860803896]
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("2_sfejx")
+
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/Conteudo/PainelEsquerdo/TextureRect" unique_id=340526617]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.999985
+offset_top = -71.99999
+offset_right = 62.999985
+offset_bottom = 71.99999
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect2" type="TextureRect" parent="PainelPrincipal/Conteudo/PainelEsquerdo" unique_id=552484174]
+layout_mode = 2
+texture = ExtResource("3_5umxs")
+
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/Conteudo/PainelEsquerdo/TextureRect2" unique_id=2104086561]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.5
+offset_top = -32.5
+offset_right = 73.5
+offset_bottom = 32.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PainelPrincipal/Conteudo/PainelEsquerdo" unique_id=317766050]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Slot25" type="TextureButton" parent="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer" unique_id=351590921]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("4_gml74")
+texture_pressed = ExtResource("5_q7nna")
+texture_hover = ExtResource("5_q7nna")
+stretch_mode = 0
+script = ExtResource("6_qh40f")
+idSlot = 25
+tipo = "extensor"
+
+[node name="Panel" type="Panel" parent="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot25" unique_id=427689950]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aot85")
+
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot25" unique_id=920506229]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09375
+anchor_top = 0.09375
+anchor_right = 0.90625
+anchor_bottom = 0.90625
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="pressed" type="Panel" parent="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot25" unique_id=587879652]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_joibv")
+
+[node name="Slot26" type="TextureButton" parent="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer" unique_id=38869201]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("4_gml74")
+texture_pressed = ExtResource("5_q7nna")
+texture_hover = ExtResource("5_q7nna")
+stretch_mode = 0
+script = ExtResource("6_qh40f")
+idSlot = 26
+tipo = "extensor"
+
+[node name="Panel" type="Panel" parent="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot26" unique_id=55542290]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aot85")
+
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot26" unique_id=613572386]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09375
+anchor_top = 0.09375
+anchor_right = 0.90625
+anchor_bottom = 0.90625
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="pressed" type="Panel" parent="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot26" unique_id=504213647]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_joibv")
+
+[node name="PanelContainer" type="Panel" parent="PainelPrincipal/Conteudo" unique_id=6691332]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bkimw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PainelPrincipal/Conteudo" unique_id=1311285174]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="GridContainer" type="GridContainer" parent="PainelPrincipal/Conteudo/VBoxContainer" unique_id=1449021500]
+layout_mode = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 5
+
+[node name="Slot" type="TextureButton" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer" unique_id=606792292]
+layout_mode = 2
+texture_normal = ExtResource("4_gml74")
+texture_pressed = ExtResource("5_q7nna")
+texture_hover = ExtResource("5_q7nna")
+stretch_mode = 0
+script = ExtResource("6_qh40f")
+idSlot = 1
+tipo = "inventario"
+
+[node name="Panel" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot" unique_id=613953338]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aot85")
+
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot" unique_id=290001949]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09375
+anchor_top = 0.09375
+anchor_right = 0.90625
+anchor_bottom = 0.90625
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_fbxmg")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="pressed" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot" unique_id=191951367]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_joibv")
+
+[node name="Slot2" type="TextureButton" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer" unique_id=1701653175]
+layout_mode = 2
+texture_normal = ExtResource("4_gml74")
+texture_pressed = ExtResource("5_q7nna")
+texture_hover = ExtResource("5_q7nna")
+stretch_mode = 0
+script = ExtResource("6_qh40f")
+idSlot = 2
+tipo = "inventario"
+
+[node name="Panel" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot2" unique_id=230881353]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aot85")
+
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot2" unique_id=340843272]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09375
+anchor_top = 0.09375
+anchor_right = 0.90625
+anchor_bottom = 0.90625
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="pressed" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot2" unique_id=232282355]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_joibv")
+
+[node name="Slot3" type="TextureButton" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer" unique_id=289359887]
+layout_mode = 2
+texture_normal = ExtResource("4_gml74")
+texture_pressed = ExtResource("5_q7nna")
+texture_hover = ExtResource("5_q7nna")
+stretch_mode = 0
+script = ExtResource("6_qh40f")
+idSlot = 3
+tipo = "inventario"
+
+[node name="Panel" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot3" unique_id=379937388]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aot85")
+
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot3" unique_id=2125135986]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09375
+anchor_top = 0.09375
+anchor_right = 0.90625
+anchor_bottom = 0.90625
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="pressed" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot3" unique_id=1211305328]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_joibv")
+
+[node name="Slot4" type="TextureButton" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer" unique_id=646208143]
+layout_mode = 2
+texture_normal = ExtResource("4_gml74")
+texture_pressed = ExtResource("5_q7nna")
+texture_hover = ExtResource("5_q7nna")
+stretch_mode = 0
+script = ExtResource("6_qh40f")
+idSlot = 4
+tipo = "inventario"
+
+[node name="Panel" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot4" unique_id=2074974717]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aot85")
+
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot4" unique_id=1593816571]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09375
+anchor_top = 0.09375
+anchor_right = 0.90625
+anchor_bottom = 0.90625
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="pressed" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot4" unique_id=660713305]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_joibv")
+
+[node name="Slot5" type="TextureButton" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer" unique_id=834216869]
+layout_mode = 2
+texture_normal = ExtResource("4_gml74")
+texture_pressed = ExtResource("5_q7nna")
+texture_hover = ExtResource("5_q7nna")
+stretch_mode = 0
+script = ExtResource("6_qh40f")
+idSlot = 5
+tipo = "inventario"
+
+[node name="Panel" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot5" unique_id=553766630]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aot85")
+
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot5" unique_id=798655522]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09375
+anchor_top = 0.09375
+anchor_right = 0.90625
+anchor_bottom = 0.90625
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="pressed" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot5" unique_id=266108575]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_joibv")
+
+[node name="Slot6" type="TextureButton" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer" unique_id=716141773]
+layout_mode = 2
+texture_normal = ExtResource("4_gml74")
+texture_pressed = ExtResource("5_q7nna")
+texture_hover = ExtResource("5_q7nna")
+stretch_mode = 0
+script = ExtResource("6_qh40f")
+idSlot = 6
+tipo = "inventario"
+
+[node name="Panel" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot6" unique_id=434798321]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aot85")
+
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot6" unique_id=1760296587]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09375
+anchor_top = 0.09375
+anchor_right = 0.90625
+anchor_bottom = 0.90625
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="pressed" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot6" unique_id=1643444025]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_joibv")
+
+[node name="Slot7" type="TextureButton" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer" unique_id=1729742886]
+layout_mode = 2
+texture_normal = ExtResource("4_gml74")
+texture_pressed = ExtResource("5_q7nna")
+texture_hover = ExtResource("5_q7nna")
+stretch_mode = 0
+script = ExtResource("6_qh40f")
+idSlot = 7
+tipo = "inventario"
+
+[node name="Panel" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot7" unique_id=944473847]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aot85")
+
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot7" unique_id=1446977360]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09375
+anchor_top = 0.09375
+anchor_right = 0.90625
+anchor_bottom = 0.90625
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="pressed" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot7" unique_id=1245845584]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_joibv")
+
+[node name="Slot8" type="TextureButton" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer" unique_id=311237593]
+layout_mode = 2
+texture_normal = ExtResource("4_gml74")
+texture_pressed = ExtResource("5_q7nna")
+texture_hover = ExtResource("5_q7nna")
+stretch_mode = 0
+script = ExtResource("6_qh40f")
+idSlot = 8
+tipo = "inventario"
+
+[node name="Panel" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot8" unique_id=13140765]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aot85")
+
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot8" unique_id=506379089]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09375
+anchor_top = 0.09375
+anchor_right = 0.90625
+anchor_bottom = 0.90625
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="pressed" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot8" unique_id=1358781894]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_joibv")
+
+[node name="Slot9" type="TextureButton" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer" unique_id=1236159027]
+layout_mode = 2
+texture_normal = ExtResource("4_gml74")
+texture_pressed = ExtResource("5_q7nna")
+texture_hover = ExtResource("5_q7nna")
+stretch_mode = 0
+script = ExtResource("6_qh40f")
+idSlot = 9
+tipo = "inventario"
+
+[node name="Panel" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot9" unique_id=1795901529]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aot85")
+
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot9" unique_id=1709798582]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09375
+anchor_top = 0.09375
+anchor_right = 0.90625
+anchor_bottom = 0.90625
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="pressed" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot9" unique_id=418453276]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_joibv")
+
+[node name="Slot10" type="TextureButton" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer" unique_id=366305639]
+layout_mode = 2
+texture_normal = ExtResource("4_gml74")
+texture_pressed = ExtResource("5_q7nna")
+texture_hover = ExtResource("5_q7nna")
+stretch_mode = 0
+script = ExtResource("6_qh40f")
+idSlot = 10
+tipo = "inventario"
+
+[node name="Panel" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot10" unique_id=1688425118]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aot85")
+
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot10" unique_id=627467826]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09375
+anchor_top = 0.09375
+anchor_right = 0.90625
+anchor_bottom = 0.90625
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="pressed" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot10" unique_id=1467395744]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_joibv")
+
+[node name="Slot11" type="TextureButton" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer" unique_id=1954714672]
+layout_mode = 2
+texture_normal = ExtResource("4_gml74")
+texture_pressed = ExtResource("5_q7nna")
+texture_hover = ExtResource("5_q7nna")
+stretch_mode = 0
+script = ExtResource("6_qh40f")
+idSlot = 11
+tipo = "inventario"
+
+[node name="Panel" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot11" unique_id=400435737]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aot85")
+
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot11" unique_id=1900561207]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09375
+anchor_top = 0.09375
+anchor_right = 0.90625
+anchor_bottom = 0.90625
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="pressed" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot11" unique_id=1653765676]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_joibv")
+
+[node name="Slot12" type="TextureButton" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer" unique_id=1050026049]
+layout_mode = 2
+texture_normal = ExtResource("4_gml74")
+texture_pressed = ExtResource("5_q7nna")
+texture_hover = ExtResource("5_q7nna")
+stretch_mode = 0
+script = ExtResource("6_qh40f")
+idSlot = 12
+tipo = "inventario"
+
+[node name="Panel" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot12" unique_id=1531258973]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aot85")
+
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot12" unique_id=106999180]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09375
+anchor_top = 0.09375
+anchor_right = 0.90625
+anchor_bottom = 0.90625
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="pressed" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot12" unique_id=385791033]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_joibv")
+
+[node name="Slot13" type="TextureButton" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer" unique_id=468565746]
+layout_mode = 2
+texture_normal = ExtResource("4_gml74")
+texture_pressed = ExtResource("5_q7nna")
+texture_hover = ExtResource("5_q7nna")
+stretch_mode = 0
+script = ExtResource("6_qh40f")
+idSlot = 13
+tipo = "inventario"
+
+[node name="Panel" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot13" unique_id=138758364]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aot85")
+
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot13" unique_id=1134482667]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09375
+anchor_top = 0.09375
+anchor_right = 0.90625
+anchor_bottom = 0.90625
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="pressed" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot13" unique_id=383195008]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_joibv")
+
+[node name="Slot14" type="TextureButton" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer" unique_id=1915562583]
+layout_mode = 2
+texture_normal = ExtResource("4_gml74")
+texture_pressed = ExtResource("5_q7nna")
+texture_hover = ExtResource("5_q7nna")
+stretch_mode = 0
+script = ExtResource("6_qh40f")
+idSlot = 14
+tipo = "inventario"
+
+[node name="Panel" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot14" unique_id=1057281925]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aot85")
+
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot14" unique_id=657506237]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09375
+anchor_top = 0.09375
+anchor_right = 0.90625
+anchor_bottom = 0.90625
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="pressed" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot14" unique_id=1744155866]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_joibv")
+
+[node name="Slot15" type="TextureButton" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer" unique_id=1971795663]
+layout_mode = 2
+texture_normal = ExtResource("4_gml74")
+texture_pressed = ExtResource("5_q7nna")
+texture_hover = ExtResource("5_q7nna")
+stretch_mode = 0
+script = ExtResource("6_qh40f")
+idSlot = 15
+tipo = "inventario"
+
+[node name="Panel" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot15" unique_id=2143812103]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aot85")
+
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot15" unique_id=1864746786]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09375
+anchor_top = 0.09375
+anchor_right = 0.90625
+anchor_bottom = 0.90625
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="pressed" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot15" unique_id=746972891]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_joibv")
+
+[node name="Slot16" type="TextureButton" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer" unique_id=1791503866]
+layout_mode = 2
+texture_normal = ExtResource("4_gml74")
+texture_pressed = ExtResource("5_q7nna")
+texture_hover = ExtResource("5_q7nna")
+stretch_mode = 0
+script = ExtResource("6_qh40f")
+idSlot = 16
+tipo = "inventario"
+
+[node name="Panel" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot16" unique_id=1894993253]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aot85")
+
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot16" unique_id=151559884]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09375
+anchor_top = 0.09375
+anchor_right = 0.90625
+anchor_bottom = 0.90625
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="pressed" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot16" unique_id=592460824]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_joibv")
+
+[node name="Slot17" type="TextureButton" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer" unique_id=1512190857]
+layout_mode = 2
+texture_normal = ExtResource("4_gml74")
+texture_pressed = ExtResource("5_q7nna")
+texture_hover = ExtResource("5_q7nna")
+stretch_mode = 0
+script = ExtResource("6_qh40f")
+idSlot = 17
+tipo = "inventario"
+
+[node name="Panel" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot17" unique_id=1906897350]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aot85")
+
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot17" unique_id=893891721]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09375
+anchor_top = 0.09375
+anchor_right = 0.90625
+anchor_bottom = 0.90625
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="pressed" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot17" unique_id=1049342710]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_joibv")
+
+[node name="Slot18" type="TextureButton" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer" unique_id=822972817]
+layout_mode = 2
+texture_normal = ExtResource("4_gml74")
+texture_pressed = ExtResource("5_q7nna")
+texture_hover = ExtResource("5_q7nna")
+stretch_mode = 0
+script = ExtResource("6_qh40f")
+idSlot = 18
+tipo = "inventario"
+
+[node name="Panel" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot18" unique_id=209876021]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aot85")
+
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot18" unique_id=1172188616]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09375
+anchor_top = 0.09375
+anchor_right = 0.90625
+anchor_bottom = 0.90625
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="pressed" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot18" unique_id=1723355535]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_joibv")
+
+[node name="Slot19" type="TextureButton" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer" unique_id=354738095]
+layout_mode = 2
+texture_normal = ExtResource("4_gml74")
+texture_pressed = ExtResource("5_q7nna")
+texture_hover = ExtResource("5_q7nna")
+stretch_mode = 0
+script = ExtResource("6_qh40f")
+idSlot = 19
+tipo = "inventario"
+
+[node name="Panel" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot19" unique_id=344194373]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aot85")
+
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot19" unique_id=1366944461]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09375
+anchor_top = 0.09375
+anchor_right = 0.90625
+anchor_bottom = 0.90625
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="pressed" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot19" unique_id=160542370]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_joibv")
+
+[node name="Slot20" type="TextureButton" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer" unique_id=1556289359]
+layout_mode = 2
+texture_normal = ExtResource("4_gml74")
+texture_pressed = ExtResource("5_q7nna")
+texture_hover = ExtResource("5_q7nna")
+stretch_mode = 0
+script = ExtResource("6_qh40f")
+idSlot = 20
+tipo = "inventario"
+
+[node name="Panel" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot20" unique_id=227614982]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aot85")
+
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot20" unique_id=461370464]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09375
+anchor_top = 0.09375
+anchor_right = 0.90625
+anchor_bottom = 0.90625
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="pressed" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot20" unique_id=497949468]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_joibv")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PainelPrincipal/Conteudo/VBoxContainer" unique_id=1410434356]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="Slot21" type="TextureButton" parent="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer" unique_id=769917954]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("4_gml74")
+texture_pressed = ExtResource("5_q7nna")
+texture_hover = ExtResource("5_q7nna")
+stretch_mode = 0
+script = ExtResource("6_qh40f")
+idSlot = 21
+tipo = "equipavel"
+
+[node name="Panel" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot21" unique_id=1947084071]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aot85")
+
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot21" unique_id=465687718]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09375
+anchor_top = 0.09375
+anchor_right = 0.90625
+anchor_bottom = 0.90625
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="pressed" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot21" unique_id=386055521]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_joibv")
+
+[node name="Slot22" type="TextureButton" parent="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer" unique_id=884751939]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("4_gml74")
+texture_pressed = ExtResource("5_q7nna")
+texture_hover = ExtResource("5_q7nna")
+stretch_mode = 0
+script = ExtResource("6_qh40f")
+idSlot = 22
+tipo = "equipavel"
+
+[node name="Panel" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot22" unique_id=551578145]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aot85")
+
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot22" unique_id=189456286]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09375
+anchor_top = 0.09375
+anchor_right = 0.90625
+anchor_bottom = 0.90625
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="pressed" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot22" unique_id=1739907541]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_joibv")
+
+[node name="Slot23" type="TextureButton" parent="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer" unique_id=298834127]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("4_gml74")
+texture_pressed = ExtResource("5_q7nna")
+texture_hover = ExtResource("5_q7nna")
+stretch_mode = 0
+script = ExtResource("6_qh40f")
+idSlot = 23
+tipo = "equipavel"
+
+[node name="Panel" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot23" unique_id=68413977]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aot85")
+
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot23" unique_id=1374132952]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09375
+anchor_top = 0.09375
+anchor_right = 0.90625
+anchor_bottom = 0.90625
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="pressed" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot23" unique_id=642849800]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_joibv")
+
+[node name="Slot24" type="TextureButton" parent="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer" unique_id=2108043355]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("4_gml74")
+texture_pressed = ExtResource("5_q7nna")
+texture_hover = ExtResource("5_q7nna")
+stretch_mode = 0
+script = ExtResource("6_qh40f")
+idSlot = 24
+tipo = "equipavel"
+
+[node name="Panel" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot24" unique_id=1690330260]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aot85")
+
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot24" unique_id=1761324775]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09375
+anchor_top = 0.09375
+anchor_right = 0.90625
+anchor_bottom = 0.90625
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="pressed" type="Panel" parent="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot24" unique_id=1443257749]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_joibv")
+
+[connection signal="pressed" from="PainelPrincipal/BotãoFechar" to="." method="_on_botao_fechar_pressed"]
+[connection signal="button_down" from="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot25" to="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot25" method="_on_button_down"]
+[connection signal="button_up" from="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot25" to="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot25" method="_on_button_up"]
+[connection signal="mouse_entered" from="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot25" to="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot25" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot25" to="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot25" method="_on_mouse_exited"]
+[connection signal="button_down" from="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot26" to="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot26" method="_on_button_down"]
+[connection signal="button_up" from="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot26" to="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot26" method="_on_button_up"]
+[connection signal="mouse_entered" from="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot26" to="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot26" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot26" to="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot26" method="_on_mouse_exited"]
+[connection signal="button_down" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot" method="_on_button_down"]
+[connection signal="button_up" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot" method="_on_button_up"]
+[connection signal="mouse_entered" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot" method="_on_mouse_exited"]
+[connection signal="button_down" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot2" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot2" method="_on_button_down"]
+[connection signal="button_up" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot2" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot2" method="_on_button_up"]
+[connection signal="mouse_entered" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot2" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot2" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot2" method="_on_mouse_exited"]
+[connection signal="button_down" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot3" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot3" method="_on_button_down"]
+[connection signal="button_up" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot3" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot3" method="_on_button_up"]
+[connection signal="mouse_entered" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot3" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot3" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot3" method="_on_mouse_exited"]
+[connection signal="button_down" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot4" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot4" method="_on_button_down"]
+[connection signal="button_up" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot4" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot4" method="_on_button_up"]
+[connection signal="mouse_entered" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot4" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot4" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot4" method="_on_mouse_exited"]
+[connection signal="button_down" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot5" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot5" method="_on_button_down"]
+[connection signal="button_up" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot5" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot5" method="_on_button_up"]
+[connection signal="mouse_entered" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot5" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot5" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot5" method="_on_mouse_exited"]
+[connection signal="button_down" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot6" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot6" method="_on_button_down"]
+[connection signal="button_up" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot6" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot6" method="_on_button_up"]
+[connection signal="mouse_entered" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot6" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot6" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot6" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot6" method="_on_mouse_exited"]
+[connection signal="button_down" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot7" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot7" method="_on_button_down"]
+[connection signal="button_up" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot7" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot7" method="_on_button_up"]
+[connection signal="mouse_entered" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot7" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot7" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot7" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot7" method="_on_mouse_exited"]
+[connection signal="button_down" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot8" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot8" method="_on_button_down"]
+[connection signal="button_up" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot8" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot8" method="_on_button_up"]
+[connection signal="mouse_entered" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot8" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot8" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot8" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot8" method="_on_mouse_exited"]
+[connection signal="button_down" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot9" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot9" method="_on_button_down"]
+[connection signal="button_up" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot9" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot9" method="_on_button_up"]
+[connection signal="mouse_entered" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot9" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot9" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot9" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot9" method="_on_mouse_exited"]
+[connection signal="button_down" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot10" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot10" method="_on_button_down"]
+[connection signal="button_up" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot10" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot10" method="_on_button_up"]
+[connection signal="mouse_entered" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot10" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot10" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot10" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot10" method="_on_mouse_exited"]
+[connection signal="button_down" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot11" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot11" method="_on_button_down"]
+[connection signal="button_up" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot11" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot11" method="_on_button_up"]
+[connection signal="mouse_entered" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot11" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot11" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot11" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot11" method="_on_mouse_exited"]
+[connection signal="button_down" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot12" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot12" method="_on_button_down"]
+[connection signal="button_up" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot12" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot12" method="_on_button_up"]
+[connection signal="mouse_entered" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot12" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot12" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot12" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot12" method="_on_mouse_exited"]
+[connection signal="button_down" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot13" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot13" method="_on_button_down"]
+[connection signal="button_up" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot13" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot13" method="_on_button_up"]
+[connection signal="mouse_entered" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot13" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot13" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot13" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot13" method="_on_mouse_exited"]
+[connection signal="button_down" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot14" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot14" method="_on_button_down"]
+[connection signal="button_up" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot14" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot14" method="_on_button_up"]
+[connection signal="mouse_entered" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot14" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot14" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot14" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot14" method="_on_mouse_exited"]
+[connection signal="button_down" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot15" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot15" method="_on_button_down"]
+[connection signal="button_up" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot15" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot15" method="_on_button_up"]
+[connection signal="mouse_entered" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot15" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot15" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot15" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot15" method="_on_mouse_exited"]
+[connection signal="button_down" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot16" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot16" method="_on_button_down"]
+[connection signal="button_up" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot16" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot16" method="_on_button_up"]
+[connection signal="mouse_entered" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot16" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot16" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot16" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot16" method="_on_mouse_exited"]
+[connection signal="button_down" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot17" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot17" method="_on_button_down"]
+[connection signal="button_up" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot17" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot17" method="_on_button_up"]
+[connection signal="mouse_entered" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot17" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot17" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot17" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot17" method="_on_mouse_exited"]
+[connection signal="button_down" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot18" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot18" method="_on_button_down"]
+[connection signal="button_up" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot18" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot18" method="_on_button_up"]
+[connection signal="mouse_entered" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot18" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot18" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot18" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot18" method="_on_mouse_exited"]
+[connection signal="button_down" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot19" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot19" method="_on_button_down"]
+[connection signal="button_up" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot19" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot19" method="_on_button_up"]
+[connection signal="mouse_entered" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot19" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot19" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot19" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot19" method="_on_mouse_exited"]
+[connection signal="button_down" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot20" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot20" method="_on_button_down"]
+[connection signal="button_up" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot20" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot20" method="_on_button_up"]
+[connection signal="mouse_entered" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot20" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot20" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot20" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot20" method="_on_mouse_exited"]
+[connection signal="button_down" from="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot21" to="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot21" method="_on_button_down"]
+[connection signal="button_up" from="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot21" to="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot21" method="_on_button_up"]
+[connection signal="mouse_entered" from="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot21" to="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot21" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot21" to="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot21" method="_on_mouse_exited"]
+[connection signal="button_down" from="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot22" to="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot22" method="_on_button_down"]
+[connection signal="button_up" from="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot22" to="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot22" method="_on_button_up"]
+[connection signal="mouse_entered" from="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot22" to="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot22" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot22" to="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot22" method="_on_mouse_exited"]
+[connection signal="button_down" from="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot23" to="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot23" method="_on_button_down"]
+[connection signal="button_up" from="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot23" to="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot23" method="_on_button_up"]
+[connection signal="mouse_entered" from="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot23" to="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot23" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot23" to="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot23" method="_on_mouse_exited"]
+[connection signal="button_down" from="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot24" to="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot24" method="_on_button_down"]
+[connection signal="button_up" from="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot24" to="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot24" method="_on_button_up"]
+[connection signal="mouse_entered" from="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot24" to="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot24" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot24" to="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/Slot24" method="_on_mouse_exited"]

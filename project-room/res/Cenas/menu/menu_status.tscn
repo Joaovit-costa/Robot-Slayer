@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://mnt8tq7ix0xp"]
 
-[ext_resource type="Script" uid="uid://c4bb7fca1busw" path="res://script/menu/menu_status.gd" id="1_42uti"]
-[ext_resource type="Texture2D" uid="uid://cvrx303w1mevm" path="res://res/design/menus/Botão_Fechar.png" id="2_ony8u"]
-[ext_resource type="Texture2D" uid="uid://cb01r2hrhvype" path="res://res/design/menus/Botão_Ataque (2).png" id="3_2gt46"]
-[ext_resource type="Texture2D" uid="uid://wvw12ix0buu7" path="res://res/design/menus/Botão_Defesa (2).png" id="4_ony8u"]
-[ext_resource type="Texture2D" uid="uid://bogmca4pwld58" path="res://res/design/menus/Botão_Vida.png" id="5_2gt46"]
-[ext_resource type="Texture2D" uid="uid://cb80021ydhb16" path="res://res/design/menus/Botão_Velocidade.png" id="6_3jdpm"]
-[ext_resource type="Texture2D" uid="uid://gxo1jn1aeqd2" path="res://res/design/menus/Botão_Inteligencia.png" id="7_ccb31"]
+[ext_resource type="Script" uid="uid://c4bb7fca1busw" path="res://script/menu/status/menu_status.gd" id="1_42uti"]
+[ext_resource type="Texture2D" uid="uid://4s5dtyt2xg1i" path="res://res/design/menus/Botão_Fechar.png" id="2_ony8u"]
+[ext_resource type="Texture2D" uid="uid://c71clt78eof7i" path="res://res/design/menus/Botão_Ataque (2).png" id="3_2gt46"]
+[ext_resource type="Texture2D" uid="uid://bs4g3pnh360ot" path="res://res/design/menus/Botão_Defesa (2).png" id="4_ony8u"]
+[ext_resource type="Texture2D" uid="uid://disji1duvvnmh" path="res://res/design/menus/Botão_Vida.png" id="5_2gt46"]
+[ext_resource type="Texture2D" uid="uid://setxb2hfi1ww" path="res://res/design/menus/Botão_Velocidade.png" id="6_3jdpm"]
+[ext_resource type="Texture2D" uid="uid://bu71dy21tkce3" path="res://res/design/menus/Botão_Inteligencia.png" id="7_ccb31"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wynuo"]
 bg_color = Color(0.2901961, 0.2, 0.40784314, 1)
