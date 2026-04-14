@@ -3,17 +3,35 @@
 [ext_resource type="Texture2D" uid="uid://do2vcevn4k7gw" path="res://res/design/menus/Slot_Inventario.png" id="1_vlf2k"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_krigy"]
-bg_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+bg_color = Color(0.06666667, 0.09411765, 0.15294118, 1)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vlf2k"]
 load_path = "res://.godot/imported/Slot_Inventario.png-68722c75105384661a9f7889f1e8d1d1.ctex"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vlf2k"]
+bg_color = Color(0.05882353, 0.09019608, 0.16470589, 1)
 border_width_left = 2
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 2
-border_color = Color(0.39277107, 0.88676614, 0.9152518, 1)
+border_color = Color(0.10980392, 0.7647059, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wyvk8"]
+bg_color = Color(0.078431375, 0.62352943, 0.83137256, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0.9607843, 1, 1)
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_52frj"]
+bg_color = Color(0, 0.9607843, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 1, 1, 1)
 
 [node name="LojaItens" type="Control" unique_id=1042815808]
 layout_mode = 3
@@ -30,7 +48,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.050980393, 0.050980393, 0.050980393, 1)
+color = Color(0.050980393, 0.05882353, 0.078431375, 1)
 
 [node name="PainelPrincipal" type="Panel" parent="." unique_id=1338038105]
 layout_mode = 0
@@ -143,10 +161,11 @@ theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer" unique_id=595833878]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 16
 
 [node name="CarrinhoLabel" type="Label" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer" unique_id=1353671409]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.18431373, 1, 1, 1)
 theme_override_font_sizes/font_size = 32
 text = "Carrinho"
 horizontal_alignment = 1
@@ -162,30 +181,46 @@ alignment = 1
 
 [node name="Nome" type="Label" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer/ListaDeItens/Item1" unique_id=1379050924]
 layout_mode = 2
+size_flags_horizontal = 6
 theme_override_font_sizes/font_size = 18
 text = "Mod de gelo"
 
 [node name="Quantidade" type="Label" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer/ListaDeItens/Item1" unique_id=3424283]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.6666667, 0.6666667, 0.6666667, 1)
 theme_override_font_sizes/font_size = 18
 text = "2"
 
 [node name="Preco" type="Label" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer/ListaDeItens/Item1" unique_id=78564445]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.81960785, 0.4, 1)
 theme_override_font_sizes/font_size = 18
 text = "30,00 R$"
 
-[node name="TotalLabel" type="Label" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer" unique_id=972548154]
+[node name="HBoxContainer" type="HBoxContainer" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer" unique_id=1210185392]
 layout_mode = 2
+size_flags_vertical = 6
+alignment = 2
+
+[node name="TotalLabel" type="Label" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer/HBoxContainer" unique_id=972548154]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0.078431375, 0.62352943, 0.83137256, 1)
 theme_override_font_sizes/font_size = 20
-text = "Total: 200,00 R$"
-horizontal_alignment = 1
+text = "Total: 90,00 R$"
 
 [node name="Separação" type="Control" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer" unique_id=837423088]
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="BotaoBuy" type="Button" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer" unique_id=1520239654]
+custom_minimum_size = Vector2(140, 40)
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_wyvk8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_52frj")
 text = "Buy"
