@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://c71clt78eof7i" path="res://res/design/menus/Botão_Ataque (2).png" id="3_2gt46"]
 [ext_resource type="Texture2D" uid="uid://bs4g3pnh360ot" path="res://res/design/menus/Botão_Defesa (2).png" id="4_ony8u"]
 [ext_resource type="Texture2D" uid="uid://disji1duvvnmh" path="res://res/design/menus/Botão_Vida.png" id="5_2gt46"]
-[ext_resource type="Texture2D" uid="uid://setxb2hfi1ww" path="res://res/design/menus/Botão_Velocidade.png" id="6_3jdpm"]
 [ext_resource type="Texture2D" uid="uid://bu71dy21tkce3" path="res://res/design/menus/Botão_Inteligencia.png" id="7_ccb31"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wynuo"]
@@ -56,32 +55,34 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_wynuo")
 [node name="BotaoFechar" type="TextureButton" parent="PainelPrincipal" unique_id=134746425]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -73.0
-offset_top = 7.0
-offset_right = -4.0
-offset_bottom = 76.0
+anchors_preset = -1
+anchor_left = 0.9179487
+anchor_top = 0.041860465
+anchor_right = 0.9948718
+anchor_bottom = 0.18139535
+offset_right = -20.0
+offset_bottom = -20.0
 grow_horizontal = 0
+scale = Vector2(1.5, 1.5)
 size_flags_horizontal = 8
 size_flags_vertical = 0
 texture_normal = ExtResource("2_ony8u")
 texture_pressed = ExtResource("2_ony8u")
 texture_hover = ExtResource("2_ony8u")
+metadata/_edit_use_anchors_ = true
 
 [node name="Margem" type="MarginContainer" parent="PainelPrincipal" unique_id=213567245]
 layout_mode = 0
 offset_right = 236.0
 offset_bottom = 332.0
-theme_override_constants/margin_left = 28
-theme_override_constants/margin_top = 16
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 28
 theme_override_constants/margin_bottom = 20
 
 [node name="ConteudoStatus" type="VBoxContainer" parent="PainelPrincipal/Margem" unique_id=1790238983]
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 30
 
 [node name="TextoPontosStatus" type="Label" parent="PainelPrincipal/Margem/ConteudoStatus" unique_id=144869763]
 custom_minimum_size = Vector2(32, 0)
@@ -204,44 +205,6 @@ theme_override_font_sizes/font_size = 20
 text = "0"
 horizontal_alignment = 2
 
-[node name="LinhaVelocidade" type="HBoxContainer" parent="PainelPrincipal/Margem/ConteudoStatus" unique_id=1941108720]
-custom_minimum_size = Vector2(42, 0)
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="BotaoAdicionarVelocidade" type="TextureButton" parent="PainelPrincipal/Margem/ConteudoStatus/LinhaVelocidade" unique_id=557811442]
-custom_minimum_size = Vector2(34, 34)
-layout_mode = 2
-texture_normal = ExtResource("6_3jdpm")
-texture_pressed = ExtResource("6_3jdpm")
-texture_hover = ExtResource("6_3jdpm")
-
-[node name="TextoVelocidade" type="Label" parent="PainelPrincipal/Margem/ConteudoStatus/LinhaVelocidade" unique_id=990056858]
-custom_minimum_size = Vector2(30, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.95686275, 0.9411765, 1, 1)
-theme_override_font_sizes/font_size = 20
-text = "Velocidade  "
-
-[node name="TextoPontilhado" type="Label" parent="PainelPrincipal/Margem/ConteudoStatus/LinhaVelocidade" unique_id=1792456758]
-custom_minimum_size = Vector2(30, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.101960786, 0.06666667, 0.14901961, 1)
-theme_override_font_sizes/font_size = 18
-text = "........................"
-
-[node name="EspacoVelocidade" type="Control" parent="PainelPrincipal/Margem/ConteudoStatus/LinhaVelocidade" unique_id=1706320319]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ValorVelocidade" type="Label" parent="PainelPrincipal/Margem/ConteudoStatus/LinhaVelocidade" unique_id=1679920850]
-custom_minimum_size = Vector2(24, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.95686275, 0.9411765, 1, 1)
-theme_override_font_sizes/font_size = 20
-text = "0"
-horizontal_alignment = 2
-
 [node name="LinhaInteligencia" type="HBoxContainer" parent="PainelPrincipal/Margem/ConteudoStatus" unique_id=546251144]
 custom_minimum_size = Vector2(42, 0)
 layout_mode = 2
@@ -283,5 +246,4 @@ horizontal_alignment = 2
 [connection signal="pressed" from="PainelPrincipal/Margem/ConteudoStatus/LinhaForca/BotaoAdicionarForca" to="." method="_on_botao_adicionar_forca_pressed"]
 [connection signal="pressed" from="PainelPrincipal/Margem/ConteudoStatus/LinhaDefesa/BotaoAdicionarDefesa" to="." method="_on_botao_adicionar_defesa_pressed"]
 [connection signal="pressed" from="PainelPrincipal/Margem/ConteudoStatus/LinhaVitalidade/BotaoAdicionarVitalidade" to="." method="_on_botao_adicionar_vitalidade_pressed"]
-[connection signal="pressed" from="PainelPrincipal/Margem/ConteudoStatus/LinhaVelocidade/BotaoAdicionarVelocidade" to="." method="_on_botao_adicionar_velocidade_pressed"]
 [connection signal="pressed" from="PainelPrincipal/Margem/ConteudoStatus/LinhaInteligencia/BotaoAdicionarInteligencia" to="." method="_on_botao_adicionar_inteligencia_pressed"]
