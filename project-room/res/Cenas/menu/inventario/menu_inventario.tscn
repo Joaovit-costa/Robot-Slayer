@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://do2vcevn4k7gw" path="res://res/design/menus/Slot_Inventario.png" id="4_gml74"]
 [ext_resource type="Texture2D" uid="uid://dnm2exythe0je" path="res://res/design/menus/Slot_sielecionado.png" id="5_q7nna"]
 [ext_resource type="Script" uid="uid://bu4ch65fqj0s3" path="res://script/menu/Inventario/slot_inventario.gd" id="6_qh40f"]
-[ext_resource type="Texture2D" uid="uid://ximbp84brf4q" path="res://icon.svg" id="7_fbxmg"]
 [ext_resource type="Texture2D" uid="uid://ch73s3u00wfut" path="res://res/design/menus/Slot_Trancado_V2.png" id="8_qh40f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rydth"]
@@ -67,15 +66,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_q7nna")
-
-[node name="FundoEscuro" type="ColorRect" parent="." unique_id=1240495946]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.2509804, 0.2509804, 0.2509804, 1)
 
 [node name="PainelPrincipal" type="Panel" parent="." unique_id=899507578]
 layout_mode = 1
@@ -221,6 +211,7 @@ size_flags_horizontal = 3
 texture_normal = ExtResource("4_gml74")
 texture_pressed = ExtResource("5_q7nna")
 texture_hover = ExtResource("5_q7nna")
+texture_disabled = ExtResource("8_qh40f")
 stretch_mode = 0
 script = ExtResource("6_qh40f")
 idSlot = 26
@@ -301,7 +292,6 @@ anchor_right = 0.90625
 anchor_bottom = 0.90625
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_fbxmg")
 expand_mode = 1
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
@@ -1255,6 +1245,7 @@ size_flags_horizontal = 3
 texture_normal = ExtResource("4_gml74")
 texture_pressed = ExtResource("5_q7nna")
 texture_hover = ExtResource("5_q7nna")
+texture_disabled = ExtResource("8_qh40f")
 stretch_mode = 0
 script = ExtResource("6_qh40f")
 idSlot = 24

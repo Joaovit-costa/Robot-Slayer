@@ -33,6 +33,9 @@ var cooldownDaCura: float = 0.0
 # sistema de drop
 var experienciaDropada: int = 0
 var dropsRecebido: bool = false
+
+# inventario
+var inventario_ref: Inventario
 # ===================================
 
 
