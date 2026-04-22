@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cdgeykgg3b6sh" path="res://script/entidades/protagonista.gd" id="1_uw4sx"]
 [ext_resource type="Texture2D" uid="uid://disji1duvvnmh" path="res://res/design/menus/Botão_Vida.png" id="2_70dtc"]
-[ext_resource type="PackedScene" uid="uid://ckd5xwhthbw1b" path="res://res/Cenas/menu/inventario/menu_inventario.tscn" id="2_gsa6n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pl2iv"]
 radius = 28.751087
@@ -91,7 +90,6 @@ corner_radius_bottom_left = 3
 [node name="Protagonista" type="CharacterBody2D" unique_id=369473398]
 collision_mask = 4
 script = ExtResource("1_uw4sx")
-telaInventario = ExtResource("2_gsa6n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1873306950]
 position = Vector2(0.25, 0.25000763)
@@ -109,7 +107,7 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1106192527]
 shape = SubResource("CircleShape2D_gsa6n")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=60694657]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1697879008]
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" unique_id=187380626]
 offset_left = 24.0
@@ -121,15 +119,15 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_70dtc")
 show_percentage = false
 
 [node name="barraDeCura" type="ProgressBar" parent="CanvasLayer" unique_id=1314446765]
-anchors_preset = -1
-anchor_left = 0.96900004
-anchor_top = 0.507
-anchor_right = 0.96900004
-anchor_bottom = 0.507
-offset_left = -17.288086
-offset_top = -17.53601
-offset_right = 17.711914
-offset_bottom = 17.46399
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = -27.0
+offset_right = -25.0
+offset_bottom = 18.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxTexture_gsa6n")

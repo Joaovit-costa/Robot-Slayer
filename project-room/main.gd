@@ -1,8 +1,8 @@
 extends Node2D
 
 # Referencias principais controladas pelo main.
-@onready var menu_inventario: Control = $InventoryMenu
-@onready var fundo_escuro: MeshInstance2D = $MeshInstance2D
+@onready var menu_inventario: Control = $CanvasLayer/InventoryMenu
+@onready var fundo_escuro: ColorRect = $CanvasLayer/MeshInstance2D
 @onready var sala: Node2D = $sala
 
 const ACAO_INVENTARIO := &"ui_inventario"
