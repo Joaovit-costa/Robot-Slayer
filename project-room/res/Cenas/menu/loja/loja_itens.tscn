@@ -198,19 +198,16 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_font_sizes/font_size = 18
-text = "Mod de gelo"
 
 [node name="Quantidade" type="Label" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer/ListaDeItens/Item1" unique_id=3424283]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.6666667, 0.6666667, 0.6666667, 1)
 theme_override_font_sizes/font_size = 18
-text = "2"
 
 [node name="Preco" type="Label" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer/ListaDeItens/Item1" unique_id=78564445]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.81960785, 0.4, 1)
 theme_override_font_sizes/font_size = 18
-text = "30,00 R$"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer" unique_id=1210185392]
 layout_mode = 2
@@ -222,7 +219,7 @@ layout_mode = 2
 size_flags_horizontal = 8
 theme_override_colors/font_color = Color(0.078431375, 0.62352943, 0.83137256, 1)
 theme_override_font_sizes/font_size = 20
-text = "Total: 90,00 R$"
+text = "Total:"
 
 [node name="Separação" type="Control" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer" unique_id=837423088]
 layout_mode = 2
