@@ -44,16 +44,16 @@ func _ready():
 func _configurar_itens_loja():
 	# Lista temporaria de nomes que deve bater com o banco de itens.
 	var nomes = [
-		"Lume Mod",
-		"Volt Mod",
-		"White Hat Mod",
-		"Vítreo Mod",
-		"Pyromancer",
-		"Enginer",
-		"Aegis",
-		"Heather",
-		"Eile",
-		"OverClock",
+		"lume_mod",
+		"volt_mod",
+		"white_hat_mod",
+		"vítreo_mod",
+		"pyromancer",
+		"enginer",
+		"aegis",
+		"heather",
+		"eile",
+		"overclock",
 	]
 	
 	var i = 0
