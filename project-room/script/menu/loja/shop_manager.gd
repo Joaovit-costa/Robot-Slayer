@@ -4,18 +4,20 @@ class_name ShopManager
 # Sinal emitido sempre que o carrinho sofre alguma alteracao.
 signal carrinho_atualizado
 
+# Sinal emitido quando a compra é finalizada (para integração futura).
+signal compra_finalizada(itens)
+
 # Lista que armazena os itens do carrinho (nome + quantidade).
 var carrinho: Array[Dictionary] = []
 
 # Valor total acumulado da compra atual.
 var total: float = 0.0
 
-# Referencias externas para o banco da loja e inventario do jogador.
+# Referencia ao banco de dados da loja.
 var shop_data: ShopData
 
 
-
-# Recebe as dependencias necessarias para funcionamento da loja.
+# Recebe o banco de dados da loja.
 func configurar(shop: ShopData):
 	shop_data = shop
 
@@ -28,7 +30,6 @@ func adicionar_item(nome: String):
 			_recalcular_total()
 			return
 	
-	# Cria novo registro caso o item ainda nao exista no carrinho.
 	carrinho.append({
 		"nome": nome,
 		"quantidade": 1
@@ -47,7 +48,7 @@ func remover_item(nome: String):
 	_recalcular_total()
 
 
-# Recalcula o valor total da compra com base nos itens atuais.
+# Recalcula o valor total da compra.
 func _recalcular_total():
 	total = 0.0
 	
@@ -57,17 +58,13 @@ func _recalcular_total():
 		if dados != null:
 			total += dados.preco * item["quantidade"]
 	
-	# Notifica a interface para atualizar os dados visuais.
 	carrinho_atualizado.emit()
 
 
-# Finaliza a compra enviando os itens ao inventario.
+# Finaliza a compra (sem integrar com inventario).
 func finalizar_compra():
-	# Adiciona todos os itens do carrinho ao inventario global.
-	for item in carrinho:
-		InventarioGlobal.adicionar_item(item["nome"], item["quantidade"])
+	compra_finalizada.emit(carrinho)
 	
-	# Limpa o carrinho apos a compra.
 	carrinho.clear()
 	
 	_recalcular_total()

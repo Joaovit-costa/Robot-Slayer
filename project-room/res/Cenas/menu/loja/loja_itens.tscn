@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://di077pcysnchw"]
 
 [ext_resource type="Texture2D" uid="uid://do2vcevn4k7gw" path="res://res/design/menus/Slot_Inventario.png" id="1_vlf2k"]
-[ext_resource type="Script" uid="uid://c0j2vyp0df15v" path="res://script/menu/loja/loja_itens.gd" id="1_wyvk8"]
+[ext_resource type="Script" uid="uid://c0j2vyp0df15v" path="res://script/menu/Loja/loja_itens.gd" id="1_wyvk8"]
 [ext_resource type="Texture2D" uid="uid://ch73s3u00wfut" path="res://res/design/menus/Slot_Trancado_V2.png" id="2_krigy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_krigy"]
