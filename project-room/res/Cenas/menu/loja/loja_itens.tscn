@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://di077pcysnchw"]
 
 [ext_resource type="Texture2D" uid="uid://do2vcevn4k7gw" path="res://res/design/menus/Slot_Inventario.png" id="1_vlf2k"]
+[ext_resource type="Script" uid="uid://c0j2vyp0df15v" path="res://script/menu/loja/loja_itens.gd" id="1_wyvk8"]
+[ext_resource type="Texture2D" uid="uid://ch73s3u00wfut" path="res://res/design/menus/Slot_Trancado_V2.png" id="2_krigy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_krigy"]
 bg_color = Color(0.06666667, 0.09411765, 0.15294118, 1)
@@ -40,6 +42,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_wyvk8")
 
 [node name="Fundo" type="ColorRect" parent="." unique_id=714888318]
 layout_mode = 1
@@ -86,61 +89,73 @@ columns = 4
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture_normal = ExtResource("1_vlf2k")
+texture_disabled = ExtResource("2_krigy")
 
 [node name="Item2" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=844634832]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture_normal = ExtResource("1_vlf2k")
+texture_disabled = ExtResource("2_krigy")
 
 [node name="Item3" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=575179199]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture_normal = SubResource("CompressedTexture2D_vlf2k")
+texture_disabled = ExtResource("2_krigy")
 
 [node name="Item4" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=1038977247]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture_normal = SubResource("CompressedTexture2D_vlf2k")
+texture_disabled = ExtResource("2_krigy")
 
 [node name="Item5" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=102630290]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture_normal = SubResource("CompressedTexture2D_vlf2k")
+texture_disabled = ExtResource("2_krigy")
 
 [node name="Item6" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=1714270444]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture_normal = SubResource("CompressedTexture2D_vlf2k")
+texture_disabled = ExtResource("2_krigy")
 
 [node name="Item7" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=206952438]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture_normal = SubResource("CompressedTexture2D_vlf2k")
+texture_disabled = ExtResource("2_krigy")
 
 [node name="Item8" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=1786295903]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture_normal = SubResource("CompressedTexture2D_vlf2k")
+texture_disabled = ExtResource("2_krigy")
 
 [node name="Item9" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=514787251]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture_normal = SubResource("CompressedTexture2D_vlf2k")
+texture_disabled = ExtResource("2_krigy")
 
 [node name="Item10" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=2073527254]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture_normal = SubResource("CompressedTexture2D_vlf2k")
+texture_disabled = ExtResource("2_krigy")
 
 [node name="Item11" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=1421450728]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture_normal = SubResource("CompressedTexture2D_vlf2k")
+texture_disabled = ExtResource("2_krigy")
 
 [node name="Item12" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=739280995]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture_normal = SubResource("CompressedTexture2D_vlf2k")
+texture_disabled = ExtResource("2_krigy")
 
 [node name="FundoCarrinho" type="Panel" parent="PainelPrincipal/MarginContainer/HBoxContainer" unique_id=952523976]
 layout_mode = 2
@@ -156,7 +171,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
+theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer" unique_id=595833878]
@@ -224,3 +239,5 @@ theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_wyvk8")
 theme_override_styles/hover = SubResource("StyleBoxFlat_52frj")
 text = "Buy"
+
+[connection signal="pressed" from="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer/BotaoBuy" to="." method="_on_botao_buy_pressed"]
