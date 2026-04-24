@@ -8,6 +8,10 @@ class_name protagonista
 @onready var sala: Node2D = $".."
 @onready var barraCura: ProgressBar = $CanvasLayer/barraDeCura
 @onready var barraExperiencia: ProgressBar = $CanvasLayer/barraDeExperiencia
+@onready var label_nivel: Label = $CanvasLayer/labelNivel
+@onready var label_moeda: Label = $CanvasLayer/containerMoedas/labelMoeda
+
+
 
 @onready var Mecanicas = load("res://script/data/Mecanicas.gd")
 @onready var mecanicas = Mecanicas.new()
@@ -23,6 +27,7 @@ var inteligencia: int = 4
 var pontosExperiencia: int = 0
 var experiencia: int = 0
 var nivel: int = 1
+var moedas: int = 0
 
 const SPEED: float = 220
 var experienciaNecessaria = int(nivel * 1.2 + 40)
@@ -65,6 +70,13 @@ func _ready() -> void:
 	barraExperiencia.value = experiencia
 	# =========================================
 	
+	# =========== NÍVEL  =================
+	label_nivel.text = "Lv. " + str(nivel)
+	# ===================================
+	
+	# ========= MOEDAS ==================
+	label_moeda.text = str(moedas)
+	# ===================================
 	
 	# ============ COOLDOWN PARA CURAR ===============
 	barraCura.max_value = 10 * 60 / max(inteligencia / 20, 1)
@@ -76,7 +88,7 @@ func _ready() -> void:
 	for alvo in alvos:
 		experienciaDropada += randi_range(alvo.experiencia_min, alvo.experiencia_max)
 	# =========================================
-
+	
 
 func _physics_process(delta: float) -> void:
 	# ============ MOVIMENTO X ============
@@ -131,7 +143,14 @@ func _physics_process(delta: float) -> void:
 		experiencia += experienciaDropada
 		dropsRecebido = true
 	# ==================================
-	
+
+	# ======== GANHAR MOEDAS ===========
+	if len(alvos) <= 0 and !dropsRecebido:
+		experiencia += experienciaDropada
+		var moedasDropadas = randi_range(5, 15)
+		moedas += moedasDropadas
+		dropsRecebido = true
+	# ==================================	
 	
 	# ========= SUBIR DE NIVEL =========
 	if experiencia >= experienciaNecessaria:
@@ -139,6 +158,7 @@ func _physics_process(delta: float) -> void:
 	barraExperiencia.value = experiencia
 	# ==================================
 	
+
 
 	# ============ MOVIMENTO FINAL ============
 	move_and_slide()
