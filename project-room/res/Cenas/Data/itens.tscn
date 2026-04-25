@@ -4,13 +4,14 @@
 [ext_resource type="Script" uid="uid://e6apfavvsftp" path="res://script/data/Itens.gd" id="2_j28uc"]
 [ext_resource type="Texture2D" uid="uid://ximbp84brf4q" path="res://icon.svg" id="3_yvunc"]
 
-[sub_resource type="Resource" id="Resource_eualq"]
+[sub_resource type="Resource" id="Resource_j28uc"]
 script = ExtResource("2_j28uc")
-nome = "algo"
-descricao = "alguma coisa ai"
+nome = "teste"
+tipo = 0
+descricao = "apenas um teste"
 icone = ExtResource("3_yvunc")
 metadata/_custom_type_script = "uid://e6apfavvsftp"
 
 [node name="Itens" type="Node" unique_id=2107710855]
 script = ExtResource("1_yuqlm")
-itens = Array[ExtResource("2_j28uc")]([SubResource("Resource_eualq")])
+itens = Array[ExtResource("2_j28uc")]([SubResource("Resource_j28uc")])

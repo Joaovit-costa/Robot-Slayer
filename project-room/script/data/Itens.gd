@@ -12,7 +12,7 @@ var _tipo: TipoItem = TipoItem.INVENTARIO
 # Bloco principal com os dados base usados pelo banco e pelo inventario.
 @export_group("Dados do Item")
 @export var nome: String = ""
-@export var tipo: TipoItem:
+@export var tipo: TipoItem = TipoItem.INVENTARIO:
 	get:
 		return _tipo
 	set(value):
@@ -72,3 +72,19 @@ var _tipo: TipoItem = TipoItem.INVENTARIO
 func _validate_property(property: Dictionary) -> void:
 	if property.name == "buffs_por_raridade" and tipo != TipoItem.EQUIPAVEL:
 		property.usage = PROPERTY_USAGE_NO_EDITOR
+
+
+static func raridade_para_string(raridade: int) -> String:
+	match raridade:
+		Raridade.COMUM:
+			return "comum"
+		Raridade.INCOMUM:
+			return "incomum"
+		Raridade.RARO:
+			return "raro"
+		Raridade.EPICO:
+			return "epico"
+		Raridade.LENDARIO:
+			return "lendario"
+		_:
+			return "comum"

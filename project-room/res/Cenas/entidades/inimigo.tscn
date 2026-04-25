@@ -1,6 +1,17 @@
 [gd_scene format=3 uid="uid://dw5vop8713vt3"]
 
 [ext_resource type="Script" uid="uid://bfxhp256xsiuk" path="res://script/entidades/inimigos.gd" id="1_mos2c"]
+[ext_resource type="Script" uid="uid://b547wbkrtg5cj" path="res://script/data/dataDrops.gd" id="2_55jdp"]
+
+[sub_resource type="Resource" id="Resource_55jdp"]
+script = ExtResource("2_55jdp")
+nome = "teste"
+quantidade = 3
+chance_comum = 50
+chance_incomum = 30
+chance_raro = 10
+chance_epico = 5
+metadata/_custom_type_script = "uid://b547wbkrtg5cj"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vhucu"]
 radius = 28.75978
@@ -44,6 +55,9 @@ corner_radius_bottom_left = 6
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_mos2c")
+experiencia_min = 50
+experiencia_max = 80
+drops = Array[ExtResource("2_55jdp")]([SubResource("Resource_55jdp")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1323380247]
 position = Vector2(0.25, 0.25000763)

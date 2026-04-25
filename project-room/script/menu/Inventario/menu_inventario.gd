@@ -42,6 +42,7 @@ func _configurar_dependencias() -> void:
 	inventario_ref = Inventario.new()
 	inventario_ref.name = "InventarioState"
 	add_child(inventario_ref)
+	inventario_ref.add_to_group("inventario_principal")
 
 	var banco_instanciado = CENA_BANCO_ITENS.instantiate()
 	banco_instanciado.name = "BancoDeItens"

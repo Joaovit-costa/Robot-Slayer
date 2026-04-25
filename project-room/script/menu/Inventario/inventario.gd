@@ -62,15 +62,15 @@ func buscar_info_item(nome: String) -> ItensData:
 	return banco_itens.buscar_item_por_nome(nome)
 
 
-# Adiciona item novo, empilha itens de mochila e resolve o slot final.
-func adicionar_item(nome: String, quantidade: int = 1, tipo: String = "", id_slot: int = -1) -> bool:
+# Adiciona item novo, empilha itens de mochila e salva a raridade no registro.
+func adicionar_item(nome: String, raridade: int, quantidade: int = 1, id_slot: int = -1) -> bool:
 	var dados_item := buscar_info_item(nome)
-	var tipo_final := _resolver_tipo_item(tipo, dados_item)
+	var tipo_final := _resolver_tipo_item(dados_item)
 	if tipo_final.is_empty():
 		return false
 
 	if tipo_final == SLOT_INVENTARIO:
-		var item_empilhado := _buscar_item_empilhavel(nome)
+		var item_empilhado := _buscar_item_empilhavel(nome, raridade)
 		if not item_empilhado.is_empty():
 			item_empilhado["quantidade"] = int(item_empilhado.get("quantidade", 0)) + quantidade
 			_atualizar_item_por_slot(int(item_empilhado.get("idSlot", -1)), item_empilhado)
@@ -94,7 +94,8 @@ func adicionar_item(nome: String, quantidade: int = 1, tipo: String = "", id_slo
 		"nome": nome,
 		"idSlot": slot_destino,
 		"quantidade": max(1, quantidade),
-		"tipo": tipo_final
+		"tipo": tipo_final,
+		"raridade": raridade
 	})
 
 	_normalizar_slots_bloqueados()
@@ -186,10 +187,8 @@ func slot_esta_habilitado(id_slot: int) -> bool:
 	return true
 
 
-# Resolve o tipo do item a partir do parametro recebido ou do banco de itens.
-func _resolver_tipo_item(tipo: String, dados_item: ItensData) -> String:
-	if not tipo.is_empty():
-		return tipo.to_lower()
+# Resolve o tipo do item diretamente pelo banco mestre.
+func _resolver_tipo_item(dados_item: ItensData) -> String:
 	if dados_item == null:
 		return ""
 
@@ -202,10 +201,14 @@ func _resolver_tipo_item(tipo: String, dados_item: ItensData) -> String:
 			return SLOT_INVENTARIO
 
 
-# Procura um item de mochila com o mesmo nome para empilhamento.
-func _buscar_item_empilhavel(nome: String) -> Dictionary:
+# Procura um item de mochila com o mesmo nome e raridade para empilhamento.
+func _buscar_item_empilhavel(nome: String, raridade: int) -> Dictionary:
 	for item in inventario:
-		if str(item.get("nome", "")) == nome and str(item.get("tipo", "")) == SLOT_INVENTARIO:
+		if (
+			str(item.get("nome", "")) == nome
+			and str(item.get("tipo", "")) == SLOT_INVENTARIO
+			and int(item.get("raridade", ItensData.Raridade.COMUM)) == raridade
+		):
 			return item
 	return {}
 
@@ -253,6 +256,7 @@ func _pode_empilhar(item_origem: Dictionary, item_destino: Dictionary, slot_dest
 		and str(item_origem.get("tipo", "")) == SLOT_INVENTARIO
 		and str(item_destino.get("tipo", "")) == SLOT_INVENTARIO
 		and str(item_origem.get("nome", "")) == str(item_destino.get("nome", ""))
+		and int(item_origem.get("raridade", ItensData.Raridade.COMUM)) == int(item_destino.get("raridade", ItensData.Raridade.COMUM))
 	)
 
 
