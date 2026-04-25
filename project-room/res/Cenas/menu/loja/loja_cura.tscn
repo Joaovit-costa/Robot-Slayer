@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://di077pcysnchw"]
 
-[ext_resource type="Texture2D" uid="uid://do2vcevn4k7gw" path="res://res/design/menus/Slot_Inventario.png" id="1_vlf2k"]
-[ext_resource type="Script" uid="uid://c0j2vyp0df15v" path="res://script/menu/Loja/loja_itens.gd" id="1_wyvk8"]
-[ext_resource type="Texture2D" uid="uid://ch73s3u00wfut" path="res://res/design/menus/Slot_Trancado_V2.png" id="2_krigy"]
+[ext_resource type="Script" uid="uid://c0j2vyp0df15v" path="res://script/menu/loja/loja_itens.gd" id="1_cdtr1"]
+[ext_resource type="Texture2D" uid="uid://do2vcevn4k7gw" path="res://res/design/menus/Slot_Inventario.png" id="2_mpwtv"]
+[ext_resource type="Texture2D" uid="uid://ch73s3u00wfut" path="res://res/design/menus/Slot_Trancado_V2.png" id="3_cg1um"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_krigy"]
-bg_color = Color(0.06666667, 0.09411765, 0.15294118, 1)
+bg_color = Color(0.22745098, 0.078431375, 0.078431375, 1)
 corner_radius_top_left = 25
 corner_radius_top_right = 25
 corner_radius_bottom_right = 25
@@ -15,29 +15,32 @@ corner_radius_bottom_left = 25
 load_path = "res://.godot/imported/Slot_Inventario.png-68722c75105384661a9f7889f1e8d1d1.ctex"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vlf2k"]
-bg_color = Color(0.05882353, 0.09019608, 0.16470589, 1)
+bg_color = Color(0.2901961, 0.08627451, 0.08627451, 1)
 border_width_left = 2
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 2
-border_color = Color(0.10980392, 0.7647059, 1, 1)
+border_color = Color(1, 0.47843137, 0.47843137, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wyvk8"]
-bg_color = Color(0.078431375, 0.62352943, 0.83137256, 1)
+bg_color = Color(0.7882353, 0.2901961, 0.2901961, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(0, 0.9607843, 1, 1)
+border_color = Color(1, 0.6995627, 0.6823195, 1)
 corner_detail = 6
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_diycm"]
+bg_color = Color(0.54509807, 0.18039216, 0.18039216, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_52frj"]
-bg_color = Color(0, 0.9607843, 1, 1)
+bg_color = Color(1, 0.41960785, 0.41960785, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0, 1, 1, 1)
+border_color = Color(0.91764706, 0.48235294, 0.4627451, 1)
 
 [node name="LojaItens" type="Control" unique_id=1042815808]
 layout_mode = 3
@@ -46,7 +49,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_wyvk8")
+script = ExtResource("1_cdtr1")
 
 [node name="PainelPrincipal" type="Panel" parent="." unique_id=1338038105]
 layout_mode = 1
@@ -91,8 +94,8 @@ custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = ExtResource("1_vlf2k")
-texture_disabled = ExtResource("2_krigy")
+texture_normal = ExtResource("2_mpwtv")
+texture_disabled = ExtResource("3_cg1um")
 stretch_mode = 0
 
 [node name="Item2" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=844634832]
@@ -100,8 +103,8 @@ custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = ExtResource("1_vlf2k")
-texture_disabled = ExtResource("2_krigy")
+texture_normal = ExtResource("2_mpwtv")
+texture_disabled = ExtResource("3_cg1um")
 stretch_mode = 0
 
 [node name="Item3" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=575179199]
@@ -110,7 +113,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = SubResource("CompressedTexture2D_vlf2k")
-texture_disabled = ExtResource("2_krigy")
+texture_disabled = ExtResource("3_cg1um")
 stretch_mode = 0
 
 [node name="Item4" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=1038977247]
@@ -119,7 +122,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = SubResource("CompressedTexture2D_vlf2k")
-texture_disabled = ExtResource("2_krigy")
+texture_disabled = ExtResource("3_cg1um")
 stretch_mode = 0
 
 [node name="Item5" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=102630290]
@@ -128,7 +131,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = SubResource("CompressedTexture2D_vlf2k")
-texture_disabled = ExtResource("2_krigy")
+texture_disabled = ExtResource("3_cg1um")
 stretch_mode = 0
 
 [node name="Item6" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=1714270444]
@@ -137,7 +140,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = SubResource("CompressedTexture2D_vlf2k")
-texture_disabled = ExtResource("2_krigy")
+texture_disabled = ExtResource("3_cg1um")
 stretch_mode = 0
 
 [node name="Item7" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=206952438]
@@ -146,7 +149,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = SubResource("CompressedTexture2D_vlf2k")
-texture_disabled = ExtResource("2_krigy")
+texture_disabled = ExtResource("3_cg1um")
 stretch_mode = 0
 
 [node name="Item8" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=1786295903]
@@ -155,7 +158,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = SubResource("CompressedTexture2D_vlf2k")
-texture_disabled = ExtResource("2_krigy")
+texture_disabled = ExtResource("3_cg1um")
 stretch_mode = 0
 
 [node name="Item9" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=492830669]
@@ -164,7 +167,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = SubResource("CompressedTexture2D_vlf2k")
-texture_disabled = ExtResource("2_krigy")
+texture_disabled = ExtResource("3_cg1um")
 stretch_mode = 0
 
 [node name="FundoCarrinho" type="Panel" parent="PainelPrincipal/MarginContainer/HBoxContainer" unique_id=952523976]
@@ -190,7 +193,7 @@ theme_override_constants/separation = 16
 
 [node name="CarrinhoLabel" type="Label" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer" unique_id=1353671409]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.18431373, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 0.5411765, 0.5411765, 1)
 theme_override_font_sizes/font_size = 32
 text = "Carrinho"
 horizontal_alignment = 1
@@ -207,16 +210,17 @@ alignment = 1
 [node name="Nome" type="Label" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer/ListaDeItens/Item1" unique_id=1379050924]
 layout_mode = 2
 size_flags_horizontal = 6
+theme_override_colors/font_color = Color(1, 0.91764706, 0.91764706, 1)
 theme_override_font_sizes/font_size = 18
 
 [node name="Quantidade" type="Label" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer/ListaDeItens/Item1" unique_id=3424283]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.6666667, 0.6666667, 0.6666667, 1)
+theme_override_colors/font_color = Color(1, 0.91764706, 0.91764706, 1)
 theme_override_font_sizes/font_size = 18
 
 [node name="Preco" type="Label" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer/ListaDeItens/Item1" unique_id=78564445]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.81960785, 0.4, 1)
+theme_override_colors/font_color = Color(1, 0.61960787, 0.61960787, 1)
 theme_override_font_sizes/font_size = 18
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer" unique_id=1210185392]
@@ -227,7 +231,7 @@ alignment = 2
 [node name="TotalLabel" type="Label" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer/HBoxContainer" unique_id=972548154]
 layout_mode = 2
 size_flags_horizontal = 8
-theme_override_colors/font_color = Color(0.078431375, 0.62352943, 0.83137256, 1)
+theme_override_colors/font_color = Color(1, 0.36078432, 0.36078432, 1)
 theme_override_font_sizes/font_size = 20
 text = "Total:"
 
@@ -240,10 +244,12 @@ custom_minimum_size = Vector2(140, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.9490196, 0.8627451, 0.8627451, 1)
+theme_override_colors/font_focus_color = Color(0.9490196, 0.8627451, 0.8627451, 1)
+theme_override_colors/font_pressed_color = Color(0.9490196, 0.8627451, 0.8627451, 1)
+theme_override_colors/font_hover_color = Color(0.9490196, 0.8627451, 0.8627451, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_wyvk8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_diycm")
 theme_override_styles/hover = SubResource("StyleBoxFlat_52frj")
 text = "Buy"
 

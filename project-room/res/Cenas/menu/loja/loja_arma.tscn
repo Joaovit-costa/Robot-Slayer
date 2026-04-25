@@ -1,0 +1,255 @@
+[gd_scene format=3 uid="uid://bvvwy1j22isp4"]
+
+[ext_resource type="Script" uid="uid://c0j2vyp0df15v" path="res://script/menu/loja/loja_itens.gd" id="1_diycm"]
+[ext_resource type="Texture2D" uid="uid://do2vcevn4k7gw" path="res://res/design/menus/Slot_Inventario.png" id="2_bk74p"]
+[ext_resource type="Texture2D" uid="uid://ch73s3u00wfut" path="res://res/design/menus/Slot_Trancado_V2.png" id="3_2jc7g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_krigy"]
+bg_color = Color(0.07058824, 0.21960784, 0.15686275, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vlf2k"]
+load_path = "res://.godot/imported/Slot_Inventario.png-68722c75105384661a9f7889f1e8d1d1.ctex"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vlf2k"]
+bg_color = Color(0.09411765, 0.3019608, 0.21176471, 1)
+border_width_left = 2
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 2
+border_color = Color(0.23544675, 0.62973154, 0.45218343, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wyvk8"]
+bg_color = Color(0.18039216, 0.54509807, 0.34117648, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.52156866, 0.9843137, 0.69803923, 1)
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_diycm"]
+bg_color = Color(0.12156863, 0.36078432, 0.22745098, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_52frj"]
+bg_color = Color(0.27058825, 0.7607843, 0.47843137, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.52156866, 0.9843137, 0.69803923, 1)
+
+[node name="LojaItens" type="Control" unique_id=1042815808]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_diycm")
+
+[node name="PainelPrincipal" type="Panel" parent="." unique_id=1338038105]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -200.0
+offset_right = 400.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_krigy")
+
+[node name="MarginContainer" type="MarginContainer" parent="PainelPrincipal" unique_id=922761448]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 40
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PainelPrincipal/MarginContainer" unique_id=1205616879]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="GridContainer" type="GridContainer" parent="PainelPrincipal/MarginContainer/HBoxContainer" unique_id=1895451968]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 3
+
+[node name="Item1" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=1929743640]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("2_bk74p")
+texture_disabled = ExtResource("3_2jc7g")
+stretch_mode = 0
+
+[node name="Item2" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=844634832]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("2_bk74p")
+texture_disabled = ExtResource("3_2jc7g")
+stretch_mode = 0
+
+[node name="Item3" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=575179199]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = SubResource("CompressedTexture2D_vlf2k")
+texture_disabled = ExtResource("3_2jc7g")
+stretch_mode = 0
+
+[node name="Item4" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=1038977247]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = SubResource("CompressedTexture2D_vlf2k")
+texture_disabled = ExtResource("3_2jc7g")
+stretch_mode = 0
+
+[node name="Item5" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=102630290]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = SubResource("CompressedTexture2D_vlf2k")
+texture_disabled = ExtResource("3_2jc7g")
+stretch_mode = 0
+
+[node name="Item6" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=1714270444]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = SubResource("CompressedTexture2D_vlf2k")
+texture_disabled = ExtResource("3_2jc7g")
+stretch_mode = 0
+
+[node name="Item7" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=206952438]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = SubResource("CompressedTexture2D_vlf2k")
+texture_disabled = ExtResource("3_2jc7g")
+stretch_mode = 0
+
+[node name="Item8" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=1786295903]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = SubResource("CompressedTexture2D_vlf2k")
+texture_disabled = ExtResource("3_2jc7g")
+stretch_mode = 0
+
+[node name="Item9" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=492830669]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = SubResource("CompressedTexture2D_vlf2k")
+texture_disabled = ExtResource("3_2jc7g")
+stretch_mode = 0
+
+[node name="FundoCarrinho" type="Panel" parent="PainelPrincipal/MarginContainer/HBoxContainer" unique_id=952523976]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vlf2k")
+
+[node name="MarginContainer" type="MarginContainer" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho" unique_id=1980123629]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer" unique_id=595833878]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="CarrinhoLabel" type="Label" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer" unique_id=1353671409]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4862745, 1, 0.69803923, 1)
+theme_override_font_sizes/font_size = 32
+text = "Carrinho"
+horizontal_alignment = 1
+
+[node name="ListaDeItens" type="VBoxContainer" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer" unique_id=772101856]
+layout_mode = 2
+
+[node name="Item1" type="HBoxContainer" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer/ListaDeItens" unique_id=657840213]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Nome" type="Label" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer/ListaDeItens/Item1" unique_id=1379050924]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_color = Color(0.9019608, 1, 0.9490196, 1)
+theme_override_font_sizes/font_size = 18
+
+[node name="Quantidade" type="Label" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer/ListaDeItens/Item1" unique_id=3424283]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9019608, 1, 0.9490196, 1)
+theme_override_font_sizes/font_size = 18
+
+[node name="Preco" type="Label" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer/ListaDeItens/Item1" unique_id=78564445]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4862745, 1, 0.69803923, 1)
+theme_override_font_sizes/font_size = 18
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer" unique_id=1210185392]
+layout_mode = 2
+size_flags_vertical = 6
+alignment = 2
+
+[node name="TotalLabel" type="Label" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer/HBoxContainer" unique_id=972548154]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0.22745098, 0.9490196, 0.5411765, 1)
+theme_override_font_sizes/font_size = 20
+text = "Total:"
+
+[node name="Separação" type="Control" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer" unique_id=837423088]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BotaoBuy" type="Button" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer" unique_id=1520239654]
+custom_minimum_size = Vector2(140, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_wyvk8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_diycm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_52frj")
+text = "Buy"
+
+[connection signal="pressed" from="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer/BotaoBuy" to="." method="_on_botao_buy_pressed"]
