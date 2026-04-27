@@ -3,7 +3,6 @@ class_name ItensData
 
 # Enums que padronizam o tipo do item, o slot de equipamento e a raridade.
 enum TipoItem { EXTENSOR, INVENTARIO, EQUIPAVEL }
-enum SlotEquip { ARMA, PERSONAGEM }
 enum Raridade { COMUM, INCOMUM, RARO, EPICO, LENDARIO }
 
 # Campo interno usado pelo setter/getter do tipo exportado.
@@ -24,8 +23,6 @@ var _tipo: TipoItem = TipoItem.INVENTARIO
 # Bloco de propriedades visuais e de encaixe para itens equipaveis.
 @export_group("Visual")
 @export var cor: Color = Color.WHITE
-@export var altera_aparencia: bool = false
-@export var slot_equip: SlotEquip
 
 # Bloco com os buffs separados por raridade para itens equipaveis.
 @export_group("Buffs por Raridade (%)")

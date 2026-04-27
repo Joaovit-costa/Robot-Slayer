@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://cg55oowk7qo4a" path="res://script/data/DataItens.gd" id="1_yuqlm"]
 [ext_resource type="Script" uid="uid://e6apfavvsftp" path="res://script/data/Itens.gd" id="2_j28uc"]
 [ext_resource type="Texture2D" uid="uid://ximbp84brf4q" path="res://icon.svg" id="3_yvunc"]
+[ext_resource type="Texture2D" uid="uid://ohmj30jc80j0" path="res://res/design/Design-Robot Slayer/sprits/roda.png" id="4_yvunc"]
+[ext_resource type="Texture2D" uid="uid://c5eo0d8rag0hs" path="res://res/design/Design-Robot Slayer/sprits/fita_isolante.png" id="5_eualq"]
 
 [sub_resource type="Resource" id="Resource_j28uc"]
 script = ExtResource("2_j28uc")
@@ -12,6 +14,59 @@ descricao = "apenas um teste"
 icone = ExtResource("3_yvunc")
 metadata/_custom_type_script = "uid://e6apfavvsftp"
 
+[sub_resource type="Resource" id="Resource_eualq"]
+script = ExtResource("2_j28uc")
+nome = "Eile"
+tipo = 2
+descricao = "Aumenta a velocidade de movimento"
+icone = ExtResource("4_yvunc")
+buffs_por_raridade = {
+0: {
+"defesa": 0.0,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.15,
+"vitalidade": 0.0
+},
+1: {
+"defesa": 0.0,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+},
+2: {
+"defesa": 0.0,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+},
+3: {
+"defesa": 0.0,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+},
+4: {
+"defesa": 0.0,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+}
+}
+metadata/_custom_type_script = "uid://e6apfavvsftp"
+
+[sub_resource type="Resource" id="Resource_8jy01"]
+script = ExtResource("2_j28uc")
+nome = "Enginer"
+tipo = 0
+descricao = "Imunidade a paralização por eletricidade e aumento de dps em 10%"
+icone = ExtResource("5_eualq")
+metadata/_custom_type_script = "uid://e6apfavvsftp"
+
 [node name="Itens" type="Node" unique_id=2107710855]
 script = ExtResource("1_yuqlm")
-itens = Array[ExtResource("2_j28uc")]([SubResource("Resource_j28uc")])
+itens = Array[ExtResource("2_j28uc")]([SubResource("Resource_j28uc"), SubResource("Resource_eualq"), SubResource("Resource_8jy01")])
