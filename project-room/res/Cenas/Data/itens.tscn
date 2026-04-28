@@ -250,7 +250,7 @@ metadata/_custom_type_script = "uid://e6apfavvsftp"
 script = ExtResource("2_j28uc")
 nome = "White Hat Mod"
 tipo = 2
-descricao = "Efeito de veneno0.5 de dps (tempo de duração permanente)Compatível com todas as armas"
+descricao = "Efeito de veneno0.5 de dps (tempo de duração permanente) e Compatível com todas as armas"
 icone = ExtResource("9_00avs")
 buffs_por_raridade = {
 0: {
@@ -295,7 +295,7 @@ metadata/_custom_type_script = "uid://e6apfavvsftp"
 script = ExtResource("2_j28uc")
 nome = "Volt Mod"
 tipo = 2
-descricao = "Dano conectado (afeta dos inimigosperto)Compatível com todas as armas"
+descricao = "Dano conectado (afeta dos inimigosperto) e Compatível com todas as armas"
 icone = ExtResource("10_00avs")
 buffs_por_raridade = {
 0: {
