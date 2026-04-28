@@ -5,6 +5,13 @@
 [ext_resource type="Texture2D" uid="uid://ximbp84brf4q" path="res://icon.svg" id="3_yvunc"]
 [ext_resource type="Texture2D" uid="uid://ohmj30jc80j0" path="res://res/design/Design-Robot Slayer/sprits/roda.png" id="4_yvunc"]
 [ext_resource type="Texture2D" uid="uid://c5eo0d8rag0hs" path="res://res/design/Design-Robot Slayer/sprits/fita_isolante.png" id="5_eualq"]
+[ext_resource type="Texture2D" uid="uid://bby4pbmuuag74" path="res://res/design/Design-Robot Slayer/sprits/extintor.png" id="6_vny6l"]
+[ext_resource type="Texture2D" uid="uid://dqj3j4x68e76p" path="res://res/design/Design-Robot Slayer/sprits/aquecedor.png" id="7_amgy2"]
+[ext_resource type="Texture2D" uid="uid://bs2jdtcm7fgu6" path="res://res/design/Design-Robot Slayer/sprits/antivirus.png" id="8_468bw"]
+[ext_resource type="Texture2D" uid="uid://dddfys0jb2cmr" path="res://res/design/Design-Robot Slayer/sprits/chip_veneno.png" id="9_00avs"]
+[ext_resource type="Texture2D" uid="uid://dqvya8yn51euo" path="res://res/design/Design-Robot Slayer/sprits/chip_eletrico.png" id="10_00avs"]
+[ext_resource type="Texture2D" uid="uid://bg7ho6eaw8vt6" path="res://res/design/Design-Robot Slayer/sprits/chip_gelo.png" id="11_2yro4"]
+[ext_resource type="Texture2D" uid="uid://d05ti3sb68ufe" path="res://res/design/Design-Robot Slayer/sprits/chip_fogo.png" id="12_p1f2f"]
 
 [sub_resource type="Resource" id="Resource_j28uc"]
 script = ExtResource("2_j28uc")
@@ -65,8 +72,361 @@ nome = "Enginer"
 tipo = 0
 descricao = "Imunidade a paralização por eletricidade e aumento de dps em 10%"
 icone = ExtResource("5_eualq")
+buffs_por_raridade = {
+0: {
+"defesa": 0.0,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+},
+1: {
+"defesa": 0.0,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.1,
+"vitalidade": 0.0
+},
+2: {
+"defesa": 0.0,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+},
+3: {
+"defesa": 0.0,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+},
+4: {
+"defesa": 0.0,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+}
+}
+metadata/_custom_type_script = "uid://e6apfavvsftp"
+
+[sub_resource type="Resource" id="Resource_468bw"]
+script = ExtResource("2_j28uc")
+nome = "Pyromancer"
+tipo = 2
+descricao = "Imunidade a fogo e mais dano em inimigos glaciais"
+icone = ExtResource("6_vny6l")
+buffs_por_raridade = {
+0: {
+"defesa": 0.0,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+},
+1: {
+"defesa": 0.0,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+},
+2: {
+"defesa": 0.0,
+"forca": 0.1,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+},
+3: {
+"defesa": 0.0,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+},
+4: {
+"defesa": 0.0,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+}
+}
+metadata/_custom_type_script = "uid://e6apfavvsftp"
+
+[sub_resource type="Resource" id="Resource_00avs"]
+script = ExtResource("2_j28uc")
+nome = "Heater"
+tipo = 2
+descricao = "Imunidade ao congelamento e mais dano em inimigos eletronicos"
+icone = ExtResource("7_amgy2")
+buffs_por_raridade = {
+0: {
+"defesa": 0.0,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+},
+1: {
+"defesa": 0.0,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+},
+2: {
+"defesa": 0.1,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+},
+3: {
+"defesa": 0.0,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+},
+4: {
+"defesa": 0.0,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+}
+}
+metadata/_custom_type_script = "uid://e6apfavvsftp"
+
+[sub_resource type="Resource" id="Resource_2yro4"]
+script = ExtResource("2_j28uc")
+nome = "Aegis"
+tipo = 2
+descricao = "Imunidade a virus(veneno) e mais dano em malwares"
+icone = ExtResource("8_468bw")
+buffs_por_raridade = {
+0: {
+"defesa": 0.0,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+},
+1: {
+"defesa": 0.0,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+},
+2: {
+"defesa": 0.1,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+},
+3: {
+"defesa": 0.0,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+},
+4: {
+"defesa": 0.0,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+}
+}
+metadata/_custom_type_script = "uid://e6apfavvsftp"
+
+[sub_resource type="Resource" id="Resource_p1f2f"]
+script = ExtResource("2_j28uc")
+nome = "White Hat Mod"
+tipo = 2
+descricao = "Efeito de veneno0.5 de dps (tempo de duração permanente)Compatível com todas as armas"
+icone = ExtResource("9_00avs")
+buffs_por_raridade = {
+0: {
+"defesa": 0.0,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+},
+1: {
+"defesa": 0.0,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+},
+2: {
+"defesa": 0.0,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+},
+3: {
+"defesa": 0.0,
+"forca": 0.0,
+"inteligencia": 0.1,
+"velocidade": 0.0,
+"vitalidade": 0.0
+},
+4: {
+"defesa": 0.0,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+}
+}
+metadata/_custom_type_script = "uid://e6apfavvsftp"
+
+[sub_resource type="Resource" id="Resource_8i0hq"]
+script = ExtResource("2_j28uc")
+nome = "Volt Mod"
+tipo = 2
+descricao = "Dano conectado (afeta dos inimigosperto)Compatível com todas as armas"
+icone = ExtResource("10_00avs")
+buffs_por_raridade = {
+0: {
+"defesa": 0.0,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+},
+1: {
+"defesa": 0.0,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+},
+2: {
+"defesa": 0.0,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+},
+3: {
+"defesa": 0.0,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"velocidade_ataque": 0.1,
+"vitalidade": 0.0
+},
+4: {
+"defesa": 0.0,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+}
+}
+metadata/_custom_type_script = "uid://e6apfavvsftp"
+
+[sub_resource type="Resource" id="Resource_7vkik"]
+script = ExtResource("2_j28uc")
+nome = "Vítreo Mod"
+tipo = 2
+descricao = "Congelamento (paralisa o inimigo por1seg) e Compatível com todas as armas "
+icone = ExtResource("11_2yro4")
+buffs_por_raridade = {
+0: {
+"defesa": 0.0,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+},
+1: {
+"defesa": 0.0,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+},
+2: {
+"defesa": 0.0,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+},
+3: {
+"defesa": 0.1,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+},
+4: {
+"defesa": 0.0,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+}
+}
+metadata/_custom_type_script = "uid://e6apfavvsftp"
+
+[sub_resource type="Resource" id="Resource_4fpqt"]
+script = ExtResource("2_j28uc")
+nome = "Lume Mod"
+tipo = 2
+descricao = "Efeito de fogo1.5 de dps (tempo de duração 2 seg) e Compatível com todas as armas"
+icone = ExtResource("12_p1f2f")
+buffs_por_raridade = {
+0: {
+"defesa": 0.0,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+},
+1: {
+"defesa": 0.0,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+},
+2: {
+"defesa": 0.0,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+},
+3: {
+"defesa": 0.0,
+"forca": 0.1,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+},
+4: {
+"defesa": 0.0,
+"forca": 0.0,
+"inteligencia": 0.0,
+"velocidade": 0.0,
+"vitalidade": 0.0
+}
+}
 metadata/_custom_type_script = "uid://e6apfavvsftp"
 
 [node name="Itens" type="Node" unique_id=2107710855]
 script = ExtResource("1_yuqlm")
-itens = Array[ExtResource("2_j28uc")]([SubResource("Resource_j28uc"), SubResource("Resource_eualq"), SubResource("Resource_8jy01")])
+itens = Array[ExtResource("2_j28uc")]([SubResource("Resource_j28uc"), SubResource("Resource_eualq"), SubResource("Resource_8jy01"), SubResource("Resource_468bw"), SubResource("Resource_00avs"), SubResource("Resource_2yro4"), SubResource("Resource_p1f2f"), SubResource("Resource_8i0hq"), SubResource("Resource_7vkik"), SubResource("Resource_4fpqt")])
