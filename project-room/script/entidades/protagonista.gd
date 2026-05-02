@@ -51,6 +51,8 @@ var cooldown: float = 0.0
 
 
 func _ready() -> void:
+	add_to_group("protagonista")
+
 	# ============ INICIALIZACAO ============
 	randomize()
 	vitalidade *= 5
@@ -89,6 +91,20 @@ func _ready() -> void:
 	# ====== INVENTARIO PRINCIPAL ============
 	inventario_ref = get_tree().get_first_node_in_group("inventario_principal") as Inventario
 	# ========================================
+
+
+func tem_moedas(valor: int) -> bool:
+	return moedas >= max(0, valor)
+
+
+func gastar_moedas(valor: int) -> bool:
+	var custo :float= max(0, valor)
+	if moedas < custo:
+		return false
+
+	moedas -= custo
+	label_moeda.text = str(moedas)
+	return true
 
 
 func _physics_process(delta: float) -> void:

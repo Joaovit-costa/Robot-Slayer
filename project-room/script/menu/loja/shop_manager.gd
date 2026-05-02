@@ -1,70 +1,94 @@
 extends Node
 class_name ShopManager
 
-# Sinal emitido sempre que o carrinho sofre alguma alteracao.
 signal carrinho_atualizado
-
-# Sinal emitido quando a compra é finalizada (para integração futura).
 signal compra_finalizada(itens)
 
-# Lista que armazena os itens do carrinho (nome + quantidade).
 var carrinho: Array[Dictionary] = []
-
-# Valor total acumulado da compra atual.
-var total: float = 0.0
-
-# Referencia ao banco de dados da loja.
+var total: int = 0
 var shop_data: ShopData
+var inventario_ref: Inventario
+var comprador_ref: Node
 
 
-# Recebe o banco de dados da loja.
-func configurar(shop: ShopData):
+func configurar(shop: ShopData, inventario: Inventario, comprador: Node) -> void:
 	shop_data = shop
+	inventario_ref = inventario
+	comprador_ref = comprador
 
 
-# Adiciona um item ao carrinho ou incrementa sua quantidade.
-func adicionar_item(nome: String):
+func adicionar_item(oferta: Dictionary) -> void:
+	if oferta.is_empty():
+		return
+
+	var nome := str(oferta.get("nome", ""))
+	var preco := int(oferta.get("preco", 0))
+	var raridade := int(oferta.get("raridade", ItensData.Raridade.COMUM))
+
 	for item in carrinho:
-		if item["nome"] == nome:
-			item["quantidade"] += 1
+		if (
+			str(item.get("nome", "")) == nome
+			and int(item.get("preco", 0)) == preco
+			and int(item.get("raridade", ItensData.Raridade.COMUM)) == raridade
+		):
+			item["quantidade"] = int(item.get("quantidade", 0)) + int(oferta.get("quantidade", 1))
 			_recalcular_total()
 			return
-	
+
 	carrinho.append({
 		"nome": nome,
-		"quantidade": 1
+		"preco": preco,
+		"quantidade": int(oferta.get("quantidade", 1)),
+		"raridade": raridade
 	})
-	
 	_recalcular_total()
 
 
-# Remove completamente um item do carrinho.
-func remover_item(nome: String):
+func remover_item(nome: String, preco: int = -1, raridade: int = -1) -> void:
 	for i in range(carrinho.size()):
-		if carrinho[i]["nome"] == nome:
-			carrinho.remove_at(i)
-			break
-	
+		var item := carrinho[i]
+		if str(item.get("nome", "")) != nome:
+			continue
+		if preco != -1 and int(item.get("preco", 0)) != preco:
+			continue
+		if raridade != -1 and int(item.get("raridade", ItensData.Raridade.COMUM)) != raridade:
+			continue
+		carrinho.remove_at(i)
+		break
+
 	_recalcular_total()
 
 
-# Recalcula o valor total da compra.
-func _recalcular_total():
-	total = 0.0
-	
+func finalizar_compra() -> bool:
+	if carrinho.is_empty():
+		return false
+	if comprador_ref == null or not comprador_ref.has_method("tem_moedas") or not comprador_ref.has_method("gastar_moedas"):
+		return false
+	if inventario_ref == null:
+		return false
+	if not comprador_ref.tem_moedas(total):
+		return false
+	if not inventario_ref.tem_espaco_para_itens(carrinho):
+		return false
+	if not comprador_ref.gastar_moedas(total):
+		return false
+
 	for item in carrinho:
-		var dados = shop_data.buscar_item(item["nome"])
-		
-		if dados != null:
-			total += dados.preco * item["quantidade"]
-	
-	carrinho_atualizado.emit()
+		inventario_ref.adicionar_item(
+			str(item.get("nome", "")),
+			int(item.get("raridade", ItensData.Raridade.COMUM)),
+			int(item.get("quantidade", 1))
+		)
 
-
-# Finaliza a compra (sem integrar com inventario).
-func finalizar_compra():
-	compra_finalizada.emit(carrinho)
-	
+	var itens_comprados := carrinho.duplicate(true)
 	carrinho.clear()
-	
 	_recalcular_total()
+	compra_finalizada.emit(itens_comprados)
+	return true
+
+
+func _recalcular_total() -> void:
+	total = 0
+	for item in carrinho:
+		total += int(item.get("preco", 0)) * int(item.get("quantidade", 1))
+	carrinho_atualizado.emit()

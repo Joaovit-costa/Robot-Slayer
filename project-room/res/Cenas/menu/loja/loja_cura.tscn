@@ -3,44 +3,127 @@
 [ext_resource type="Script" uid="uid://c0j2vyp0df15v" path="res://script/menu/loja/loja_itens.gd" id="1_cdtr1"]
 [ext_resource type="Texture2D" uid="uid://do2vcevn4k7gw" path="res://res/design/menus/Slot_Inventario.png" id="2_mpwtv"]
 [ext_resource type="Texture2D" uid="uid://ch73s3u00wfut" path="res://res/design/menus/Slot_Trancado_V2.png" id="3_cg1um"]
+[ext_resource type="Script" uid="uid://jmsfpa2u7j0v" path="res://script/menu/loja/shop_item_data.gd" id="4_shop_item"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_krigy"]
-bg_color = Color(0.22745098, 0.078431375, 0.078431375, 1)
+[sub_resource type="Resource" id="ShopItemData_eile"]
+script = ExtResource("4_shop_item")
+nome = "Eile"
+preco_minimo = 8
+preco_maximo = 16
+chance_aparecer = 60
+
+[sub_resource type="Resource" id="ShopItemData_enginer"]
+script = ExtResource("4_shop_item")
+nome = "Enginer"
+preco_minimo = 10
+preco_maximo = 20
+chance_aparecer = 55
+
+[sub_resource type="Resource" id="ShopItemData_pyromancer"]
+script = ExtResource("4_shop_item")
+nome = "Pyromancer"
+preco_minimo = 12
+preco_maximo = 24
+chance_aparecer = 45
+
+[sub_resource type="Resource" id="ShopItemData_heater"]
+script = ExtResource("4_shop_item")
+nome = "Heater"
+preco_minimo = 12
+preco_maximo = 24
+chance_aparecer = 45
+
+[sub_resource type="Resource" id="ShopItemData_aegis"]
+script = ExtResource("4_shop_item")
+nome = "Aegis"
+preco_minimo = 14
+preco_maximo = 28
+chance_aparecer = 35
+
+[sub_resource type="Resource" id="ShopItemData_white_hat"]
+script = ExtResource("4_shop_item")
+nome = "White Hat Mod"
+preco_minimo = 7
+preco_maximo = 14
+chance_aparecer = 65
+
+[sub_resource type="Resource" id="ShopItemData_volt"]
+script = ExtResource("4_shop_item")
+nome = "Volt Mod"
+preco_minimo = 7
+preco_maximo = 14
+chance_aparecer = 65
+
+[sub_resource type="Resource" id="ShopItemData_vitreo"]
+script = ExtResource("4_shop_item")
+nome = "Vítreo Mod"
+preco_minimo = 7
+preco_maximo = 14
+chance_aparecer = 65
+
+[sub_resource type="Resource" id="ShopItemData_lume"]
+script = ExtResource("4_shop_item")
+nome = "Lume Mod"
+preco_minimo = 7
+preco_maximo = 14
+chance_aparecer = 65
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mpwtv"]
+bg_color = Color(0, 0.7058824, 0.41568628, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.46666667, 0.88235295, 0, 1)
 corner_radius_top_left = 25
 corner_radius_top_right = 25
 corner_radius_bottom_right = 25
 corner_radius_bottom_left = 25
+corner_detail = 4
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vlf2k"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cg1um"]
 load_path = "res://.godot/imported/Slot_Inventario.png-68722c75105384661a9f7889f1e8d1d1.ctex"
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vlf2k"]
-bg_color = Color(0.2901961, 0.08627451, 0.08627451, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8kioa"]
+bg_color = Color(0.11390736, 0.42045036, 0.2438342, 1)
 border_width_left = 2
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 2
-border_color = Color(1, 0.47843137, 0.47843137, 1)
+border_color = Color(0.23544675, 0.62973154, 0.45218343, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wyvk8"]
-bg_color = Color(0.7882353, 0.2901961, 0.2901961, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y80uj"]
+bg_color = Color(0, 0.7058824, 0.41568628, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(1, 0.6995627, 0.6823195, 1)
+border_color = Color(0.11544713, 0.18828234, 0, 1)
 corner_detail = 6
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_diycm"]
-bg_color = Color(0.54509807, 0.18039216, 0.18039216, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4cepl"]
+bg_color = Color(0.12156863, 0.36078432, 0.22745098, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_52frj"]
-bg_color = Color(1, 0.41960785, 0.41960785, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6pp5o"]
+bg_color = Color(1.2513996e-06, 0.5437582, 0.31349424, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.91764706, 0.48235294, 0.4627451, 1)
+border_color = Color(0.05879438, 0.22784624, 0.13225463, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mpwtv"]
+font_size = 50
+font_color = Color(0.9963438, 0.7487123, 0.6502608, 1)
+outline_size = 4
+outline_color = Color(0.62991744, 0, 0.18484718, 1)
+stacked_outline_count = 1
+stacked_outline_0/size = 20
+stacked_outline_0/color = Color(0.22225624, 1.5492085e-07, 5.4147094e-08, 1)
 
 [node name="LojaItens" type="Control" unique_id=1042815808]
 layout_mode = 3
@@ -50,8 +133,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cdtr1")
+itens_loja = Array[ExtResource("4_shop_item")]([SubResource("ShopItemData_eile"), SubResource("ShopItemData_enginer"), SubResource("ShopItemData_pyromancer"), SubResource("ShopItemData_heater"), SubResource("ShopItemData_aegis"), SubResource("ShopItemData_white_hat"), SubResource("ShopItemData_volt"), SubResource("ShopItemData_vitreo"), SubResource("ShopItemData_lume")])
 
-[node name="PainelPrincipal" type="Panel" parent="." unique_id=1338038105]
+[node name="PainelPrincipal" type="Panel" parent="." unique_id=371465323]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -64,9 +148,9 @@ offset_right = 400.0
 offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_krigy")
+theme_override_styles/panel = SubResource("StyleBoxFlat_mpwtv")
 
-[node name="MarginContainer" type="MarginContainer" parent="PainelPrincipal" unique_id=922761448]
+[node name="MarginContainer" type="MarginContainer" parent="PainelPrincipal" unique_id=1468047600]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -78,104 +162,230 @@ theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 60
 theme_override_constants/margin_bottom = 40
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PainelPrincipal/MarginContainer" unique_id=1205616879]
+[node name="HBoxContainer" type="HBoxContainer" parent="PainelPrincipal/MarginContainer" unique_id=367229344]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="GridContainer" type="GridContainer" parent="PainelPrincipal/MarginContainer/HBoxContainer" unique_id=1895451968]
+[node name="GridContainer" type="GridContainer" parent="PainelPrincipal/MarginContainer/HBoxContainer" unique_id=1421211622]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/h_separation = 15
 theme_override_constants/v_separation = 15
 columns = 3
 
-[node name="Item1" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=1929743640]
+[node name="Item1" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=879052446]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = ExtResource("2_mpwtv")
 texture_disabled = ExtResource("3_cg1um")
-stretch_mode = 0
+stretch_mode = 5
 
-[node name="Item2" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=844634832]
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer/Item1" unique_id=229436694]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = 6.9999924
+offset_right = -23.0
+offset_bottom = -7.1458435
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch_mode = 6
+
+[node name="Item2" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=513552529]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = ExtResource("2_mpwtv")
 texture_disabled = ExtResource("3_cg1um")
-stretch_mode = 0
+stretch_mode = 5
 
-[node name="Item3" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=575179199]
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer/Item2" unique_id=380788037]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = 6.9999924
+offset_right = -23.0
+offset_bottom = -7.1458435
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch_mode = 6
+
+[node name="Item3" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=1362597197]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = SubResource("CompressedTexture2D_vlf2k")
+texture_normal = SubResource("CompressedTexture2D_cg1um")
 texture_disabled = ExtResource("3_cg1um")
-stretch_mode = 0
+stretch_mode = 5
 
-[node name="Item4" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=1038977247]
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer/Item3" unique_id=2037260955]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = 6.9999924
+offset_right = -23.0
+offset_bottom = -7.1458435
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch_mode = 6
+
+[node name="Item4" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=272020539]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = SubResource("CompressedTexture2D_vlf2k")
+texture_normal = SubResource("CompressedTexture2D_cg1um")
 texture_disabled = ExtResource("3_cg1um")
-stretch_mode = 0
+stretch_mode = 5
 
-[node name="Item5" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=102630290]
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer/Item4" unique_id=1462453776]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = 6.9999924
+offset_right = -23.0
+offset_bottom = -7.1458435
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch_mode = 6
+
+[node name="Item5" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=887543936]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = SubResource("CompressedTexture2D_vlf2k")
+texture_normal = SubResource("CompressedTexture2D_cg1um")
 texture_disabled = ExtResource("3_cg1um")
-stretch_mode = 0
+stretch_mode = 5
 
-[node name="Item6" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=1714270444]
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer/Item5" unique_id=224432977]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = 6.9999924
+offset_right = -23.0
+offset_bottom = -7.1458435
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch_mode = 6
+
+[node name="Item6" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=1616081892]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = SubResource("CompressedTexture2D_vlf2k")
+texture_normal = SubResource("CompressedTexture2D_cg1um")
 texture_disabled = ExtResource("3_cg1um")
-stretch_mode = 0
+stretch_mode = 5
 
-[node name="Item7" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=206952438]
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer/Item6" unique_id=1006226768]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = 6.9999924
+offset_right = -23.0
+offset_bottom = -7.1458435
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch_mode = 6
+
+[node name="Item7" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=1742535329]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = SubResource("CompressedTexture2D_vlf2k")
+texture_normal = SubResource("CompressedTexture2D_cg1um")
 texture_disabled = ExtResource("3_cg1um")
-stretch_mode = 0
+stretch_mode = 5
 
-[node name="Item8" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=1786295903]
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer/Item7" unique_id=1341386359]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = 6.9999924
+offset_right = -23.0
+offset_bottom = -7.1458435
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch_mode = 6
+
+[node name="Item8" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=2051904257]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = SubResource("CompressedTexture2D_vlf2k")
+texture_normal = SubResource("CompressedTexture2D_cg1um")
 texture_disabled = ExtResource("3_cg1um")
-stretch_mode = 0
+stretch_mode = 5
 
-[node name="Item9" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=492830669]
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer/Item8" unique_id=1483973196]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = 6.9999924
+offset_right = -23.0
+offset_bottom = -7.1458435
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch_mode = 6
+
+[node name="Item9" type="TextureButton" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer" unique_id=2011069924]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = SubResource("CompressedTexture2D_vlf2k")
+texture_normal = SubResource("CompressedTexture2D_cg1um")
 texture_disabled = ExtResource("3_cg1um")
-stretch_mode = 0
+stretch_mode = 5
 
-[node name="FundoCarrinho" type="Panel" parent="PainelPrincipal/MarginContainer/HBoxContainer" unique_id=952523976]
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/MarginContainer/HBoxContainer/GridContainer/Item9" unique_id=763596302]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = 6.9999924
+offset_right = -23.0
+offset_bottom = -7.1458435
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch_mode = 6
+
+[node name="FundoCarrinho" type="Panel" parent="PainelPrincipal/MarginContainer/HBoxContainer" unique_id=1149466944]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_vlf2k")
+theme_override_styles/panel = SubResource("StyleBoxFlat_8kioa")
 
-[node name="MarginContainer" type="MarginContainer" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho" unique_id=1980123629]
+[node name="MarginContainer" type="MarginContainer" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho" unique_id=170992203]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -187,70 +397,107 @@ theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer" unique_id=595833878]
+[node name="VBoxContainer" type="VBoxContainer" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer" unique_id=1894608458]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="CarrinhoLabel" type="Label" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer" unique_id=1353671409]
+[node name="CarrinhoLabel" type="Label" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer" unique_id=382692295]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.5411765, 0.5411765, 1)
+theme_override_colors/font_color = Color(0.46666667, 0.88235295, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "Carrinho"
 horizontal_alignment = 1
+text_overrun_behavior = 1
 
-[node name="ListaDeItens" type="VBoxContainer" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer" unique_id=772101856]
+[node name="VScrollBar" type="ScrollContainer" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer" unique_id=1237181104]
+custom_minimum_size = Vector2(0, 130)
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
 
-[node name="Item1" type="HBoxContainer" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer/ListaDeItens" unique_id=657840213]
+[node name="ListaDeItens" type="VBoxContainer" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer/VScrollBar" unique_id=758093580]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="Item1" type="HBoxContainer" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer/VScrollBar/ListaDeItens" unique_id=430660908]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="Nome" type="Label" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer/ListaDeItens/Item1" unique_id=1379050924]
+[node name="Nome" type="Label" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer/VScrollBar/ListaDeItens/Item1" unique_id=2107216258]
+custom_minimum_size = Vector2(146.485, 0)
 layout_mode = 2
-size_flags_horizontal = 6
-theme_override_colors/font_color = Color(1, 0.91764706, 0.91764706, 1)
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.9019608, 1, 0.9490196, 1)
 theme_override_font_sizes/font_size = 18
+text_overrun_behavior = 5
 
-[node name="Quantidade" type="Label" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer/ListaDeItens/Item1" unique_id=3424283]
+[node name="Quantidade" type="Label" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer/VScrollBar/ListaDeItens/Item1" unique_id=1931883417]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.91764706, 0.91764706, 1)
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.9019608, 1, 0.9490196, 1)
 theme_override_font_sizes/font_size = 18
+text_overrun_behavior = 1
 
-[node name="Preco" type="Label" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer/ListaDeItens/Item1" unique_id=78564445]
+[node name="Preco" type="Label" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer/VScrollBar/ListaDeItens/Item1" unique_id=1743142142]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.61960787, 0.61960787, 1)
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.4862745, 1, 0.69803923, 1)
 theme_override_font_sizes/font_size = 18
+text_overrun_behavior = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer" unique_id=1210185392]
+[node name="TotalLabel" type="Label" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer" unique_id=1893371443]
 layout_mode = 2
-size_flags_vertical = 6
-alignment = 2
-
-[node name="TotalLabel" type="Label" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer/HBoxContainer" unique_id=972548154]
-layout_mode = 2
-size_flags_horizontal = 8
-theme_override_colors/font_color = Color(1, 0.36078432, 0.36078432, 1)
+theme_override_colors/font_color = Color(0.46666667, 0.88235295, 0, 1)
 theme_override_font_sizes/font_size = 20
-text = "Total:"
+text = "Total: 0.0"
+text_overrun_behavior = 1
 
-[node name="Separação" type="Control" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer" unique_id=837423088]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="BotaoBuy" type="Button" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer" unique_id=1520239654]
+[node name="BotaoBuy" type="Button" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer" unique_id=1792092060]
 custom_minimum_size = Vector2(140, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 2
-theme_override_colors/font_color = Color(0.9490196, 0.8627451, 0.8627451, 1)
-theme_override_colors/font_focus_color = Color(0.9490196, 0.8627451, 0.8627451, 1)
-theme_override_colors/font_pressed_color = Color(0.9490196, 0.8627451, 0.8627451, 1)
-theme_override_colors/font_hover_color = Color(0.9490196, 0.8627451, 0.8627451, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_wyvk8")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_diycm")
-theme_override_styles/hover = SubResource("StyleBoxFlat_52frj")
+theme_override_colors/font_color = Color(0.19541499, 0.33910564, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.59064007, 0.86021656, 0, 1)
+theme_override_colors/font_hover_color = Color(0.3821985, 0.8935927, 1.92523e-06, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.57706356, 0.98977023, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_y80uj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4cepl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6pp5o")
 text = "Buy"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=970890079]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.10980392, 0, 0, 0.38431373)
+
+[node name="Label" type="Label" parent="ColorRect" unique_id=1044639032]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -139.0
+offset_top = -34.5
+offset_right = 139.0
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Sem Saldo"
+label_settings = SubResource("LabelSettings_mpwtv")
+horizontal_alignment = 3
+vertical_alignment = 3
+uppercase = true
 
 [connection signal="pressed" from="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer/BotaoBuy" to="." method="_on_botao_buy_pressed"]

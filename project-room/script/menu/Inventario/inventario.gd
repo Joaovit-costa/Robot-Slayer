@@ -103,6 +103,45 @@ func adicionar_item(nome: String, raridade: int, quantidade: int = 1, id_slot: i
 	return true
 
 
+# Verifica se uma compra inteira cabe na mochila sem alterar o inventario atual.
+func tem_espaco_para_itens(itens_compra: Array[Dictionary]) -> bool:
+	var slots_ocupados := {}
+	var pilhas_mochila := {}
+
+	for item in inventario:
+		var id_slot := int(item.get("idSlot", -1))
+		if id_slot in SLOTS_MOCHILA:
+			slots_ocupados[id_slot] = true
+		if str(item.get("tipo", "")) == SLOT_INVENTARIO:
+			var chave := _criar_chave_pilha(
+				str(item.get("nome", "")),
+				int(item.get("raridade", ItensData.Raridade.COMUM))
+			)
+			pilhas_mochila[chave] = true
+
+	for item_compra in itens_compra:
+		var nome := str(item_compra.get("nome", ""))
+		var raridade := int(item_compra.get("raridade", ItensData.Raridade.COMUM))
+		var dados_item := buscar_info_item(nome)
+		var tipo_final := _resolver_tipo_item(dados_item)
+		if tipo_final.is_empty():
+			return false
+
+		var chave := _criar_chave_pilha(nome, raridade)
+		if tipo_final == SLOT_INVENTARIO and pilhas_mochila.has(chave):
+			continue
+
+		var slot_livre := _pegar_primeiro_slot_livre_simulado(slots_ocupados)
+		if slot_livre == -1:
+			return false
+
+		slots_ocupados[slot_livre] = true
+		if tipo_final == SLOT_INVENTARIO:
+			pilhas_mochila[chave] = true
+
+	return true
+
+
 # Remove um item por nome/slot e desconta quantidade quando for empilhavel.
 func remover_item(nome: String, quantidade: int = 1, id_slot: int = -1) -> bool:
 	var indice := _encontrar_indice_item(nome, id_slot)
@@ -213,6 +252,10 @@ func _buscar_item_empilhavel(nome: String, raridade: int) -> Dictionary:
 	return {}
 
 
+func _criar_chave_pilha(nome: String, raridade: int) -> String:
+	return nome + "|" + str(raridade)
+
+
 # Encontra o indice interno de um item por nome e, opcionalmente, por slot.
 func _encontrar_indice_item(nome: String, id_slot: int = -1) -> int:
 	for i in range(inventario.size()):
@@ -229,6 +272,13 @@ func _encontrar_indice_item(nome: String, id_slot: int = -1) -> int:
 func _pegar_primeiro_slot_livre(slots_validos: Array) -> int:
 	for id_slot in slots_validos:
 		if get_item_no_slot(id_slot).is_empty():
+			return id_slot
+	return -1
+
+
+func _pegar_primeiro_slot_livre_simulado(slots_ocupados: Dictionary) -> int:
+	for id_slot in SLOTS_MOCHILA:
+		if not slots_ocupados.has(id_slot):
 			return id_slot
 	return -1
 
