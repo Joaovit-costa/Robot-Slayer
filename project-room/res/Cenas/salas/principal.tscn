@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dw5vop8713vt3" path="res://res/Cenas/entidades/inimigo.tscn" id="1_lq783"]
 [ext_resource type="PackedScene" uid="uid://crm7vecx3vhjy" path="res://res/Cenas/entidades/protagonista.tscn" id="2_p8hvh"]
+[ext_resource type="PackedScene" uid="uid://mnt8tq7ix0xp" path="res://res/Cenas/menu/status/menu_status.tscn" id="3_w6y3o"]
 
 [node name="sala" type="Node2D" unique_id=1911979741]
 
@@ -19,3 +20,9 @@ protagonista_ref = NodePath("../Protagonista")
 position = Vector2(173, 291)
 vitalidade = 5
 protagonista_ref = NodePath("../Protagonista")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2119358101]
+
+[node name="MenuStatus" parent="CanvasLayer" unique_id=2147151198 instance=ExtResource("3_w6y3o")]
+offset_left = 1.0
+offset_right = 1.0

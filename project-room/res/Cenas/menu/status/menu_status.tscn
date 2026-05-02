@@ -21,14 +21,17 @@ corner_radius_bottom_left = 22
 corner_detail = 1
 shadow_size = 1
 
-[node name="MenuStatus" type="Control" unique_id=2147151198]
+[node name="MenuStatus" type="Control" unique_id=2147151198 groups=["menu_status"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_42uti")
+metadata/_edit_use_anchors_ = true
 
 [node name="FundoEscuro" type="ColorRect" parent="." unique_id=1379210983]
 layout_mode = 1
@@ -37,7 +40,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+color = Color(0, 0, 0, 0.5)
 
 [node name="PainelPrincipal" type="Panel" parent="." unique_id=162799037]
 layout_mode = 1
@@ -50,6 +53,7 @@ offset_top = 86.0
 offset_right = 512.016
 offset_bottom = 193.944
 grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_wynuo")
 
 [node name="BotaoFechar" type="TextureButton" parent="PainelPrincipal" unique_id=134746425]

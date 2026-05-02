@@ -38,3 +38,4 @@ func subirNivel(player):
 	player.experienciaNecessaria = int(player.nivel * 1.2 + 40)
 	player.barraExperiencia.max_value = player.experienciaNecessaria
 	player.pontosExperiencia += 3
+	player.pontosStatus += 3

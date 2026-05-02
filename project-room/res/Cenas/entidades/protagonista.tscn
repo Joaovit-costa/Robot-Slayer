@@ -88,7 +88,7 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[node name="Protagonista" type="CharacterBody2D" unique_id=369473398]
+[node name="Protagonista" type="CharacterBody2D" unique_id=369473398 groups=["player"]]
 collision_mask = 4
 script = ExtResource("1_uw4sx")
 
