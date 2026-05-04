@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://diam4v3uitj8p"]
+
+[ext_resource type="Script" uid="uid://de7cp0sbdo23y" path="res://script/som/sound_manager.gd" id="1_g5net"]
+
+[sub_resource type="AudioStreamMP3" id="AudioStreamMP3_a0fet"]
+loop = true
+
+[node name="SoundManager" type="Node" unique_id=516285828]
+script = ExtResource("1_g5net")
+
+[node name="Musica" type="AudioStreamPlayer" parent="." unique_id=832701181]
+stream = SubResource("AudioStreamMP3_a0fet")
