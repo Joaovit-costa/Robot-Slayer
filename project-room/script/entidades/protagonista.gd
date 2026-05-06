@@ -44,9 +44,18 @@ var inventario_ref: Inventario
 
 
 # ============ MUSICA ============
-var musica_normal = preload("res://res/sons/Musica_Sala.mp3")
-var musica_low_hp = preload("res://res/sons/Música_um_coração.mp3")
+var musica_normal = preload("res://res/sons/Musica_Sala.mp3") # <-- confere caminho
+var musica_low_hp = preload("res://res/sons/Música_um_coração.mp3") # <-- cuidado com acento
 var em_perigo: bool = false
+# =================================
+
+
+# ============ SFX ============
+var som_ataque = preload("res://res/sons/Attack_Sound.mp3") # <-- confere caminho
+var som_andar = preload("res://res/sons/Running_Sound.mp3") # <-- confere caminho
+
+var tempo_passo: float = 0.0
+var intervalo_passo: float = 0.7
 # =================================
 
 
@@ -85,37 +94,49 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	# MOVIMENTO X
+	# ============ MOVIMENTO X ============
 	var direction_x: float = Input.get_axis("ui_left", "ui_right")
 	if direction_x != 0.0:
 		velocity.x = direction_x * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0.0, SPEED)
+	# =====================================
 
-	# MOVIMENTO Y
+	# ============ MOVIMENTO Y ============
 	var direction_y: float = Input.get_axis("ui_up", "ui_down")
 	if direction_y != 0.0:
 		velocity.y = direction_y * SPEED
 	else:
 		velocity.y = move_toward(velocity.y, 0.0, SPEED)
+	# =====================================
 
-	# ATAQUE
+	# ============ VERIFICAR MOVIMENTO ============
+	var esta_andando = velocity.length() > 10
+	# =============================================
+
+	# ============ ATAQUE ============
 	for alvo in alvos:
 		if Input.is_action_just_pressed("ui_attack") and cooldown <= 0.0:
 			if alvo != null and alvo.inRange:
 				cooldown = mecanicas.atacar(alvo, cooldowns, forca, multiplicadores)
+
+				# 🎧 SOM DE ATAQUE
+				SoundManager.tocar_sfx(som_ataque, 8)
+
 				alvo.cooldownDaCura = 15
 				if alvo.vitalidade <= 0:
 					_acumular_drops_do_inimigo(alvo)
 					alvos.erase(alvo)
 					sala.move_child(alvo, 0)
 				return
+	# =================================
 
-	# COOLDOWN
+	# ============ COOLDOWN ============
 	if cooldown > 0.0:
 		cooldown -= delta
+	# =================================
 
-	# CURA
+	# ============ CURAR ==============
 	if Input.is_action_pressed("ui_healing") and cooldownDaCura <= 0 and vidaInicial > vitalidade:
 		mecanicas.cura(self, 10 * 60 / (max(inteligencia / 20, 1)))
 		barraCura.max_value = cooldownDaCura
@@ -124,8 +145,9 @@ func _physics_process(delta: float) -> void:
 	elif cooldownDaCura > 0:
 		cooldownDaCura -= delta
 		barraCura.value = cooldownDaCura
+	# =================================
 
-	# FINAL DA SALA
+	# ===== AO MATAR TODOS DA SALA =====
 	if len(alvos) <= 0 and not dropsRecebido:
 		experiencia += experienciaDropada
 		var moedasDropadas = randi_range(5, 15)
@@ -133,15 +155,26 @@ func _physics_process(delta: float) -> void:
 		label_moeda.text = str(moedas)
 		_entregar_drops_pendentes()
 		dropsRecebido = true
+	# ==================================
 
-	# LEVEL UP
+	# ========= SUBIR DE NIVEL =========
 	if experiencia >= experienciaNecessaria:
 		mecanicas.subirNivel(self)
 		label_nivel.text = str("Lv. ", nivel)
 	barraExperiencia.value = experiencia
+	# ==================================
 
-	# MOVIMENTO FINAL
+	# ============ MOVIMENTO FINAL ============
 	move_and_slide()
+	# ========================================
+
+	# ============ SOM DE PASSO ============
+	if esta_andando:
+		SoundManager.iniciar_passo(som_andar)
+	else:
+		SoundManager.parar_passo()
+	# ======================================
+	
 
 	# 🎧 VERIFICAR VIDA (MUSICA)
 	verificar_vida()

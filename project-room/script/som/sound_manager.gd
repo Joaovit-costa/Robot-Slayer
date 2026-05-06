@@ -1,14 +1,18 @@
 extends Node
 
 @onready var musica = $Musica
+@onready var passo = $SFX/Passo
+
+var passo_tocando: bool = false
+
 
 var musica_atual: AudioStream = null
 
+# ================= MUSICA =================
 func tocar_musica(stream: AudioStream):
 	if stream == null:
 		return
 
-	# Evita reiniciar a mesma música
 	if musica_atual == stream:
 		return
 
@@ -20,3 +24,40 @@ func tocar_musica(stream: AudioStream):
 func parar_musica():
 	musica.stop()
 	musica_atual = null
+# =========================================
+
+
+# ================= SFX ====================
+func tocar_sfx(stream: AudioStream, volume_db: float = 0):
+	if stream == null:
+		return
+
+	var player = AudioStreamPlayer.new()
+	add_child(player)
+
+	player.stream = stream
+	player.volume_db = volume_db # 🔊 controle de volume
+
+	player.play()
+
+	player.finished.connect(func():
+		player.queue_free()
+	)
+# ====================================
+
+func iniciar_passo(stream: AudioStream):
+	if passo_tocando:
+		return
+
+	passo.stream = stream
+	passo.volume_db = 10
+	passo.play()
+	passo_tocando = true
+
+
+func parar_passo():
+	if not passo_tocando:
+		return
+
+	passo.stop()
+	passo_tocando = false
