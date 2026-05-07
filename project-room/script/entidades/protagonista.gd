@@ -13,6 +13,8 @@ class_name protagonista
 
 @onready var Mecanicas = load("res://script/data/Mecanicas.gd")
 @onready var mecanicas = Mecanicas.new()
+@onready var anim: AnimatedSprite2D = $AnimatedSprite2D
+
 # =====================================
 
 
@@ -28,6 +30,7 @@ var nivel: int = 1
 var moedas: int = 0
 
 const SPEED: float = 220
+var ultima_direcao: String = "down"
 var experienciaNecessaria = int(nivel * 1.2 + 40)
 
 # Sistema de cura
@@ -112,6 +115,7 @@ func _physics_process(delta: float) -> void:
 
 	# ============ VERIFICAR MOVIMENTO ============
 	var esta_andando = velocity.length() > 10
+	atualizar_animacao(direction_x, direction_y)
 	# =============================================
 
 	# ============ ATAQUE ============
@@ -236,6 +240,44 @@ func _entregar_drops_pendentes() -> void:
 
 	drops_pendentes.clear()
 
+func atualizar_animacao(direction_x: float, direction_y: float) -> void:
+
+	if direction_x == 0 and direction_y == 0:
+
+		match ultima_direcao:
+			"up":
+				anim.play("idle_up")
+
+			"down":
+				anim.play("idle_down")
+
+			"left":
+				anim.play("idle_left")
+
+			"right":
+				anim.play("idle_right")
+
+	else:
+
+		if abs(direction_x) > abs(direction_y):
+
+			if direction_x > 0:
+				anim.play("walk_right")
+				ultima_direcao = "right"
+
+			else:
+				anim.play("walk_left")
+				ultima_direcao = "left"
+
+		else:
+
+			if direction_y > 0:
+				anim.play("walk_down")
+				ultima_direcao = "down"
+
+			else:
+				anim.play("walk_up")
+				ultima_direcao = "up"
 
 func _on_area_2d_body_entered(_body: Node) -> void:
 	pass
