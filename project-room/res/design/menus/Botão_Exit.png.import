@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byptqyeoapnxr"
-path="res://.godot/imported/pixil-frame-0 (1).png-a6c9fc6742ffe26809d9496633dafbb5.ctex"
+uid="uid://cispo7mtp8hpm"
+path="res://.godot/imported/Botão_Exit.png-90cc22020454a1119158f7ac2142f90c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://res/design/Design-Robot Slayer/sprits/pixil-frame-0 (1).png"
-dest_files=["res://.godot/imported/pixil-frame-0 (1).png-a6c9fc6742ffe26809d9496633dafbb5.ctex"]
+source_file="res://res/design/menus/Botão_Exit.png"
+dest_files=["res://.godot/imported/Botão_Exit.png-90cc22020454a1119158f7ac2142f90c.ctex"]
 
 [params]
 
