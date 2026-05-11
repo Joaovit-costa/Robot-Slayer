@@ -669,6 +669,7 @@ scale = Vector2(1.5, 1.5)
 texture = SubResource("CompressedTexture2D_gsa6n")
 hframes = 4
 vframes = 2
+region_enabled = true
 region_rect = Rect2(0, 0, 100, 100)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=198762258]

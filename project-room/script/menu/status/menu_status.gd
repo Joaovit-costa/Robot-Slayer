@@ -17,7 +17,6 @@ var player_ref: protagonista
 func _ready():
 	add_to_group("menu_status")
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	hide()
 
 
 func configurar(player):

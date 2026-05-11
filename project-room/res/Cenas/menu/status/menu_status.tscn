@@ -33,25 +33,17 @@ size_flags_vertical = 3
 script = ExtResource("1_42uti")
 metadata/_edit_use_anchors_ = true
 
-[node name="FundoEscuro" type="ColorRect" parent="." unique_id=1379210983]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.5)
-
 [node name="PainelPrincipal" type="Panel" parent="." unique_id=162799037]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.135
-anchor_right = 0.342
-anchor_bottom = 0.497
-offset_left = -29.520004
-offset_top = 86.0
-offset_right = 512.016
-offset_bottom = 193.944
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -390.0
+offset_top = -215.0
+offset_right = 390.0
+offset_bottom = 215.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_wynuo")
@@ -60,10 +52,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_wynuo")
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.9179487
-anchor_top = 0.041860465
-anchor_right = 0.9948718
-anchor_bottom = 0.18139535
+anchor_left = 0.8974359
+anchor_top = 0.04418605
+anchor_right = 0.974359
+anchor_bottom = 0.18372093
 offset_right = -20.0
 offset_bottom = -20.0
 grow_horizontal = 0
@@ -73,6 +65,7 @@ size_flags_vertical = 0
 texture_normal = ExtResource("2_ony8u")
 texture_pressed = ExtResource("2_ony8u")
 texture_hover = ExtResource("2_ony8u")
+stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
 [node name="Margem" type="MarginContainer" parent="PainelPrincipal" unique_id=213567245]
