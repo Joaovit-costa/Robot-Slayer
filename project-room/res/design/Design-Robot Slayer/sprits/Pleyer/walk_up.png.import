@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dla25nol0ej86"
-path="res://.godot/imported/vanilla ataque.png-89cc9cb3af50a5d4ce98b246114e973f.ctex"
+uid="uid://c46x8r0bxdwdq"
+path="res://.godot/imported/walk_up.png-1c37d3989b1a3b03eb93406537189055.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://res/design/Design-Robot Slayer/sprits/vanilla ataque.png"
-dest_files=["res://.godot/imported/vanilla ataque.png-89cc9cb3af50a5d4ce98b246114e973f.ctex"]
+source_file="res://res/design/Design-Robot Slayer/sprits/Pleyer/walk_up.png"
+dest_files=["res://.godot/imported/walk_up.png-1c37d3989b1a3b03eb93406537189055.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tuvs3rpcsuum"
-path="res://.godot/imported/ataque fr.png-0220e1145b446dbbe4d1d2530ccf1501.ctex"
+uid="uid://cbqmsmc45nyt3"
+path="res://.godot/imported/player.png-60a4e69b481bea4268f6ad8d609717df.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://res/design/Design-Robot Slayer/sprits/ataque fr.png"
-dest_files=["res://.godot/imported/ataque fr.png-0220e1145b446dbbe4d1d2530ccf1501.ctex"]
+source_file="res://res/design/Design-Robot Slayer/sprits/player.png"
+dest_files=["res://.godot/imported/player.png-60a4e69b481bea4268f6ad8d609717df.ctex"]
 
 [params]
 
