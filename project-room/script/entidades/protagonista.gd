@@ -13,7 +13,12 @@ class_name protagonista
 
 @onready var Mecanicas = load("res://script/data/Mecanicas.gd")
 @onready var mecanicas = Mecanicas.new()
-@onready var anim: AnimatedSprite2D = $AnimatedSprite2D
+
+# ============ ANIMACAO ============
+@onready var animation_tree: AnimationTree = $AnimationTree
+@onready var animation_state = animation_tree.get("parameters/playback")
+var direcao_animacao: Vector2 = Vector2.DOWN
+# ==================================
 
 # =====================================
 
@@ -70,6 +75,11 @@ var cooldown: float = 0.0
 
 
 func _ready() -> void:
+	
+	# ============ ANIMACAO ============
+	animation_tree.active = true
+	# ==================================
+	
 	randomize()
 	vitalidade *= 5
 	vidaInicial = vitalidade
@@ -116,7 +126,33 @@ func _physics_process(delta: float) -> void:
 	# ============ VERIFICAR MOVIMENTO ============
 	var esta_andando = velocity.length() > 10
 	# =============================================
+	
+	# ============ DIRECAO ANIMACAO ============
+	if velocity.length() > 0:
+		direcao_animacao = velocity.normalized()
+	# ==========================================
+	
+	# ============ DIRECAO ============
+	if direction_x > 0:
+		ultima_direcao = "right"
+	elif direction_x < 0:
+		ultima_direcao = "left"
+	elif direction_y > 0:
+		ultima_direcao = "down"
+	elif direction_y < 0:
+		ultima_direcao = "up"
+	# =================================
+	
+	# ============ ANIMACAO ============
+	if esta_andando:
+		animation_state.travel("Walk")
+	else:
+		animation_state.travel("Idle")
 
+	animation_tree.set("parameters/Idle/blend_position", direcao_animacao)
+	animation_tree.set("parameters/Walk/blend_position", direcao_animacao)
+	# ==================================
+	
 	# ============ ATAQUE ============
 	for alvo in alvos:
 		if Input.is_action_just_pressed("ui_attack") and cooldown <= 0.0:

@@ -8,6 +8,10 @@ var passo_tocando: bool = false
 
 var musica_atual: AudioStream = null
 
+func _ready() -> void:
+	passo.process_mode = Node.PROCESS_MODE_PAUSABLE
+	musica.process_mode = Node.PROCESS_MODE_PAUSABLE
+
 # ================= MUSICA =================
 func tocar_musica(stream: AudioStream):
 	if stream == null:
@@ -46,6 +50,9 @@ func tocar_sfx(stream: AudioStream, volume_db: float = 0):
 # ====================================
 
 func iniciar_passo(stream: AudioStream):
+	if get_tree().paused:
+		return
+
 	if passo_tocando:
 		return
 

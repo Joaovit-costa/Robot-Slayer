@@ -19,5 +19,6 @@ volume_db = -5.0
 [node name="SFX" type="Node" parent="." unique_id=590992796]
 
 [node name="Passo" type="AudioStreamPlayer" parent="SFX" unique_id=1599728691]
+process_mode = 1
 stream = SubResource("AudioStreamMP3_ffphx")
 volume_db = 10.0
