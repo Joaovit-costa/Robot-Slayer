@@ -10,13 +10,16 @@ data = PackedByteArray("SUQzAwAAAAAAGFRYWFgAAAAOAAAAVFhYWABpc282bXA0Mf/7kGQAAAAA
 loop = true
 
 [node name="SoundManager" type="Node" unique_id=516285828]
+process_mode = 1
 script = ExtResource("1_g5net")
 
 [node name="Musica" type="AudioStreamPlayer" parent="." unique_id=832701181]
+process_mode = 1
 stream = SubResource("AudioStreamMP3_a0fet")
 volume_db = -5.0
 
 [node name="SFX" type="Node" parent="." unique_id=590992796]
+process_mode = 1
 
 [node name="Passo" type="AudioStreamPlayer" parent="SFX" unique_id=1599728691]
 process_mode = 1
