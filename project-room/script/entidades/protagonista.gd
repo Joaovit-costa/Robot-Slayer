@@ -65,8 +65,8 @@ var em_perigo: bool = false
 
 
 # ============ SFX ============
-var som_ataque = preload("res://res/sons/Attack_Sound.mp3")
-var som_andar = preload("res://res/sons/Running_Sound.mp3")
+var som_ataque = preload("res://res/sons/Som_Ataque.mp3")
+var som_andar = preload("res://res/sons/Som andando.mp3")
 # =================================
 
 # ============ ATAQUE ============
