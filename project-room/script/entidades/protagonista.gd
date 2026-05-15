@@ -4,7 +4,7 @@ class_name protagonista
 # ============ REFERENCIAS ============
 @export var alvos: Array[inimigo]
 
-@onready var alcance: Area2D = $Area2D
+@onready var alcance: Area2D = $Sprite2D/Area2D
 @onready var barraVida: ProgressBar = $CanvasLayer/ProgressBar
 @onready var sala: Node2D = $".."
 @onready var barraCura: ProgressBar = $CanvasLayer/barraDeCura
@@ -116,57 +116,24 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-
-	# ============ MOVIMENTO X ============
-	var direction_x: float = Input.get_axis(
-		"ui_left",
-		"ui_right"
+	print(alcance.get_overlapping_areas())
+	# ============ MOVIMENTO ============
+	var direcao = Vector2(
+		Input.get_axis("ui_left", "ui_right"),
+		Input.get_axis("ui_up", "ui_down")
 	)
 
-	if direction_x != 0.0:
-		velocity.x = direction_x * SPEED
-	else:
-		velocity.x = move_toward(
-			velocity.x,
-			0.0,
-			SPEED
-		)
-	# =====================================
+	if direcao != Vector2.ZERO:
+		direcao = direcao.normalized()
 
-
-	# ============ MOVIMENTO Y ============
-	var direction_y: float = Input.get_axis(
-		"ui_up",
-		"ui_down"
-	)
-
-	if direction_y != 0.0:
-		velocity.y = direction_y * SPEED
-	else:
-		velocity.y = move_toward(
-			velocity.y,
-			0.0,
-			SPEED
-		)
-	# =====================================
-
-
-	# ============ VERIFICAR MOVIMENTO ============
-	var esta_andando = (
-		Input.is_action_pressed("ui_left")
-		or Input.is_action_pressed("ui_right")
-		or Input.is_action_pressed("ui_up")
-		or Input.is_action_pressed("ui_down")
-	)
-	# =============================================
-
+	velocity = direcao * SPEED
+# ===================================
 
 	# ============ DIRECAO ANIMACAO ============
 	if velocity.length() > 0:
 		direcao_animacao = velocity.normalized()
 	# ==========================================
-
-
+	
 	# ============ ATAQUE ============
 	if Input.is_action_just_pressed("ui_attack") and cooldown <= 0.0:
 
@@ -267,7 +234,7 @@ func _physics_process(delta: float) -> void:
 	if atacando:
 		animation_state.travel("Attack")
 
-	elif esta_andando:
+	elif velocity.length() > 5:
 		animation_state.travel("Walk")
 
 	else:
@@ -385,7 +352,6 @@ func _entregar_drops_pendentes() -> void:
 		)
 
 	drops_pendentes.clear()
-
 
 func _on_area_2d_body_entered(_body: Node) -> void:
 	pass

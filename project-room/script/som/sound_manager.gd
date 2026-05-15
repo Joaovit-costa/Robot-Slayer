@@ -68,7 +68,7 @@ func iniciar_passo(stream: AudioStream):
 
 	if not passo.playing:
 
-		passo.volume_db = -5
+		passo.volume_db = 5
 
 		if passo.stream is AudioStreamWAV:
 			(passo.stream as AudioStreamWAV).loop_mode = AudioStreamWAV.LOOP_FORWARD

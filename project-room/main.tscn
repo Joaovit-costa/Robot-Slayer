@@ -110,7 +110,6 @@ script = SubResource("GDScript_1bvp3")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1889399062]
 layer = 2
-visible = false
 
 [node name="MeshInstance2D" type="ColorRect" parent="CanvasLayer" unique_id=645080566]
 modulate = Color(0, 0, 0, 0.44705883)
