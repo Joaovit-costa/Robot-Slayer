@@ -5,6 +5,7 @@ class_name protagonista
 @export var alvos: Array[inimigo]
 
 @onready var alcance: Area2D = $Sprite2D/Area2D
+@onready var hitbox_ataque: CollisionShape2D = $Sprite2D/Area2D/CollisionShape2D
 @onready var barraVida: ProgressBar = $CanvasLayer/ProgressBar
 @onready var sala: Node2D = $".."
 @onready var barraCura: ProgressBar = $CanvasLayer/barraDeCura
@@ -44,6 +45,9 @@ var cooldownDaCura: float = 0.0
 
 # Sistema de ataque
 var atacando: bool = false
+var tempo_ataque_restante: float = 0.0
+var indice_ataque_atual: int = 0
+var inimigos_acertados_no_ataque: Array[inimigo] = []
 
 # sistema de drop
 var experienciaDropada: int = 0
@@ -73,6 +77,7 @@ var som_andar = preload("res://res/sons/Som andando.mp3")
 var cooldowns: Array[float] = [1.0, 1.3, 1.7]
 var multiplicadores: Array[float] = [1.0, 1.2, 1.5]
 var cooldown: float = 0.0
+const DURACAO_ANIMACAO_ATAQUE: float = 0.9
 # =================================
 
 
@@ -109,6 +114,7 @@ func _ready() -> void:
 
 	# ============ ANIMACAO ============
 	animation_tree.active = true
+	hitbox_ataque.disabled = true
 	# ==================================
 
 	# 🎧 MUSICA INICIAL
@@ -116,7 +122,6 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	print(alcance.get_overlapping_areas())
 	# ============ MOVIMENTO ============
 	var direcao = Vector2(
 		Input.get_axis("ui_left", "ui_right"),
@@ -127,57 +132,32 @@ func _physics_process(delta: float) -> void:
 		direcao = direcao.normalized()
 
 	velocity = direcao * SPEED
-# ===================================
+	# ===================================
 
 	# ============ DIRECAO ANIMACAO ============
 	if velocity.length() > 0:
 		direcao_animacao = velocity.normalized()
 	# ==========================================
 	
-	# ============ ATAQUE ============
-	if Input.is_action_just_pressed("ui_attack") and cooldown <= 0.0:
-
-		for alvo in alvos:
-
-			if alvo != null and alvo.inRange:
-
-				atacando = true
-
-				cooldown = mecanicas.atacar(
-					alvo,
-					cooldowns,
-					forca,
-					multiplicadores
-				)
-
-				# 🎧 SOM DE ATAQUE
-				SoundManager.tocar_sfx(som_ataque, 8)
-
-				alvo.cooldownDaCura = 15
-
-				if alvo.vitalidade <= 0:
-
-					_acumular_drops_do_inimigo(alvo)
-
-					alvos.erase(alvo)
-
-					sala.move_child(alvo, 0)
-
-				break
+# ============ ATAQUE ============
+	if Input.is_action_just_pressed("ui_attack") and cooldown <= 0.0 and not atacando:
+		iniciar_ataque()
+		
+		
+	if atacando:
+		tempo_ataque_restante -= delta
+		if not hitbox_ataque.disabled:
+			executar_ataque()
+		
+		if tempo_ataque_restante <= 0.0:	
+			finalizar_ataque()
 	# =================================
-
-
+	
+	
 	# ============ COOLDOWN ============
 	if cooldown > 0.0:
 		cooldown -= delta
 	# =================================
-
-
-	# ============ RESET ATAQUE ============
-	if atacando and cooldown <= 0:
-		atacando = false
-	# ======================================
-
 
 	# ============ CURAR ==============
 	if (
@@ -201,8 +181,7 @@ func _physics_process(delta: float) -> void:
 		cooldownDaCura -= delta
 		barraCura.value = cooldownDaCura
 	# =================================
-
-
+	
 	# ===== AO MATAR TODOS DA SALA =====
 	if len(alvos) <= 0 and not dropsRecebido:
 
@@ -353,5 +332,60 @@ func _entregar_drops_pendentes() -> void:
 
 	drops_pendentes.clear()
 
-func _on_area_2d_body_entered(_body: Node) -> void:
-	pass
+
+func iniciar_ataque() -> void:
+	atacando = true
+	tempo_ataque_restante = DURACAO_ANIMACAO_ATAQUE
+	indice_ataque_atual = randi() % cooldowns.size()
+	cooldown = cooldowns[indice_ataque_atual]
+	inimigos_acertados_no_ataque.clear()
+	hitbox_ataque.set_deferred("disabled", true)
+
+	# 🎧 SOM DE ATAQUE
+	SoundManager.tocar_sfx(som_ataque, 8)
+
+
+func executar_ataque() -> void:
+	for body in alcance.get_overlapping_bodies():
+		_aplicar_dano_da_hitbox(body)
+
+
+func finalizar_ataque() -> void:
+	atacando = false
+	tempo_ataque_restante = 0.0
+	inimigos_acertados_no_ataque.clear()
+	hitbox_ataque.set_deferred("disabled", true)
+
+
+func _aplicar_dano_da_hitbox(body: Node) -> void:
+	if not atacando:
+		return
+
+	if hitbox_ataque.disabled:
+		return
+
+	var alvo := body as inimigo
+	if alvo == null:
+		return
+
+	if alvo not in alvos or alvo in inimigos_acertados_no_ataque:
+		return
+
+	inimigos_acertados_no_ataque.append(alvo)
+
+	var dano: float = max(
+		forca * multiplicadores[indice_ataque_atual] - alvo.defesa,
+		1
+	)
+	alvo.vitalidade = max(alvo.vitalidade - dano, 0)
+	alvo.barraVida.value = alvo.vitalidade
+	alvo.cooldownDaCura = 15
+
+	if alvo.vitalidade <= 0:
+		_acumular_drops_do_inimigo(alvo)
+		alvos.erase(alvo)
+		sala.move_child(alvo, 0)
+
+
+func _on_area_2d_body_entered(body: Node) -> void:
+	_aplicar_dano_da_hitbox(body)
