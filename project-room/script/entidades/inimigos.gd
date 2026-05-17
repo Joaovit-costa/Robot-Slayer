@@ -13,6 +13,10 @@ var vidaInicial: int
 @export var cooldowns: Array[float] = [0.8, 1.2, 1.6]
 @export var multiplicadores: Array[float] = [1.0, 1.3, 1.5]
 
+@export_group("animacao")
+@export var animacao_idle_down: StringName = &"idle_down"
+@export_group("")
+
 # Drops do inimigo
 @export_group("drop")
 @export var experiencia_min: int = 0
@@ -35,10 +39,12 @@ var morte_processada := false
 
 # ============ REFERENCIAS ============
 @export var protagonista_ref: protagonista
-@onready var meshInstance: MeshInstance2D = $MeshInstance2D
-@onready var alcance: Area2D = $Area2D
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var alcance: Area2D = $Sprite2D/Area2D
 @onready var barraVida: ProgressBar = $ProgressBar
 @onready var colision: CollisionShape2D = $CollisionShape2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
 
 @onready var Mecanicas = load("res://script/data/Mecanicas.gd")
 @onready var mecanicas = Mecanicas.new()
@@ -48,6 +54,7 @@ var morte_processada := false
 # ============ CONTROLE ============
 var cooldown: float = 0.0
 var inRange: bool = false
+var direcao_animacao: Vector2 = Vector2.DOWN
 # ==================================
 
 
@@ -70,6 +77,10 @@ func _ready() -> void:
 	# ======= Definir os itens dropados =======
 	drops_escolhidos = _sortear_drops()
 	# =========================================
+	
+	# ============ ANIMACAO ============
+	_configurar_animacao()
+	# ==================================
 
 
 func _on_area_body_entered(body: Node) -> void:
@@ -107,6 +118,7 @@ func _physics_process(delta: float) -> void:
 		direcao.x = mecanicas.ajustar_eixo(direcao.x)
 		direcao.y = mecanicas.ajustar_eixo(direcao.y)
 		velocity = direcao * velocidade
+		direcao_animacao = direcao
 	else:
 		velocity.x = move_toward(velocity.x, 0.0, velocidade)
 		velocity.y = move_toward(velocity.y, 0.0, velocidade)
@@ -133,11 +145,34 @@ func _physics_process(delta: float) -> void:
 	elif cooldownDaCura > 0:
 		cooldownDaCura -= delta
 	# =================================
+	
+	# ============ ANIMACAO ============
+	_atualizar_animacao()
+	# ==================================
+
 
 	# ============ MOVIMENTO FINAL ============
 	if not inRange:
 		move_and_slide()
 	# ========================================
+
+# Por enquanto o inimigo so tem a animacao idle_down.
+# Quando as animacoes Walk/Attack e outras direcoes existirem, a troca de estados
+# pode voltar a ser feita pelo AnimationTree igual ao protagonista.
+func _configurar_animacao() -> void:
+	_tocar_idle_down()
+
+
+func _atualizar_animacao() -> void:
+	_tocar_idle_down()
+
+
+func _tocar_idle_down() -> void:
+	if not animation_player.has_animation(animacao_idle_down):
+		return
+
+	if animation_player.current_animation != animacao_idle_down or not animation_player.is_playing():
+		animation_player.play(animacao_idle_down)
 
 
 # Devolve uma copia dos drops ja sorteados para o protagonista coletar.
@@ -151,7 +186,7 @@ func _processar_morte() -> void:
 		return
 
 	morte_processada = true
-	meshInstance.modulate = Color(0.81, 0.0, 0.228)
+	sprite.modulate = Color(0.81, 0.0, 0.228)
 	barraVida.queue_free()
 	alcance.queue_free()
 	colision.queue_free()

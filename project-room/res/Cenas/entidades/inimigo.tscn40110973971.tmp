@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://dw5vop8713vt3"]
+
+[ext_resource type="Script" uid="uid://bfxhp256xsiuk" path="res://script/entidades/inimigos.gd" id="1_mos2c"]
+[ext_resource type="Script" uid="uid://b547wbkrtg5cj" path="res://script/data/dataDrops.gd" id="2_55jdp"]
+
+[sub_resource type="Resource" id="Resource_55jdp"]
+script = ExtResource("2_55jdp")
+nome = "teste"
+quantidade = 3
+chance_comum = 50
+chance_incomum = 30
+chance_raro = 10
+chance_epico = 5
+metadata/_custom_type_script = "uid://b547wbkrtg5cj"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vhucu"]
+radius = 28.75978
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_btc3j"]
+radius = 56.5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vhucu"]
+bg_color = Color(0.10266317, 0.0001457339, 0.20196512, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_55jdp"]
+bg_color = Color(0.6963238, 1.2634322e-05, 0.20534447, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.2187981, 1.0077376e-07, 0.039348368, 1)
+border_blend = true
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="Inimigo" type="CharacterBody2D" unique_id=1858431150]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_mos2c")
+experiencia_min = 50
+experiencia_max = 80
+drops = Array[ExtResource("2_55jdp")]([SubResource("Resource_55jdp")])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1323380247]
+position = Vector2(0.25, 0.25000763)
+shape = SubResource("CircleShape2D_vhucu")
+
+[node name="MeshInstance2D" type="Sprite2D" parent="." unique_id=1809762347]
+modulate = Color(0, 0.515329, 0.3690503, 1)
+position = Vector2(0.25, 0.25)
+scale = Vector2(56.5, 56.5)
+
+[node name="Area2D" type="Area2D" parent="MeshInstance2D" unique_id=282631114]
+position = Vector2(-0.0044247787, -0.0044247787)
+scale = Vector2(0.017699115, 0.017699115)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeshInstance2D/Area2D" unique_id=1019499574]
+shape = SubResource("CircleShape2D_btc3j")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1429284246]
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=694231464]
+offset_left = -25.0
+offset_top = -43.0
+offset_right = 25.0
+offset_bottom = -36.0
+theme_override_styles/background = SubResource("StyleBoxFlat_vhucu")
+theme_override_styles/fill = SubResource("StyleBoxFlat_55jdp")
+show_percentage = false

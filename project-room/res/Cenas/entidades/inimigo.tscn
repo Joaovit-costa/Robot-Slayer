@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bfxhp256xsiuk" path="res://script/entidades/inimigos.gd" id="1_mos2c"]
 [ext_resource type="Script" uid="uid://b547wbkrtg5cj" path="res://script/data/dataDrops.gd" id="2_55jdp"]
+[ext_resource type="Texture2D" uid="uid://dpsymp7ropqx2" path="res://res/design/Design-Robot Slayer/sprits/enemy 1.1.png" id="3_btc3j"]
 
 [sub_resource type="Resource" id="Resource_55jdp"]
 script = ExtResource("2_55jdp")
@@ -15,8 +16,6 @@ metadata/_custom_type_script = "uid://b547wbkrtg5cj"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vhucu"]
 radius = 28.75978
-
-[sub_resource type="SphereMesh" id="SphereMesh_55jdp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_btc3j"]
 radius = 56.5
@@ -51,6 +50,118 @@ corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_btc3j"]
+
+[sub_resource type="Animation" id="Animation_63nhv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_btc3j")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_btc3j"]
+resource_name = "idle_down"
+length = 0.75
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_btc3j"), ExtResource("3_btc3j"), ExtResource("3_btc3j")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [7, 7, 7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [7, 7, 7]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_63nhv"]
+_data = {
+&"RESET": SubResource("Animation_63nhv"),
+&"idle_down": SubResource("Animation_btc3j")
+}
+
 [node name="Inimigo" type="CharacterBody2D" unique_id=1858431150]
 collision_layer = 2
 collision_mask = 3
@@ -63,23 +174,30 @@ drops = Array[ExtResource("2_55jdp")]([SubResource("Resource_55jdp")])
 position = Vector2(0.25, 0.25000763)
 shape = SubResource("CircleShape2D_vhucu")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=167926820]
-modulate = Color(0, 0.515329, 0.3690503, 1)
-position = Vector2(0.25, 0.25)
-scale = Vector2(56.5, 56.5)
-mesh = SubResource("SphereMesh_55jdp")
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=178670427]
+position = Vector2(-5, 0)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_btc3j")
+hframes = 7
+vframes = 7
 
-[node name="Area2D" type="Area2D" parent="." unique_id=282631114]
+[node name="Area2D" type="Area2D" parent="Sprite2D" unique_id=282631114]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1019499574]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D" unique_id=1019499574]
 shape = SubResource("CircleShape2D_btc3j")
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=694231464]
-offset_left = -25.0
+offset_left = -31.0
 offset_top = -43.0
-offset_right = 25.0
+offset_right = 19.0
 offset_bottom = -36.0
 theme_override_styles/background = SubResource("StyleBoxFlat_vhucu")
 theme_override_styles/fill = SubResource("StyleBoxFlat_55jdp")
 show_percentage = false
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=426388657]
+tree_root = SubResource("AnimationNodeStateMachine_btc3j")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1201074035]
+libraries/ = SubResource("AnimationLibrary_63nhv")
