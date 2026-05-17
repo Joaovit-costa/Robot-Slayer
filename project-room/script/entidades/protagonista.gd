@@ -101,12 +101,13 @@ func _ready() -> void:
 
 	barraCura.max_value = 10 * 60 / max(inteligencia / 20, 1)
 	barraCura.value = cooldownDaCura
-
-	for alvo in alvos:
-		experienciaDropada += randi_range(
-			alvo.experiencia_min,
-			alvo.experiencia_max
-		)
+	
+	if alvos[0] != null:
+		for alvo in alvos:
+			experienciaDropada += randi_range(
+				alvo.experiencia_min,
+				alvo.experiencia_max
+			)
 
 	inventario_ref = get_tree().get_first_node_in_group(
 		"inventario_principal"

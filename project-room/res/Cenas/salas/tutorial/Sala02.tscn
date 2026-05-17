@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://b2ubgf2ev8c3r"]
+
+[ext_resource type="Texture2D" uid="uid://nyq1k0w7lbki" path="res://res/design/Design-Robot Slayer/sprits/mapas finalizados/hub 2.png" id="1_eowxq"]
+[ext_resource type="PackedScene" uid="uid://crm7vecx3vhjy" path="res://res/Cenas/entidades/protagonista.tscn" id="2_52nwy"]
+
+[node name="Sala02" type="Node2D" unique_id=375855543]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1379292809]
+collision_layer = 2
+
+[node name="TextureRect" type="TextureRect" parent="StaticBody2D" unique_id=220091784]
+offset_right = 1152.0
+offset_bottom = 648.0
+size_flags_horizontal = 4
+texture = ExtResource("1_eowxq")
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1944822239]
+polygon = PackedVector2Array(1, -2, 0, 648, 401, 458, 229, 461, 230, 293, 2, 293, 2, 173, 47, 172, 49, 145, 236, 142, 235, 67, 718, 61, 719, 114, 949, 114, 950, 129, 989, 130, 991, 275, 972, 275, 973, 349, 1041, 348, 1042, 404, 511, 405, 400, 407, 402, 457, 0, 648, 1152, 647, 1152, 1)
+
+[node name="Protagonista" parent="." unique_id=369473398 node_paths=PackedStringArray("alvos") instance=ExtResource("2_52nwy")]
+position = Vector2(311, 433)
+collision_mask = 2
+alvos = [null, null]
