@@ -84,6 +84,7 @@ const DURACAO_ANIMACAO_ATAQUE: float = 0.9
 func _ready() -> void:
 
 	randomize()
+	add_to_group("protagonista")
 
 	vitalidade *= 5
 	vidaInicial = vitalidade
@@ -119,6 +120,8 @@ func _ready() -> void:
 
 	# 🎧 MUSICA INICIAL
 	SoundManager.tocar_musica(musica_normal)
+	
+	call_deferred("_sincronizar_menu_status")
 
 
 func _physics_process(delta: float) -> void:
@@ -199,12 +202,15 @@ func _physics_process(delta: float) -> void:
 
 
 	# ========= SUBIR DE NIVEL =========
-	if experiencia >= experienciaNecessaria:
+	var subiu_de_nivel : bool = false
+	while experiencia >= experienciaNecessaria and experienciaNecessaria > 0:
 
 		mecanicas.subirNivel(self)
-
+		subiu_de_nivel = true
+	
+	if subiu_de_nivel:
 		label_nivel.text = str("Lv. ", nivel)
-
+		_sincronizar_menu_status()
 	barraExperiencia.value = experiencia
 	# ==================================
 
@@ -260,6 +266,19 @@ func _physics_process(delta: float) -> void:
 	verificar_vida()
 
 
+
+
+
+func _sincronizar_menu_status() -> void:
+	var menus_status := get_tree().get_nodes_in_group("menu_status")
+
+	for menu in menus_status:
+		if menu.has_method("configurar"):
+			menu.configurar(self)
+		elif menu.has_method("atualizar_menu_status"):
+			menu.atualizar_menu_status()
+			
+			
 func verificar_vida():
 
 	var vida_percent = float(vitalidade) / float(vidaInicial)

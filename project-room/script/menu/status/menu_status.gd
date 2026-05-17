@@ -17,15 +17,38 @@ var player_ref: protagonista
 func _ready():
 	add_to_group("menu_status")
 	process_mode = Node.PROCESS_MODE_ALWAYS
-
-
+	_buscar_player()
+	atualizar_menu_status()
+	
+	
 func configurar(player):
 	player_ref = player
 	atualizar_menu_status()
 
 
+func _process(_delta):
+	if visible:
+		if player_ref == null:
+			_buscar_player()
+		atualizar_menu_status()
+		
+		
+func _buscar_player():
+	var player := get_tree().get_first_node_in_group("protagonista") as protagonista
+	
+	if player == null:
+		player = get_tree().get_first_node_in_group("player") as protagonista
+	if player != null:
+		player_ref = player
+
+
+
 func atualizar_menu_status():
 	if player_ref == null:
+		_buscar_player()
+		
+	if player_ref == null:
+		_desabilitar_botoes_status()
 		return
 
 	texto_pontos_status.text = "Pontos de Status: %d" % player_ref.pontosStatus
@@ -43,6 +66,13 @@ func atualizar_menu_status():
 	botao_inteligencia.disabled = !pode_gastar
 
 
+func _desabilitar_botoes_status():
+	botao_forca.disabled = true
+	botao_defesa.disabled = true
+	botao_vitalidade.disabled = true
+	botao_inteligencia.disabled = true
+	
+	
 func aumentar_atributo(nome):
 	if player_ref == null or player_ref.pontosStatus <= 0:
 		return

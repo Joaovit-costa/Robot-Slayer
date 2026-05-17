@@ -1,5 +1,7 @@
 extends Node
 
+const PONTOS_STATUS_POR_NIVEL: int = 3
+
 func atacar(atacado, cooldowns: Array, forca: int, multiplicadores: Array) -> float:
 	if atacado == null or atacado.vitalidade <= 0:
 		return 0.0
@@ -32,10 +34,13 @@ func cura(curado, tempoParaCura):
 	curado.cooldownDaCura += tempoParaCura
 
 
-func subirNivel(player):
+func subirNivel(player) -> void:
+	if player == null:
+		return
+		
 	player.nivel += 1
 	player.experiencia -= player.experienciaNecessaria
 	player.experienciaNecessaria = int(player.nivel * 1.2 + 40)
 	player.barraExperiencia.max_value = player.experienciaNecessaria
-	player.pontosExperiencia += 3
-	player.pontosStatus += 3
+	player.pontosExperiencia += PONTOS_STATUS_POR_NIVEL
+	player.pontosStatus += PONTOS_STATUS_POR_NIVEL
