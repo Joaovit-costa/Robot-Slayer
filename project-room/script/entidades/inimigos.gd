@@ -113,19 +113,20 @@ func _physics_process(delta: float) -> void:
 	# ==================================
 
 	# ============ MOVIMENTO / PERSEGUICAO ============
-	if not inRange and distancia > distancia_ataque - 1:
-		var direcao: Vector2 = global_position.direction_to(protagonista_ref.global_position)
-		direcao.x = mecanicas.ajustar_eixo(direcao.x)
-		direcao.y = mecanicas.ajustar_eixo(direcao.y)
-		velocity = direcao * velocidade
-		direcao_animacao = direcao
+	var pode_atacar := distancia <= distancia_ataque
+	if not pode_atacar:
+			var direcao: Vector2 = global_position.direction_to(protagonista_ref.global_position)
+			direcao.x = mecanicas.ajustar_eixo(direcao.x)
+			direcao.y = mecanicas.ajustar_eixo(direcao.y)
+			velocity = direcao * velocidade
+			direcao_animacao = direcao
 	else:
 		velocity.x = move_toward(velocity.x, 0.0, velocidade)
 		velocity.y = move_toward(velocity.y, 0.0, velocidade)
 	# ================================================
 
 	# ============ ATAQUE ============
-	if inRange and distancia <= distancia_ataque and cooldown <= 0.0:
+	if pode_atacar and cooldown <= 0.0:
 		cooldown = mecanicas.atacar(protagonista_ref, cooldowns, forca, multiplicadores)
 	elif cooldown > 0.0:
 		cooldown -= delta
@@ -152,7 +153,7 @@ func _physics_process(delta: float) -> void:
 
 
 	# ============ MOVIMENTO FINAL ============
-	if not inRange:
+	if not pode_atacar:
 		move_and_slide()
 	# ========================================
 
