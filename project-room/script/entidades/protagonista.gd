@@ -84,7 +84,6 @@ const DURACAO_ANIMACAO_ATAQUE: float = 0.9
 func _ready() -> void:
 
 	randomize()
-	add_to_group("protagonista")
 
 	vitalidade *= 5
 	vidaInicial = vitalidade

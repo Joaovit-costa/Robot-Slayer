@@ -34,10 +34,8 @@ func _process(_delta):
 		
 		
 func _buscar_player():
-	var player := get_tree().get_first_node_in_group("protagonista") as protagonista
+	var player := get_tree().get_first_node_in_group("player") as protagonista
 	
-	if player == null:
-		player = get_tree().get_first_node_in_group("player") as protagonista
 	if player != null:
 		player_ref = player
 
@@ -102,3 +100,4 @@ func _on_botao_adicionar_inteligencia_pressed():
 func _on_botao_fechar_pressed():
 	hide()
 	get_tree().paused = false
+	
