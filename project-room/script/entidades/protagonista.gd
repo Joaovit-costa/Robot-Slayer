@@ -37,6 +37,8 @@ const SPEED: float = 220
 
 var ultima_direcao: String = "down"
 var direcao_animacao: Vector2 = Vector2.DOWN
+var direcao_ataque: Vector2 = Vector2.DOWN
+var posicao_alcance_original: Vector2 = Vector2.ZERO
 
 var experienciaNecessaria = int(nivel * 1.2 + 40)
 
@@ -115,6 +117,7 @@ func _ready() -> void:
 
 	# ============ ANIMACAO ============
 	animation_tree.active = true
+	posicao_alcance_original = alcance.position
 	hitbox_ataque.disabled = true
 	# ==================================
 
@@ -237,15 +240,9 @@ func _physics_process(delta: float) -> void:
 
 	animation_tree.set(
 		"parameters/Attack/blend_position",
-		direcao_animacao
+		direcao_ataque if atacando else direcao_animacao
 	)
 	# ==================================
-
-
-	# ============ TRAVAR MOVIMENTO NO ATAQUE ============
-	if atacando:
-		velocity = Vector2.ZERO
-	# ====================================================
 
 
 	# ============ MOVIMENTO FINAL ============
@@ -354,6 +351,8 @@ func _entregar_drops_pendentes() -> void:
 
 func iniciar_ataque() -> void:
 	atacando = true
+	direcao_ataque = direcao_animacao
+	_congelar_alcance_do_ataque()
 	tempo_ataque_restante = DURACAO_ANIMACAO_ATAQUE
 	indice_ataque_atual = randi() % cooldowns.size()
 	cooldown = cooldowns[indice_ataque_atual]
@@ -374,8 +373,23 @@ func finalizar_ataque() -> void:
 	tempo_ataque_restante = 0.0
 	inimigos_acertados_no_ataque.clear()
 	hitbox_ataque.set_deferred("disabled", true)
+	_restaurar_alcance_do_ataque()
 
 
+func _congelar_alcance_do_ataque() -> void:
+	# Mantem a hitbox do golpe no ponto em que o ataque comecou.
+	# Assim o jogador pode andar sem arrastar a area ativa do ataque.
+	var posicao_alcance_global := alcance.global_position
+	alcance.set_as_top_level(true)
+	alcance.global_position = posicao_alcance_global
+
+
+func _restaurar_alcance_do_ataque() -> void:
+	# Depois do ataque, a hitbox volta a acompanhar o Sprite2D normalmente.
+	alcance.set_as_top_level(false)
+	alcance.position = posicao_alcance_original
+	
+	
 func _aplicar_dano_da_hitbox(body: Node) -> void:
 	if not atacando:
 		return
