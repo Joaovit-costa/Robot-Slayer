@@ -91,7 +91,8 @@ script = ExtResource("1_6sy3i")
 portas = [NodePath("StaticBody2D/AnimatedSprite2D")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=197899027]
-collision_layer = 2
+collision_layer = 1
+collision_mask = 6
 
 [node name="TextureRect" type="TextureRect" parent="StaticBody2D" unique_id=839062370]
 offset_right = 1152.0
@@ -111,6 +112,8 @@ sprite_frames = SubResource("SpriteFrames_m3hev")
 [node name="Range Porta" type="Node2D" parent="." unique_id=720561440]
 
 [node name="Area2D" type="Area2D" parent="Range Porta" unique_id=26167257]
+collision_layer = 0
+collision_mask = 2
 position = Vector2(296.5, 72)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Range Porta/Area2D" unique_id=1146713051]
@@ -119,6 +122,8 @@ shape = SubResource("RectangleShape2D_mt3ml")
 disabled = true
 
 [node name="Protagonista" parent="." unique_id=369473398 node_paths=PackedStringArray("alvos") instance=ExtResource("4_3pigp")]
+collision_layer = 2
+collision_mask = 5
 position = Vector2(979, 604)
-collision_mask = 2
 alvos = [null]
+

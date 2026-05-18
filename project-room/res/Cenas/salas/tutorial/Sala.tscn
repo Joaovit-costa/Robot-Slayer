@@ -12,7 +12,8 @@ script = ExtResource("3_qdt6n")
 proxima_sala_path = "res://res/Cenas/salas/tutorial/Sala02.tscn"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1407298412]
-collision_layer = 2
+collision_layer = 1
+collision_mask = 6
 
 [node name="TextureRect" type="TextureRect" parent="StaticBody2D" unique_id=286314110]
 offset_right = 1152.0
@@ -25,12 +26,14 @@ metadata/_edit_use_anchors_ = true
 polygon = PackedVector2Array(1, -2, 0, 647, 28, 648, 28, 581, 116, 582, 116, 540, 227, 538, 230, 293, 14, 290, 13, 172, 47, 172, 49, 145, 236, 142, 235, 67, 718, 61, 719, 114, 949, 114, 950, 129, 989, 130, 991, 275, 972, 275, 973, 349, 1041, 348, 1042, 404, 511, 405, 400, 407, 401, 537, 611, 541, 612, 582, 698, 584, 700, 648, 28, 649, 1152, 647, 1152, 1)
 
 [node name="Protagonista" parent="." unique_id=369473398 node_paths=PackedStringArray("alvos") instance=ExtResource("2_h0g7u")]
+collision_layer = 2
+collision_mask = 5
 position = Vector2(90, 616)
-collision_mask = 2
 alvos = [null, null]
 
 [node name="Area2D" type="Area2D" parent="." unique_id=254259894]
-collision_layer = 2
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2051448485]
 position = Vector2(315, 413)

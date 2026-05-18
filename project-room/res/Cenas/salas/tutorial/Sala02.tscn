@@ -92,7 +92,8 @@ portas = [NodePath("StaticBody2D/AnimatedSprite2D")]
 cena_ao_entrar_na_porta = "uid://1hgxofwmifxg"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1379292809]
-collision_layer = 2
+collision_layer = 1
+collision_mask = 6
 
 [node name="TextureRect" type="TextureRect" parent="StaticBody2D" unique_id=220091784]
 offset_right = 1152.0
@@ -112,6 +113,8 @@ sprite_frames = SubResource("SpriteFrames_vxoko")
 [node name="Range Porta" type="Node2D" parent="." unique_id=412924413]
 
 [node name="Area2D" type="Area2D" parent="Range Porta" unique_id=213543271]
+collision_layer = 0
+collision_mask = 2
 position = Vector2(294, 58)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Range Porta/Area2D" unique_id=134271397]
@@ -120,6 +123,7 @@ shape = SubResource("RectangleShape2D_range_porta")
 disabled = true
 
 [node name="Protagonista" parent="." unique_id=369473398 node_paths=PackedStringArray("alvos") instance=ExtResource("2_52nwy")]
+collision_layer = 2
+collision_mask = 5
 position = Vector2(307, 418)
-collision_mask = 2
 alvos = [null]

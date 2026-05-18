@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://3fo7wfjq87vc"]
 
+[ext_resource type="Script" path="res://main.gd" id="1_main"]
 [ext_resource type="PackedScene" uid="uid://ckd5xwhthbw1b" path="res://res/Cenas/menu/inventario/menu_inventario.tscn" id="2_u7f18"]
 [ext_resource type="PackedScene" uid="uid://j2uoiy6rsvsb" path="res://res/Cenas/salas/principal.tscn" id="3_q4nay"]
 [ext_resource type="PackedScene" uid="uid://di077pcysnchw" path="res://res/Cenas/menu/loja/loja_cura.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://bvvwy1j22isp4" path="res://res/Cenas/menu/loja/loja_arma.tscn" id="4_lquwl"]
 [ext_resource type="PackedScene" uid="uid://mnt8tq7ix0xp" path="res://res/Cenas/menu/status/menu_status.tscn" id="5_lquwl"]
 
 [sub_resource type="GDScript" id="GDScript_1bvp3"]
@@ -104,7 +106,7 @@ func _status_foi_acionado() -> bool:
 "
 
 [node name="Node2D" type="Node2D" unique_id=434612123]
-script = SubResource("GDScript_1bvp3")
+script = ExtResource("1_main")
 
 [node name="sala" parent="." unique_id=1911979741 instance=ExtResource("3_q4nay")]
 
@@ -120,6 +122,8 @@ scale = Vector2(1164.5, 658.50006)
 [node name="InventoryMenu" parent="CanvasLayer" unique_id=1694092285 instance=ExtResource("2_u7f18")]
 
 [node name="LojaItens" parent="CanvasLayer" unique_id=1042815808 instance=ExtResource("4_1bvp3")]
+
+[node name="LojaItens2" parent="CanvasLayer" unique_id=1585348748 instance=ExtResource("4_lquwl")]
 
 [node name="MenuStatus" parent="CanvasLayer" unique_id=2147151198 instance=ExtResource("5_lquwl")]
 anchors_preset = 8

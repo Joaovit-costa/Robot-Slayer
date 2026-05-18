@@ -1214,7 +1214,8 @@ states/Walk/node = ExtResource("5_yq3lb")
 states/Walk/position = Vector2(350.23682, 50.399998)
 
 [node name="Protagonista" type="CharacterBody2D" unique_id=369473398 groups=["player"]]
-collision_mask = 4
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_uw4sx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1873306950]
@@ -1234,7 +1235,8 @@ region_rect = Rect2(0, 0, 100, 100)
 [node name="Area2D" type="Area2D" parent="Sprite2D" unique_id=1892440205]
 position = Vector2(-0.16666664, -0.1666667)
 scale = Vector2(0.6666667, 0.6666667)
-collision_mask = 2
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D" unique_id=1106192527]
 position = Vector2(1.5000067, -35.25)

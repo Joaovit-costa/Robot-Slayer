@@ -7,11 +7,19 @@
 [ext_resource type="PackedScene" uid="uid://csgmdbm74dimb" path="res://res/Cenas/salas/Facil/Sala4.tscn" id="5_4e7g4"]
 [ext_resource type="PackedScene" uid="uid://bvn2ljayr426t" path="res://res/Cenas/salas/Facil/Sala5.tscn" id="6_xe5nn"]
 [ext_resource type="PackedScene" uid="uid://t1168rdm8ksb" path="res://res/Cenas/salas/Facil/Sala6.tscn" id="7_cpmew"]
+[ext_resource type="PackedScene" uid="uid://b8350klyejcnk" path="res://res/Cenas/salas/Medio/Sala7.tscn" id="8_e81ng"]
+[ext_resource type="PackedScene" uid="uid://deunnrfjjevjh" path="res://res/Cenas/salas/Medio/Sala8.tscn" id="9_qwdd6"]
+[ext_resource type="PackedScene" uid="uid://87vmdrh7rys2" path="res://res/Cenas/salas/Medio/Sala9.tscn" id="10_185n2"]
+[ext_resource type="PackedScene" uid="uid://hi2s7ujakb5t" path="res://res/Cenas/salas/Dificil/Sala10.tscn" id="11_kg3yw"]
+[ext_resource type="PackedScene" uid="uid://cy4uyrgmrytn6" path="res://res/Cenas/salas/Dificil/Sala11.tscn" id="12_x2ond"]
+[ext_resource type="PackedScene" uid="uid://cejusedo8mwyk" path="res://res/Cenas/salas/Dificil/Sala12.tscn" id="13_v8hnl"]
+[ext_resource type="PackedScene" uid="uid://byn3sb7v47o3n" path="res://res/Cenas/salas/Compras/Sala13.tscn" id="14_rr14d"]
+[ext_resource type="PackedScene" uid="uid://cms5eh6avaayr" path="res://res/Cenas/salas/Compras/Sala14.tscn" id="15_dljeg"]
 
 [node name="sala" type="Node2D" unique_id=1911979741 node_paths=PackedStringArray("salas_tutorial", "salas")]
 script = ExtResource("1_8fdge")
 salas_tutorial = [NodePath("Salas/Sala"), NodePath("Salas/Sala02"), NodePath("Salas/Sala03")]
-salas = [NodePath("Salas/Sala4"), NodePath("Salas/Sala5"), NodePath("Salas/Sala6")]
+salas = [NodePath("Salas/Sala4"), NodePath("Salas/Sala5"), NodePath("Salas/Sala6"), NodePath("Salas/Sala7"), NodePath("Salas/Sala8"), NodePath("Salas/Sala9"), NodePath("Salas/Sala10"), NodePath("Salas/Sala11"), NodePath("Salas/Sala12"), NodePath("Salas/Sala13"), NodePath("Salas/Sala14")]
 
 [node name="Salas" type="Node2D" parent="." unique_id=1083966473]
 
@@ -26,6 +34,22 @@ salas = [NodePath("Salas/Sala4"), NodePath("Salas/Sala5"), NodePath("Salas/Sala6
 [node name="Sala5" parent="Salas" unique_id=1401194222 instance=ExtResource("6_xe5nn")]
 
 [node name="Sala6" parent="Salas" unique_id=881347429 instance=ExtResource("7_cpmew")]
+
+[node name="Sala7" parent="Salas" unique_id=880027147 instance=ExtResource("8_e81ng")]
+
+[node name="Sala8" parent="Salas" unique_id=683851110 instance=ExtResource("9_qwdd6")]
+
+[node name="Sala9" parent="Salas" unique_id=78669578 instance=ExtResource("10_185n2")]
+
+[node name="Sala10" parent="Salas" unique_id=1864636230 instance=ExtResource("11_kg3yw")]
+
+[node name="Sala11" parent="Salas" unique_id=1877165852 instance=ExtResource("12_x2ond")]
+
+[node name="Sala12" parent="Salas" unique_id=280932537 instance=ExtResource("13_v8hnl")]
+
+[node name="Sala13" parent="Salas" unique_id=1991925353 instance=ExtResource("14_rr14d")]
+
+[node name="Sala14" parent="Salas" unique_id=2082946013 instance=ExtResource("15_dljeg")]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1085141809]
 visible = false

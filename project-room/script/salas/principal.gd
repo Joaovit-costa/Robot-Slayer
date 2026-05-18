@@ -9,9 +9,13 @@ extends Node2D
 @onready var color_rect: ColorRect = get_node_or_null("ColorRect") as ColorRect
 
 const POSICAO_MODELOS_DESATIVADOS := Vector2(1000000, 1000000)
+const TIPO_LOJA_NENHUMA := &""
+const TIPO_LOJA_CURA := &"cura"
+const TIPO_LOJA_ARMA := &"arma"
 
 var sala_atual: Node2D
 var transicao_em_andamento: bool = false
+var loja_disponivel: StringName = TIPO_LOJA_NENHUMA
 
 
 func _ready() -> void:
@@ -116,9 +120,12 @@ func _adicionar_sala_ativa(nova_sala: Node2D) -> void:
 		else Node.PROCESS_MODE_INHERIT
 	)
 	move_child(sala_atual, 0)
+	_configurar_area_loja_da_sala_atual()
 
 
 func _remover_sala_atual() -> void:
+	loja_disponivel = TIPO_LOJA_NENHUMA
+
 	if sala_atual != null and is_instance_valid(sala_atual):
 		sala_atual.queue_free()
 
@@ -185,3 +192,45 @@ func _bloquear_inputs_da_transicao() -> void:
 func _liberar_inputs_da_transicao() -> void:
 	if sala_atual != null and is_instance_valid(sala_atual):
 		sala_atual.process_mode = Node.PROCESS_MODE_INHERIT
+
+
+func obter_loja_disponivel() -> StringName:
+	return loja_disponivel
+
+
+func _configurar_area_loja_da_sala_atual() -> void:
+	loja_disponivel = TIPO_LOJA_NENHUMA
+
+	if sala_atual == null:
+		return
+
+	var tipo_loja := _obter_tipo_loja_da_sala(sala_atual.name)
+	if tipo_loja == TIPO_LOJA_NENHUMA:
+		return
+
+	var area_loja := sala_atual.get_node_or_null("Area2D") as Area2D
+	if area_loja == null:
+		return
+
+	area_loja.body_entered.connect(_on_area_loja_body_entered.bind(tipo_loja))
+	area_loja.body_exited.connect(_on_area_loja_body_exited.bind(tipo_loja))
+
+
+func _obter_tipo_loja_da_sala(nome_sala: StringName) -> StringName:
+	match str(nome_sala):
+		"Sala13":
+			return TIPO_LOJA_CURA
+		"Sala14":
+			return TIPO_LOJA_ARMA
+		_:
+			return TIPO_LOJA_NENHUMA
+
+
+func _on_area_loja_body_entered(body: Node, tipo_loja: StringName) -> void:
+	if body is protagonista:
+		loja_disponivel = tipo_loja
+
+
+func _on_area_loja_body_exited(body: Node, tipo_loja: StringName) -> void:
+	if body is protagonista and loja_disponivel == tipo_loja:
+		loja_disponivel = TIPO_LOJA_NENHUMA
