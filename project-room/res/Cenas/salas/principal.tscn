@@ -1,20 +1,33 @@
 [gd_scene format=3 uid="uid://j2uoiy6rsvsb"]
 
-[ext_resource type="PackedScene" uid="uid://dw5vop8713vt3" path="res://res/Cenas/entidades/inimigo.tscn" id="1_lq783"]
-[ext_resource type="PackedScene" uid="uid://crm7vecx3vhjy" path="res://res/Cenas/entidades/protagonista.tscn" id="2_p8hvh"]
+[ext_resource type="Script" uid="uid://bt3rui2u5ophs" path="res://script/salas/principal.gd" id="1_8fdge"]
+[ext_resource type="PackedScene" uid="uid://deba4htfw3b1h" path="res://res/Cenas/salas/tutorial/Sala.tscn" id="1_w6y3o"]
+[ext_resource type="PackedScene" uid="uid://b2ubgf2ev8c3r" path="res://res/Cenas/salas/tutorial/Sala02.tscn" id="2_8fdge"]
+[ext_resource type="PackedScene" uid="uid://1hgxofwmifxg" path="res://res/Cenas/salas/tutorial/Sala03.tscn" id="3_m7vg6"]
+[ext_resource type="PackedScene" uid="uid://csgmdbm74dimb" path="res://res/Cenas/salas/Facil/Sala4.tscn" id="5_4e7g4"]
+[ext_resource type="PackedScene" uid="uid://bvn2ljayr426t" path="res://res/Cenas/salas/Facil/Sala5.tscn" id="6_xe5nn"]
+[ext_resource type="PackedScene" uid="uid://t1168rdm8ksb" path="res://res/Cenas/salas/Facil/Sala6.tscn" id="7_cpmew"]
 
-[node name="sala" type="Node2D" unique_id=1911979741]
+[node name="sala" type="Node2D" unique_id=1911979741 node_paths=PackedStringArray("salas_tutorial", "salas")]
+script = ExtResource("1_8fdge")
+salas_tutorial = [NodePath("Salas/Sala"), NodePath("Salas/Sala02"), NodePath("Salas/Sala03")]
+salas = [NodePath("Salas/Sala4"), NodePath("Salas/Sala5"), NodePath("Salas/Sala6")]
 
-[node name="Protagonista" parent="." unique_id=369473398 node_paths=PackedStringArray("alvos") instance=ExtResource("2_p8hvh")]
-position = Vector2(-1.186554, 17.037144)
-alvos = [NodePath("../Inimigo"), NodePath("../Inimigo2")]
+[node name="Salas" type="Node2D" parent="." unique_id=1083966473]
 
-[node name="Inimigo" parent="." unique_id=1858431150 node_paths=PackedStringArray("protagonista_ref") instance=ExtResource("1_lq783")]
-position = Vector2(577, 343)
-vitalidade = 5
-protagonista_ref = NodePath("")
+[node name="Sala" parent="Salas" unique_id=291003547 instance=ExtResource("1_w6y3o")]
 
-[node name="Inimigo2" parent="." unique_id=1114818666 node_paths=PackedStringArray("protagonista_ref") instance=ExtResource("1_lq783")]
-position = Vector2(173, 291)
-vitalidade = 5
-protagonista_ref = NodePath("")
+[node name="Sala02" parent="Salas" unique_id=375855543 instance=ExtResource("2_8fdge")]
+
+[node name="Sala03" parent="Salas" unique_id=1910874650 instance=ExtResource("3_m7vg6")]
+
+[node name="Sala4" parent="Salas" unique_id=683622350 instance=ExtResource("5_4e7g4")]
+
+[node name="Sala5" parent="Salas" unique_id=1401194222 instance=ExtResource("6_xe5nn")]
+
+[node name="Sala6" parent="Salas" unique_id=881347429 instance=ExtResource("7_cpmew")]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1085141809]
+visible = false
+custom_minimum_size = Vector2(1151.99, 648.005)
+color = Color(0, 0, 0, 1)

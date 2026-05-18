@@ -1243,6 +1243,7 @@ disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=198762258]
 libraries/ = SubResource("AnimationLibrary_p6cgy")
+autoplay = &"idle_down"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1697879008]
 
