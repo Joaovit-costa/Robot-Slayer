@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cf6ktfailay3p"]
 
 [ext_resource type="Script" uid="uid://isksibsstq2e" path="res://script/menu/pause/menu_pause.gd" id="1_4uk07"]
-[ext_resource type="Texture2D" uid="uid://cj1r5neebj72l" path="res://res/design/menus/Menu de pause_V2.png" id="2_4uk07"]
+[ext_resource type="Texture2D" uid="uid://bteovrptgc6yv" path="res://res/design/menus/Menu_De_Pause.png" id="2_4uk07"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_72e1y"]
 
@@ -24,16 +24,6 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a82pm"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jguu4"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dvqv0"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1j4lr"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ic8mt"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_smdr2"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_astim"]
 
 [node name="PauseMenu" type="CanvasLayer" unique_id=1396814385]
 script = ExtResource("1_4uk07")
@@ -70,17 +60,6 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_62ek5")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_a82pm")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_jguu4")
 
-[node name="BotaoVoltar" type="Button" parent="." unique_id=1326746098]
-offset_left = 257.0
-offset_top = 554.0
-offset_right = 350.0
-offset_bottom = 644.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_dvqv0")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_1j4lr")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_ic8mt")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_smdr2")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_astim")
-
 [node name="HoverContinuar" type="ColorRect" parent="." unique_id=147353631]
 offset_left = 424.0
 offset_top = 229.0
@@ -90,17 +69,17 @@ mouse_filter = 2
 color = Color(0.54509807, 0.36078432, 0.9647059, 0.4)
 
 [node name="HoverSair" type="ColorRect" parent="." unique_id=1134187352]
-offset_left = 424.0
-offset_top = 371.0
-offset_right = 684.0
-offset_bottom = 489.0
+offset_left = 504.0
+offset_top = 357.0
+offset_right = 598.0
+offset_bottom = 450.0
 color = Color(0.54509807, 0.36078432, 0.9647059, 0.4)
 
 [node name="FundoEscuro" type="ColorRect" parent="." unique_id=916942447]
 offset_left = 247.0
 offset_top = 96.0
 offset_right = 838.0
-offset_bottom = 642.0
+offset_bottom = 511.0
 mouse_filter = 2
 color = Color(0.011764706, 0.007843138, 0, 0.42352942)
 
