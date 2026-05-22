@@ -10,11 +10,19 @@ extends Node2D
 const ACAO_INVENTARIO := &"ui_inventario"
 const ACAO_STATUS := &"ui_status"
 const ACAO_LOJA := &"ui_interagir"
+const ACAO_PAUSE := &"ui_cancel"
+
 const TIPO_LOJA_CURA := &"cura"
 const TIPO_LOJA_ARMA := &"arma"
 
+const CENA_MENU_PAUSE := preload("res://res/Cenas/menu/pause/menu_pause.tscn")
+const CENA_MENU_PRINCIPAL := "res://MenuPrincipal.tscn"
+
 var tecla_inventario_estava_pressionada := false
 var tecla_loja_estava_pressionada := false
+var tecla_pause_estava_pressionada := false
+
+var menu_pause_instance: CanvasLayer = null
 
 
 func _ready() -> void:
@@ -23,6 +31,13 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	if _pause_foi_acionado():
+		_alternar_pause()
+		return
+
+	if _pause_esta_aberto():
+		return
+
 	if _inventario_foi_acionado():
 		_alternar_menu(menu_inventario)
 	elif _loja_foi_acionada():
@@ -31,6 +46,49 @@ func _process(_delta: float) -> void:
 		_alternar_menu(menu_status)
 
 	_aplicar_estado_telas()
+
+
+func _alternar_pause() -> void:
+	if _pause_esta_aberto():
+		_fechar_pause()
+	else:
+		_abrir_pause()
+
+
+func _abrir_pause() -> void:
+	_fechar_menus()
+
+	menu_pause_instance = CENA_MENU_PAUSE.instantiate()
+	add_child(menu_pause_instance)
+
+	if menu_pause_instance.has_signal("continuar_pressed"):
+		menu_pause_instance.continuar_pressed.connect(_on_pause_continuar_pressed)
+
+	if menu_pause_instance.has_signal("sair_pressed"):
+		menu_pause_instance.sair_pressed.connect(_on_pause_sair_pressed)
+
+	_aplicar_estado_telas()
+
+
+func _fechar_pause() -> void:
+	if menu_pause_instance != null:
+		menu_pause_instance.queue_free()
+		menu_pause_instance = null
+
+	_aplicar_estado_telas()
+
+
+func _pause_esta_aberto() -> bool:
+	return menu_pause_instance != null
+
+
+func _on_pause_continuar_pressed() -> void:
+	_fechar_pause()
+
+
+func _on_pause_sair_pressed() -> void:
+	_fechar_pause()
+	get_tree().change_scene_to_file(CENA_MENU_PRINCIPAL)
 
 
 func _alternar_menu(menu: Control) -> void:
@@ -57,18 +115,23 @@ func _aplicar_estado_telas() -> void:
 	var inventario_aberto := menu_inventario != null and menu_inventario.visible
 	var loja_cura_aberta := menu_loja_cura != null and menu_loja_cura.visible
 	var loja_arma_aberta := menu_loja_arma != null and menu_loja_arma.visible
-	var status_aberto :bool= menu_status != null and menu_status.visible
+	var status_aberto: bool = menu_status != null and menu_status.visible
+	var pause_aberto := _pause_esta_aberto()
+
 	var menu_aberto := (
 		inventario_aberto
 		or loja_cura_aberta
 		or loja_arma_aberta
 		or status_aberto
+		or pause_aberto
 	)
 
 	if sala != null:
 		sala.process_mode = Node.PROCESS_MODE_DISABLED if menu_aberto else Node.PROCESS_MODE_INHERIT
+
 	if fundo_escuro != null:
-		fundo_escuro.visible = menu_aberto
+		fundo_escuro.visible = menu_aberto and not pause_aberto
+
 	if menu_inventario != null:
 		menu_inventario.process_mode = Node.PROCESS_MODE_INHERIT
 	if menu_loja_cura != null:
@@ -125,4 +188,14 @@ func _status_foi_acionado() -> bool:
 	var pressionada_agora := Input.is_physical_key_pressed(KEY_TAB)
 	var acabou_de_pressionar := pressionada_agora and not tecla_inventario_estava_pressionada
 	tecla_inventario_estava_pressionada = pressionada_agora
+	return acabou_de_pressionar
+
+
+func _pause_foi_acionado() -> bool:
+	if InputMap.has_action(ACAO_PAUSE):
+		return Input.is_action_just_pressed(ACAO_PAUSE)
+
+	var pressionada_agora := Input.is_physical_key_pressed(KEY_ESCAPE)
+	var acabou_de_pressionar := pressionada_agora and not tecla_pause_estava_pressionada
+	tecla_pause_estava_pressionada = pressionada_agora
 	return acabou_de_pressionar
