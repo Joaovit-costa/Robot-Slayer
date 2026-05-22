@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cf6ktfailay3p"]
 
 [ext_resource type="Script" uid="uid://isksibsstq2e" path="res://script/menu/pause/menu_pause.gd" id="1_4uk07"]
-[ext_resource type="Texture2D" uid="uid://bn48hk60v5mu5" path="res://res/design/menus/Menu de Pause.png" id="1_72e1y"]
+[ext_resource type="Texture2D" uid="uid://cj1r5neebj72l" path="res://res/design/menus/Menu de pause_V2.png" id="2_4uk07"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_72e1y"]
 
@@ -44,7 +44,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_72e1y")
+texture = ExtResource("2_4uk07")
 stretch_mode = 5
 
 [node name="BotaoContinuar" type="Button" parent="." unique_id=1378733526]
@@ -82,7 +82,7 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_smdr2")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_astim")
 
 [node name="HoverContinuar" type="ColorRect" parent="." unique_id=147353631]
-offset_left = 422.0
+offset_left = 424.0
 offset_top = 229.0
 offset_right = 684.0
 offset_bottom = 346.0
@@ -90,11 +90,19 @@ mouse_filter = 2
 color = Color(0.54509807, 0.36078432, 0.9647059, 0.4)
 
 [node name="HoverSair" type="ColorRect" parent="." unique_id=1134187352]
-offset_left = 423.0
-offset_top = 372.0
-offset_right = 685.0
-offset_bottom = 490.0
+offset_left = 424.0
+offset_top = 371.0
+offset_right = 684.0
+offset_bottom = 489.0
 color = Color(0.54509807, 0.36078432, 0.9647059, 0.4)
+
+[node name="FundoEscuro" type="ColorRect" parent="." unique_id=916942447]
+offset_left = 247.0
+offset_top = 96.0
+offset_right = 838.0
+offset_bottom = 642.0
+mouse_filter = 2
+color = Color(0.011764706, 0.007843138, 0, 0.42352942)
 
 [connection signal="pressed" from="BotaoContinuar" to="." method="_on_button_continuar_pressed"]
 [connection signal="pressed" from="BotaoSair" to="." method="_on_botao_sair_pressed"]
