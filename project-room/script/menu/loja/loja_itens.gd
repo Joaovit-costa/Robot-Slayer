@@ -189,3 +189,7 @@ func _exibir_aviso_moedas() -> void:
 	tween_aviso_moedas.tween_interval(3.0)
 	tween_aviso_moedas.tween_property(aviso_moedas, "modulate:a", 0.0, 0.5)
 	tween_aviso_moedas.tween_callback(func(): aviso_moedas.visible = false)
+
+
+func _on_botao_sair_pressed() -> void:
+	visible = false

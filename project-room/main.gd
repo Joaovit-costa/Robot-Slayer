@@ -141,16 +141,6 @@ func _aplicar_estado_telas() -> void:
 	if menu_status != null:
 		menu_status.process_mode = Node.PROCESS_MODE_INHERIT
 
-
-func _alternar_loja_disponivel() -> void:
-	var tipo_loja := _obter_tipo_loja_disponivel()
-
-	if tipo_loja == TIPO_LOJA_CURA:
-		_alternar_menu(menu_loja_cura)
-	elif tipo_loja == TIPO_LOJA_ARMA:
-		_alternar_menu(menu_loja_arma)
-
-
 func _obter_tipo_loja_disponivel() -> StringName:
 	if sala == null:
 		return &""
@@ -199,3 +189,21 @@ func _pause_foi_acionado() -> bool:
 	var acabou_de_pressionar := pressionada_agora and not tecla_pause_estava_pressionada
 	tecla_pause_estava_pressionada = pressionada_agora
 	return acabou_de_pressionar
+	
+func _alternar_loja_disponivel() -> void:
+	if menu_loja_cura != null and menu_loja_cura.visible:
+		menu_loja_cura.visible = false
+		_aplicar_estado_telas()
+		return
+
+	if menu_loja_arma != null and menu_loja_arma.visible:
+		menu_loja_arma.visible = false
+		_aplicar_estado_telas()
+		return
+
+	var tipo_loja := _obter_tipo_loja_disponivel()
+
+	if tipo_loja == TIPO_LOJA_CURA:
+		_alternar_menu(menu_loja_cura)
+	elif tipo_loja == TIPO_LOJA_ARMA:
+		_alternar_menu(menu_loja_arma)	
