@@ -13,8 +13,13 @@ radius = 180.0
 [node name="InimigoAtirador" type="CharacterBody2D" unique_id=1370755289]
 script = ExtResource("1_q4fc7")
 projetil_scene = ExtResource("2_af4mk")
-temperamento = "calmo"
-distancia_ataque = 260.0
+distancia_minima_tiro = 150.0
+vitalidade = 14
+defesa = 5
+forca = 6
+velocidade = 105.0
+inteligencia = 5
+distancia_ataque = 280.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1682455024]
 shape = SubResource("CircleShape2D_7s744")
