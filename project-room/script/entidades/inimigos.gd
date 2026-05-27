@@ -8,7 +8,7 @@ var vidaInicial: int
 @export var forca: int = 0
 @export var velocidade: float = 120.0
 @export var inteligencia: int = 0
-@export var temperamento: String
+@export_enum("calmo", "normal", "bravo") var temperamento: String = "normal"
 
 @export var cooldowns: Array[float] = [0.8, 1.2, 1.6]
 @export var multiplicadores: Array[float] = [1.0, 1.3, 1.5]
@@ -61,8 +61,11 @@ var direcao_animacao: Vector2 = Vector2.DOWN
 func _ready() -> void:
 	randomize()
 	vitalidade *= 5
-	vidaInicial = vitalidade
 	defesa *= 2
+	
+	_aplicar_temperamento()
+	
+	vidaInicial = vitalidade
 
 	# ============ SINAIS DA AREA ============
 	alcance.body_entered.connect(_on_area_body_entered)
@@ -82,6 +85,22 @@ func _ready() -> void:
 	_configurar_animacao()
 	# ==================================
 
+func _aplicar_temperamento() -> void:
+	match temperamento:
+		"calmo":
+			vitalidade = int(vitalidade * 1.4)
+			defesa = int(defesa * 1.3)
+			forca = int(forca * 0.75)
+			velocidade = velocidade * 0.9
+
+		"bravo":
+			vitalidade = int(vitalidade * 0.75)
+			defesa = int(defesa * 0.85)
+			forca = int(forca * 1.4)
+			velocidade = velocidade * 1.1
+
+		"normal":
+			pass
 
 func _on_area_body_entered(body: Node) -> void:
 	if body is protagonista:

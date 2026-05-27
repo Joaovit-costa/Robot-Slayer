@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://dk2ldp063c478"]
+
+[ext_resource type="Script" uid="uid://dtqfollkt3w05" path="res://script/entidades/inimigo_atirador.gd" id="1_q4fc7"]
+[ext_resource type="Texture2D" uid="uid://dpsymp7ropqx2" path="res://res/design/Design-Robot Slayer/sprits/enemy 1.1.png" id="2_11y55"]
+[ext_resource type="PackedScene" uid="uid://bgtb5tgq1ymc1" path="res://res/Cenas/entidades/projetil_inimigo.tscn" id="2_af4mk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7s744"]
+radius = 40.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0oifv"]
+radius = 180.0
+
+[node name="InimigoAtirador" type="CharacterBody2D" unique_id=1370755289]
+script = ExtResource("1_q4fc7")
+projetil_scene = ExtResource("2_af4mk")
+temperamento = "calmo"
+distancia_ataque = 260.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1682455024]
+shape = SubResource("CircleShape2D_7s744")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=246135993]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_11y55")
+hframes = 7
+vframes = 7
+
+[node name="AreaDetectarPlayer" type="Area2D" parent="." unique_id=1644726456]
+scale = Vector2(0.3, 0.3)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDetectarPlayer" unique_id=328825034]
+shape = SubResource("CircleShape2D_0oifv")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1693309524]
+offset_left = -21.0
+offset_top = -40.0
+offset_right = 29.0
+offset_bottom = -33.0
+value = 100.0
+show_percentage = false
