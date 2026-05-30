@@ -3,15 +3,24 @@ extends Node
 const PONTOS_STATUS_POR_NIVEL: int = 3
 
 func atacar(atacado, cooldowns: Array, forca: int, multiplicadores: Array) -> float:
-	if atacado == null or atacado.vitalidade <= 0:
+	if atacado == null:
+		return 0.0
+
+	if atacado.has_method("receber_dano"):
+		if atacado.vidaAtual <= 0:
+			return 0.0
+	elif atacado.vitalidade <= 0:
 		return 0.0
 
 	var indice_ataque := randi() % cooldowns.size()
 	var cooldown_gerado: float = cooldowns[indice_ataque]
 	var dano : float= max(forca * multiplicadores[indice_ataque] - atacado.defesa, 1)
 
-	atacado.vitalidade = max(atacado.vitalidade - dano, 0)
-	atacado.barraVida.value = atacado.vitalidade
+	if atacado.has_method("receber_dano"):
+		atacado.receber_dano(int(dano))
+	else:
+		atacado.vitalidade = max(atacado.vitalidade - dano, 0)
+		atacado.barraVida.value = atacado.vitalidade
 
 	return cooldown_gerado
 
@@ -29,8 +38,11 @@ func ajustar_eixo(valor: float) -> float:
 
 
 func cura(curado, tempoParaCura):
-	curado.vitalidade += int(curado.inteligencia * 1.5)
-	curado.barraVida.value = curado.vitalidade
+	if curado.has_method("receber_cura"):
+		curado.receber_cura(int(curado.inteligencia * 1.5))
+	else:
+		curado.vitalidade += int(curado.inteligencia * 1.5)
+		curado.barraVida.value = curado.vitalidade
 	curado.cooldownDaCura += tempoParaCura
 
 

@@ -47,6 +47,19 @@ func get_lista_itens() -> Array[Dictionary]:
 	return lista
 
 
+func carregar_itens(novos_itens: Array) -> void:
+	inventario.clear()
+
+	for item in novos_itens:
+		if typeof(item) != TYPE_DICTIONARY:
+			continue
+		var item_dict: Dictionary = item
+		inventario.append(item_dict.duplicate(true))
+
+	_normalizar_slots_bloqueados()
+	_emitir_atualizacao()
+
+
 # Procura o registro salvo em um slot especifico.
 func get_item_no_slot(id_slot: int) -> Dictionary:
 	for item in inventario:
@@ -75,6 +88,7 @@ func adicionar_item(nome: String, raridade: int, quantidade: int = 1, id_slot: i
 			item_empilhado["quantidade"] = int(item_empilhado.get("quantidade", 0)) + quantidade
 			_atualizar_item_por_slot(int(item_empilhado.get("idSlot", -1)), item_empilhado)
 			_emitir_atualizacao()
+			_solicitar_salvamento()
 			return true
 
 	var slot_destino := id_slot
@@ -100,6 +114,7 @@ func adicionar_item(nome: String, raridade: int, quantidade: int = 1, id_slot: i
 
 	_normalizar_slots_bloqueados()
 	_emitir_atualizacao()
+	_solicitar_salvamento()
 	return true
 
 
@@ -158,6 +173,7 @@ func remover_item(nome: String, quantidade: int = 1, id_slot: int = -1) -> bool:
 
 	_normalizar_slots_bloqueados()
 	_emitir_atualizacao()
+	_solicitar_salvamento()
 	return true
 
 
@@ -198,6 +214,7 @@ func mover_item(slot_origem: int, slot_destino: int) -> bool:
 
 	_normalizar_slots_bloqueados()
 	_emitir_atualizacao()
+	_solicitar_salvamento()
 	return true
 
 
@@ -347,3 +364,9 @@ func _emitir_atualizacao() -> void:
 		return int(a.get("idSlot", 0)) < int(b.get("idSlot", 0))
 	)
 	inventario_atualizado.emit()
+
+
+func _solicitar_salvamento() -> void:
+	if SaveManager.aplicando_save:
+		return
+	SaveManager.solicitar_salvamento()

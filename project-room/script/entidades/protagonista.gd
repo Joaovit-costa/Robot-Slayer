@@ -24,6 +24,7 @@ class_name protagonista
 # ============ ATRIBUTOS ============
 var vitalidade: int = 6
 var vidaInicial: int
+var vidaAtual: int = 0
 var defesa: int = 2
 var forca: int = 5
 var inteligencia: int = 4
@@ -87,13 +88,11 @@ func _ready() -> void:
 
 	randomize()
 
-	vitalidade *= 5
-	vidaInicial = vitalidade
-
+	vidaInicial = calcular_vida_maxima()
+	vidaAtual = vidaInicial
 	defesa *= 3
-
-	barraVida.max_value = vitalidade
-	barraVida.value = vitalidade
+	SaveManager.aplicar_no_player(self)
+	sincronizar_vida()
 
 	barraExperiencia.max_value = experienciaNecessaria
 	barraExperiencia.value = experiencia
@@ -104,12 +103,7 @@ func _ready() -> void:
 	barraCura.max_value = 10 * 60 / max(inteligencia / 20, 1)
 	barraCura.value = cooldownDaCura
 	
-	if alvos[0] != null:
-		for alvo in alvos:
-			experienciaDropada += randi_range(
-				alvo.experiencia_min,
-				alvo.experiencia_max
-			)
+	recalcular_experiencia_dropada()
 
 	inventario_ref = get_tree().get_first_node_in_group(
 		"inventario_principal"
@@ -169,7 +163,7 @@ func _physics_process(delta: float) -> void:
 	if (
 		Input.is_action_pressed("ui_healing")
 		and cooldownDaCura <= 0
-		and vidaInicial > vitalidade
+		and vidaInicial > vidaAtual
 	):
 
 		mecanicas.cura(
@@ -179,8 +173,11 @@ func _physics_process(delta: float) -> void:
 
 		barraCura.max_value = cooldownDaCura
 
-		if vitalidade > vidaInicial:
-			vitalidade = vidaInicial
+		if vidaAtual > vidaInicial:
+			vidaAtual = vidaInicial
+			_atualizar_barra_vida()
+
+		_solicitar_salvamento()
 
 	elif cooldownDaCura > 0:
 
@@ -201,6 +198,7 @@ func _physics_process(delta: float) -> void:
 		_entregar_drops_pendentes()
 
 		dropsRecebido = true
+		_solicitar_salvamento()
 	# ==================================
 
 
@@ -214,6 +212,7 @@ func _physics_process(delta: float) -> void:
 	if subiu_de_nivel:
 		label_nivel.text = str("Lv. ", nivel)
 		_sincronizar_menu_status()
+		_solicitar_salvamento()
 	barraExperiencia.value = experiencia
 	# ==================================
 
@@ -278,7 +277,7 @@ func _sincronizar_menu_status() -> void:
 			
 func verificar_vida():
 
-	var vida_percent = float(vitalidade) / float(vidaInicial)
+	var vida_percent = float(vidaAtual) / float(max(vidaInicial, 1))
 
 	if vida_percent <= 0.2 and not em_perigo:
 
@@ -289,6 +288,93 @@ func verificar_vida():
 
 		em_perigo = false
 		SoundManager.tocar_musica(musica_normal)
+
+
+func calcular_vida_maxima() -> int:
+	return max(vitalidade * 5, 1)
+
+
+func sincronizar_vida() -> void:
+	vidaInicial = max(vidaInicial, calcular_vida_maxima())
+	vidaAtual = clamp(vidaAtual, 0, vidaInicial)
+	_atualizar_barra_vida()
+
+
+func receber_dano(dano: int) -> void:
+	vidaAtual = max(vidaAtual - max(dano, 0), 0)
+	_atualizar_barra_vida()
+	_solicitar_salvamento()
+
+
+func receber_cura(cura: int) -> void:
+	vidaAtual = min(vidaAtual + max(cura, 0), vidaInicial)
+	_atualizar_barra_vida()
+	_solicitar_salvamento()
+
+
+func aumentar_atributo(nome: String) -> bool:
+	if pontosStatus <= 0:
+		return false
+
+	match nome:
+		"forca":
+			forca += 1
+		"defesa":
+			defesa += 1
+		"vitalidade":
+			vitalidade += 1
+			vidaInicial = calcular_vida_maxima()
+			vidaAtual = min(vidaAtual + 5, vidaInicial)
+			_atualizar_barra_vida()
+		"inteligencia":
+			inteligencia += 1
+		_:
+			return false
+
+	pontosStatus -= 1
+	_solicitar_salvamento()
+	return true
+
+
+func tem_moedas(valor: int) -> bool:
+	return moedas >= max(valor, 0)
+
+
+func gastar_moedas(valor: int) -> bool:
+	var custo :int= max(valor, 0)
+	if moedas < custo:
+		return false
+
+	moedas -= custo
+	label_moeda.text = str(moedas)
+	_solicitar_salvamento()
+	return true
+
+
+func _atualizar_barra_vida() -> void:
+	if barraVida == null:
+		return
+	barraVida.max_value = vidaInicial
+	barraVida.value = vidaAtual
+
+
+func _solicitar_salvamento() -> void:
+	if SaveManager.aplicando_save:
+		return
+	SaveManager.solicitar_salvamento()
+
+
+func recalcular_experiencia_dropada() -> void:
+	experienciaDropada = 0
+
+	for alvo in alvos:
+		if alvo == null or not is_instance_valid(alvo):
+			continue
+
+		experienciaDropada += randi_range(
+			alvo.experiencia_min,
+			alvo.experiencia_max
+		)
 
 
 func _acumular_drops_do_inimigo(alvo: inimigo) -> void:

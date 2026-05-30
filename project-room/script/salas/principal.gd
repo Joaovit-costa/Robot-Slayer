@@ -5,6 +5,16 @@ extends Node2D
 @export var sala_inicial: Node2D
 @export var duracao_fade: float = 1.0
 
+@export_group("Balanceamento")
+@export var crescimento_status_por_sala: float = 0.12
+@export var crescimento_xp_por_sala: float = 0.18
+@export var crescimento_velocidade_por_sala: float = 0.03
+@export var limite_multiplicador_status: float = 4.0
+@export var limite_multiplicador_xp: float = 6.0
+@export var limite_multiplicador_velocidade: float = 1.6
+@export var status_inicial_player_referencia: int = 17
+@export_group("")
+
 @onready var modelos_salas: Node2D = get_node_or_null("Salas") as Node2D
 @onready var color_rect: ColorRect = get_node_or_null("ColorRect") as ColorRect
 
@@ -16,10 +26,14 @@ const TIPO_LOJA_ARMA := &"arma"
 var sala_atual: Node2D
 var transicao_em_andamento: bool = false
 var loja_disponivel: StringName = TIPO_LOJA_NENHUMA
+var salas_passadas: int = 0
+var sala_atual_id: String = ""
 
 
 func _ready() -> void:
 	randomize()
+	add_to_group("gerenciador_salas")
+	SaveManager.aplicar_no_gerenciador_salas(self)
 	_configurar_color_rect()
 	_desativar_modelos_de_sala()
 	_iniciar_primeira_sala()
@@ -33,14 +47,14 @@ func solicitar_transicao_de_sala(_sala_origem: Node2D, cena_ao_entrar_na_porta: 
 	_bloquear_inputs_da_transicao()
 	await _fazer_fade(1.0)
 
-	if cena_ao_entrar_na_porta.is_empty():
-		_criar_sala_aleatoria()
-	else:
-		_criar_sala_por_cena(cena_ao_entrar_na_porta)
+	salas_passadas += 1
+
+	_criar_sala_por_progresso(cena_ao_entrar_na_porta)
 
 	await _fazer_fade(0.0)
 	_liberar_inputs_da_transicao()
 	transicao_em_andamento = false
+	SaveManager.solicitar_salvamento()
 
 
 func _input(_event: InputEvent) -> void:
@@ -49,17 +63,70 @@ func _input(_event: InputEvent) -> void:
 
 
 func _iniciar_primeira_sala() -> void:
-	var modelo := sala_inicial
+	var modelo := _obter_sala_por_id(sala_atual_id)
 
-	if modelo == null and not salas_tutorial.is_empty():
-		modelo = salas_tutorial[0]
-	elif modelo == null and not salas.is_empty():
+	if modelo == null:
+		modelo = _obter_sala_tutorial_por_progresso()
+
+	if modelo == null:
+		modelo = sala_inicial
+
+	if modelo == null and not salas.is_empty():
 		modelo = salas[0]
 
 	if modelo == null:
 		return
 
 	_criar_sala_por_modelo(modelo)
+
+
+func _criar_sala_por_progresso(cena_ao_entrar_na_porta: String = "") -> void:
+	var sala_tutorial := _obter_sala_tutorial_por_progresso()
+	if sala_tutorial != null:
+		_criar_sala_por_modelo(sala_tutorial)
+		return
+
+	if cena_ao_entrar_na_porta.is_empty() or _cena_ao_entrar_eh_tutorial(cena_ao_entrar_na_porta):
+		_criar_sala_aleatoria()
+	else:
+		_criar_sala_por_cena(cena_ao_entrar_na_porta)
+
+
+func _obter_sala_tutorial_por_progresso() -> Node2D:
+	if salas_passadas < 0 or salas_passadas >= salas_tutorial.size():
+		return null
+
+	var modelo := salas_tutorial[salas_passadas]
+	if modelo == null or not is_instance_valid(modelo):
+		return null
+
+	return modelo
+
+
+func _obter_sala_por_id(sala_id: String) -> Node2D:
+	if sala_id.is_empty():
+		return null
+
+	if sala_inicial != null and str(sala_inicial.name) == sala_id:
+		return sala_inicial
+
+	for sala_modelo in salas_tutorial:
+		if sala_modelo != null and is_instance_valid(sala_modelo) and str(sala_modelo.name) == sala_id:
+			return sala_modelo
+
+	for sala_modelo in salas:
+		if sala_modelo != null and is_instance_valid(sala_modelo) and str(sala_modelo.name) == sala_id:
+			return sala_modelo
+
+	return null
+
+
+func _cena_ao_entrar_eh_tutorial(cena_path: String) -> bool:
+	if cena_path.is_empty():
+		return false
+
+	var path_normalizado := cena_path.replace("\\", "/").to_lower()
+	return path_normalizado.contains("/tutorial/")
 
 
 func _criar_sala_aleatoria() -> void:
@@ -88,6 +155,8 @@ func _criar_sala_por_cena(cena_path: String) -> void:
 	if nova_sala == null:
 		return
 
+	sala_atual_id = str(nova_sala.name)
+	_balancear_sala(nova_sala)
 	_adicionar_sala_ativa(nova_sala)
 
 
@@ -107,6 +176,8 @@ func _criar_sala_por_modelo(modelo: Node2D) -> void:
 	if nova_sala == null:
 		return
 
+	sala_atual_id = str(modelo.name)
+	_balancear_sala(nova_sala)
 	_adicionar_sala_ativa(nova_sala)
 
 
@@ -234,3 +305,69 @@ func _on_area_loja_body_entered(body: Node, tipo_loja: StringName) -> void:
 func _on_area_loja_body_exited(body: Node, tipo_loja: StringName) -> void:
 	if body is protagonista and loja_disponivel == tipo_loja:
 		loja_disponivel = TIPO_LOJA_NENHUMA
+
+
+func _balancear_sala(nova_sala: Node2D) -> void:
+	if nova_sala == null:
+		return
+
+	var player := nova_sala.get_node_or_null("Protagonista") as protagonista
+	var referencia_player := _calcular_referencia_player(player)
+	var fator_player :float= max(0.8, referencia_player / float(max(status_inicial_player_referencia, 1)))
+	var multiplicador_status :float= clamp(
+		1.0 + (salas_passadas * crescimento_status_por_sala * fator_player),
+		1.0,
+		limite_multiplicador_status
+	)
+	var multiplicador_xp :float= clamp(
+		1.0 + (salas_passadas * crescimento_xp_por_sala * fator_player),
+		1.0,
+		limite_multiplicador_xp
+	)
+	var multiplicador_velocidade :float= clamp(
+		1.0 + (salas_passadas * crescimento_velocidade_por_sala),
+		1.0,
+		limite_multiplicador_velocidade
+	)
+
+	for node in nova_sala.find_children("*", "CharacterBody2D", true, false):
+		var alvo := node as inimigo
+		if alvo == null:
+			continue
+		_balancear_inimigo(
+			alvo,
+			multiplicador_status,
+			multiplicador_xp,
+			multiplicador_velocidade
+		)
+
+
+func _calcular_referencia_player(player: protagonista) -> int:
+	if player == null:
+		return status_inicial_player_referencia
+
+	return max(
+		player.vitalidade
+		+ player.defesa
+		+ player.forca
+		+ player.inteligencia,
+		1
+	)
+
+
+func _balancear_inimigo(
+	alvo: inimigo,
+	multiplicador_status: float,
+	multiplicador_xp: float,
+	multiplicador_velocidade: float
+) -> void:
+	alvo.vitalidade = max(1, int(round(alvo.vitalidade * multiplicador_status)))
+	alvo.defesa = max(0, int(round(alvo.defesa * multiplicador_status)))
+	alvo.forca = max(1, int(round(alvo.forca * multiplicador_status)))
+	alvo.inteligencia = max(0, int(round(alvo.inteligencia * multiplicador_status)))
+	alvo.velocidade *= multiplicador_velocidade
+	alvo.experiencia_min = max(1, int(round(alvo.experiencia_min * multiplicador_xp)))
+	alvo.experiencia_max = max(
+		alvo.experiencia_min,
+		int(round(alvo.experiencia_max * multiplicador_xp))
+	)

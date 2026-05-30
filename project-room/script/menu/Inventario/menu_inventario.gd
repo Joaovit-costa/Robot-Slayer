@@ -51,6 +51,7 @@ func _configurar_dependencias() -> void:
 
 	inventario_ref.configurar_banco_de_itens(banco_itens_ref)
 	inventario_ref.inventario_atualizado.connect(_atualizar_slots)
+	SaveManager.aplicar_no_inventario(inventario_ref)
 
 
 # Encontra todos os slots da cena e injeta neles a referencia do inventario.

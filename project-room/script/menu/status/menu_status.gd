@@ -75,14 +75,8 @@ func aumentar_atributo(nome):
 	if player_ref == null or player_ref.pontosStatus <= 0:
 		return
 
-	match nome:
-		"forca": player_ref.forca += 1
-		"defesa": player_ref.defesa += 1
-		"vitalidade": player_ref.vitalidade += 1
-		"inteligencia": player_ref.inteligencia += 1
-
-	player_ref.pontosStatus -= 1
-	atualizar_menu_status()
+	if player_ref.aumentar_atributo(nome):
+		atualizar_menu_status()
 
 
 func _on_botao_adicionar_forca_pressed():

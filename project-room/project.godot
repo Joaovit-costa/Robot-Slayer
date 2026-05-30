@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 InventarioGlobal="*uid://cu1e4lklshi7m"
 SoundManager="*uid://diam4v3uitj8p"
+SaveManager="*res://script/data/save_manager.gd"
 
 [display]
 
