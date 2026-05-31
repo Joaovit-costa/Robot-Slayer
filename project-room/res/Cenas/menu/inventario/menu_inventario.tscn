@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://4s5dtyt2xg1i" path="res://res/design/menus/Botão_Fechar.png" id="1_2q23n"]
 [ext_resource type="Script" uid="uid://dumuttyku2ajw" path="res://script/menu/Inventario/menu_inventario.gd" id="1_q7nna"]
+[ext_resource type="Texture2D" uid="uid://cbiuirg5w6j5t" path="res://res/design/menus/Slot_Personagem.png" id="2_sfejx"]
+[ext_resource type="Texture2D" uid="uid://cymlbgja8hx1y" path="res://res/design/menus/Slot_Arma.png" id="3_5umxs"]
 [ext_resource type="Texture2D" uid="uid://do2vcevn4k7gw" path="res://res/design/menus/Slot_Inventario.png" id="4_gml74"]
 [ext_resource type="Texture2D" uid="uid://dnm2exythe0je" path="res://res/design/menus/Slot_sielecionado.png" id="5_q7nna"]
 [ext_resource type="Script" uid="uid://bu4ch65fqj0s3" path="res://script/menu/Inventario/slot_inventario.gd" id="6_qh40f"]
@@ -19,44 +21,6 @@ corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
-
-[sub_resource type="SystemFont" id="SystemFont_hrdtk"]
-font_names = PackedStringArray("Gill Sans MT")
-font_italic = true
-font_weight = 625
-hinting = 2
-subpixel_positioning = 0
-multichannel_signed_distance_field = true
-msdf_pixel_range = 0
-msdf_size = 189
-
-[sub_resource type="LabelSettings" id="LabelSettings_gml74"]
-font = SubResource("SystemFont_hrdtk")
-font_size = 25
-font_color = Color(0.19187686, 0, 0.029770289, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hrdtk"]
-bg_color = Color(1, 1, 1, 1)
-border_width_left = 166
-border_width_top = 166
-border_width_right = 166
-border_width_bottom = 166
-border_color = Color(2.117753e-06, 0.8017512, 0.85690844, 0)
-border_blend = true
-corner_radius_top_left = 66
-corner_radius_top_right = 66
-corner_radius_bottom_right = 66
-corner_radius_bottom_left = 66
-anti_aliasing = false
-anti_aliasing_size = 10.0
-
-[sub_resource type="SystemFont" id="SystemFont_gml74"]
-font_names = PackedStringArray("Segoe UI")
-font_weight = 725
-
-[sub_resource type="LabelSettings" id="LabelSettings_q7nna"]
-font = SubResource("SystemFont_gml74")
-font_color = Color(0.074929185, 2.6652404e-05, 0.29559103, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aot85"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -110,9 +74,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -386.0
+offset_left = -350.00003
 offset_top = -230.0
-offset_right = 386.0
+offset_right = 350.00003
 offset_bottom = 230.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -148,7 +112,7 @@ offset_right = 327.0
 offset_bottom = 193.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 28
+theme_override_constants/separation = 30
 alignment = 1
 
 [node name="PainelEsquerdo" type="VBoxContainer" parent="PainelPrincipal/Conteudo" unique_id=822491824]
@@ -156,89 +120,49 @@ layout_mode = 2
 theme_override_constants/separation = 15
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PainelPrincipal/Conteudo/PainelEsquerdo" unique_id=1009120591]
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/Conteudo/PainelEsquerdo" unique_id=1860803896]
 layout_mode = 2
-theme_override_constants/separation = 24
+size_flags_vertical = 0
+texture = ExtResource("2_sfejx")
 
-[node name="Container" type="VBoxContainer" parent="PainelPrincipal/Conteudo/PainelEsquerdo/VBoxContainer" unique_id=815294585]
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/Conteudo/PainelEsquerdo/TextureRect" unique_id=340526617]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.999985
+offset_top = -71.99999
+offset_right = 62.999985
+offset_bottom = 71.99999
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect2" type="TextureRect" parent="PainelPrincipal/Conteudo/PainelEsquerdo" unique_id=552484174]
 layout_mode = 2
-theme_override_constants/separation = -1
+texture = ExtResource("3_5umxs")
 
-[node name="titulo" type="Label" parent="PainelPrincipal/Conteudo/PainelEsquerdo/VBoxContainer/Container" unique_id=1268836883]
-custom_minimum_size = Vector2(265.72, 0)
-layout_mode = 2
-text = "Titulo"
-label_settings = SubResource("LabelSettings_gml74")
-horizontal_alignment = 1
-visible_characters = 20
-visible_ratio = 3.3333333
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/Conteudo/PainelEsquerdo/TextureRect2" unique_id=2104086561]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.5
+offset_top = -32.5
+offset_right = 73.5
+offset_bottom = 32.5
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="PainelPrincipal/Conteudo/PainelEsquerdo/VBoxContainer/Container" unique_id=2005526963]
-custom_minimum_size = Vector2(0, 5.01)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_hrdtk")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PainelPrincipal/Conteudo/PainelEsquerdo/VBoxContainer" unique_id=693185667]
-layout_mode = 2
-theme_override_constants/separation = 34
-
-[node name="tipo" type="Label" parent="PainelPrincipal/Conteudo/PainelEsquerdo/VBoxContainer/HBoxContainer" unique_id=1584097103]
-custom_minimum_size = Vector2(119.01, 0)
-layout_mode = 2
-text = "Tipo:"
-label_settings = SubResource("LabelSettings_q7nna")
-vertical_alignment = 1
-
-[node name="raridade" type="Label" parent="PainelPrincipal/Conteudo/PainelEsquerdo/VBoxContainer/HBoxContainer" unique_id=642865595]
-custom_minimum_size = Vector2(140, 0)
-layout_mode = 2
-text = "Raridade:"
-label_settings = SubResource("LabelSettings_q7nna")
-vertical_alignment = 1
-
-[node name="GridContainer" type="GridContainer" parent="PainelPrincipal/Conteudo/PainelEsquerdo/VBoxContainer" unique_id=329810854]
-layout_mode = 2
-theme_override_constants/v_separation = 1
-
-[node name="forca" type="Label" parent="PainelPrincipal/Conteudo/PainelEsquerdo/VBoxContainer/GridContainer" unique_id=848369226]
-custom_minimum_size = Vector2(119.01, 0)
-layout_mode = 2
-text = "Força:"
-label_settings = SubResource("LabelSettings_q7nna")
-vertical_alignment = 1
-
-[node name="defesa" type="Label" parent="PainelPrincipal/Conteudo/PainelEsquerdo/VBoxContainer/GridContainer" unique_id=16652256]
-custom_minimum_size = Vector2(119.01, 0)
-layout_mode = 2
-text = "Defesa:"
-label_settings = SubResource("LabelSettings_q7nna")
-vertical_alignment = 1
-
-[node name="inteligencia" type="Label" parent="PainelPrincipal/Conteudo/PainelEsquerdo/VBoxContainer/GridContainer" unique_id=2110326553]
-custom_minimum_size = Vector2(119.01, 0)
-layout_mode = 2
-text = "Inteligência:"
-label_settings = SubResource("LabelSettings_q7nna")
-vertical_alignment = 1
-
-[node name="vitalidade" type="Label" parent="PainelPrincipal/Conteudo/PainelEsquerdo/VBoxContainer/GridContainer" unique_id=1955110145]
-custom_minimum_size = Vector2(119.01, 0)
-layout_mode = 2
-text = "Vitalidade:"
-label_settings = SubResource("LabelSettings_q7nna")
-vertical_alignment = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="PainelPrincipal/Conteudo/PainelEsquerdo" unique_id=688689826]
-layout_mode = 2
-theme_override_constants/margin_left = 45
-theme_override_constants/margin_right = 45
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PainelPrincipal/Conteudo/PainelEsquerdo/MarginContainer" unique_id=317766050]
+[node name="HBoxContainer" type="HBoxContainer" parent="PainelPrincipal/Conteudo/PainelEsquerdo" unique_id=317766050]
 layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Slot25" type="TextureButton" parent="PainelPrincipal/Conteudo/PainelEsquerdo/MarginContainer/HBoxContainer" unique_id=351590921]
+[node name="Slot25" type="TextureButton" parent="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer" unique_id=351590921]
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("4_gml74")
@@ -249,7 +173,7 @@ script = ExtResource("6_qh40f")
 idSlot = 25
 tipo = "extensor"
 
-[node name="Panel" type="Panel" parent="PainelPrincipal/Conteudo/PainelEsquerdo/MarginContainer/HBoxContainer/Slot25" unique_id=427689950]
+[node name="Panel" type="Panel" parent="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot25" unique_id=427689950]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -258,7 +182,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_aot85")
 
-[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/Conteudo/PainelEsquerdo/MarginContainer/HBoxContainer/Slot25" unique_id=920506229]
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot25" unique_id=920506229]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.09375
@@ -271,7 +195,7 @@ expand_mode = 1
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="pressed" type="Panel" parent="PainelPrincipal/Conteudo/PainelEsquerdo/MarginContainer/HBoxContainer/Slot25" unique_id=587879652]
+[node name="pressed" type="Panel" parent="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot25" unique_id=587879652]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -281,7 +205,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_joibv")
 
-[node name="Slot26" type="TextureButton" parent="PainelPrincipal/Conteudo/PainelEsquerdo/MarginContainer/HBoxContainer" unique_id=38869201]
+[node name="Slot26" type="TextureButton" parent="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer" unique_id=38869201]
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("4_gml74")
@@ -293,7 +217,7 @@ script = ExtResource("6_qh40f")
 idSlot = 26
 tipo = "extensor"
 
-[node name="Panel" type="Panel" parent="PainelPrincipal/Conteudo/PainelEsquerdo/MarginContainer/HBoxContainer/Slot26" unique_id=55542290]
+[node name="Panel" type="Panel" parent="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot26" unique_id=55542290]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -302,7 +226,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_aot85")
 
-[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/Conteudo/PainelEsquerdo/MarginContainer/HBoxContainer/Slot26" unique_id=613572386]
+[node name="TextureRect" type="TextureRect" parent="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot26" unique_id=613572386]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.09375
@@ -315,7 +239,7 @@ expand_mode = 1
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="pressed" type="Panel" parent="PainelPrincipal/Conteudo/PainelEsquerdo/MarginContainer/HBoxContainer/Slot26" unique_id=504213647]
+[node name="pressed" type="Panel" parent="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot26" unique_id=504213647]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -1360,14 +1284,14 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_joibv")
 
 [connection signal="pressed" from="PainelPrincipal/BotãoFechar" to="." method="_on_botao_fechar_pressed"]
-[connection signal="button_down" from="PainelPrincipal/Conteudo/PainelEsquerdo/MarginContainer/HBoxContainer/Slot25" to="PainelPrincipal/Conteudo/PainelEsquerdo/MarginContainer/HBoxContainer/Slot25" method="_on_button_down"]
-[connection signal="button_up" from="PainelPrincipal/Conteudo/PainelEsquerdo/MarginContainer/HBoxContainer/Slot25" to="PainelPrincipal/Conteudo/PainelEsquerdo/MarginContainer/HBoxContainer/Slot25" method="_on_button_up"]
-[connection signal="mouse_entered" from="PainelPrincipal/Conteudo/PainelEsquerdo/MarginContainer/HBoxContainer/Slot25" to="PainelPrincipal/Conteudo/PainelEsquerdo/MarginContainer/HBoxContainer/Slot25" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="PainelPrincipal/Conteudo/PainelEsquerdo/MarginContainer/HBoxContainer/Slot25" to="PainelPrincipal/Conteudo/PainelEsquerdo/MarginContainer/HBoxContainer/Slot25" method="_on_mouse_exited"]
-[connection signal="button_down" from="PainelPrincipal/Conteudo/PainelEsquerdo/MarginContainer/HBoxContainer/Slot26" to="PainelPrincipal/Conteudo/PainelEsquerdo/MarginContainer/HBoxContainer/Slot26" method="_on_button_down"]
-[connection signal="button_up" from="PainelPrincipal/Conteudo/PainelEsquerdo/MarginContainer/HBoxContainer/Slot26" to="PainelPrincipal/Conteudo/PainelEsquerdo/MarginContainer/HBoxContainer/Slot26" method="_on_button_up"]
-[connection signal="mouse_entered" from="PainelPrincipal/Conteudo/PainelEsquerdo/MarginContainer/HBoxContainer/Slot26" to="PainelPrincipal/Conteudo/PainelEsquerdo/MarginContainer/HBoxContainer/Slot26" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="PainelPrincipal/Conteudo/PainelEsquerdo/MarginContainer/HBoxContainer/Slot26" to="PainelPrincipal/Conteudo/PainelEsquerdo/MarginContainer/HBoxContainer/Slot26" method="_on_mouse_exited"]
+[connection signal="button_down" from="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot25" to="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot25" method="_on_button_down"]
+[connection signal="button_up" from="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot25" to="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot25" method="_on_button_up"]
+[connection signal="mouse_entered" from="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot25" to="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot25" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot25" to="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot25" method="_on_mouse_exited"]
+[connection signal="button_down" from="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot26" to="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot26" method="_on_button_down"]
+[connection signal="button_up" from="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot26" to="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot26" method="_on_button_up"]
+[connection signal="mouse_entered" from="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot26" to="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot26" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot26" to="PainelPrincipal/Conteudo/PainelEsquerdo/HBoxContainer/Slot26" method="_on_mouse_exited"]
 [connection signal="button_down" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot" method="_on_button_down"]
 [connection signal="button_up" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot" method="_on_button_up"]
 [connection signal="mouse_entered" from="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot" to="PainelPrincipal/Conteudo/VBoxContainer/GridContainer/Slot" method="_on_mouse_entered"]

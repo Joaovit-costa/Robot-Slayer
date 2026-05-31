@@ -322,7 +322,7 @@ buffs_por_raridade = {
 3: {
 "defesa": 0.0,
 "forca": 0.0,
-"inteligencia": 1.0,
+"inteligencia": 0.0,
 "velocidade": 0.0,
 "velocidade_ataque": 0.1,
 "vitalidade": 0.0

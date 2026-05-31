@@ -120,6 +120,7 @@ func _ready() -> void:
 	
 	call_deferred("_sincronizar_menu_status")
 
+
 func _physics_process(delta: float) -> void:
 	# ============ MOVIMENTO ============
 	var direcao = Vector2(
@@ -365,6 +366,7 @@ func _solicitar_salvamento() -> void:
 
 func recalcular_experiencia_dropada() -> void:
 	experienciaDropada = 0
+
 	for alvo in alvos:
 		if alvo == null or not is_instance_valid(alvo):
 			continue
@@ -376,6 +378,7 @@ func recalcular_experiencia_dropada() -> void:
 
 
 func _acumular_drops_do_inimigo(alvo: inimigo) -> void:
+
 	if alvo == null:
 		return
 
