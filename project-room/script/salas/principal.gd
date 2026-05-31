@@ -17,6 +17,7 @@ extends Node2D
 
 @onready var modelos_salas: Node2D = get_node_or_null("Salas") as Node2D
 @onready var color_rect: ColorRect = get_node_or_null("ColorRect") as ColorRect
+@onready var label_salas:= $ColorRect2/Label
 
 const POSICAO_MODELOS_DESATIVADOS := Vector2(1000000, 1000000)
 const TIPO_LOJA_NENHUMA := &""
@@ -34,6 +35,7 @@ func _ready() -> void:
 	randomize()
 	add_to_group("gerenciador_salas")
 	SaveManager.aplicar_no_gerenciador_salas(self)
+	label_salas.text = "sala " + str(salas_passadas)
 	_configurar_color_rect()
 	_desativar_modelos_de_sala()
 	_iniciar_primeira_sala()
@@ -50,6 +52,7 @@ func solicitar_transicao_de_sala(_sala_origem: Node2D, cena_ao_entrar_na_porta: 
 	salas_passadas += 1
 
 	_criar_sala_por_progresso(cena_ao_entrar_na_porta)
+	label_salas.text = "sala " + str(salas_passadas)
 
 	await _fazer_fade(0.0)
 	_liberar_inputs_da_transicao()

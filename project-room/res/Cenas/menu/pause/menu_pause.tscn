@@ -28,6 +28,15 @@
 [node name="PauseMenu" type="CanvasLayer" unique_id=1396814385]
 script = ExtResource("1_4uk07")
 
+[node name="FundoEscuro" type="ColorRect" parent="." unique_id=916942447]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.011764706, 0.007843138, 0, 0.42352942)
+
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1388171005]
 anchors_preset = 15
 anchor_right = 1.0
@@ -74,14 +83,6 @@ offset_top = 357.0
 offset_right = 598.0
 offset_bottom = 450.0
 color = Color(0.54509807, 0.36078432, 0.9647059, 0.4)
-
-[node name="FundoEscuro" type="ColorRect" parent="." unique_id=916942447]
-offset_left = 247.0
-offset_top = 96.0
-offset_right = 838.0
-offset_bottom = 511.0
-mouse_filter = 2
-color = Color(0.011764706, 0.007843138, 0, 0.42352942)
 
 [connection signal="pressed" from="BotaoContinuar" to="." method="_on_button_continuar_pressed"]
 [connection signal="pressed" from="BotaoSair" to="." method="_on_botao_sair_pressed"]

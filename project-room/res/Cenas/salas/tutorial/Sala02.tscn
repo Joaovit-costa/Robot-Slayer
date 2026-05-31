@@ -83,6 +83,20 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SystemFont" id="SystemFont_ru08q"]
+font_names = PackedStringArray("Arial")
+font_weight = 999
+font_stretch = 175
+subpixel_positioning = 0
+oversampling = 2.765
+
+[sub_resource type="LabelSettings" id="LabelSettings_dnvnk"]
+font = SubResource("SystemFont_ru08q")
+font_size = 15
+font_color = Color(0.25875205, 0.9700323, 0.50856924, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 0.25882354)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_range_porta"]
 size = Vector2(150, 90)
 
@@ -92,7 +106,6 @@ portas = [NodePath("StaticBody2D/AnimatedSprite2D")]
 cena_ao_entrar_na_porta = "uid://1hgxofwmifxg"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1379292809]
-collision_layer = 1
 collision_mask = 6
 
 [node name="TextureRect" type="TextureRect" parent="StaticBody2D" unique_id=220091784]
@@ -110,12 +123,32 @@ position = Vector2(296.5, 33)
 scale = Vector2(2.107692, 2.5333333)
 sprite_frames = SubResource("SpriteFrames_vxoko")
 
+[node name="ColorRect2" type="ColorRect" parent="StaticBody2D" unique_id=1481659056]
+offset_left = 25.0
+offset_top = 116.0
+offset_right = 122.0
+offset_bottom = 144.0
+color = Color(0.28003302, 0.2887155, 0.30900177, 1)
+
+[node name="Label" type="Label" parent="StaticBody2D/ColorRect2" unique_id=2145074008]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Tutorial"
+label_settings = SubResource("LabelSettings_dnvnk")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
 [node name="Range Porta" type="Node2D" parent="." unique_id=412924413]
 
 [node name="Area2D" type="Area2D" parent="Range Porta" unique_id=213543271]
+position = Vector2(294, 58)
 collision_layer = 0
 collision_mask = 2
-position = Vector2(294, 58)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Range Porta/Area2D" unique_id=134271397]
 position = Vector2(3, -30)
@@ -123,7 +156,5 @@ shape = SubResource("RectangleShape2D_range_porta")
 disabled = true
 
 [node name="Protagonista" parent="." unique_id=369473398 node_paths=PackedStringArray("alvos") instance=ExtResource("2_52nwy")]
-collision_layer = 2
-collision_mask = 5
 position = Vector2(307, 418)
 alvos = [null]

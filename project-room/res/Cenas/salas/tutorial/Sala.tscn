@@ -2,7 +2,21 @@
 
 [ext_resource type="Texture2D" uid="uid://444eqydthpdp" path="res://res/design/Design-Robot Slayer/sprits/mapas finalizados/hub 1.png" id="1_c20lh"]
 [ext_resource type="PackedScene" uid="uid://crm7vecx3vhjy" path="res://res/Cenas/entidades/protagonista.tscn" id="2_h0g7u"]
-[ext_resource type="Script" path="res://script/salas/transicao_sala.gd" id="3_qdt6n"]
+[ext_resource type="Script" uid="uid://c0gqdtcncjk0h" path="res://script/salas/transicao_sala.gd" id="3_qdt6n"]
+
+[sub_resource type="SystemFont" id="SystemFont_h0g7u"]
+font_names = PackedStringArray("Arial")
+font_weight = 999
+font_stretch = 175
+subpixel_positioning = 0
+oversampling = 2.765
+
+[sub_resource type="LabelSettings" id="LabelSettings_sra7s"]
+font = SubResource("SystemFont_h0g7u")
+font_size = 15
+font_color = Color(0.25875205, 0.9700323, 0.50856924, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 0.25882354)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c20lh"]
 size = Vector2(172, 76)
@@ -12,7 +26,6 @@ script = ExtResource("3_qdt6n")
 proxima_sala_path = "res://res/Cenas/salas/tutorial/Sala02.tscn"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1407298412]
-collision_layer = 1
 collision_mask = 6
 
 [node name="TextureRect" type="TextureRect" parent="StaticBody2D" unique_id=286314110]
@@ -25,9 +38,27 @@ metadata/_edit_use_anchors_ = true
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=885085793]
 polygon = PackedVector2Array(1, -2, 0, 647, 28, 648, 28, 581, 116, 582, 116, 540, 227, 538, 230, 293, 14, 290, 13, 172, 47, 172, 49, 145, 236, 142, 235, 67, 718, 61, 719, 114, 949, 114, 950, 129, 989, 130, 991, 275, 972, 275, 973, 349, 1041, 348, 1042, 404, 511, 405, 400, 407, 401, 537, 611, 541, 612, 582, 698, 584, 700, 648, 28, 649, 1152, 647, 1152, 1)
 
+[node name="ColorRect2" type="ColorRect" parent="StaticBody2D" unique_id=1102938866]
+offset_left = 25.0
+offset_top = 116.0
+offset_right = 122.0
+offset_bottom = 144.0
+color = Color(0.28003302, 0.2887155, 0.30900177, 1)
+
+[node name="Label" type="Label" parent="StaticBody2D/ColorRect2" unique_id=1164332278]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Tutorial"
+label_settings = SubResource("LabelSettings_sra7s")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
 [node name="Protagonista" parent="." unique_id=369473398 node_paths=PackedStringArray("alvos") instance=ExtResource("2_h0g7u")]
-collision_layer = 2
-collision_mask = 5
 position = Vector2(90, 616)
 alvos = [null, null]
 

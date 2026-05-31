@@ -16,6 +16,19 @@
 [ext_resource type="PackedScene" uid="uid://byn3sb7v47o3n" path="res://res/Cenas/salas/Compras/Sala13.tscn" id="14_rr14d"]
 [ext_resource type="PackedScene" uid="uid://cms5eh6avaayr" path="res://res/Cenas/salas/Compras/Sala14.tscn" id="15_dljeg"]
 
+[sub_resource type="SystemFont" id="SystemFont_e81ng"]
+font_names = PackedStringArray("Arial")
+font_weight = 825
+subpixel_positioning = 0
+oversampling = 2.765
+
+[sub_resource type="LabelSettings" id="LabelSettings_e81ng"]
+font = SubResource("SystemFont_e81ng")
+font_size = 22
+font_color = Color(0.29954746, 0.29954746, 0.29954743, 1)
+outline_size = 1
+shadow_color = Color(0, 0, 0, 0.25882354)
+
 [node name="sala" type="Node2D" unique_id=1911979741 node_paths=PackedStringArray("salas_tutorial", "salas")]
 script = ExtResource("1_8fdge")
 salas_tutorial = [NodePath("Salas/Sala"), NodePath("Salas/Sala02"), NodePath("Salas/Sala03")]
@@ -50,6 +63,26 @@ salas = [NodePath("Salas/Sala4"), NodePath("Salas/Sala5"), NodePath("Salas/Sala6
 [node name="Sala13" parent="Salas" unique_id=1991925353 instance=ExtResource("14_rr14d")]
 
 [node name="Sala14" parent="Salas" unique_id=2082946013 instance=ExtResource("15_dljeg")]
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1039176049]
+offset_left = 25.0
+offset_top = 77.0
+offset_right = 167.0
+offset_bottom = 110.0
+color = Color(0.52629185, 1, 0.6885553, 1)
+
+[node name="Label" type="Label" parent="ColorRect2" unique_id=789432363]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "sala 01"
+label_settings = SubResource("LabelSettings_e81ng")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1085141809]
 visible = false

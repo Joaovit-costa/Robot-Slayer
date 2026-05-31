@@ -83,6 +83,20 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SystemFont" id="SystemFont_o0h8g"]
+font_names = PackedStringArray("Arial")
+font_weight = 999
+font_stretch = 175
+subpixel_positioning = 0
+oversampling = 2.765
+
+[sub_resource type="LabelSettings" id="LabelSettings_j0r7y"]
+font = SubResource("SystemFont_o0h8g")
+font_size = 15
+font_color = Color(0.9956657, 0.7662683, 0.6869504, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 0.25882354)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mi273"]
 size = Vector2(120, 61)
 
@@ -91,7 +105,6 @@ script = ExtResource("1_o0h8g")
 portas = [NodePath("StaticBody2D/AnimatedSprite2D")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1081424891]
-collision_layer = 1
 collision_mask = 6
 
 [node name="TextureRect" type="TextureRect" parent="StaticBody2D" unique_id=1767135592]
@@ -110,12 +123,32 @@ position = Vector2(589, 45.000004)
 scale = Vector2(2.2461545, 3.4333336)
 sprite_frames = SubResource("SpriteFrames_0ioxr")
 
+[node name="ColorRect2" type="ColorRect" parent="StaticBody2D" unique_id=1549208611]
+offset_left = 25.0
+offset_top = 116.0
+offset_right = 122.0
+offset_bottom = 144.0
+color = Color(0.49419194, 0, 0.0052196835, 1)
+
+[node name="Label" type="Label" parent="StaticBody2D/ColorRect2" unique_id=313304100]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Difícil"
+label_settings = SubResource("LabelSettings_j0r7y")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
 [node name="Range Porta" type="Node2D" parent="." unique_id=304629865]
 
 [node name="Area2D" type="Area2D" parent="Range Porta" unique_id=354830980]
+position = Vector2(294, 58)
 collision_layer = 0
 collision_mask = 2
-position = Vector2(294, 58)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Range Porta/Area2D" unique_id=733865251]
 position = Vector2(293, 7)
@@ -123,7 +156,5 @@ shape = SubResource("RectangleShape2D_mi273")
 disabled = true
 
 [node name="Protagonista" parent="." unique_id=369473398 node_paths=PackedStringArray("alvos") instance=ExtResource("4_g358c")]
-collision_layer = 2
-collision_mask = 5
 position = Vector2(54, 552)
 alvos = [null]
