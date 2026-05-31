@@ -23,12 +23,6 @@ const TODOS_SLOTS := [
 var inventario: Array[Dictionary] = []
 var banco_itens: Itens
 
-
-# Recebe o banco de itens para permitir consultas por nome.
-func configurar_banco_de_itens(novo_banco: Itens) -> void:
-	banco_itens = novo_banco
-
-
 # Informa qual categoria de slot existe em um id especifico.
 func get_tipo_slot(id_slot: int) -> String:
 	if id_slot in SLOTS_EXTENSORES:
@@ -267,6 +261,15 @@ func _buscar_item_empilhavel(nome: String, raridade: int) -> Dictionary:
 		):
 			return item
 	return {}
+
+func _tem_item(nome: String, raridade: int) -> bool:
+	for item in inventario:
+		if (
+			str(item.get("nome", "")) == nome
+			and int(item.get("raridade", ItensData.Raridade.COMUM)) == raridade
+		):
+			return true
+	return false
 
 
 func _criar_chave_pilha(nome: String, raridade: int) -> String:
