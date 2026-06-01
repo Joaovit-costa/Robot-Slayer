@@ -125,11 +125,7 @@ func _aplicar_estado_telas() -> void:
 		or status_aberto
 		or pause_aberto
 	)
-	
-	if menu_aberto:
-		SoundManager.parar_passo()
 
-	
 	if sala != null:
 		sala.process_mode = Node.PROCESS_MODE_DISABLED if menu_aberto else Node.PROCESS_MODE_INHERIT
 
