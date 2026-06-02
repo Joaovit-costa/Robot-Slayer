@@ -3,6 +3,21 @@
 [ext_resource type="Script" uid="uid://dtqfollkt3w05" path="res://script/entidades/inimigo_atirador.gd" id="1_q4fc7"]
 [ext_resource type="Texture2D" uid="uid://dpsymp7ropqx2" path="res://res/design/Design-Robot Slayer/sprits/enemy 1.1.png" id="2_11y55"]
 [ext_resource type="PackedScene" uid="uid://bgtb5tgq1ymc1" path="res://res/Cenas/entidades/projetil_inimigo.tscn" id="2_af4mk"]
+[ext_resource type="Script" uid="uid://b547wbkrtg5cj" path="res://script/data/dataDrops.gd" id="3_af4mk"]
+
+[sub_resource type="Resource" id="Resource_o106a"]
+script = ExtResource("3_af4mk")
+nome = "Enginer"
+quantidade = 1
+chance_incomum = 55
+metadata/_custom_type_script = "uid://b547wbkrtg5cj"
+
+[sub_resource type="Resource" id="Resource_udxoo"]
+script = ExtResource("3_af4mk")
+nome = "Pyromancer"
+quantidade = 1
+chance_raro = 25
+metadata/_custom_type_script = "uid://b547wbkrtg5cj"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7s744"]
 radius = 40.0
@@ -19,6 +34,7 @@ defesa = 2
 forca = 6
 velocidade = 105.0
 inteligencia = 5
+drops = Array[ExtResource("3_af4mk")]([SubResource("Resource_o106a"), SubResource("Resource_udxoo")])
 distancia_ataque = 280.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1682455024]

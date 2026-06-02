@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cg55oowk7qo4a" path="res://script/data/DataItens.gd" id="1_yuqlm"]
 [ext_resource type="Script" uid="uid://e6apfavvsftp" path="res://script/data/Itens.gd" id="2_j28uc"]
-[ext_resource type="Texture2D" uid="uid://ximbp84brf4q" path="res://icon.svg" id="3_yvunc"]
 [ext_resource type="Texture2D" uid="uid://ohmj30jc80j0" path="res://res/design/Design-Robot Slayer/sprits/roda.png" id="4_yvunc"]
 [ext_resource type="Texture2D" uid="uid://c5eo0d8rag0hs" path="res://res/design/Design-Robot Slayer/sprits/fita_isolante.png" id="5_eualq"]
 [ext_resource type="Texture2D" uid="uid://bby4pbmuuag74" path="res://res/design/Design-Robot Slayer/sprits/extintor.png" id="6_vny6l"]
@@ -12,14 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://dqvya8yn51euo" path="res://res/design/Design-Robot Slayer/sprits/chip_eletrico.png" id="10_00avs"]
 [ext_resource type="Texture2D" uid="uid://bg7ho6eaw8vt6" path="res://res/design/Design-Robot Slayer/sprits/chip_gelo.png" id="11_2yro4"]
 [ext_resource type="Texture2D" uid="uid://d05ti3sb68ufe" path="res://res/design/Design-Robot Slayer/sprits/chip_fogo.png" id="12_p1f2f"]
-
-[sub_resource type="Resource" id="Resource_j28uc"]
-script = ExtResource("2_j28uc")
-nome = "teste"
-tipo = 0
-descricao = "apenas um teste"
-icone = ExtResource("3_yvunc")
-metadata/_custom_type_script = "uid://e6apfavvsftp"
 
 [sub_resource type="Resource" id="Resource_eualq"]
 script = ExtResource("2_j28uc")
@@ -429,4 +420,4 @@ metadata/_custom_type_script = "uid://e6apfavvsftp"
 
 [node name="Itens" type="Node" unique_id=2107710855]
 script = ExtResource("1_yuqlm")
-itens = Array[ExtResource("2_j28uc")]([SubResource("Resource_j28uc"), SubResource("Resource_eualq"), SubResource("Resource_8jy01"), SubResource("Resource_468bw"), SubResource("Resource_00avs"), SubResource("Resource_2yro4"), SubResource("Resource_p1f2f"), SubResource("Resource_8i0hq"), SubResource("Resource_7vkik"), SubResource("Resource_4fpqt")])
+itens = Array[ExtResource("2_j28uc")]([SubResource("Resource_eualq"), SubResource("Resource_8jy01"), SubResource("Resource_468bw"), SubResource("Resource_00avs"), SubResource("Resource_2yro4"), SubResource("Resource_p1f2f"), SubResource("Resource_8i0hq"), SubResource("Resource_7vkik"), SubResource("Resource_4fpqt")])

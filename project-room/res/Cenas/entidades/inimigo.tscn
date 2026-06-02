@@ -4,14 +4,18 @@
 [ext_resource type="Script" uid="uid://b547wbkrtg5cj" path="res://script/data/dataDrops.gd" id="2_55jdp"]
 [ext_resource type="Texture2D" uid="uid://dpsymp7ropqx2" path="res://res/design/Design-Robot Slayer/sprits/enemy 1.1.png" id="3_btc3j"]
 
-[sub_resource type="Resource" id="Resource_55jdp"]
+[sub_resource type="Resource" id="Resource_btc3j"]
 script = ExtResource("2_55jdp")
-nome = "teste"
-quantidade = 3
-chance_comum = 50
-chance_incomum = 30
-chance_raro = 10
-chance_epico = 5
+nome = "Eile"
+quantidade = 1
+chance_comum = 80
+metadata/_custom_type_script = "uid://b547wbkrtg5cj"
+
+[sub_resource type="Resource" id="Resource_63nhv"]
+script = ExtResource("2_55jdp")
+nome = "Heater"
+quantidade = 1
+chance_raro = 25
 metadata/_custom_type_script = "uid://b547wbkrtg5cj"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vhucu"]
@@ -172,7 +176,7 @@ forca = 4
 inteligencia = 3
 experiencia_min = 50
 experiencia_max = 80
-drops = Array[ExtResource("2_55jdp")]([SubResource("Resource_55jdp")])
+drops = Array[ExtResource("2_55jdp")]([SubResource("Resource_btc3j"), SubResource("Resource_63nhv")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1323380247]
 position = Vector2(0.25, 0.25000763)
