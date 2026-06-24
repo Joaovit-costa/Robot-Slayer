@@ -290,11 +290,11 @@ descricao = "Dano conectado (afeta dos inimigosperto) e Compatível com todas as
 icone = ExtResource("10_00avs")
 buffs_por_raridade = {
 0: {
-"defesa": 0.0,
-"forca": 0.0,
-"inteligencia": 0.0,
+"defesa": 0.05,
+"forca": 0.1,
+"inteligencia": 0.15,
 "velocidade": 0.0,
-"vitalidade": 0.0
+"vitalidade": 0.1
 },
 1: {
 "defesa": 0.0,
@@ -336,39 +336,39 @@ descricao = "Congelamento (paralisa o inimigo por1seg) e Compatível com todas a
 icone = ExtResource("11_2yro4")
 buffs_por_raridade = {
 0: {
-"defesa": 0.0,
-"forca": 0.0,
-"inteligencia": 0.0,
+"defesa": 0.15,
+"forca": 0.05,
+"inteligencia": 0.1,
 "velocidade": 0.0,
-"vitalidade": 0.0
+"vitalidade": 0.1
 },
 1: {
-"defesa": 0.0,
-"forca": 0.0,
-"inteligencia": 0.0,
+"defesa": 0.25,
+"forca": 0.15,
+"inteligencia": 0.2,
 "velocidade": 0.0,
-"vitalidade": 0.0
+"vitalidade": 0.2
 },
 2: {
-"defesa": 0.0,
-"forca": 0.0,
-"inteligencia": 0.0,
+"defesa": 0.35,
+"forca": 0.25,
+"inteligencia": 0.3,
 "velocidade": 0.0,
-"vitalidade": 0.0
+"vitalidade": 0.3
 },
 3: {
-"defesa": 0.1,
-"forca": 0.0,
-"inteligencia": 0.0,
+"defesa": 0.45,
+"forca": 0.35,
+"inteligencia": 0.4,
 "velocidade": 0.0,
-"vitalidade": 0.0
+"vitalidade": 0.4
 },
 4: {
-"defesa": 0.0,
-"forca": 0.0,
-"inteligencia": 0.0,
+"defesa": 0.6,
+"forca": 0.45,
+"inteligencia": 0.5,
 "velocidade": 0.0,
-"vitalidade": 0.0
+"vitalidade": 0.5
 }
 }
 metadata/_custom_type_script = "uid://e6apfavvsftp"
@@ -381,39 +381,39 @@ descricao = "Efeito de fogo1.5 de dps (tempo de duração 2 seg) e Compatível c
 icone = ExtResource("12_p1f2f")
 buffs_por_raridade = {
 0: {
-"defesa": 0.0,
-"forca": 0.0,
-"inteligencia": 0.0,
+"defesa": 0.05,
+"forca": 0.15,
+"inteligencia": 0.1,
 "velocidade": 0.0,
-"vitalidade": 0.0
+"vitalidade": 0.1
 },
 1: {
-"defesa": 0.0,
-"forca": 0.0,
-"inteligencia": 0.0,
+"defesa": 0.15,
+"forca": 0.25,
+"inteligencia": 0.2,
 "velocidade": 0.0,
-"vitalidade": 0.0
+"vitalidade": 0.2
 },
 2: {
-"defesa": 0.0,
-"forca": 0.0,
-"inteligencia": 0.0,
+"defesa": 0.25,
+"forca": 0.35,
+"inteligencia": 0.3,
 "velocidade": 0.0,
-"vitalidade": 0.0
+"vitalidade": 0.3
 },
 3: {
-"defesa": 0.0,
-"forca": 0.1,
-"inteligencia": 0.0,
+"defesa": 0.35,
+"forca": 0.45,
+"inteligencia": 0.4,
 "velocidade": 0.0,
-"vitalidade": 0.0
+"vitalidade": 0.4
 },
 4: {
-"defesa": 0.0,
-"forca": 0.0,
-"inteligencia": 0.0,
+"defesa": 0.45,
+"forca": 0.6,
+"inteligencia": 0.5,
 "velocidade": 0.0,
-"vitalidade": 0.0
+"vitalidade": 0.5
 }
 }
 metadata/_custom_type_script = "uid://e6apfavvsftp"
