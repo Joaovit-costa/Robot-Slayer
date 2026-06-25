@@ -245,39 +245,39 @@ descricao = "Efeito de veneno0.5 de dps (tempo de duração permanente) e Compat
 icone = ExtResource("9_00avs")
 buffs_por_raridade = {
 0: {
-"defesa": 0.0,
-"forca": 0.0,
-"inteligencia": 0.0,
-"velocidade": 0.0,
-"vitalidade": 0.0
-},
-1: {
-"defesa": 0.0,
-"forca": 0.0,
-"inteligencia": 0.0,
-"velocidade": 0.0,
-"vitalidade": 0.0
-},
-2: {
-"defesa": 0.0,
-"forca": 0.0,
-"inteligencia": 0.0,
-"velocidade": 0.0,
-"vitalidade": 0.0
-},
-3: {
-"defesa": 0.0,
-"forca": 0.0,
+"defesa": 0.1,
+"forca": 0.05,
 "inteligencia": 0.1,
 "velocidade": 0.0,
-"vitalidade": 0.0
+"vitalidade": 0.15
+},
+1: {
+"defesa": 0.2,
+"forca": 0.15,
+"inteligencia": 0.2,
+"velocidade": 0.0,
+"vitalidade": 0.25
+},
+2: {
+"defesa": 0.3,
+"forca": 0.25,
+"inteligencia": 0.3,
+"velocidade": 0.0,
+"vitalidade": 0.35
+},
+3: {
+"defesa": 0.4,
+"forca": 0.35,
+"inteligencia": 0.4,
+"velocidade": 0.0,
+"vitalidade": 0.45
 },
 4: {
-"defesa": 0.0,
-"forca": 0.0,
-"inteligencia": 0.0,
+"defesa": 0.5,
+"forca": 0.45,
+"inteligencia": 0.5,
 "velocidade": 0.0,
-"vitalidade": 0.0
+"vitalidade": 0.6
 }
 }
 metadata/_custom_type_script = "uid://e6apfavvsftp"
@@ -297,33 +297,33 @@ buffs_por_raridade = {
 "vitalidade": 0.1
 },
 1: {
-"defesa": 0.0,
-"forca": 0.0,
-"inteligencia": 0.0,
+"defesa": 0.15,
+"forca": 0.2,
+"inteligencia": 0.25,
 "velocidade": 0.0,
-"vitalidade": 0.0
+"vitalidade": 0.2
 },
 2: {
-"defesa": 0.0,
-"forca": 0.0,
-"inteligencia": 0.0,
+"defesa": 0.25,
+"forca": 0.3,
+"inteligencia": 0.35,
 "velocidade": 0.0,
-"vitalidade": 0.0
+"vitalidade": 0.3
 },
 3: {
-"defesa": 0.0,
-"forca": 0.0,
-"inteligencia": 1.0,
+"defesa": 0.35,
+"forca": 0.4,
+"inteligencia": 0.45,
 "velocidade": 0.0,
 "velocidade_ataque": 0.1,
-"vitalidade": 0.0
+"vitalidade": 0.4
 },
 4: {
-"defesa": 0.0,
-"forca": 0.0,
-"inteligencia": 0.0,
+"defesa": 0.45,
+"forca": 0.5,
+"inteligencia": 0.6,
 "velocidade": 0.0,
-"vitalidade": 0.0
+"vitalidade": 0.5
 }
 }
 metadata/_custom_type_script = "uid://e6apfavvsftp"
