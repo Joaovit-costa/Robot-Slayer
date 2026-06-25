@@ -155,39 +155,39 @@ descricao = "Imunidade ao congelamento e mais dano em inimigos eletronicos"
 icone = ExtResource("7_amgy2")
 buffs_por_raridade = {
 0: {
-"defesa": 0.0,
-"forca": 0.0,
-"inteligencia": 0.0,
+"defesa": 0.2,
+"forca": 0.05,
+"inteligencia": 0.05,
 "velocidade": 0.0,
-"vitalidade": 0.0
+"vitalidade": 0.1
 },
 1: {
-"defesa": 0.0,
-"forca": 0.0,
-"inteligencia": 0.0,
+"defesa": 0.2,
+"forca": 0.1,
+"inteligencia": 0.1,
 "velocidade": 0.0,
-"vitalidade": 0.0
+"vitalidade": 0.2
 },
 2: {
-"defesa": 0.1,
-"forca": 0.0,
-"inteligencia": 0.0,
+"defesa": 0.2,
+"forca": 0.15,
+"inteligencia": 0.15,
 "velocidade": 0.0,
-"vitalidade": 0.0
+"vitalidade": 0.2
 },
 3: {
-"defesa": 0.0,
-"forca": 0.0,
-"inteligencia": 0.0,
+"defesa": 0.3,
+"forca": 0.25,
+"inteligencia": 0.25,
 "velocidade": 0.0,
-"vitalidade": 0.0
+"vitalidade": 0.3
 },
 4: {
-"defesa": 0.0,
-"forca": 0.0,
-"inteligencia": 0.0,
+"defesa": 0.4,
+"forca": 0.35,
+"inteligencia": 0.35,
 "velocidade": 0.0,
-"vitalidade": 0.0
+"vitalidade": 0.4
 }
 }
 metadata/_custom_type_script = "uid://e6apfavvsftp"
