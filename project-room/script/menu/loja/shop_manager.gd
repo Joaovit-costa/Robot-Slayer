@@ -60,16 +60,23 @@ func remover_item(nome: String, preco: int = -1, raridade: int = -1) -> void:
 
 
 func finalizar_compra() -> bool:
+	
 	if carrinho.is_empty():
 		return false
-	if comprador_ref == null or not comprador_ref.has_method("tem_moedas") or not comprador_ref.has_method("gastar_moedas"):
+
+	if comprador_ref == null \
+	or not comprador_ref.has_method("tem_moedas") \
+	or not comprador_ref.has_method("gastar_moedas"):
 		return false
+
 	if inventario_ref == null:
 		return false
+
 	if not comprador_ref.tem_moedas(total):
 		return false
-	if not inventario_ref.tem_espaco_para_itens(carrinho):
-		return false
+
+	# Ignorando a validação de espaço por enquanto
+
 	if not comprador_ref.gastar_moedas(total):
 		return false
 
@@ -81,9 +88,16 @@ func finalizar_compra() -> bool:
 		)
 
 	var itens_comprados := carrinho.duplicate(true)
+
 	carrinho.clear()
 	_recalcular_total()
+
+	# Salva imediatamente após concluir a compra
+	if Engine.has_singleton("SaveManager"):
+		SaveManager.solicitar_salvamento()
+
 	compra_finalizada.emit(itens_comprados)
+
 	return true
 
 

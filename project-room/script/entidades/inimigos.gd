@@ -14,7 +14,24 @@ var vidaInicial: int
 @export var multiplicadores: Array[float] = [1.0, 1.3, 1.5]
 
 @export_group("animacao")
-@export var animacao_idle_down: StringName = &"idle_down"
+@export var animacao_idle_baixo: StringName = &"idle_Front"
+@export var animacao_idle_cima: StringName = &"idle_Botton"
+@export var animacao_idle_esquerda: StringName = &"idle_Left"
+@export var animacao_idle_direita: StringName = &"idle_Right"
+@export var animacao_andar_baixo: StringName = &"walk_Front"
+@export var animacao_andar_cima: StringName = &"walk_Botton"
+@export var animacao_andar_esquerda: StringName = &"walk_Left"
+@export var animacao_andar_direita: StringName = &"walk_Right"
+@export var animacao_atacar_baixo: StringName = &"attack_Front"
+@export var animacao_atacar_cima: StringName = &"attack_Botton"
+@export var animacao_atacar_esquerda: StringName = &"attack_Left"
+@export var animacao_atacar_direita: StringName = &"attack_Right"
+@export var animacao_spawn: StringName = &"spawn"
+@export var animacao_morte: StringName = &"dead"
+@export var animacao_dano_baixo: StringName = &"damage_Front"
+@export var animacao_dano_cima: StringName = &"damage_Botton"
+@export var animacao_dano_esquerda: StringName = &"damage_Left"
+@export var animacao_dano_direita: StringName = &"damage_Right"
 @export_group("")
 
 # Drops do inimigo
@@ -55,11 +72,14 @@ var morte_processada := false
 var cooldown: float = 0.0
 var inRange: bool = false
 var direcao_animacao: Vector2 = Vector2.DOWN
+var spawn_ativo := false
+var tomando_dano := false
 # ==================================
 
 
 func _ready() -> void:
 	randomize()
+	add_to_group(&"inimigos")
 	vitalidade *= 5
 	defesa *= 2
 	
@@ -82,6 +102,7 @@ func _ready() -> void:
 	# =========================================
 	
 	# ============ ANIMACAO ============
+	animation_player.animation_finished.connect(_on_animacao_finalizada)
 	_configurar_animacao()
 	# ==================================
 
@@ -114,18 +135,16 @@ func _on_area_body_exited(body: Node) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	# O inimigo so comeca a agir depois da animacao de surgimento.
+	if spawn_ativo:
+		return
+
 	# ============ SEM ALVO ============
 	if protagonista_ref == null:
 		velocity = Vector2.ZERO
 		move_and_slide()
 		return
 	# ================================
-
-	# ======== ACOES AO MORRER ========
-	if vitalidade <= 0:
-		_processar_morte()
-		return
-	# =================================
 
 	# ============ DISTANCIA ============
 	distancia = global_position.distance_to(protagonista_ref.global_position)
@@ -146,7 +165,9 @@ func _physics_process(delta: float) -> void:
 
 	# ============ ATAQUE ============
 	if pode_atacar and cooldown <= 0.0:
+		direcao_animacao = global_position.direction_to(protagonista_ref.global_position)
 		cooldown = mecanicas.atacar(protagonista_ref, cooldowns, forca, multiplicadores)
+		_tocar_animacao(_animacao_por_direcao("atacar"))
 	elif cooldown > 0.0:
 		cooldown -= delta
 	# =================================
@@ -176,23 +197,123 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 	# ========================================
 
-# Por enquanto o inimigo so tem a animacao idle_down.
-# Quando as animacoes Walk/Attack e outras direcoes existirem, a troca de estados
-# pode voltar a ser feita pelo AnimationTree igual ao protagonista.
 func _configurar_animacao() -> void:
-	_tocar_idle_down()
+	if animation_player.has_animation(animacao_spawn):
+		spawn_ativo = true
+		_tocar_animacao(animacao_spawn)
+	else:
+		_tocar_animacao(_animacao_por_direcao("idle"))
+
+func _animacao_de_dano_por_direcao() -> StringName:
+	var horizontal: bool = abs(direcao_animacao.x) > abs(direcao_animacao.y)
+
+	if horizontal:
+		if direcao_animacao.x < 0.0:
+			return animacao_dano_esquerda
+		return animacao_dano_direita
+
+	if direcao_animacao.y < 0.0:
+		return animacao_dano_cima
+
+	return animacao_dano_baixo
+
+func receber_dano(dano: float, direcao_ataque: Vector2 = Vector2.ZERO) -> void:
+	if vitalidade <= 0:
+		return
+
+	# Atualiza a direção do inimigo em relação ao atacante
+	if direcao_ataque != Vector2.ZERO:
+		direcao_animacao = direcao_ataque.normalized()
+
+	# Aplica o dano
+	vitalidade = max(vitalidade - dano, 0)
+
+	# Atualiza a barra de vida
+	barraVida.value = vitalidade
+
+	# Marca que o inimigo tomou dano
+	tomando_dano = true
+
+	# Toca a animação de dano
+	_tocar_animacao(_animacao_de_dano_por_direcao())
+
+	# Reinicia o cooldown de cura
+	cooldownDaCura = 15
+
+	# Verifica morte
+	if vitalidade <= 0:
+		_processar_morte()
 
 
 func _atualizar_animacao() -> void:
-	_tocar_idle_down()
-
-
-func _tocar_idle_down() -> void:
-	if not animation_player.has_animation(animacao_idle_down):
+	# Mantém o ataque visível até o próximo ataque
+	if cooldown > 0.0 and _animacao_de_ataque(animation_player.current_animation):
 		return
 
-	if animation_player.current_animation != animacao_idle_down or not animation_player.is_playing():
-		animation_player.play(animacao_idle_down)
+	# Mantém a animação de dano até ela terminar
+	if tomando_dano and _animacao_de_dano(animation_player.current_animation):
+		return
+
+	if velocity.length_squared() > 0.01:
+		_tocar_animacao(_animacao_por_direcao("andar"))
+	else:
+		_tocar_animacao(_animacao_por_direcao("idle"))
+
+
+func _animacao_por_direcao(estado: String) -> StringName:
+	var horizontal :float= abs(direcao_animacao.x) > abs(direcao_animacao.y)
+
+	if horizontal:
+		if direcao_animacao.x < 0.0:
+			return _nome_animacao(estado, animacao_idle_esquerda, animacao_andar_esquerda, animacao_atacar_esquerda)
+		return _nome_animacao(estado, animacao_idle_direita, animacao_andar_direita, animacao_atacar_direita)
+
+	if direcao_animacao.y < 0.0:
+		return _nome_animacao(estado, animacao_idle_cima, animacao_andar_cima, animacao_atacar_cima)
+	return _nome_animacao(estado, animacao_idle_baixo, animacao_andar_baixo, animacao_atacar_baixo)
+
+
+func _nome_animacao(estado: String, idle: StringName, andar: StringName, atacar: StringName) -> StringName:
+	match estado:
+		"andar":
+			return andar
+		"atacar":
+			return atacar
+		_:
+			return idle
+
+
+func _animacao_de_ataque(nome_animacao: StringName) -> bool:
+	return nome_animacao in [
+		animacao_atacar_baixo,
+		animacao_atacar_cima,
+		animacao_atacar_esquerda,
+		animacao_atacar_direita
+	]
+
+func _animacao_de_dano(nome_animacao: StringName) -> bool:
+	return nome_animacao in [
+		animacao_dano_baixo,
+		animacao_dano_cima,
+		animacao_dano_esquerda,
+		animacao_dano_direita
+	]
+
+
+func _tocar_animacao(nome_animacao: StringName) -> void:
+	if not animation_player.has_animation(nome_animacao):
+		return
+
+	if animation_player.current_animation != nome_animacao or not animation_player.is_playing():
+		animation_player.play(nome_animacao)
+
+
+func _on_animacao_finalizada(nome_animacao: StringName) -> void:
+	if nome_animacao == animacao_spawn:
+		spawn_ativo = false
+
+	if _animacao_de_dano(nome_animacao):
+		tomando_dano = false
 
 
 # Devolve uma copia dos drops ja sorteados para o protagonista coletar.
@@ -206,8 +327,12 @@ func _processar_morte() -> void:
 		return
 
 	morte_processada = true
-	sprite.modulate = Color(0.81, 0.0, 0.228)
-	barraVida.queue_free()
+	if animation_player.has_animation(animacao_morte):
+		animation_player.stop()
+		animation_player.seek(0.0, true)
+		animation_player.play(animacao_morte)
+		sprite.visible = true
+	barraVida.visible = false
 	alcance.queue_free()
 	colision.queue_free()
 	set_physics_process(false)

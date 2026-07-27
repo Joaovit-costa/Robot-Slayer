@@ -1,8 +1,6 @@
 [gd_scene format=3 uid="uid://crm7vecx3vhjy"]
 
 [ext_resource type="Script" uid="uid://cdgeykgg3b6sh" path="res://script/entidades/protagonista.gd" id="1_uw4sx"]
-[ext_resource type="Texture2D" uid="uid://disji1duvvnmh" path="res://res/design/menus/Botão_Vida.png" id="2_70dtc"]
-[ext_resource type="Texture2D" uid="uid://durywh67qgeg2" path="res://res/design/Design-Robot Slayer/sprits/moeda.png" id="3_gsa6n"]
 [ext_resource type="Texture2D" uid="uid://cbqmsmc45nyt3" path="res://res/design/Design-Robot Slayer/sprits/player.png" id="3_p6cgy"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://cpf7i64nh7j40" path="res://res/walk.tres" id="5_yq3lb"]
 
@@ -99,7 +97,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -188,7 +186,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.45, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true, false, true]
+"values": [false, false, false]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -377,7 +375,7 @@ tracks/9/keys = {
 "times": PackedFloat32Array(0, 0.45, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true, false, true]
+"values": [false, false, false]
 }
 
 [sub_resource type="Animation" id="Animation_2ubaj"]
@@ -454,7 +452,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.45, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true, false, true]
+"values": [false, false, false]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -583,7 +581,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.45, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true, false, true]
+"values": [false, false, false]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -1083,82 +1081,6 @@ _data = {
 &"walk_up": SubResource("Animation_ya8iw")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pl2iv"]
-bg_color = Color(0, 0.19215687, 0, 0.5254902)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.043137256, 0.08235294, 0, 0.5254902)
-border_blend = true
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_70dtc"]
-bg_color = Color(0, 0.7764706, 0.047058824, 1)
-border_width_left = 6
-border_width_top = 6
-border_width_right = 6
-border_width_bottom = 6
-border_color = Color(0.09599405, 0.48593032, 1.92523e-07, 1)
-border_blend = true
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gsa6n"]
-texture = ExtResource("2_70dtc")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gsa6n"]
-bg_color = Color(0, 0, 0, 0.77254903)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.29803735, 0.6143126, 1, 0.49803922)
-border_blend = true
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tdguc"]
-bg_color = Color(9.62615e-08, 0.066605374, 0.12516683, 0.5254902)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.14555383, 0.53975904, 1, 0.5254902)
-border_blend = true
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yq3lb"]
-bg_color = Color(0.30561742, 0.68617994, 0.99999994, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.5232395, 0.7686393, 0.95117706, 1)
-border_blend = true
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yq3lb"]
 animation = &"attack_right"
 
@@ -1241,85 +1163,10 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D" unique_id=1106192527]
 position = Vector2(1.5000067, -35.25)
 shape = SubResource("RectangleShape2D_yq3lb")
-disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=198762258]
 libraries/ = SubResource("AnimationLibrary_p6cgy")
 autoplay = &"idle_down"
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1697879008]
-
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" unique_id=187380626]
-offset_left = 24.0
-offset_top = 24.0
-offset_right = 465.0
-offset_bottom = 45.0
-theme_override_styles/background = SubResource("StyleBoxFlat_pl2iv")
-theme_override_styles/fill = SubResource("StyleBoxFlat_70dtc")
-show_percentage = false
-metadata/_edit_use_anchors_ = true
-
-[node name="barraDeCura" type="ProgressBar" parent="CanvasLayer" unique_id=1314446765]
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -70.0
-offset_top = -27.0
-offset_right = -25.0
-offset_bottom = 18.0
-grow_horizontal = 0
-grow_vertical = 2
-theme_override_styles/background = SubResource("StyleBoxTexture_gsa6n")
-theme_override_styles/fill = SubResource("StyleBoxFlat_gsa6n")
-fill_mode = 3
-show_percentage = false
-metadata/_edit_use_anchors_ = true
-
-[node name="barraDeExperiencia" type="ProgressBar" parent="CanvasLayer" unique_id=852478863]
-offset_left = 24.0
-offset_top = 51.0
-offset_right = 277.0
-offset_bottom = 64.0
-theme_override_styles/background = SubResource("StyleBoxFlat_tdguc")
-theme_override_styles/fill = SubResource("StyleBoxFlat_yq3lb")
-show_percentage = false
-metadata/_edit_use_anchors_ = true
-
-[node name="labelNivel" type="Label" parent="CanvasLayer" unique_id=1824521455]
-offset_left = 284.0
-offset_top = 42.0
-offset_right = 328.0
-offset_bottom = 70.0
-theme_override_colors/font_color = Color(0, 0.8980392, 1, 1)
-theme_override_font_sizes/font_size = 20
-text = "Lv. 1"
-
-[node name="containerMoedas" type="HBoxContainer" parent="CanvasLayer" unique_id=244204250]
-anchors_preset = -1
-anchor_left = 0.9348958
-anchor_right = 1.0
-anchor_bottom = 0.07561728
-offset_left = -43.0
-offset_bottom = 22.0
-grow_horizontal = 0
-
-[node name="labelMoeda" type="Label" parent="CanvasLayer/containerMoedas" unique_id=1234047732]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-theme_override_colors/font_color = Color(0.08235294, 0.8745098, 0.92941177, 1)
-theme_override_font_sizes/font_size = 24
-text = "0"
-horizontal_alignment = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="iconeMoeda" type="TextureRect" parent="CanvasLayer/containerMoedas" unique_id=750364041]
-layout_mode = 2
-texture = ExtResource("3_gsa6n")
-expand_mode = 3
-stretch_mode = 5
 
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=737901531]
 active = false

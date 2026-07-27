@@ -3,6 +3,7 @@ class_name Inventario
 
 # Sinal usado pela interface para redesenhar os slots quando a lista muda.
 signal inventario_atualizado
+const CENA_BANCO_ITENS := preload("res://res/Cenas/Data/itens.tscn")
 
 # Constantes de tipo para manter a validacao dos slots padronizada.
 const SLOT_INVENTARIO := "inventario"
@@ -22,6 +23,19 @@ const TODOS_SLOTS := [
 # Lista principal do inventario e referencia ao banco mestre dos itens.
 var inventario: Array[Dictionary] = []
 var banco_itens: Itens
+
+func _ready() -> void:
+	_configurar_banco_de_itens()
+
+func _configurar_banco_de_itens() -> void:
+	if banco_itens != null:
+		return
+
+	var banco_instanciado := CENA_BANCO_ITENS.instantiate()
+	banco_itens = banco_instanciado as Itens
+
+	if banco_itens != null:
+		add_child(banco_itens)
 
 # Informa qual categoria de slot existe em um id especifico.
 func get_tipo_slot(id_slot: int) -> String:
@@ -49,7 +63,7 @@ func carregar_itens(novos_itens: Array) -> void:
 			continue
 		var item_dict: Dictionary = item
 		inventario.append(item_dict.duplicate(true))
-
+		
 	_normalizar_slots_bloqueados()
 	_emitir_atualizacao()
 
@@ -72,7 +86,8 @@ func buscar_info_item(nome: String) -> ItensData:
 # Adiciona item novo, empilha itens de mochila e salva a raridade no registro.
 func adicionar_item(nome: String, raridade: int, quantidade: int = 1, id_slot: int = -1) -> bool:
 	var dados_item := buscar_info_item(nome)
-	var tipo_final := _resolver_tipo_item(dados_item)
+	var tipo_final := _resolver_tipo_item(dados_item)	
+	
 	if tipo_final.is_empty():
 		return false
 

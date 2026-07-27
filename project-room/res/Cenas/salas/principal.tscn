@@ -15,6 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://cejusedo8mwyk" path="res://res/Cenas/salas/Dificil/Sala12.tscn" id="13_v8hnl"]
 [ext_resource type="PackedScene" uid="uid://byn3sb7v47o3n" path="res://res/Cenas/salas/Compras/Sala13.tscn" id="14_rr14d"]
 [ext_resource type="PackedScene" uid="uid://cms5eh6avaayr" path="res://res/Cenas/salas/Compras/Sala14.tscn" id="15_dljeg"]
+[ext_resource type="Script" uid="uid://yustwypgupc6" path="res://script/menu/hud.gd" id="16_kg3yw"]
+[ext_resource type="Texture2D" uid="uid://disji1duvvnmh" path="res://res/design/menus/Botão_Vida.png" id="17_x2ond"]
+[ext_resource type="Texture2D" uid="uid://durywh67qgeg2" path="res://res/design/Design-Robot Slayer/sprits/moeda.png" id="18_v8hnl"]
 
 [sub_resource type="SystemFont" id="SystemFont_e81ng"]
 font_names = PackedStringArray("Arial")
@@ -28,6 +31,82 @@ font_size = 22
 font_color = Color(0.29954746, 0.29954746, 0.29954743, 1)
 outline_size = 1
 shadow_color = Color(0, 0, 0, 0.25882354)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rr14d"]
+bg_color = Color(0, 0.19215687, 0, 0.5254902)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.043137256, 0.08235294, 0, 0.5254902)
+border_blend = true
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dljeg"]
+bg_color = Color(0, 0.7764706, 0.047058824, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.09599405, 0.48593032, 1.92523e-07, 1)
+border_blend = true
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6gb8d"]
+texture = ExtResource("17_x2ond")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r4n4n"]
+bg_color = Color(0, 0, 0, 0.77254903)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.29803735, 0.6143126, 1, 0.49803922)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yyrut"]
+bg_color = Color(9.62615e-08, 0.066605374, 0.12516683, 0.5254902)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.14555383, 0.53975904, 1, 0.5254902)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_62pwx"]
+bg_color = Color(0.30561742, 0.68617994, 0.99999994, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5232395, 0.7686393, 0.95117706, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [node name="sala" type="Node2D" unique_id=1911979741 node_paths=PackedStringArray("salas_tutorial", "salas")]
 script = ExtResource("1_8fdge")
@@ -88,3 +167,75 @@ autowrap_mode = 2
 visible = false
 custom_minimum_size = Vector2(1151.99, 648.005)
 color = Color(0, 0, 0, 1)
+
+[node name="Hud" type="CanvasLayer" parent="." unique_id=195945953]
+script = ExtResource("16_kg3yw")
+
+[node name="ProgressBar" type="ProgressBar" parent="Hud" unique_id=709503761]
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 465.0
+offset_bottom = 45.0
+theme_override_styles/background = SubResource("StyleBoxFlat_rr14d")
+theme_override_styles/fill = SubResource("StyleBoxFlat_dljeg")
+show_percentage = false
+
+[node name="barraDeCura" type="ProgressBar" parent="Hud" unique_id=661239551]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = -27.0
+offset_right = -25.0
+offset_bottom = 18.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxTexture_6gb8d")
+theme_override_styles/fill = SubResource("StyleBoxFlat_r4n4n")
+fill_mode = 3
+show_percentage = false
+
+[node name="barraDeExperiencia" type="ProgressBar" parent="Hud" unique_id=1133216616]
+offset_left = 24.0
+offset_top = 51.0
+offset_right = 277.0
+offset_bottom = 64.0
+theme_override_styles/background = SubResource("StyleBoxFlat_yyrut")
+theme_override_styles/fill = SubResource("StyleBoxFlat_62pwx")
+show_percentage = false
+
+[node name="labelNivel" type="Label" parent="Hud" unique_id=978128750]
+offset_left = 284.0
+offset_top = 42.0
+offset_right = 328.0
+offset_bottom = 70.0
+theme_override_colors/font_color = Color(0, 0.8980392, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "Lv. 1"
+
+[node name="containerMoedas" type="HBoxContainer" parent="Hud" unique_id=1036452409]
+anchors_preset = -1
+anchor_left = 0.9348958
+anchor_right = 1.0
+anchor_bottom = 0.07561728
+offset_left = -43.0
+offset_bottom = 22.0
+grow_horizontal = 0
+
+[node name="labelMoeda" type="Label" parent="Hud/containerMoedas" unique_id=494372333]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0.08235294, 0.8745098, 0.92941177, 1)
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="iconeMoeda" type="TextureRect" parent="Hud/containerMoedas" unique_id=1173555108]
+layout_mode = 2
+texture = ExtResource("18_v8hnl")
+expand_mode = 3
+stretch_mode = 5

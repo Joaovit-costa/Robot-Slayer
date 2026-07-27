@@ -5,7 +5,7 @@ extends inimigo
 @export var projetil_scene: PackedScene
 @export var velocidade_projetil: float = 340.0
 @export var alcance_projetil: float = 520.0
-@export var distancia_minima_tiro: float = 140.0
+@export var distancia_minima_tiro: float = 90.0
 @export_group("")
 # ============================================
 
@@ -46,10 +46,12 @@ func _physics_process(delta: float) -> void:
 
 	# Se estiver na distância ideal, para e atira
 	else:
+		direcao_animacao = direcao
 		velocity.x = move_toward(velocity.x, 0.0, velocidade)
 		velocity.y = move_toward(velocity.y, 0.0, velocidade)
 
 		if cooldown <= 0.0:
+			_tocar_animacao(_animacao_por_direcao("atacar"))
 			atirar()
 	# ===============================================
 

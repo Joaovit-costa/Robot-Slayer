@@ -3,15 +3,17 @@ class_name protagonista
 
 # ============ REFERENCIAS ============
 @export var alvos: Array[inimigo]
+@onready var hud: Hud = get_tree().get_first_node_in_group("hud") as Hud
 
 @onready var alcance: Area2D = $Sprite2D/Area2D
 @onready var hitbox_ataque: CollisionShape2D = $Sprite2D/Area2D/CollisionShape2D
-@onready var barraVida: ProgressBar = $CanvasLayer/ProgressBar
 @onready var sala: Node2D = $".."
-@onready var barraCura: ProgressBar = $CanvasLayer/barraDeCura
-@onready var barraExperiencia: ProgressBar = $CanvasLayer/barraDeExperiencia
-@onready var label_nivel: Label = $CanvasLayer/labelNivel
-@onready var label_moeda: Label = $CanvasLayer/containerMoedas/labelMoeda
+
+var barraVida: ProgressBar
+var barraCura: ProgressBar
+var barraExperiencia: ProgressBar
+var label_nivel: Label
+var label_moeda: Label
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var animation_state = animation_tree.get("parameters/playback")
@@ -81,10 +83,23 @@ var cooldowns: Array[float] = [1.0, 1.3, 1.7]
 var multiplicadores: Array[float] = [1.0, 1.2, 1.5]
 var cooldown: float = 0.0
 const DURACAO_ANIMACAO_ATAQUE: float = 0.9
+const ALCANCE_GOLPE: float = 80.0
 # =================================
 
 
 func _ready() -> void:
+	hud = get_tree().get_first_node_in_group("hud") as Hud
+
+	if hud == null:
+		push_error("HUD não encontrado!")
+		return
+
+	barraVida = hud.barraVida
+	barraCura = hud.barra_de_cura
+	barraExperiencia = hud.barra_de_experiencia
+	label_nivel = hud.label_nivel
+	label_moeda = hud.label_moeda
+
 
 	randomize()
 
@@ -112,7 +127,10 @@ func _ready() -> void:
 	# ============ ANIMACAO ============
 	animation_tree.active = true
 	posicao_alcance_original = alcance.position
-	hitbox_ataque.disabled = true
+	# A hitbox permanece na fisica para que get_overlapping_bodies() tenha
+	# tempo de registrar os corpos. O dano continua protegido por `atacando`.
+	alcance.monitoring = true
+	hitbox_ataque.disabled = false
 	# ==================================
 
 	# 🎧 MUSICA INICIAL
@@ -121,6 +139,11 @@ func _ready() -> void:
 	call_deferred("_sincronizar_menu_status")
 
 func _physics_process(delta: float) -> void:
+	# As faixas da AnimationPlayer tambem alteram `disabled`. Forcar a forma
+	# ativa evita que a lista de sobreposicoes fique vazia entre os frames.
+	if hitbox_ataque.disabled:
+		hitbox_ataque.set_deferred("disabled", false)
+
 	# ============ MOVIMENTO ============
 	var direcao = Vector2(
 		Input.get_axis("ui_left", "ui_right"),
@@ -132,7 +155,6 @@ func _physics_process(delta: float) -> void:
 
 	velocity = direcao * SPEED
 	# ===================================
-
 	# ============ DIRECAO ANIMACAO ============
 	if velocity.length() > 0:
 		direcao_animacao = velocity.normalized()
@@ -145,8 +167,7 @@ func _physics_process(delta: float) -> void:
 		
 	if atacando:
 		tempo_ataque_restante -= delta
-		if not hitbox_ataque.disabled:
-			executar_ataque()
+		executar_ataque()
 		
 		if tempo_ataque_restante <= 0.0:	
 			finalizar_ataque()
@@ -440,22 +461,51 @@ func iniciar_ataque() -> void:
 	indice_ataque_atual = randi() % cooldowns.size()
 	cooldown = cooldowns[indice_ataque_atual]
 	inimigos_acertados_no_ataque.clear()
-	hitbox_ataque.set_deferred("disabled", true)
 
 	# 🎧 SOM DE ATAQUE
 	SoundManager.tocar_sfx(som_ataque, 8)
 
 
 func executar_ataque() -> void:
+	# A Area2D e ativada pela animacao apenas para a parte visual. A consulta
+	# direta usa a mesma forma e nao perde o golpe quando essa ativacao chega
+	# adiada ao processamento fisico.
+	inimigos_acertados_no_ataque.clear()
 	for body in alcance.get_overlapping_bodies():
-		_aplicar_dano_da_hitbox(body)
+		if (body as inimigo).vitalidade > 0:
+			_aplicar_dano_da_hitbox(body)
+
+	var consulta := PhysicsShapeQueryParameters2D.new()
+	consulta.shape = hitbox_ataque.shape
+	consulta.transform = hitbox_ataque.global_transform
+	consulta.collision_mask = alcance.collision_mask
+	consulta.collide_with_areas = false
+	consulta.collide_with_bodies = true
+	consulta.exclude = [get_rid()]
+
+	for resultado in get_world_2d().direct_space_state.intersect_shape(consulta):
+		_aplicar_dano_da_hitbox(resultado.get("collider") as Node)
+
+	# O combate usa o grupo de inimigos. A lista `alvos` continua exclusiva
+	# para controlar a progressao e as recompensas da sala.
+	var direcao_golpe := direcao_ataque.normalized()
+	for no_inimigo in get_tree().get_nodes_in_group(&"inimigos"):
+		var alvo := no_inimigo as inimigo
+		if alvo == null or not is_instance_valid(alvo):
+			continue
+
+		var vetor_ate_alvo := global_position.direction_to(alvo.global_position)
+		if (
+			global_position.distance_to(alvo.global_position) <= ALCANCE_GOLPE
+			and vetor_ate_alvo.dot(direcao_golpe) > 0.2
+		):
+			_aplicar_dano_da_hitbox(alvo)
 
 
 func finalizar_ataque() -> void:
 	atacando = false
 	tempo_ataque_restante = 0.0
 	inimigos_acertados_no_ataque.clear()
-	hitbox_ataque.set_deferred("disabled", true)
 	_restaurar_alcance_do_ataque()
 
 
@@ -477,14 +527,11 @@ func _aplicar_dano_da_hitbox(body: Node) -> void:
 	if not atacando:
 		return
 
-	if hitbox_ataque.disabled:
-		return
-
 	var alvo := body as inimigo
 	if alvo == null:
 		return
 
-	if alvo not in alvos or alvo in inimigos_acertados_no_ataque:
+	if alvo in inimigos_acertados_no_ataque:
 		return
 
 	inimigos_acertados_no_ataque.append(alvo)
@@ -493,14 +540,14 @@ func _aplicar_dano_da_hitbox(body: Node) -> void:
 		forca * multiplicadores[indice_ataque_atual] - alvo.defesa,
 		1
 	)
-	alvo.vitalidade = max(alvo.vitalidade - dano, 0)
-	alvo.barraVida.value = alvo.vitalidade
-	alvo.cooldownDaCura = 15
+	if alvo:
+		var direcao_dano: Vector2 = alvo.global_position.direction_to(global_position)
+		alvo.receber_dano(dano, direcao_dano)
 
 	if alvo.vitalidade <= 0:
 		_acumular_drops_do_inimigo(alvo)
 		alvos.erase(alvo)
-		sala.move_child(alvo, 0)
+		sala.move_child(alvo, 1)
 
 
 func _on_area_2d_body_entered(body: Node) -> void:
