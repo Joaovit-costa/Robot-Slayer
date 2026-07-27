@@ -283,7 +283,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3i8fr")
 }],
-"loop": true,
+"loop": false,
 "name": &"porta_direita",
 "speed": 5.0
 }, {
@@ -321,7 +321,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_oecr1")
 }],
-"loop": true,
+"loop": false,
 "name": &"porta_esquerda",
 "speed": 5.0
 }]
