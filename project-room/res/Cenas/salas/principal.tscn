@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://yustwypgupc6" path="res://script/menu/hud.gd" id="16_kg3yw"]
 [ext_resource type="Texture2D" uid="uid://disji1duvvnmh" path="res://res/design/menus/Botão_Vida.png" id="17_x2ond"]
 [ext_resource type="Texture2D" uid="uid://durywh67qgeg2" path="res://res/design/Design-Robot Slayer/sprits/moeda.png" id="18_v8hnl"]
+[ext_resource type="PackedScene" uid="uid://cuq54xpyg4v8f" path="res://res/Cenas/menu/tala_morte.tscn" id="19_x2ond"]
 
 [sub_resource type="SystemFont" id="SystemFont_e81ng"]
 font_names = PackedStringArray("Arial")
@@ -239,3 +240,5 @@ layout_mode = 2
 texture = ExtResource("18_v8hnl")
 expand_mode = 3
 stretch_mode = 5
+
+[node name="TalaMorte" parent="." unique_id=314636302 instance=ExtResource("19_x2ond")]

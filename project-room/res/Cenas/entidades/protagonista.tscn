@@ -525,6 +525,46 @@ tracks/8/keys = {
 "values": [Vector2(1.025, 1.025)]
 }
 
+[sub_resource type="Animation" id="Animation_gsa6n"]
+resource_name = "cura"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.008333325, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [48, 49, 50, 51, 52, 53, 52, 51, 50, 49, 48]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.25, 6.55)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.99, 0.99)]
+}
+
 [sub_resource type="Animation" id="Animation_yq3lb"]
 resource_name = "idle_down"
 length = 0.4
@@ -687,6 +727,46 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1.025, 1.025)]
+}
+
+[sub_resource type="Animation" id="Animation_782yw"]
+resource_name = "morte"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.008333325, 0.24999991, 0.39999992, 0.5499999, 0.6999999, 0.8499999, 0.9999999, 1.1499999, 1.3, 1.4499999, 1.5999999),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.25, 6.55)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.99, 0.99)]
 }
 
 [sub_resource type="Animation" id="Animation_lb1bu"]
@@ -864,10 +944,12 @@ _data = {
 &"attack_left": SubResource("Animation_qex5a"),
 &"attack_right": SubResource("Animation_2ubaj"),
 &"attack_up": SubResource("Animation_apwou"),
+&"cura": SubResource("Animation_gsa6n"),
 &"idle_down": SubResource("Animation_yq3lb"),
 &"idle_left": SubResource("Animation_p6cgy"),
 &"idle_right": SubResource("Animation_v01qo"),
 &"idle_up": SubResource("Animation_bb0ik"),
+&"morte": SubResource("Animation_782yw"),
 &"walk_down": SubResource("Animation_lb1bu"),
 &"walk_left": SubResource("Animation_crtyl"),
 &"walk_right": SubResource("Animation_ilmup"),
@@ -920,6 +1002,9 @@ blend_point_3/node = SubResource("AnimationNodeAnimation_ya8iw")
 blend_point_3/pos = Vector2(0, -1)
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gsa6n"]
+animation = &"morte"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_2ubaj"]
 states/Attack/node = SubResource("AnimationNodeBlendSpace2D_ilmup")
 states/Attack/position = Vector2(454, 92.8)
@@ -927,6 +1012,8 @@ states/Idle/node = SubResource("AnimationNodeBlendSpace2D_lb1bu")
 states/Idle/position = Vector2(350.98944, 136.8)
 states/Walk/node = ExtResource("5_yq3lb")
 states/Walk/position = Vector2(350.23682, 50.399998)
+states/morte/node = SubResource("AnimationNodeAnimation_gsa6n")
+states/morte/position = Vector2(560, 46)
 
 [node name="Protagonista" type="CharacterBody2D" unique_id=369473398 groups=["player"]]
 collision_layer = 2

@@ -15,12 +15,16 @@ var barraExperiencia: ProgressBar
 var label_nivel: Label
 var label_moeda: Label
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var animation_state = animation_tree.get("parameters/playback")
 
 @onready var Mecanicas = load("res://script/data/Mecanicas.gd")
 @onready var mecanicas = Mecanicas.new()
 # =====================================
+
+var morto: bool = false
+var tela_morte_visivel: bool = false
 
 
 # ============ ATRIBUTOS ============
@@ -35,6 +39,7 @@ var experiencia: int = 0
 var nivel: int = 1
 var moedas: int = 0
 var pontosStatus: int = 0
+var status = ["vitalidade", "defesa", "forca", "inteligencia"]
 
 const SPEED: float = 220
 
@@ -137,8 +142,12 @@ func _ready() -> void:
 	SoundManager.tocar_musica(musica_normal)
 	
 	call_deferred("_sincronizar_menu_status")
+	
+	add_to_group("protagonista")
 
 func _physics_process(delta: float) -> void:
+	if morto:
+		return
 	# As faixas da AnimationPlayer tambem alteram `disabled`. Forcar a forma
 	# ativa evita que a lista de sobreposicoes fique vazia entre os frames.
 	if hitbox_ataque.disabled:
@@ -280,6 +289,9 @@ func _physics_process(delta: float) -> void:
 
 	# 🎧 VERIFICAR VIDA (MUSICA)
 	verificar_vida()
+	
+	if vidaAtual <= 0 and not morto:
+		_processar_morte()
 
 
 
@@ -328,6 +340,7 @@ func receber_dano(dano: int) -> void:
 
 func receber_cura(cura: int) -> void:
 	vidaAtual = min(vidaAtual + max(cura, 0), vidaInicial)
+	animation_player.play("cura")
 	_atualizar_barra_vida()
 	_solicitar_salvamento()
 
@@ -552,3 +565,66 @@ func _aplicar_dano_da_hitbox(body: Node) -> void:
 
 func _on_area_2d_body_entered(body: Node) -> void:
 	_aplicar_dano_da_hitbox(body)
+
+func _processar_morte() -> void:
+	morto = true
+
+	# Impede o jogador de continuar se movimentando
+	velocity = Vector2.ZERO
+
+	# Para o ataque, caso esteja atacando
+	atacando = false
+	tempo_ataque_restante = 0.0
+	inimigos_acertados_no_ataque.clear()
+
+	# Para o som de passos
+	SoundManager.parar_passo()
+
+	# Reduz os atributos
+	var diminuidos: Array = [
+		status.pick_random(),
+		status.pick_random(),
+		status.pick_random()
+	]
+
+	for diminuido in diminuidos:
+		if diminuido == "vitalidade" and vitalidade > 3:
+			vitalidade -= 3
+
+		elif diminuido == "defesa" and defesa > 3:
+			defesa -= 3
+
+		elif diminuido == "forca" and forca > 3:
+			forca -= 3
+
+		elif diminuido == "inteligencia" and inteligencia > 3:
+			inteligencia -= 3
+
+	if nivel > 3:
+		nivel -= 3
+
+	_solicitar_salvamento()
+
+	# Toca a animação de morte
+	animation_state.travel("morte")
+	
+	await animation_player.animation_finished
+
+	# Depois da animação, mostra a tela de morte
+	_exibir_tela_morte()
+
+
+func _exibir_tela_morte() -> void:
+	var tela_morte = get_tree().get_first_node_in_group("tela_morte")
+
+	if tela_morte == null:
+		push_error("Tela de morte não encontrada!")
+		return
+
+	tela_morte.exibir()
+
+func restaurar_vida() -> void:
+	vidaInicial = calcular_vida_maxima()
+	vidaAtual = vidaInicial
+
+	_atualizar_barra_vida()

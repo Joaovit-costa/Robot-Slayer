@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cbmjrbmoo2leo"]
+
+[ext_resource type="PackedScene" uid="uid://d1gvkjrltluoh" path="res://res/Cenas/menu/pause/menu_inicial.tscn" id="1_ls42d"]
+[ext_resource type="Script" uid="uid://dt60yxcxaosxm" path="res://maestro.gd" id="1_toxqn"]
+[ext_resource type="PackedScene" uid="uid://cf6ktfailay3p" path="res://res/Cenas/menu/pause/menu_pause.tscn" id="2_toxqn"]
+[ext_resource type="PackedScene" uid="uid://3fo7wfjq87vc" path="res://main.tscn" id="3_qduar"]
+
+[node name="Maestro" type="Node2D" unique_id=1625577331]
+script = ExtResource("1_toxqn")
+
+[node name="PauseMenu" parent="." unique_id=1396814385 instance=ExtResource("2_toxqn")]
+visible = false
+
+[node name="Node2D" parent="." unique_id=434612123 instance=ExtResource("3_qduar")]
+visible = false
+
+[node name="MenuInicial" parent="." unique_id=361885717 instance=ExtResource("1_ls42d")]
+
+[node name="TextureRect" parent="MenuInicial" index="0" unique_id=1286655623]
+offset_right = 1153.0
+offset_bottom = 648.0
+
+[connection signal="pressed" from="MenuInicial/Entrar" to="." method="_on_entrar_pressed"]
+[connection signal="pressed" from="MenuInicial/Sair" to="." method="_on_sair_pressed"]
+
+[editable path="PauseMenu"]
+[editable path="MenuInicial"]

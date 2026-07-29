@@ -31,10 +31,6 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	if _pause_foi_acionado():
-		_alternar_pause()
-		return
-
 	if _pause_esta_aberto():
 		return
 
@@ -48,47 +44,8 @@ func _process(_delta: float) -> void:
 	_aplicar_estado_telas()
 
 
-func _alternar_pause() -> void:
-	if _pause_esta_aberto():
-		_fechar_pause()
-	else:
-		_abrir_pause()
-
-
-func _abrir_pause() -> void:
-	_fechar_menus()
-
-	menu_pause_instance = CENA_MENU_PAUSE.instantiate()
-	add_child(menu_pause_instance)
-
-	if menu_pause_instance.has_signal("continuar_pressed"):
-		menu_pause_instance.continuar_pressed.connect(_on_pause_continuar_pressed)
-
-	if menu_pause_instance.has_signal("sair_pressed"):
-		menu_pause_instance.sair_pressed.connect(_on_pause_sair_pressed)
-
-	_aplicar_estado_telas()
-
-
-func _fechar_pause() -> void:
-	if menu_pause_instance != null:
-		menu_pause_instance.queue_free()
-		menu_pause_instance = null
-
-	_aplicar_estado_telas()
-
-
 func _pause_esta_aberto() -> bool:
 	return menu_pause_instance != null
-
-
-func _on_pause_continuar_pressed() -> void:
-	_fechar_pause()
-
-
-func _on_pause_sair_pressed() -> void:
-	_fechar_pause()
-	get_tree().change_scene_to_file(CENA_MENU_PRINCIPAL)
 
 
 func _alternar_menu(menu: Control) -> void:
