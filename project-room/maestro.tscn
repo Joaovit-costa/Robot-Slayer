@@ -20,8 +20,19 @@ visible = false
 offset_right = 1153.0
 offset_bottom = 648.0
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=997241877]
+visible = false
+offset_right = 1150.0
+offset_bottom = 646.0
+color = Color(0, 0, 0, 1)
+
+[connection signal="pressed" from="PauseMenu/BotaoContinuar" to="." method="_on_botao_continuar_pressed"]
+[connection signal="pressed" from="PauseMenu/BotaoSair" to="." method="_on_botao_sair_pressed"]
 [connection signal="pressed" from="MenuInicial/Entrar" to="." method="_on_entrar_pressed"]
 [connection signal="pressed" from="MenuInicial/Sair" to="." method="_on_sair_pressed"]
 
 [editable path="PauseMenu"]
+[editable path="Node2D"]
+[editable path="Node2D/sala"]
+[editable path="Node2D/CanvasLayer/InventoryMenu"]
 [editable path="MenuInicial"]
