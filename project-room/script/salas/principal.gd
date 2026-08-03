@@ -1,3 +1,4 @@
+class_name Salas
 extends Node2D
 
 @export var salas_tutorial: Array[Node2D] = []
@@ -27,7 +28,7 @@ const TIPO_LOJA_ARMA := &"arma"
 var sala_atual: Node2D
 var transicao_em_andamento: bool = false
 var loja_disponivel: StringName = TIPO_LOJA_NENHUMA
-var salas_passadas: int = 0
+@onready var salas_passadas: int = 0
 var sala_atual_id: String = ""
 
 

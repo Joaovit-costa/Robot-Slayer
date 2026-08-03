@@ -84,6 +84,6 @@ func _trocar_sala() -> void:
 	var sala_atual := get_tree().current_scene
 	
 	sala.solicitar_transicao_de_sala(sala_atual)
-	sala.salas_passadas -= 5
+	sala.salas_passadas = max(sala.salas_passadas - 5, 5)
 	
 	SaveManager.solicitar_salvamento()

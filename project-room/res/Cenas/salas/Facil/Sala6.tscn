@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://qlqku25i4wls" path="res://res/design/Design-Robot Slayer/sprits/porta fr.png" id="2_p1x3w"]
 [ext_resource type="PackedScene" uid="uid://crm7vecx3vhjy" path="res://res/Cenas/entidades/protagonista.tscn" id="3_p8g1w"]
 [ext_resource type="Texture2D" uid="uid://rmksy3cmfdtm" path="res://res/design/Design-Robot Slayer/sprits/porta lateral- fr separados.png" id="4_p8g1w"]
+[ext_resource type="PackedScene" uid="uid://dk2ldp063c478" path="res://res/Cenas/entidades/inimigo_atirador.tscn" id="7_ytlm4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dnvnk"]
 atlas = ExtResource("2_p1x3w")
@@ -415,4 +416,12 @@ disabled = true
 
 [node name="Protagonista" parent="." unique_id=369473398 node_paths=PackedStringArray("alvos") instance=ExtResource("3_p8g1w")]
 position = Vector2(54, 552)
-alvos = [null]
+alvos = [NodePath("../InimigoAtirador"), NodePath("../InimigoAtirador2")]
+
+[node name="InimigoAtirador" parent="." unique_id=1370755289 node_paths=PackedStringArray("protagonista_ref") instance=ExtResource("7_ytlm4")]
+position = Vector2(871, 460)
+protagonista_ref = NodePath("../Protagonista")
+
+[node name="InimigoAtirador2" parent="." unique_id=203839667 node_paths=PackedStringArray("protagonista_ref") instance=ExtResource("7_ytlm4")]
+position = Vector2(571, 224)
+protagonista_ref = NodePath("../Protagonista")

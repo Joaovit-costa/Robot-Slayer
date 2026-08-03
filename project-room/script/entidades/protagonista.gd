@@ -7,7 +7,7 @@ class_name protagonista
 
 @onready var alcance: Area2D = $Sprite2D/Area2D
 @onready var hitbox_ataque: CollisionShape2D = $Sprite2D/Area2D/CollisionShape2D
-@onready var sala: Node2D = $".."
+@onready var sala: Node2D = $"../.."
 
 var barraVida: ProgressBar
 var barraCura: ProgressBar
@@ -41,7 +41,7 @@ var moedas: int = 0
 var pontosStatus: int = 0
 var status = ["vitalidade", "defesa", "forca", "inteligencia"]
 
-const SPEED: float = 220
+const SPEED: float = 200
 
 var ultima_direcao: String = "down"
 var direcao_animacao: Vector2 = Vector2.DOWN
@@ -608,7 +608,7 @@ func _processar_morte() -> void:
 	# Toca a animação de morte
 	animation_state.travel("morte")
 	
-	await animation_player.animation_finished
+	await get_tree().create_timer(1.5).timeout
 
 	# Depois da animação, mostra a tela de morte
 	_exibir_tela_morte()

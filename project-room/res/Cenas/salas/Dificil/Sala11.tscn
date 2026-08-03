@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://qlqku25i4wls" path="res://res/design/Design-Robot Slayer/sprits/porta fr.png" id="3_p83rf"]
 [ext_resource type="PackedScene" uid="uid://crm7vecx3vhjy" path="res://res/Cenas/entidades/protagonista.tscn" id="4_g358c"]
 [ext_resource type="Texture2D" uid="uid://rmksy3cmfdtm" path="res://res/design/Design-Robot Slayer/sprits/porta lateral- fr separados.png" id="4_j0r7y"]
+[ext_resource type="PackedScene" uid="uid://dw5vop8713vt3" path="res://res/Cenas/entidades/inimigo.tscn" id="6_g358c"]
+[ext_resource type="PackedScene" uid="uid://dk2ldp063c478" path="res://res/Cenas/entidades/inimigo_atirador.tscn" id="7_0ioxr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dnvnk"]
 atlas = ExtResource("3_p83rf")
@@ -407,11 +409,31 @@ position = Vector2(293, 7)
 shape = SubResource("RectangleShape2D_mi273")
 disabled = true
 
-[node name="Protagonista" parent="." unique_id=369473398 node_paths=PackedStringArray("alvos") instance=ExtResource("4_g358c")]
-position = Vector2(54, 552)
-alvos = [null]
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=956127275]
-position = Vector2(1140, 367)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Range Porta/Area2D" unique_id=956127275]
+position = Vector2(846, 309)
 shape = SubResource("RectangleShape2D_g358c")
 disabled = true
+
+[node name="Protagonista" parent="." unique_id=369473398 node_paths=PackedStringArray("alvos") instance=ExtResource("4_g358c")]
+position = Vector2(54, 552)
+alvos = [NodePath("../InimigoAtirador3"), NodePath("../InimigoAtirador2"), NodePath("../Inimigo2"), NodePath("../InimigoAtirador"), NodePath("../Inimigo")]
+
+[node name="Inimigo" parent="." unique_id=1858431150 node_paths=PackedStringArray("protagonista_ref") instance=ExtResource("6_g358c")]
+position = Vector2(406, 177)
+protagonista_ref = NodePath("../Protagonista")
+
+[node name="InimigoAtirador" parent="." unique_id=1370755289 node_paths=PackedStringArray("protagonista_ref") instance=ExtResource("7_0ioxr")]
+position = Vector2(930, 469)
+protagonista_ref = NodePath("../Protagonista")
+
+[node name="Inimigo2" parent="." unique_id=515492631 node_paths=PackedStringArray("protagonista_ref") instance=ExtResource("6_g358c")]
+position = Vector2(637, 157)
+protagonista_ref = NodePath("../Protagonista")
+
+[node name="InimigoAtirador2" parent="." unique_id=982588078 node_paths=PackedStringArray("protagonista_ref") instance=ExtResource("7_0ioxr")]
+position = Vector2(536, 442)
+protagonista_ref = NodePath("../Protagonista")
+
+[node name="InimigoAtirador3" parent="." unique_id=961054077 node_paths=PackedStringArray("protagonista_ref") instance=ExtResource("7_0ioxr")]
+position = Vector2(999, 269)
+protagonista_ref = NodePath("../Protagonista")

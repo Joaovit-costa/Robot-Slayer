@@ -6,7 +6,7 @@ class_name inimigo
 var vidaInicial: int
 @export var defesa: int = 0
 @export var forca: int = 0
-@export var velocidade: float = 120.0
+@export var velocidade: float = 80.0
 @export var inteligencia: int = 0
 @export_enum("calmo", "normal", "bravo") var temperamento: String = "normal"
 
@@ -79,32 +79,35 @@ var tomando_dano := false
 
 func _ready() -> void:
 	randomize()
+	await get_tree().process_frame
+	var tela_morte = get_tree().get_first_node_in_group("tela_morte")
+	var salas_passadas: int = tela_morte.sala.salas_passadas
+	var multiplicador: float = salas_passadas * 0.5
+
+	vitalidade = int(vitalidade * multiplicador)
+	defesa = int(defesa * multiplicador)
+	forca = int(forca * multiplicador)
+	inteligencia = int(inteligencia * multiplicador)
+	experiencia_min = int(experiencia_min * multiplicador)
+	experiencia_max = int(experiencia_max * multiplicador)
+
 	add_to_group(&"inimigos")
 	vitalidade *= 5
-	defesa *= 2
-	
+
 	_aplicar_temperamento()
-	
+
 	vidaInicial = vitalidade
 
-	# ============ SINAIS DA AREA ============
 	alcance.body_entered.connect(_on_area_body_entered)
 	alcance.body_exited.connect(_on_area_body_exited)
-	# =======================================
 
-	# ============ BARRA DE VIDA ==============
 	barraVida.max_value = vitalidade
 	barraVida.value = vitalidade
-	# =========================================
 
-	# ======= Definir os itens dropados =======
 	drops_escolhidos = _sortear_drops()
-	# =========================================
-	
-	# ============ ANIMACAO ============
+
 	animation_player.animation_finished.connect(_on_animacao_finalizada)
 	_configurar_animacao()
-	# ==================================
 
 func _aplicar_temperamento() -> void:
 	match temperamento:

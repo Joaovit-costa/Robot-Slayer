@@ -286,7 +286,7 @@ polygon = PackedVector2Array(0, 0, 0, 134, 59, 134, 61, 323, 210, 364, 1034, 364
 position = Vector2(22, 369)
 scale = Vector2(2.0000014, 2.5396824)
 sprite_frames = SubResource("SpriteFrames_0rro4")
-animation = &"porta_direita"
+animation = &"porta_esquerda"
 
 [node name="ColorRect2" type="ColorRect" parent="StaticBody2D" unique_id=1535058628]
 offset_left = 25.0

@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cms5eh6avaayr" path="res://res/Cenas/salas/Compras/Sala14.tscn" id="15_dljeg"]
 [ext_resource type="Script" uid="uid://yustwypgupc6" path="res://script/menu/hud.gd" id="16_kg3yw"]
 [ext_resource type="Texture2D" uid="uid://disji1duvvnmh" path="res://res/design/menus/Botão_Vida.png" id="17_x2ond"]
+[ext_resource type="FontFile" uid="uid://c8fuwo26umfpq" path="res://res/design/Font/PixelPurl.ttf" id="18_rr14d"]
 [ext_resource type="Texture2D" uid="uid://durywh67qgeg2" path="res://res/design/Design-Robot Slayer/sprits/moeda.png" id="18_v8hnl"]
 [ext_resource type="PackedScene" uid="uid://cuq54xpyg4v8f" path="res://res/Cenas/menu/tala_morte.tscn" id="19_x2ond"]
 
@@ -108,6 +109,25 @@ corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_dljeg"]
+font = ExtResource("18_rr14d")
+font_size = 28
+font_color = Color(0.20392157, 1, 1, 1)
+shadow_size = 2
+shadow_color = Color(0, 0.101960786, 0.5176471, 1)
+stacked_shadow_count = 1
+stacked_shadow_0/offset = Vector2(1, 1)
+stacked_shadow_0/color = Color(0.036182456, 1.5883148e-06, 0.2479949, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6gb8d"]
+font = ExtResource("18_rr14d")
+font_size = 43
+font_color = Color(0, 0.7411765, 0.8745098, 1)
+outline_size = 4
+outline_color = Color(0.0861352, 1.4126375e-05, 0.3682633, 1)
+shadow_size = 5
+shadow_color = Color(1, 0.43529412, 0.3764706, 0.5294118)
 
 [node name="sala" type="Node2D" unique_id=1911979741 node_paths=PackedStringArray("salas_tutorial", "salas")]
 script = ExtResource("1_8fdge")
@@ -208,13 +228,14 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_62pwx")
 show_percentage = false
 
 [node name="labelNivel" type="Label" parent="Hud" unique_id=978128750]
-offset_left = 284.0
-offset_top = 42.0
-offset_right = 328.0
-offset_bottom = 70.0
+offset_left = 283.0
+offset_top = 46.0
+offset_right = 333.0
+offset_bottom = 75.0
 theme_override_colors/font_color = Color(0, 0.8980392, 1, 1)
 theme_override_font_sizes/font_size = 20
 text = "Lv. 1"
+label_settings = SubResource("LabelSettings_dljeg")
 
 [node name="containerMoedas" type="HBoxContainer" parent="Hud" unique_id=1036452409]
 anchors_preset = -1
@@ -232,6 +253,7 @@ size_flags_vertical = 6
 theme_override_colors/font_color = Color(0.08235294, 0.8745098, 0.92941177, 1)
 theme_override_font_sizes/font_size = 24
 text = "0"
+label_settings = SubResource("LabelSettings_6gb8d")
 horizontal_alignment = 2
 metadata/_edit_use_anchors_ = true
 
