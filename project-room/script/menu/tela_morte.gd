@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var fundo: ColorRect = $ColorRect
+@onready var fundo: AnimatedSprite2D = $AnimatedSprite2D
 @onready var sala: Node2D = $".."
 
 var ativa: bool = false
@@ -25,6 +25,7 @@ func exibir() -> void:
 	visible = true
 	
 	fundo.modulate.a = 0.0
+	fundo.play()
 	
 	var tween := create_tween()
 	

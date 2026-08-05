@@ -2,16 +2,57 @@
 
 [ext_resource type="Script" uid="uid://cpn4frthkxn5t" path="res://script/menu/tela_morte.gd" id="1_2aa51"]
 [ext_resource type="FontFile" uid="uid://c8fuwo26umfpq" path="res://res/design/Font/PixelPurl.ttf" id="1_wlxwl"]
+[ext_resource type="Texture2D" uid="uid://dtvnuf6500xss" path="res://res/design/Design-Robot Slayer/sprits/gameover.png" id="2_m0ceo"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_2aa51"]
-font = ExtResource("1_wlxwl")
-font_size = 160
-font_color = Color(0.5595232, 1.2754649e-06, 3.3691526e-07, 1)
-outline_size = 26
-outline_color = Color(0.7647059, 0.7921569, 0, 1)
-shadow_size = 52
-shadow_color = Color(0.69803923, 0.54901963, 0, 1)
-shadow_offset = Vector2(0, 0)
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfgnj"]
+atlas = ExtResource("2_m0ceo")
+region = Rect2(0, 0, 512, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sunih"]
+atlas = ExtResource("2_m0ceo")
+region = Rect2(512, 0, 512, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vcq3"]
+atlas = ExtResource("2_m0ceo")
+region = Rect2(1024, 0, 512, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgx5a"]
+atlas = ExtResource("2_m0ceo")
+region = Rect2(2048, 0, 512, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qf4i8"]
+atlas = ExtResource("2_m0ceo")
+region = Rect2(512, 0, 512, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4ljt"]
+atlas = ExtResource("2_m0ceo")
+region = Rect2(2048, 0, 512, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eh2kc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfgnj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sunih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vcq3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgx5a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qf4i8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4ljt")
+}],
+"loop": false,
+"name": &"default",
+"speed": 2.5
+}]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wlxwl"]
 line_spacing = 10.0
@@ -19,27 +60,14 @@ font = ExtResource("1_wlxwl")
 font_size = 35
 
 [node name="TalaMorte" type="CanvasLayer" unique_id=51937202]
-visible = false
 script = ExtResource("1_2aa51")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1852999658]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.11372549, 0, 0, 0.6862745)
-
-[node name="Label" type="Label" parent="." unique_id=429348315]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Game Over"
-label_settings = SubResource("LabelSettings_2aa51")
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=827892986]
+position = Vector2(576, 324)
+scale = Vector2(2.25, 2.53125)
+sprite_frames = SubResource("SpriteFrames_eh2kc")
+frame = 5
+frame_progress = 1.0
 
 [node name="Label2" type="Label" parent="." unique_id=1502294072]
 anchors_preset = 7
@@ -47,9 +75,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -122.5
-offset_top = -64.0
-offset_right = 122.5
+offset_left = -148.0
+offset_top = -69.0
+offset_right = 148.0
 offset_bottom = -38.0
 grow_horizontal = 2
 grow_vertical = 0
