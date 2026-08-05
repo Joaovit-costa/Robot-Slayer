@@ -416,14 +416,16 @@ disabled = true
 
 [node name="Protagonista" parent="." unique_id=369473398 node_paths=PackedStringArray("alvos") instance=ExtResource("3_wpd5i")]
 position = Vector2(54, 552)
-alvos = [NodePath("../InimigoAtirador")]
+alvos = [NodePath("../InimigoAtirador"), NodePath("../InimigoAtirador2"), NodePath("../Inimigo")]
 
 [node name="InimigoAtirador" parent="." unique_id=1370755289 node_paths=PackedStringArray("protagonista_ref") instance=ExtResource("6_nru3d")]
 position = Vector2(507, 379)
 protagonista_ref = NodePath("../Protagonista")
 
-[node name="InimigoAtirador2" parent="." unique_id=825036838 instance=ExtResource("6_nru3d")]
+[node name="InimigoAtirador2" parent="." unique_id=825036838 node_paths=PackedStringArray("protagonista_ref") instance=ExtResource("6_nru3d")]
 position = Vector2(946, 466)
+protagonista_ref = NodePath("../Protagonista")
 
-[node name="Inimigo" parent="." unique_id=1858431150 instance=ExtResource("7_y301l")]
+[node name="Inimigo" parent="." unique_id=1858431150 node_paths=PackedStringArray("protagonista_ref") instance=ExtResource("7_y301l")]
 position = Vector2(749, 155)
+protagonista_ref = NodePath("../Protagonista")

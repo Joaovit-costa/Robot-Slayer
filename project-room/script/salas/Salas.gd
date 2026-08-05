@@ -1,4 +1,5 @@
 extends Node2D
+class_name Sala
 
 @export var protagonista_path: NodePath = ^"Protagonista"
 @export var portas: Array[AnimatedSprite2D] = []
@@ -17,7 +18,7 @@ func _ready() -> void:
 	atualizar_informacao_dos_alvos()
 
 
-func _process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	atualizar_informacao_dos_alvos()
 	if sem_inimigos_na_lista_de_alvos and not porta_liberada:
 		_liberar_porta()

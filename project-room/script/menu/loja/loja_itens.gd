@@ -112,10 +112,12 @@ func _atualizar_ui() -> void:
 	if lista_itens == null or item_template == null:
 		return
 
+	# Remove todas as linhas antigas
 	for child in lista_itens.get_children():
 		if child != item_template:
 			child.queue_free()
 
+	# Cria uma linha para cada item do carrinho
 	for item in shop_manager.carrinho:
 		var linha := item_template.duplicate() as HBoxContainer
 		linha.visible = true
@@ -123,18 +125,57 @@ func _atualizar_ui() -> void:
 		var nome := linha.get_node("Nome") as Label
 		var quantidade := linha.get_node("Quantidade") as Label
 		var preco := linha.get_node("Preco") as Label
+		var botao_retirar := linha.get_node("Retirar_item") as Button
 
-		nome.text = str(item.get("nome", ""))
-		quantidade.text = "x" + str(item.get("quantidade", 1))
-		preco.text = str(int(item.get("preco", 0)) * int(item.get("quantidade", 1)))
+		var nome_item := str(item.get("nome", ""))
+		var preco_item := int(item.get("preco", 0))
+		var raridade_item := int(
+			item.get("raridade", ItensData.Raridade.COMUM)
+		)
+
+		var quantidade_item := int(
+			item.get("quantidade", 1)
+		)
+
+		# Atualiza informações visuais
+		nome.text = nome_item
+		quantidade.text = "x" + str(quantidade_item)
+
+		preco.text = str(
+			preco_item * quantidade_item
+		)
+
+		# Conecta o botão dessa linha ao item correspondente
+		botao_retirar.pressed.connect(
+			_on_retirar_item_pressed.bind(
+				nome_item,
+				preco_item,
+				raridade_item
+			)
+		)
 
 		lista_itens.add_child(linha)
 
+	# Atualiza o total
 	if total_label != null:
 		total_label.text = "Total: " + str(shop_manager.total)
 
+	# Desabilita comprar se não houver itens
 	if botao_buy != null:
 		botao_buy.disabled = shop_manager.carrinho.is_empty()
+
+
+func _on_retirar_item_pressed(
+	nome: String,
+	preco: int,
+	raridade: int
+) -> void:
+
+	shop_manager.remover_unidade(
+		nome,
+		preco,
+		raridade
+	)
 
 
 func _on_botao_buy_pressed() -> void:

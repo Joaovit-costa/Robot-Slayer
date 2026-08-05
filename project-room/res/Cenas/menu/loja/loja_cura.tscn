@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://do2vcevn4k7gw" path="res://res/design/menus/Slot_Inventario.png" id="2_mpwtv"]
 [ext_resource type="Texture2D" uid="uid://ch73s3u00wfut" path="res://res/design/menus/Slot_Trancado_V2.png" id="3_cg1um"]
 [ext_resource type="Script" uid="uid://jmsfpa2u7j0v" path="res://script/menu/loja/shop_item_data.gd" id="4_shop_item"]
+[ext_resource type="FontFile" uid="uid://c8fuwo26umfpq" path="res://res/design/Font/PixelPurl.ttf" id="5_8kioa"]
 [ext_resource type="Texture2D" uid="uid://4s5dtyt2xg1i" path="res://res/design/menus/Botão_Fechar.png" id="5_cg1um"]
 
 [sub_resource type="Resource" id="ShopItemData_eile"]
@@ -92,6 +93,27 @@ border_width_top = 3
 border_width_right = 3
 border_width_bottom = 2
 border_color = Color(0.23544675, 0.62973154, 0.45218343, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4uw74"]
+bg_color = Color(0, 0, 0, 0.5372549)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ownq4"]
+bg_color = Color(0, 0, 0, 0.80784315)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ts2ao"]
+bg_color = Color(0, 0, 0, 0.78431374)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y80uj"]
 bg_color = Color(0, 0.7058824, 0.41568628, 1)
@@ -427,6 +449,18 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 8
 alignment = 1
+
+[node name="Retirar_item" type="Button" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer/VScrollBar/ListaDeItens/Item1" unique_id=1739141940]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_8kioa")
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_4uw74")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ownq4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ts2ao")
+text = "-"
+autowrap_trim_flags = 0
+text_direction = 3
 
 [node name="Nome" type="Label" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer/VScrollBar/ListaDeItens/Item1" unique_id=2107216258]
 custom_minimum_size = Vector2(146.485, 0)

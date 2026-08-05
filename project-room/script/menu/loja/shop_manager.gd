@@ -58,6 +58,39 @@ func remover_item(nome: String, preco: int = -1, raridade: int = -1) -> void:
 
 	_recalcular_total()
 
+func remover_unidade(
+	nome: String,
+	preco: int = -1,
+	raridade: int = -1
+) -> void:
+
+	for i in range(carrinho.size()):
+		var item := carrinho[i]
+
+		if str(item.get("nome", "")) != nome:
+			continue
+
+		if preco != -1 and int(item.get("preco", 0)) != preco:
+			continue
+
+		if raridade != -1 and int(
+			item.get("raridade", ItensData.Raridade.COMUM)
+		) != raridade:
+			continue
+
+		var quantidade := int(item.get("quantidade", 1))
+
+		quantidade -= 1
+
+		if quantidade <= 0:
+			carrinho.remove_at(i)
+		else:
+			item["quantidade"] = quantidade
+
+		break
+
+	_recalcular_total()
+
 
 func finalizar_compra() -> bool:
 	

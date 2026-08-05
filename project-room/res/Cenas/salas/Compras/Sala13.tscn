@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://byn3sb7v47o3n"]
 
+[ext_resource type="Script" uid="uid://bcr33ujajgsbv" path="res://script/salas/Compras.gd" id="1_4uty1"]
 [ext_resource type="Texture2D" uid="uid://bg1wlw1ihwyau" path="res://res/design/Design-Robot Slayer/sprits/mapas finalizados/sala shop.png" id="1_wnri1"]
-[ext_resource type="Script" uid="uid://ciwckplj5adkj" path="res://script/salas/Salas.gd" id="1_yk5w4"]
 [ext_resource type="Texture2D" uid="uid://qlqku25i4wls" path="res://res/design/Design-Robot Slayer/sprits/porta fr.png" id="2_yk5w4"]
 [ext_resource type="PackedScene" uid="uid://crm7vecx3vhjy" path="res://res/Cenas/entidades/protagonista.tscn" id="3_4uty1"]
 [ext_resource type="Texture2D" uid="uid://rmksy3cmfdtm" path="res://res/design/Design-Robot Slayer/sprits/porta lateral- fr separados.png" id="4_4uty1"]
@@ -272,7 +272,7 @@ size = Vector2(48, 163.5)
 size = Vector2(294, 210.5)
 
 [node name="Sala13" type="Node2D" unique_id=1991925353 node_paths=PackedStringArray("portas")]
-script = ExtResource("1_yk5w4")
+script = ExtResource("1_4uty1")
 portas = [NodePath("StaticBody2D/AnimatedSprite2D"), NodePath("StaticBody2D/AnimatedSprite2D2")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1024148448]
@@ -347,3 +347,6 @@ shape = SubResource("RectangleShape2D_4uty1")
 [node name="Protagonista" parent="." unique_id=369473398 node_paths=PackedStringArray("alvos") instance=ExtResource("3_4uty1")]
 position = Vector2(54, 341)
 alvos = [null]
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

@@ -18,6 +18,7 @@ extends Node2D
 
 @onready var modelos_salas: Node2D = get_node_or_null("Salas") as Node2D
 @onready var color_rect: ColorRect = get_node_or_null("ColorRect") as ColorRect
+@onready var tutorial: Node2D = $Tutorial
 @onready var label_salas:= $ColorRect2/Label
 
 const POSICAO_MODELOS_DESATIVADOS := Vector2(1000000, 1000000)
@@ -40,6 +41,7 @@ func _ready() -> void:
 	_configurar_color_rect()
 	_desativar_modelos_de_sala()
 	_iniciar_primeira_sala()
+	tutorial.menu_compras.visible = false
 
 
 func solicitar_transicao_de_sala(_sala_origem: Node2D, cena_ao_entrar_na_porta: String = "") -> void:
@@ -303,11 +305,13 @@ func _obter_tipo_loja_da_sala(nome_sala: StringName) -> StringName:
 
 func _on_area_loja_body_entered(body: Node, tipo_loja: StringName) -> void:
 	if body is protagonista:
+		tutorial.menu_compras.visible = true
 		loja_disponivel = tipo_loja
 
 
 func _on_area_loja_body_exited(body: Node, tipo_loja: StringName) -> void:
 	if body is protagonista and loja_disponivel == tipo_loja:
+		tutorial.menu_compras.visible = false
 		loja_disponivel = TIPO_LOJA_NENHUMA
 
 
