@@ -22,6 +22,34 @@ font_color = Color(0.6627451, 1, 1, 1)
 shadow_size = 6
 shadow_color = Color(0.44705883, 0, 0, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ua4e2"]
+bg_color = Color(0.07823252, 0.083870925, 0.13585454, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r22e2"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 40
+border_width_right = 40
+border_color = Color(0.8, 0.8, 0.8, 0)
+border_blend = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_ua4e2"]
+font = ExtResource("1_gv057")
+font_size = 27
+
+[sub_resource type="LabelSettings" id="LabelSettings_1w0f6"]
+font = ExtResource("1_gv057")
+font_size = 21
+font_color = Color(0, 0.96127254, 0.96699184, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tjiiu"]
+font = ExtResource("1_gv057")
+font_size = 24
+font_color = Color(1, 0.64322656, 0.5076552, 1)
+
 [node name="Tutorial" type="Node2D" unique_id=1020319752]
 script = ExtResource("1_o42rq")
 
@@ -62,3 +90,676 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Clique F para abrir a loja."
 label_settings = SubResource("LabelSettings_o42rq")
+
+[node name="Tutorial_0" type="Control" parent="." unique_id=1812326597]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial_0" unique_id=1353065412]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
+
+[node name="Panel" type="Panel" parent="Tutorial_0" unique_id=72218943]
+layout_mode = 0
+offset_left = 767.0
+offset_top = 74.0
+offset_right = 1046.0
+offset_bottom = 411.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ua4e2")
+
+[node name="Panel2" type="Panel" parent="Tutorial_0/Panel" unique_id=1204125060]
+layout_mode = 0
+offset_top = 49.0
+offset_right = 279.0
+offset_bottom = 50.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Label" type="Label" parent="Tutorial_0/Panel" unique_id=970269025]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 49.0
+text = "Tutorial 1: Movimentação"
+label_settings = SubResource("LabelSettings_ua4e2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial_0/Panel" unique_id=568065075]
+layout_mode = 0
+offset_top = 67.0
+offset_right = 279.0
+offset_bottom = 138.0
+text = "Use WASD ou as setas direcionais
+para movimentar seu personagem
+pelo cenário."
+label_settings = SubResource("LabelSettings_1w0f6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Tutorial_0/Panel" unique_id=1892203018]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 307.0
+offset_right = 255.0
+offset_bottom = 328.0
+text = "Se movimente para continuar"
+label_settings = SubResource("LabelSettings_tjiiu")
+
+[node name="Panel3" type="Panel" parent="Tutorial_0/Panel" unique_id=354907206]
+layout_mode = 0
+offset_top = 296.0
+offset_right = 279.0
+offset_bottom = 297.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Tutorial_1" type="Control" parent="." unique_id=128342931]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial_1" unique_id=1357964191]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
+
+[node name="Panel" type="Panel" parent="Tutorial_1" unique_id=788012884]
+layout_mode = 0
+offset_left = 245.0
+offset_top = 76.0
+offset_right = 524.0
+offset_bottom = 413.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ua4e2")
+
+[node name="Panel2" type="Panel" parent="Tutorial_1/Panel" unique_id=1608141541]
+layout_mode = 0
+offset_top = 49.0
+offset_right = 279.0
+offset_bottom = 50.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Label" type="Label" parent="Tutorial_1/Panel" unique_id=617178277]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 49.0
+text = "Tutorial 2: Ataque"
+label_settings = SubResource("LabelSettings_ua4e2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial_1/Panel" unique_id=715867724]
+layout_mode = 0
+offset_top = 67.0
+offset_right = 279.0
+offset_bottom = 138.0
+text = "Pressione o botão esquerdo do
+mouse para realizar ataques contra
+os inimigos."
+label_settings = SubResource("LabelSettings_1w0f6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Tutorial_1/Panel" unique_id=1700872823]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 303.0
+offset_right = 256.0
+offset_bottom = 324.0
+text = "Ataque para continuar"
+label_settings = SubResource("LabelSettings_tjiiu")
+horizontal_alignment = 1
+
+[node name="Panel3" type="Panel" parent="Tutorial_1/Panel" unique_id=504403666]
+layout_mode = 0
+offset_top = 296.0
+offset_right = 279.0
+offset_bottom = 297.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Tutorial_2" type="Control" parent="." unique_id=1393149107]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 649.0
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial_2" unique_id=2014335026]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
+
+[node name="Panel" type="Panel" parent="Tutorial_2" unique_id=1921831196]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -139.5
+offset_top = -168.5
+offset_right = 139.5
+offset_bottom = 168.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ua4e2")
+
+[node name="Panel2" type="Panel" parent="Tutorial_2/Panel" unique_id=1991037137]
+layout_mode = 0
+offset_top = 49.0
+offset_right = 279.0
+offset_bottom = 50.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Label" type="Label" parent="Tutorial_2/Panel" unique_id=1780632098]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 49.0
+text = "Tutorial 3: Inventário"
+label_settings = SubResource("LabelSettings_ua4e2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial_2/Panel" unique_id=384095471]
+layout_mode = 0
+offset_top = 67.0
+offset_right = 279.0
+offset_bottom = 138.0
+text = "Pressione E para abrir o inventário.
+Nele, você pode visualizar e
+gerenciar os itens que possui."
+label_settings = SubResource("LabelSettings_1w0f6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Tutorial_2/Panel" unique_id=147749269]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 296.0
+offset_right = 278.0
+offset_bottom = 329.0
+text = "Abra o inventário para continuar."
+label_settings = SubResource("LabelSettings_tjiiu")
+horizontal_alignment = 1
+
+[node name="Panel3" type="Panel" parent="Tutorial_2/Panel" unique_id=1426371821]
+layout_mode = 0
+offset_top = 296.0
+offset_right = 279.0
+offset_bottom = 297.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Tutorial_3" type="Control" parent="." unique_id=1408856725]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 649.0
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial_3" unique_id=1617543050]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
+
+[node name="Panel" type="Panel" parent="Tutorial_3" unique_id=1163022608]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -139.5
+offset_top = -168.5
+offset_right = 139.5
+offset_bottom = 168.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ua4e2")
+
+[node name="Panel2" type="Panel" parent="Tutorial_3/Panel" unique_id=744081125]
+layout_mode = 0
+offset_top = 49.0
+offset_right = 279.0
+offset_bottom = 50.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Label" type="Label" parent="Tutorial_3/Panel" unique_id=999289718]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 49.0
+text = "Tutorial 4: Status"
+label_settings = SubResource("LabelSettings_ua4e2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial_3/Panel" unique_id=1526769245]
+layout_mode = 0
+offset_top = 67.0
+offset_right = 279.0
+offset_bottom = 138.0
+text = "Pressione TAB para abrir o menu de
+status e consultar os atributos do
+seu personagem."
+label_settings = SubResource("LabelSettings_1w0f6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Tutorial_3/Panel" unique_id=1794956213]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 288.0
+offset_right = 278.0
+offset_bottom = 333.0
+text = "Abra o menu de status para
+continuar."
+label_settings = SubResource("LabelSettings_tjiiu")
+horizontal_alignment = 1
+
+[node name="Panel3" type="Panel" parent="Tutorial_3/Panel" unique_id=1338186010]
+layout_mode = 0
+offset_top = 279.0
+offset_right = 279.0
+offset_bottom = 280.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Tutorial_4" type="Control" parent="." unique_id=1900342493]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 649.0
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial_4" unique_id=716029617]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
+
+[node name="Panel" type="Panel" parent="Tutorial_4" unique_id=322998206]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -139.5
+offset_top = -168.5
+offset_right = 139.5
+offset_bottom = 168.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ua4e2")
+
+[node name="Panel2" type="Panel" parent="Tutorial_4/Panel" unique_id=319084823]
+layout_mode = 0
+offset_top = 49.0
+offset_right = 279.0
+offset_bottom = 50.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Label" type="Label" parent="Tutorial_4/Panel" unique_id=1991845460]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 49.0
+text = "Tutorial 5: Vida"
+label_settings = SubResource("LabelSettings_ua4e2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial_4/Panel" unique_id=516993985]
+layout_mode = 0
+offset_top = 67.0
+offset_right = 279.0
+offset_bottom = 138.0
+text = "A barra de vida mostra quanto de
+vida seu personagem possui.
+"
+label_settings = SubResource("LabelSettings_1w0f6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Tutorial_4/Panel" unique_id=1261161069]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 307.0
+offset_right = 278.0
+offset_bottom = 333.0
+text = "Clique na tela para continuar"
+label_settings = SubResource("LabelSettings_tjiiu")
+horizontal_alignment = 1
+
+[node name="Panel3" type="Panel" parent="Tutorial_4/Panel" unique_id=1449301523]
+layout_mode = 0
+offset_top = 296.0
+offset_right = 279.0
+offset_bottom = 297.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Tutorial_5" type="Control" parent="." unique_id=884919239]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 649.0
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial_5" unique_id=1817853463]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
+
+[node name="Panel" type="Panel" parent="Tutorial_5" unique_id=1227948785]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -139.5
+offset_top = -168.5
+offset_right = 139.5
+offset_bottom = 168.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ua4e2")
+
+[node name="Panel2" type="Panel" parent="Tutorial_5/Panel" unique_id=1266494123]
+layout_mode = 0
+offset_top = 49.0
+offset_right = 279.0
+offset_bottom = 50.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Label" type="Label" parent="Tutorial_5/Panel" unique_id=386548245]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 49.0
+text = "Tutorial 6: Experiência"
+label_settings = SubResource("LabelSettings_ua4e2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial_5/Panel" unique_id=100915761]
+layout_mode = 0
+offset_top = 67.0
+offset_right = 279.0
+offset_bottom = 138.0
+text = "A barra de experiência indica seu
+progresso até o próximo nível."
+label_settings = SubResource("LabelSettings_1w0f6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Tutorial_5/Panel" unique_id=1141082935]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 307.0
+offset_right = 278.0
+offset_bottom = 333.0
+text = "Clique na tela para continuar"
+label_settings = SubResource("LabelSettings_tjiiu")
+horizontal_alignment = 1
+
+[node name="Panel3" type="Panel" parent="Tutorial_5/Panel" unique_id=1188848990]
+layout_mode = 0
+offset_top = 296.0
+offset_right = 279.0
+offset_bottom = 297.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Tutorial_6" type="Control" parent="." unique_id=1443913271]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 649.0
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial_6" unique_id=793223672]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
+
+[node name="Panel" type="Panel" parent="Tutorial_6" unique_id=282736343]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -139.5
+offset_top = -168.5
+offset_right = 139.5
+offset_bottom = 168.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ua4e2")
+
+[node name="Panel2" type="Panel" parent="Tutorial_6/Panel" unique_id=64048352]
+layout_mode = 0
+offset_top = 49.0
+offset_right = 279.0
+offset_bottom = 50.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Label" type="Label" parent="Tutorial_6/Panel" unique_id=1487471528]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 49.0
+text = "Tutorial 7: Salas"
+label_settings = SubResource("LabelSettings_ua4e2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial_6/Panel" unique_id=856828439]
+layout_mode = 0
+offset_top = 67.0
+offset_right = 279.0
+offset_bottom = 138.0
+text = "Aqui você pode acompanhar o
+número de salas já completadas e
+a dificuldade da sala atual. Quanto
+mais salas você avançar, maiores
+serão os desafios."
+label_settings = SubResource("LabelSettings_1w0f6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Tutorial_6/Panel" unique_id=13296324]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 307.0
+offset_right = 278.0
+offset_bottom = 333.0
+text = "Clique na tela para continuar"
+label_settings = SubResource("LabelSettings_tjiiu")
+horizontal_alignment = 1
+
+[node name="Panel3" type="Panel" parent="Tutorial_6/Panel" unique_id=1405359114]
+layout_mode = 0
+offset_top = 296.0
+offset_right = 279.0
+offset_bottom = 297.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Tutorial_7" type="Control" parent="." unique_id=1377136756]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 649.0
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial_7" unique_id=1700824856]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
+
+[node name="Panel" type="Panel" parent="Tutorial_7" unique_id=665673753]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -139.5
+offset_top = -168.5
+offset_right = 139.5
+offset_bottom = 168.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ua4e2")
+
+[node name="Panel2" type="Panel" parent="Tutorial_7/Panel" unique_id=2065037978]
+layout_mode = 0
+offset_top = 49.0
+offset_right = 279.0
+offset_bottom = 50.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Label" type="Label" parent="Tutorial_7/Panel" unique_id=1114035650]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 49.0
+text = "Tutorial 8: Moedas"
+label_settings = SubResource("LabelSettings_ua4e2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial_7/Panel" unique_id=82632524]
+layout_mode = 0
+offset_top = 67.0
+offset_right = 279.0
+offset_bottom = 138.0
+text = "Suas moedas são exibidas na tela.
+Elas podem ser utilizadas para
+comprar itens e equipamentos durante
+sua jornada."
+label_settings = SubResource("LabelSettings_1w0f6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Tutorial_7/Panel" unique_id=702493956]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 307.0
+offset_right = 278.0
+offset_bottom = 333.0
+text = "Clique na tela para continuar"
+label_settings = SubResource("LabelSettings_tjiiu")
+horizontal_alignment = 1
+
+[node name="Panel3" type="Panel" parent="Tutorial_7/Panel" unique_id=505621477]
+layout_mode = 0
+offset_top = 296.0
+offset_right = 279.0
+offset_bottom = 297.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Tutorial_8" type="Control" parent="." unique_id=2111540331]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 649.0
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial_8" unique_id=1773051617]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
+
+[node name="Panel" type="Panel" parent="Tutorial_8" unique_id=1830234555]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -139.5
+offset_top = -168.5
+offset_right = 139.5
+offset_bottom = 168.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ua4e2")
+
+[node name="Panel2" type="Panel" parent="Tutorial_8/Panel" unique_id=1629156177]
+layout_mode = 0
+offset_top = 49.0
+offset_right = 279.0
+offset_bottom = 50.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Panel3" type="Panel" parent="Tutorial_8/Panel" unique_id=1251467087]
+layout_mode = 0
+offset_top = 296.0
+offset_right = 279.0
+offset_bottom = 297.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Label" type="Label" parent="Tutorial_8/Panel" unique_id=1299362849]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 49.0
+text = "Tutorial 9: Próxima Sala"
+label_settings = SubResource("LabelSettings_ua4e2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial_8/Panel" unique_id=1368174311]
+layout_mode = 0
+offset_top = 67.0
+offset_right = 279.0
+offset_bottom = 138.0
+text = "Após concluir uma sala, procure a
+porta de saída. Entre nela para
+avançar para a próxima sala e
+continuar sua jornada."
+label_settings = SubResource("LabelSettings_1w0f6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Tutorial_8/Panel" unique_id=795401151]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 307.0
+offset_right = 278.0
+offset_bottom = 333.0
+text = "Clique na tela para continuar"
+label_settings = SubResource("LabelSettings_tjiiu")
+horizontal_alignment = 1

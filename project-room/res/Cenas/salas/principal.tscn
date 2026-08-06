@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://byn3sb7v47o3n" path="res://res/Cenas/salas/Compras/Sala13.tscn" id="14_rr14d"]
 [ext_resource type="PackedScene" uid="uid://cms5eh6avaayr" path="res://res/Cenas/salas/Compras/Sala14.tscn" id="15_dljeg"]
 [ext_resource type="Script" uid="uid://yustwypgupc6" path="res://script/menu/hud.gd" id="16_kg3yw"]
-[ext_resource type="PackedScene" path="res://res/Cenas/salas/tutorial.tscn" id="16_rr14d"]
+[ext_resource type="PackedScene" uid="uid://drj31x4lf5a5t" path="res://res/Cenas/salas/tutorial.tscn" id="16_rr14d"]
 [ext_resource type="Texture2D" uid="uid://disji1duvvnmh" path="res://res/design/menus/Botão_Vida.png" id="17_x2ond"]
 [ext_resource type="FontFile" uid="uid://c8fuwo26umfpq" path="res://res/design/Font/PixelPurl.ttf" id="18_rr14d"]
 [ext_resource type="Texture2D" uid="uid://durywh67qgeg2" path="res://res/design/Design-Robot Slayer/sprits/moeda.png" id="18_v8hnl"]
@@ -178,8 +178,6 @@ label_settings = SubResource("LabelSettings_e81ng")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Tutorial" parent="." unique_id=1020319752 instance=ExtResource("16_rr14d")]
-
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1085141809]
 visible = false
 custom_minimum_size = Vector2(1151.99, 648.005)
@@ -258,6 +256,8 @@ layout_mode = 2
 texture = ExtResource("18_v8hnl")
 expand_mode = 3
 stretch_mode = 5
+
+[node name="Tutorial" parent="." unique_id=1020319752 instance=ExtResource("16_rr14d")]
 
 [node name="TalaMorte" parent="." unique_id=314636302 instance=ExtResource("19_x2ond")]
 visible = false
