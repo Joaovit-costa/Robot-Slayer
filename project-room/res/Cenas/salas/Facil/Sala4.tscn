@@ -350,7 +350,7 @@ size = Vector2(48, 163.5)
 
 [node name="Sala4" type="Node2D" unique_id=683622350 node_paths=PackedStringArray("portas")]
 script = ExtResource("1_y1yac")
-protagonista_path = NodePath("")
+protagonista_path = NodePath("Protagonista")
 portas = [NodePath("StaticBody2D/AnimatedSprite2D"), NodePath("StaticBody2D/AnimatedSprite2D2")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1312088386]

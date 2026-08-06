@@ -44,6 +44,9 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	if not node_2d.visible:
+		return
+
 	# Não permite interações durante uma transição
 	if em_transicao:
 		return

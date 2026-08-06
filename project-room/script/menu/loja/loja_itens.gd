@@ -18,7 +18,6 @@ var tween_aviso_moedas: Tween
 
 
 func _ready() -> void:
-	randomize()
 	_configurar_dependencias()
 	_conectar_botoes()
 	sortear_itens_loja()

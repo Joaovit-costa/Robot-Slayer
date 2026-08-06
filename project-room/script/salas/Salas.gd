@@ -31,8 +31,10 @@ func atualizar_informacao_dos_alvos() -> void:
 		protagonista_ref = get_node_or_null(protagonista_path) as protagonista
 
 	if protagonista_ref == null:
-		tem_inimigo_na_lista_de_alvos = false
-		sem_inimigos_na_lista_de_alvos = true
+		# Sem referencia ao jogador nao ha como afirmar que a sala foi limpa.
+		# Manter a porta fechada evita liberar progresso por erro de configuracao.
+		tem_inimigo_na_lista_de_alvos = true
+		sem_inimigos_na_lista_de_alvos = false
 		return
 
 	for alvo in protagonista_ref.alvos:

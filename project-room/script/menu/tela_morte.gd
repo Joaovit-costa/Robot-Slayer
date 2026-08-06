@@ -82,9 +82,11 @@ func _continuar() -> void:
 
 
 func _trocar_sala() -> void:
-	var sala_atual := get_tree().current_scene
-	
-	sala.solicitar_transicao_de_sala(sala_atual)
-	sala.salas_passadas = max(sala.salas_passadas - 5, 5)
-	
+	if sala == null or not sala.has_method("solicitar_transicao_de_sala"):
+		push_error("Gerenciador de salas nao encontrado.")
+		return
+
+	# Ajusta o progresso antes da transicao para que a nova sala use o valor certo.
+	sala.salas_passadas = max(sala.salas_passadas - 5, 0)
+	await sala.solicitar_transicao_de_sala(sala)
 	SaveManager.solicitar_salvamento()

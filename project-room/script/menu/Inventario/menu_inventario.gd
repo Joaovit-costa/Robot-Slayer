@@ -1,8 +1,5 @@
 extends Control
 
-# Cena usada como banco de itens cadastrados pelo inspetor.
-const CENA_BANCO_ITENS = preload("res://res/Cenas/Data/itens.tscn")
-
 # Estado do drag, referencia do inventario, banco e lista de slots visuais.
 @onready var fundo_escuro: ColorRect = $FundoEscuro
 @onready var painel_principal: Panel = $PainelPrincipal
@@ -17,7 +14,6 @@ const CENA_BANCO_ITENS = preload("res://res/Cenas/Data/itens.tscn")
 
 var data_bk
 var inventario_ref: Inventario
-var banco_itens_ref: Itens
 var slots: Array = []
 var slot_selecionado: int = -1
 var label_descricao: Label
@@ -55,11 +51,6 @@ func _configurar_dependencias() -> void:
 	inventario_ref.name = "InventarioState"
 	add_child(inventario_ref)
 	inventario_ref.add_to_group("inventario_principal")
-
-	var banco_instanciado = CENA_BANCO_ITENS.instantiate()
-	banco_instanciado.name = "BancoDeItens"
-	add_child(banco_instanciado)
-	banco_itens_ref = banco_instanciado as Itens
 
 	inventario_ref.inventario_atualizado.connect(_atualizar_slots)
 	SaveManager.aplicar_no_inventario(inventario_ref)

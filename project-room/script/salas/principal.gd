@@ -13,7 +13,10 @@ extends Node2D
 @export var limite_multiplicador_status: float = 4.0
 @export var limite_multiplicador_xp: float = 6.0
 @export var limite_multiplicador_velocidade: float = 1.6
-@export var status_inicial_player_referencia: int = 17
+@export var limite_multiplicador_moedas: float = 4.0
+# Soma dos atributos iniciais reais do protagonista: 6 vitalidade + 6 defesa
+# (a defesa base e multiplicada por 3) + 5 forca + 4 inteligencia.
+@export var status_inicial_player_referencia: int = 21
 @export_group("")
 
 @onready var modelos_salas: Node2D = get_node_or_null("Salas") as Node2D
@@ -34,7 +37,6 @@ var sala_atual_id: String = ""
 
 
 func _ready() -> void:
-	randomize()
 	add_to_group("gerenciador_salas")
 	SaveManager.aplicar_no_gerenciador_salas(self)
 	label_salas.text = "sala " + str(salas_passadas)
@@ -320,6 +322,10 @@ func _balancear_sala(nova_sala: Node2D) -> void:
 		return
 
 	var player := nova_sala.get_node_or_null("Protagonista") as protagonista
+	if player != null and player.has_method("preparar_atributos_para_sala"):
+		# Aplica o save antes de medir a referencia: a dificuldade deve refletir
+		# os atributos com os quais o jogador realmente entra na sala.
+		player.preparar_atributos_para_sala()
 	var referencia_player := _calcular_referencia_player(player)
 	var fator_player :float= max(0.8, referencia_player / float(max(status_inicial_player_referencia, 1)))
 	var multiplicador_status :float= clamp(
@@ -337,16 +343,39 @@ func _balancear_sala(nova_sala: Node2D) -> void:
 		1.0,
 		limite_multiplicador_velocidade
 	)
-
+	var multiplicador_moedas: float = clamp(
+		multiplicador_xp,
+		1.0,
+		limite_multiplicador_moedas
+	)
+	var inimigos: Array[inimigo] = []
 	for node in nova_sala.find_children("*", "CharacterBody2D", true, false):
 		var alvo := node as inimigo
-		if alvo == null:
-			continue
+		if alvo != null:
+			inimigos.append(alvo)
+
+	# Em salas com muitos inimigos, cada um ataca menos frequentemente. Isso
+	# limita o dano agregado sem reduzir a variedade ou a quantidade de inimigos.
+	var multiplicador_cooldown_ataque: float = clampf(
+		1.0 + (maxi(inimigos.size(), 1) - 1) * 0.75,
+		1.0,
+		4.0
+	)
+	var multiplicador_ataque: float = 1.0 + (
+		(multiplicador_status - 1.0) * 0.4
+	)
+
+	if player != null and player.has_method("configurar_recompensas_sala"):
+		player.configurar_recompensas_sala(multiplicador_moedas)
+
+	for alvo in inimigos:
 		_balancear_inimigo(
 			alvo,
 			multiplicador_status,
 			multiplicador_xp,
-			multiplicador_velocidade
+			multiplicador_velocidade,
+			multiplicador_ataque,
+			multiplicador_cooldown_ataque
 		)
 
 
@@ -367,13 +396,16 @@ func _balancear_inimigo(
 	alvo: inimigo,
 	multiplicador_status: float,
 	multiplicador_xp: float,
-	multiplicador_velocidade: float
+	multiplicador_velocidade: float,
+	multiplicador_ataque: float,
+	multiplicador_cooldown_ataque: float
 ) -> void:
 	alvo.vitalidade = max(1, int(round(alvo.vitalidade * multiplicador_status)))
 	alvo.defesa = max(0, int(round(alvo.defesa * multiplicador_status)))
-	alvo.forca = max(1, int(round(alvo.forca * multiplicador_status)))
+	alvo.forca = max(1, int(round(alvo.forca * multiplicador_ataque)))
 	alvo.inteligencia = max(0, int(round(alvo.inteligencia * multiplicador_status)))
 	alvo.velocidade *= multiplicador_velocidade
+	alvo.multiplicador_cooldown_ataque = multiplicador_cooldown_ataque
 	alvo.experiencia_min = max(1, int(round(alvo.experiencia_min * multiplicador_xp)))
 	alvo.experiencia_max = max(
 		alvo.experiencia_min,

@@ -25,10 +25,12 @@ func _listar_nomes_disponiveis() -> PackedStringArray:
 	var banco_instanciado := CENA_BANCO_ITENS.instantiate() as Itens
 	if banco_instanciado == null:
 		return PackedStringArray()
-	return banco_instanciado.listar_nomes_itens()
+	var nomes := banco_instanciado.listar_nomes_itens()
+	banco_instanciado.free()
+	return nomes
 
 
 func sortear_preco() -> int:
-	var minimo :float= max(1, preco_minimo)
-	var maximo :float= max(minimo, preco_maximo)
+	var minimo :int= max(1, preco_minimo)
+	var maximo :int= max(minimo, preco_maximo)
 	return randi_range(minimo, maximo)

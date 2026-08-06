@@ -30,7 +30,9 @@ func _listar_nomes_disponiveis() -> PackedStringArray:
 	var banco_instanciado := CENA_BANCO_ITENS.instantiate() as Itens
 	if banco_instanciado == null:
 		return PackedStringArray()
-	return banco_instanciado.listar_nomes_itens()
+	var nomes := banco_instanciado.listar_nomes_itens()
+	banco_instanciado.free()
+	return nomes
 
 
 # Faz uma tentativa de drop e devolve a raridade sorteada.

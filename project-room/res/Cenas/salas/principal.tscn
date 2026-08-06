@@ -16,11 +16,11 @@
 [ext_resource type="PackedScene" uid="uid://byn3sb7v47o3n" path="res://res/Cenas/salas/Compras/Sala13.tscn" id="14_rr14d"]
 [ext_resource type="PackedScene" uid="uid://cms5eh6avaayr" path="res://res/Cenas/salas/Compras/Sala14.tscn" id="15_dljeg"]
 [ext_resource type="Script" uid="uid://yustwypgupc6" path="res://script/menu/hud.gd" id="16_kg3yw"]
-[ext_resource type="PackedScene" uid="uid://drj31x4lf5a5t" path="res://res/Cenas/salas/tutorial.tscn" id="16_rr14d"]
+[ext_resource type="PackedScene" path="res://res/Cenas/salas/tutorial.tscn" id="16_rr14d"]
 [ext_resource type="Texture2D" uid="uid://disji1duvvnmh" path="res://res/design/menus/Botão_Vida.png" id="17_x2ond"]
 [ext_resource type="FontFile" uid="uid://c8fuwo26umfpq" path="res://res/design/Font/PixelPurl.ttf" id="18_rr14d"]
 [ext_resource type="Texture2D" uid="uid://durywh67qgeg2" path="res://res/design/Design-Robot Slayer/sprits/moeda.png" id="18_v8hnl"]
-[ext_resource type="PackedScene" uid="uid://cuq54xpyg4v8f" path="res://res/Cenas/menu/tala_morte.tscn" id="19_x2ond"]
+[ext_resource type="PackedScene" uid="uid://bhmku6r2vq1l3" path="res://res/Cenas/menu/Tela_morte.tscn" id="19_x2ond"]
 
 [sub_resource type="SystemFont" id="SystemFont_e81ng"]
 font_names = PackedStringArray("Arial")

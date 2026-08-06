@@ -70,6 +70,7 @@ var morte_processada := false
 
 # ============ CONTROLE ============
 var cooldown: float = 0.0
+var multiplicador_cooldown_ataque: float = 1.0
 var inRange: bool = false
 var direcao_animacao: Vector2 = Vector2.DOWN
 var spawn_ativo := false
@@ -78,21 +79,8 @@ var tomando_dano := false
 
 
 func _ready() -> void:
-	randomize()
-	await get_tree().process_frame
-	var tela_morte = get_tree().get_first_node_in_group("tela_morte")
-	var salas_passadas: int = tela_morte.sala.salas_passadas
-	var multiplicador: float = salas_passadas * 0.5
-
-	vitalidade = int(vitalidade * multiplicador)
-	defesa = int(defesa * multiplicador)
-	forca = int(forca * multiplicador)
-	inteligencia = int(inteligencia * multiplicador)
-	experiencia_min = int(experiencia_min * multiplicador)
-	experiencia_max = int(experiencia_max * multiplicador)
-
 	add_to_group(&"inimigos")
-	vitalidade *= 5
+	vitalidade = max(1, vitalidade * 5)
 
 	_aplicar_temperamento()
 
@@ -169,7 +157,12 @@ func _physics_process(delta: float) -> void:
 	# ============ ATAQUE ============
 	if pode_atacar and cooldown <= 0.0:
 		direcao_animacao = global_position.direction_to(protagonista_ref.global_position)
-		cooldown = mecanicas.atacar(protagonista_ref, cooldowns, forca, multiplicadores)
+		cooldown = mecanicas.atacar(
+			protagonista_ref,
+			cooldowns,
+			forca,
+			multiplicadores
+		) * multiplicador_cooldown_ataque
 		_tocar_animacao(_animacao_por_direcao("atacar"))
 	elif cooldown > 0.0:
 		cooldown -= delta
@@ -229,7 +222,7 @@ func receber_dano(dano: float, direcao_ataque: Vector2 = Vector2.ZERO) -> void:
 		direcao_animacao = direcao_ataque.normalized()
 
 	# Aplica o dano
-	vitalidade = max(vitalidade - dano, 0)
+	vitalidade = max(0, int(ceil(vitalidade - maxf(dano, 0.0))))
 
 	# Atualiza a barra de vida
 	barraVida.value = vitalidade

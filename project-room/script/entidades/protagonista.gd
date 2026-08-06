@@ -25,6 +25,7 @@ var label_moeda: Label
 
 var morto: bool = false
 var tela_morte_visivel: bool = false
+var atributos_inicializados: bool = false
 
 
 # ============ ATRIBUTOS ============
@@ -42,6 +43,9 @@ var pontosStatus: int = 0
 var status = ["vitalidade", "defesa", "forca", "inteligencia"]
 
 const SPEED: float = 200
+const COOLDOWN_CURA_BASE: float = 10.0
+const COOLDOWN_CURA_MINIMO: float = 3.0
+const TEMPO_INVULNERABILIDADE_APOS_DANO: float = 0.35
 
 var ultima_direcao: String = "down"
 var direcao_animacao: Vector2 = Vector2.DOWN
@@ -52,6 +56,7 @@ var experienciaNecessaria = int(nivel * 1.2 + 40)
 
 # Sistema de cura
 var cooldownDaCura: float = 0.0
+var invulnerabilidade_restante: float = 0.0
 
 # Sistema de ataque
 var atacando: bool = false
@@ -63,6 +68,8 @@ var inimigos_acertados_no_ataque: Array[inimigo] = []
 var experienciaDropada: int = 0
 var dropsRecebido: bool = false
 var drops_pendentes: Array[Dictionary] = []
+var possui_inimigos_na_sala: bool = false
+var multiplicador_moedas_sala: float = 1.0
 
 # inventario
 var inventario_ref: Inventario
@@ -96,7 +103,6 @@ func _ready() -> void:
 	hud = get_tree().get_first_node_in_group("hud") as Hud
 
 	if hud == null:
-		push_error("HUD não encontrado!")
 		return
 
 	barraVida = hud.barraVida
@@ -106,13 +112,11 @@ func _ready() -> void:
 	label_moeda = hud.label_moeda
 
 
-	randomize()
-
-	vidaInicial = calcular_vida_maxima()
-	vidaAtual = vidaInicial
-	defesa *= 3
-	SaveManager.aplicar_no_player(self)
+	preparar_atributos_para_sala()
+	# A preparacao pode ter ocorrido antes de o HUD entrar na arvore; sincroniza
+	# novamente agora que as barras visuais existem.
 	sincronizar_vida()
+	cooldownDaCura = minf(cooldownDaCura, calcular_cooldown_cura())
 
 	barraExperiencia.max_value = experienciaNecessaria
 	barraExperiencia.value = experiencia
@@ -120,10 +124,11 @@ func _ready() -> void:
 	label_nivel.text = "Lv. " + str(nivel)
 	label_moeda.text = str(moedas)
 
-	barraCura.max_value = 10 * 60 / max(inteligencia / 20, 1)
+	barraCura.max_value = calcular_cooldown_cura()
 	barraCura.value = cooldownDaCura
 	
 	recalcular_experiencia_dropada()
+	possui_inimigos_na_sala = not alvos.is_empty()
 
 	inventario_ref = get_tree().get_first_node_in_group(
 		"inventario_principal"
@@ -148,6 +153,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if morto:
 		return
+	invulnerabilidade_restante = maxf(0.0, invulnerabilidade_restante - delta)
 	# As faixas da AnimationPlayer tambem alteram `disabled`. Forcar a forma
 	# ativa evita que a lista de sobreposicoes fique vazia entre os frames.
 	if hitbox_ataque.disabled:
@@ -197,7 +203,7 @@ func _physics_process(delta: float) -> void:
 
 		mecanicas.cura(
 			self,
-			10 * 60 / (max(inteligencia / 20, 1))
+			calcular_cooldown_cura()
 		)
 
 		barraCura.max_value = cooldownDaCura
@@ -215,11 +221,11 @@ func _physics_process(delta: float) -> void:
 	# =================================
 	
 	# ===== AO MATAR TODOS DA SALA =====
-	if len(alvos) <= 0 and not dropsRecebido:
+	if possui_inimigos_na_sala and alvos.is_empty() and not dropsRecebido:
 
 		experiencia += experienciaDropada
 
-		var moedasDropadas = randi_range(5, 15)
+		var moedasDropadas := int(round(randi_range(5, 15) * multiplicador_moedas_sala))
 		moedas += moedasDropadas
 
 		label_moeda.text = str(moedas)
@@ -326,6 +332,27 @@ func calcular_vida_maxima() -> int:
 	return max(vitalidade * 5, 1)
 
 
+func calcular_cooldown_cura() -> float:
+	# O countdown usa delta em segundos. A formula anterior retornava 600 s
+	# para inteligencia baixa, tornando cura praticamente inutil em combate.
+	return maxf(
+		COOLDOWN_CURA_MINIMO,
+		COOLDOWN_CURA_BASE - (float(inteligencia) * 0.25)
+	)
+
+
+func preparar_atributos_para_sala() -> void:
+	if atributos_inicializados:
+		return
+
+	vidaInicial = calcular_vida_maxima()
+	vidaAtual = vidaInicial
+	defesa *= 3
+	SaveManager.aplicar_no_player(self)
+	sincronizar_vida()
+	atributos_inicializados = true
+
+
 func sincronizar_vida() -> void:
 	vidaInicial = max(vidaInicial, calcular_vida_maxima())
 	vidaAtual = clamp(vidaAtual, 0, vidaInicial)
@@ -333,7 +360,12 @@ func sincronizar_vida() -> void:
 
 
 func receber_dano(dano: int) -> void:
-	vidaAtual = max(vidaAtual - max(dano, 0), 0)
+	var dano_final :float= max(dano, 0)
+	if dano_final <= 0 or invulnerabilidade_restante > 0.0:
+		return
+
+	invulnerabilidade_restante = TEMPO_INVULNERABILIDADE_APOS_DANO
+	vidaAtual = max(vidaAtual - dano_final, 0)
 	_atualizar_barra_vida()
 	_solicitar_salvamento()
 
@@ -361,6 +393,9 @@ func aumentar_atributo(nome: String) -> bool:
 			_atualizar_barra_vida()
 		"inteligencia":
 			inteligencia += 1
+			if barraCura != null:
+				barraCura.max_value = calcular_cooldown_cura()
+				barraCura.value = minf(cooldownDaCura, barraCura.max_value)
 		_:
 			return false
 
@@ -399,14 +434,21 @@ func _solicitar_salvamento() -> void:
 
 func recalcular_experiencia_dropada() -> void:
 	experienciaDropada = 0
+	var alvos_validos: Array[inimigo] = []
 	for alvo in alvos:
 		if alvo == null or not is_instance_valid(alvo):
 			continue
+		alvos_validos.append(alvo)
 
 		experienciaDropada += randi_range(
 			alvo.experiencia_min,
 			alvo.experiencia_max
 		)
+	alvos = alvos_validos
+
+
+func configurar_recompensas_sala(novo_multiplicador_moedas: float) -> void:
+	multiplicador_moedas_sala = maxf(1.0, novo_multiplicador_moedas)
 
 
 func _acumular_drops_do_inimigo(alvo: inimigo) -> void:
@@ -467,6 +509,10 @@ func _entregar_drops_pendentes() -> void:
 
 
 func iniciar_ataque() -> void:
+	if cooldowns.is_empty() or cooldowns.size() != multiplicadores.size():
+		push_error("Configuracao de ataque invalida no protagonista.")
+		return
+
 	atacando = true
 	direcao_ataque = direcao_animacao
 	_congelar_alcance_do_ataque()
@@ -483,10 +529,8 @@ func executar_ataque() -> void:
 	# A Area2D e ativada pela animacao apenas para a parte visual. A consulta
 	# direta usa a mesma forma e nao perde o golpe quando essa ativacao chega
 	# adiada ao processamento fisico.
-	inimigos_acertados_no_ataque.clear()
 	for body in alcance.get_overlapping_bodies():
-		if (body as inimigo).vitalidade > 0:
-			_aplicar_dano_da_hitbox(body)
+		_aplicar_dano_da_hitbox(body)
 
 	var consulta := PhysicsShapeQueryParameters2D.new()
 	consulta.shape = hitbox_ataque.shape
@@ -541,7 +585,7 @@ func _aplicar_dano_da_hitbox(body: Node) -> void:
 		return
 
 	var alvo := body as inimigo
-	if alvo == null:
+	if alvo == null or alvo.vitalidade <= 0:
 		return
 
 	if alvo in inimigos_acertados_no_ataque:
@@ -553,14 +597,16 @@ func _aplicar_dano_da_hitbox(body: Node) -> void:
 		forca * multiplicadores[indice_ataque_atual] - alvo.defesa,
 		1
 	)
-	if alvo:
-		var direcao_dano: Vector2 = alvo.global_position.direction_to(global_position)
-		alvo.receber_dano(dano, direcao_dano)
+	# A animacao de dano deve apontar o inimigo para quem o atingiu.
+	var direcao_dano: Vector2 = alvo.global_position.direction_to(global_position)
+	alvo.receber_dano(dano, direcao_dano)
 
 	if alvo.vitalidade <= 0:
 		_acumular_drops_do_inimigo(alvo)
 		alvos.erase(alvo)
-		sala.move_child(alvo, 1)
+		var sala_do_alvo := alvo.get_parent()
+		if sala_do_alvo != null:
+			sala_do_alvo.move_child(alvo, 1)
 
 
 func _on_area_2d_body_entered(body: Node) -> void:
@@ -628,3 +674,4 @@ func restaurar_vida() -> void:
 	vidaAtual = vidaInicial
 
 	_atualizar_barra_vida()
+	_solicitar_salvamento()

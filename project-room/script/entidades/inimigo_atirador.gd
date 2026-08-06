@@ -11,6 +11,8 @@ extends inimigo
 
 
 func _physics_process(delta: float) -> void:
+	if spawn_ativo:
+		return
 	# ============ SEM ALVO ============
 	if protagonista_ref == null:
 		velocity = Vector2.ZERO
@@ -84,10 +86,13 @@ func _physics_process(delta: float) -> void:
 
 func atirar() -> void:
 	if projetil_scene == null:
-		print("Erro: coloque a cena do projétil no campo Projetil Scene.")
+		push_warning("Projetil Scene nao configurada no inimigo atirador.")
+		cooldown = 1.0
 		return
 
-	cooldown = cooldowns.pick_random()
+	if cooldowns.is_empty():
+		return
+	cooldown = maxf(0.0, cooldowns.pick_random()) * multiplicador_cooldown_ataque
 
 	var projetil = projetil_scene.instantiate()
 	get_parent().add_child(projetil)

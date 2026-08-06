@@ -60,6 +60,3 @@ offset_bottom = 496.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_4fdci")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_km3w5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_lkwgs")
-
-[connection signal="pressed" from="Entrar" to="." method="_on_entrar_pressed"]
-[connection signal="pressed" from="Sair" to="." method="_on_sair_pressed"]

@@ -24,6 +24,9 @@ func adicionar_item(oferta: Dictionary) -> void:
 	var nome := str(oferta.get("nome", ""))
 	var preco := int(oferta.get("preco", 0))
 	var raridade := int(oferta.get("raridade", ItensData.Raridade.COMUM))
+	var quantidade :int= max(1, int(oferta.get("quantidade", 1)))
+	if nome.is_empty() or preco < 0:
+		return
 
 	for item in carrinho:
 		if (
@@ -31,14 +34,14 @@ func adicionar_item(oferta: Dictionary) -> void:
 			and int(item.get("preco", 0)) == preco
 			and int(item.get("raridade", ItensData.Raridade.COMUM)) == raridade
 		):
-			item["quantidade"] = int(item.get("quantidade", 0)) + int(oferta.get("quantidade", 1))
+			item["quantidade"] = int(item.get("quantidade", 0)) + quantidade
 			_recalcular_total()
 			return
 
 	carrinho.append({
 		"nome": nome,
 		"preco": preco,
-		"quantidade": int(oferta.get("quantidade", 1)),
+		"quantidade": quantidade,
 		"raridade": raridade
 	})
 	_recalcular_total()
@@ -108,17 +111,20 @@ func finalizar_compra() -> bool:
 	if not comprador_ref.tem_moedas(total):
 		return false
 
-	# Ignorando a validação de espaço por enquanto
+	if not inventario_ref.tem_espaco_para_itens(carrinho):
+		return false
 
 	if not comprador_ref.gastar_moedas(total):
 		return false
 
 	for item in carrinho:
-		inventario_ref.adicionar_item(
+		if not inventario_ref.adicionar_item(
 			str(item.get("nome", "")),
 			int(item.get("raridade", ItensData.Raridade.COMUM)),
 			int(item.get("quantidade", 1))
-		)
+		):
+			push_error("Falha ao adicionar item validado ao inventario.")
+			return false
 
 	var itens_comprados := carrinho.duplicate(true)
 
@@ -126,8 +132,7 @@ func finalizar_compra() -> bool:
 	_recalcular_total()
 
 	# Salva imediatamente após concluir a compra
-	if Engine.has_singleton("SaveManager"):
-		SaveManager.solicitar_salvamento()
+	SaveManager.solicitar_salvamento()
 
 	compra_finalizada.emit(itens_comprados)
 

@@ -62,6 +62,19 @@ func carregar_itens(novos_itens: Array) -> void:
 		if typeof(item) != TYPE_DICTIONARY:
 			continue
 		var item_dict: Dictionary = item
+		var nome := str(item_dict.get("nome", "")).strip_edges()
+		var dados_item := buscar_info_item(nome)
+		var slot := int(item_dict.get("idSlot", -1))
+		var tipo := _resolver_tipo_item(dados_item)
+		if nome.is_empty() or tipo.is_empty() or slot not in TODOS_SLOTS:
+			continue
+		if not item_pode_ir_para_slot(tipo, slot) or not get_item_no_slot(slot).is_empty():
+			continue
+		item_dict["nome"] = nome
+		item_dict["tipo"] = tipo
+		item_dict["idSlot"] = slot
+		item_dict["quantidade"] = max(1, int(item_dict.get("quantidade", 1)))
+		item_dict["raridade"] = clampi(int(item_dict.get("raridade", ItensData.Raridade.COMUM)), ItensData.Raridade.COMUM, ItensData.Raridade.LENDARIO)
 		inventario.append(item_dict.duplicate(true))
 		
 	_normalizar_slots_bloqueados()
@@ -168,6 +181,8 @@ func tem_espaco_para_itens(itens_compra: Array[Dictionary]) -> bool:
 
 # Remove um item por nome/slot e desconta quantidade quando for empilhavel.
 func remover_item(nome: String, quantidade: int = 1, id_slot: int = -1) -> bool:
+	if quantidade <= 0:
+		return false
 	var indice := _encontrar_indice_item(nome, id_slot)
 	if indice == -1:
 		return false
@@ -276,16 +291,6 @@ func _buscar_item_empilhavel(nome: String, raridade: int) -> Dictionary:
 		):
 			return item
 	return {}
-
-func _tem_item(nome: String, raridade: int) -> bool:
-	for item in inventario:
-		if (
-			str(item.get("nome", "")) == nome
-			and int(item.get("raridade", ItensData.Raridade.COMUM)) == raridade
-		):
-			return true
-	return false
-
 
 func _criar_chave_pilha(nome: String, raridade: int) -> String:
 	return nome + "|" + str(raridade)

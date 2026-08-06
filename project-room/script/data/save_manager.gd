@@ -55,19 +55,19 @@ func aplicar_no_player(player: protagonista) -> void:
 	aplicando_save = true
 	var player_data: Dictionary = dados.get("player", {})
 
-	player.vitalidade = int(player_data.get("vitalidade", player.vitalidade))
-	player.vidaInicial = int(player_data.get("vidaInicial", player.calcular_vida_maxima()))
-	player.vidaAtual = int(player_data.get("vidaAtual", player.vidaInicial))
-	player.defesa = int(player_data.get("defesa", player.defesa))
-	player.forca = int(player_data.get("forca", player_data.get("dano", player.forca)))
-	player.inteligencia = int(player_data.get("inteligencia", player.inteligencia))
-	player.pontosExperiencia = int(player_data.get("pontosExperiencia", player.pontosExperiencia))
-	player.experiencia = int(player_data.get("experiencia", player.experiencia))
-	player.nivel = int(player_data.get("nivel", player.nivel))
-	player.moedas = int(player_data.get("moedas", player.moedas))
-	player.pontosStatus = int(player_data.get("pontosStatus", player.pontosStatus))
-	player.experienciaNecessaria = int(player_data.get("experienciaNecessaria", player.experienciaNecessaria))
-	player.cooldownDaCura = float(player_data.get("cooldownDaCura", player.cooldownDaCura))
+	player.vitalidade = max(1, int(player_data.get("vitalidade", player.vitalidade)))
+	player.vidaInicial = max(1, int(player_data.get("vidaInicial", player.calcular_vida_maxima())))
+	player.vidaAtual = max(0, int(player_data.get("vidaAtual", player.vidaInicial)))
+	player.defesa = max(0, int(player_data.get("defesa", player.defesa)))
+	player.forca = max(1, int(player_data.get("forca", player_data.get("dano", player.forca))))
+	player.inteligencia = max(0, int(player_data.get("inteligencia", player.inteligencia)))
+	player.pontosExperiencia = max(0, int(player_data.get("pontosExperiencia", player.pontosExperiencia)))
+	player.experiencia = max(0, int(player_data.get("experiencia", player.experiencia)))
+	player.nivel = max(1, int(player_data.get("nivel", player.nivel)))
+	player.moedas = max(0, int(player_data.get("moedas", player.moedas)))
+	player.pontosStatus = max(0, int(player_data.get("pontosStatus", player.pontosStatus)))
+	player.experienciaNecessaria = max(1, int(player_data.get("experienciaNecessaria", player.experienciaNecessaria)))
+	player.cooldownDaCura = maxf(0.0, float(player_data.get("cooldownDaCura", player.cooldownDaCura)))
 	player.sincronizar_vida()
 	aplicando_save = false
 
@@ -103,7 +103,9 @@ func aplicar_no_gerenciador_salas(gerenciador: Node) -> void:
 func salvar_estado_atual() -> void:
 	carregar()
 
-	var player := get_tree().get_first_node_in_group("player") as protagonista
+	var player := get_tree().get_first_node_in_group("protagonista") as protagonista
+	if player == null:
+		player = get_tree().get_first_node_in_group("player") as protagonista
 	if player != null:
 		dados["player"] = _coletar_player(player)
 
@@ -174,6 +176,7 @@ func _salvar_no_disco() -> void:
 		return
 
 	arquivo.store_string(JSON.stringify(dados, "\t"))
+	arquivo.close()
 
 
 func _buscar_gerenciador_salas() -> Node:

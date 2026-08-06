@@ -10,18 +10,13 @@ extends Node2D
 const ACAO_INVENTARIO := &"ui_inventario"
 const ACAO_STATUS := &"ui_status"
 const ACAO_LOJA := &"ui_interagir"
-const ACAO_PAUSE := &"ui_cancel"
 
 const TIPO_LOJA_CURA := &"cura"
 const TIPO_LOJA_ARMA := &"arma"
 
-const CENA_MENU_PAUSE := preload("res://res/Cenas/menu/pause/menu_pause.tscn")
-const CENA_MENU_PRINCIPAL := "res://MenuPrincipal.tscn"
-
 var tecla_inventario_estava_pressionada := false
 var tecla_loja_estava_pressionada := false
-var tecla_pause_estava_pressionada := false
-
+var tecla_status_estava_pressionada := false
 var menu_pause_instance: CanvasLayer = null
 
 
@@ -136,20 +131,11 @@ func _status_foi_acionado() -> bool:
 		return Input.is_action_just_pressed(ACAO_STATUS)
 
 	var pressionada_agora := Input.is_physical_key_pressed(KEY_TAB)
-	var acabou_de_pressionar := pressionada_agora and not tecla_inventario_estava_pressionada
-	tecla_inventario_estava_pressionada = pressionada_agora
+	var acabou_de_pressionar := pressionada_agora and not tecla_status_estava_pressionada
+	tecla_status_estava_pressionada = pressionada_agora
 	return acabou_de_pressionar
 
 
-func _pause_foi_acionado() -> bool:
-	if InputMap.has_action(ACAO_PAUSE):
-		return Input.is_action_just_pressed(ACAO_PAUSE)
-
-	var pressionada_agora := Input.is_physical_key_pressed(KEY_ESCAPE)
-	var acabou_de_pressionar := pressionada_agora and not tecla_pause_estava_pressionada
-	tecla_pause_estava_pressionada = pressionada_agora
-	return acabou_de_pressionar
-	
 func _alternar_loja_disponivel() -> void:
 	if menu_loja_cura != null and menu_loja_cura.visible:
 		menu_loja_cura.visible = false

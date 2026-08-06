@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://bhmku6r2vq1l3"]
+
+[ext_resource type="Script" uid="uid://cpn4frthkxn5t" path="res://script/menu/tela_morte.gd" id="1_kugtw"]
+[ext_resource type="Texture2D" uid="uid://dtvnuf6500xss" path="res://res/design/Design-Robot Slayer/sprits/gameover.png" id="2_28v1n"]
+[ext_resource type="FontFile" uid="uid://c8fuwo26umfpq" path="res://res/design/Font/PixelPurl.ttf" id="2_rkrqj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6u4dl"]
+atlas = ExtResource("2_28v1n")
+region = Rect2(0, 0, 512, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lboq"]
+atlas = ExtResource("2_28v1n")
+region = Rect2(512, 0, 512, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6oyqe"]
+atlas = ExtResource("2_28v1n")
+region = Rect2(1024, 0, 512, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iycge"]
+atlas = ExtResource("2_28v1n")
+region = Rect2(1536, 0, 512, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t12ka"]
+atlas = ExtResource("2_28v1n")
+region = Rect2(2048, 0, 512, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dck7a"]
+atlas = ExtResource("2_28v1n")
+region = Rect2(512, 0, 512, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8lyqk"]
+atlas = ExtResource("2_28v1n")
+region = Rect2(0, 0, 512, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81k4h"]
+atlas = ExtResource("2_28v1n")
+region = Rect2(1536, 0, 512, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ko67w"]
+atlas = ExtResource("2_28v1n")
+region = Rect2(2048, 0, 512, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cx66h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6u4dl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6lboq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6oyqe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iycge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t12ka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dck7a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8lyqk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81k4h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ko67w")
+}],
+"loop": false,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_28v1n"]
+font = ExtResource("2_rkrqj")
+font_size = 34
+
+[node name="TelaMorte" type="CanvasLayer" unique_id=524086337]
+script = ExtResource("1_kugtw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1153793989]
+position = Vector2(576.49994, 324.50003)
+scale = Vector2(2.2480466, 2.527344)
+sprite_frames = SubResource("SpriteFrames_cx66h")
+
+[node name="Label" type="Label" parent="." unique_id=653025943]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -180.0
+offset_top = -48.0
+offset_right = 179.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Precione alguma tecla para continuar."
+label_settings = SubResource("LabelSettings_28v1n")

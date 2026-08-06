@@ -83,6 +83,3 @@ offset_top = 357.0
 offset_right = 598.0
 offset_bottom = 450.0
 color = Color(0.54509807, 0.36078432, 0.9647059, 0.4)
-
-[connection signal="pressed" from="BotaoContinuar" to="." method="_on_button_continuar_pressed"]
-[connection signal="pressed" from="BotaoSair" to="." method="_on_botao_sair_pressed"]

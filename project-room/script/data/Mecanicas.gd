@@ -1,15 +1,15 @@
-extends Node
+extends RefCounted
 
 const PONTOS_STATUS_POR_NIVEL: int = 3
 
-func atacar(atacado, cooldowns: Array, forca: int, multiplicadores: Array) -> float:
-	if atacado == null:
+func atacar(atacado, cooldowns: Array[float], forca: int, multiplicadores: Array[float]) -> float:
+	if atacado == null or cooldowns.is_empty() or cooldowns.size() != multiplicadores.size():
 		return 0.0
 
 	if atacado.has_method("receber_dano"):
-		if atacado.vidaAtual <= 0:
+		if int(atacado.get("vidaAtual")) <= 0:
 			return 0.0
-	elif atacado.vitalidade <= 0:
+	elif int(atacado.get("vitalidade")) <= 0:
 		return 0.0
 
 	var indice_ataque := randi() % cooldowns.size()
@@ -37,13 +37,19 @@ func ajustar_eixo(valor: float) -> float:
 	return 0.0
 
 
-func cura(curado, tempoParaCura):
+func cura(curado, tempo_para_cura: float) -> void:
+	if curado == null:
+		return
+
+	var quantidade_cura: int = max(0, int(int(curado.get("inteligencia")) * 1.5))
 	if curado.has_method("receber_cura"):
-		curado.receber_cura(int(curado.inteligencia * 1.5))
+		curado.receber_cura(quantidade_cura)
 	else:
-		curado.vitalidade += int(curado.inteligencia * 1.5)
-		curado.barraVida.value = curado.vitalidade
-	curado.cooldownDaCura += tempoParaCura
+		curado.set("vitalidade", max(0, int(curado.get("vitalidade")) + quantidade_cura))
+		var barra_vida := curado.get("barraVida") as ProgressBar
+		if barra_vida != null:
+			barra_vida.value = int(curado.get("vitalidade"))
+	curado.set("cooldownDaCura", max(0.0, tempo_para_cura))
 
 
 func subirNivel(player) -> void:
