@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://qlqku25i4wls" path="res://res/design/Design-Robot Slayer/sprits/porta fr.png" id="3_f8ltl"]
 [ext_resource type="PackedScene" uid="uid://crm7vecx3vhjy" path="res://res/Cenas/entidades/protagonista.tscn" id="4_740vb"]
 [ext_resource type="Texture2D" uid="uid://rmksy3cmfdtm" path="res://res/design/Design-Robot Slayer/sprits/porta lateral- fr separados.png" id="4_yhikm"]
+[ext_resource type="FontFile" uid="uid://c8fuwo26umfpq" path="res://res/design/Font/PixelPurl.ttf" id="5_ypenu"]
 [ext_resource type="PackedScene" uid="uid://dw5vop8713vt3" path="res://res/Cenas/entidades/inimigo.tscn" id="6_740vb"]
 [ext_resource type="PackedScene" uid="uid://dk2ldp063c478" path="res://res/Cenas/entidades/inimigo_atirador.tscn" id="7_ypenu"]
 
@@ -328,16 +329,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SystemFont" id="SystemFont_g40p2"]
-font_names = PackedStringArray("Arial")
-font_weight = 999
-font_stretch = 175
-subpixel_positioning = 0
-oversampling = 2.765
-
 [sub_resource type="LabelSettings" id="LabelSettings_yhikm"]
-font = SubResource("SystemFont_g40p2")
-font_size = 15
+font = ExtResource("5_ypenu")
+font_size = 22
 font_color = Color(0.9956657, 0.7662683, 0.6869504, 1)
 shadow_size = 0
 shadow_color = Color(0, 0, 0, 0.25882354)

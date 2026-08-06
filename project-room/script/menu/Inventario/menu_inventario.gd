@@ -1,7 +1,6 @@
 extends Control
 
 # Estado do drag, referencia do inventario, banco e lista de slots visuais.
-@onready var fundo_escuro: ColorRect = $FundoEscuro
 @onready var painel_principal: Panel = $PainelPrincipal
 @onready var label_titulo: Label = $PainelPrincipal/Conteudo/PainelEsquerdo/VBoxContainer/Container/titulo
 @onready var label_tipo: Label = $PainelPrincipal/Conteudo/PainelEsquerdo/VBoxContainer/HBoxContainer/tipo

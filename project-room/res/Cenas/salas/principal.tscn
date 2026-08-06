@@ -22,15 +22,9 @@
 [ext_resource type="Texture2D" uid="uid://durywh67qgeg2" path="res://res/design/Design-Robot Slayer/sprits/moeda.png" id="18_v8hnl"]
 [ext_resource type="PackedScene" uid="uid://bhmku6r2vq1l3" path="res://res/Cenas/menu/Tela_morte.tscn" id="19_x2ond"]
 
-[sub_resource type="SystemFont" id="SystemFont_e81ng"]
-font_names = PackedStringArray("Arial")
-font_weight = 825
-subpixel_positioning = 0
-oversampling = 2.765
-
 [sub_resource type="LabelSettings" id="LabelSettings_e81ng"]
-font = SubResource("SystemFont_e81ng")
-font_size = 22
+font = ExtResource("18_rr14d")
+font_size = 36
 font_color = Color(0.29954746, 0.29954746, 0.29954743, 1)
 outline_size = 1
 shadow_color = Color(0, 0, 0, 0.25882354)
@@ -179,11 +173,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "sala 01"
+text = "Sala 01"
 label_settings = SubResource("LabelSettings_e81ng")
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 2
 
 [node name="Tutorial" parent="." unique_id=1020319752 instance=ExtResource("16_rr14d")]
 
@@ -267,3 +260,4 @@ expand_mode = 3
 stretch_mode = 5
 
 [node name="TalaMorte" parent="." unique_id=314636302 instance=ExtResource("19_x2ond")]
+visible = false

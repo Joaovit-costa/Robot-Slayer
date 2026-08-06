@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://nyq1k0w7lbki" path="res://res/design/Design-Robot Slayer/sprits/mapas finalizados/hub 2.png" id="1_eowxq"]
 [ext_resource type="PackedScene" uid="uid://crm7vecx3vhjy" path="res://res/Cenas/entidades/protagonista.tscn" id="2_52nwy"]
 [ext_resource type="Texture2D" uid="uid://qlqku25i4wls" path="res://res/design/Design-Robot Slayer/sprits/porta fr.png" id="3_ru08q"]
+[ext_resource type="FontFile" uid="uid://c8fuwo26umfpq" path="res://res/design/Font/PixelPurl.ttf" id="4_7kh3g"]
 [ext_resource type="PackedScene" uid="uid://dw5vop8713vt3" path="res://res/Cenas/entidades/inimigo.tscn" id="5_dnvnk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dnvnk"]
@@ -84,16 +85,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SystemFont" id="SystemFont_ru08q"]
-font_names = PackedStringArray("Arial")
-font_weight = 999
-font_stretch = 175
-subpixel_positioning = 0
-oversampling = 2.765
-
 [sub_resource type="LabelSettings" id="LabelSettings_dnvnk"]
-font = SubResource("SystemFont_ru08q")
-font_size = 15
+font = ExtResource("4_7kh3g")
+font_size = 24
 font_color = Color(0.25875205, 0.9700323, 0.50856924, 1)
 shadow_size = 0
 shadow_color = Color(0, 0, 0, 0.25882354)

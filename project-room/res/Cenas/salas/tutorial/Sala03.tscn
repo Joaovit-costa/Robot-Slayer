@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://qlqku25i4wls" path="res://res/design/Design-Robot Slayer/sprits/porta fr.png" id="3_0rro4"]
 [ext_resource type="PackedScene" uid="uid://crm7vecx3vhjy" path="res://res/Cenas/entidades/protagonista.tscn" id="4_3pigp"]
 [ext_resource type="Texture2D" uid="uid://rmksy3cmfdtm" path="res://res/design/Design-Robot Slayer/sprits/porta lateral- fr separados.png" id="4_lrnw8"]
+[ext_resource type="FontFile" uid="uid://c8fuwo26umfpq" path="res://res/design/Font/PixelPurl.ttf" id="5_0rro4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c1yxq"]
 atlas = ExtResource("3_0rro4")
@@ -248,16 +249,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SystemFont" id="SystemFont_h0g7u"]
-font_names = PackedStringArray("Arial")
-font_weight = 999
-font_stretch = 175
-subpixel_positioning = 0
-oversampling = 2.765
-
 [sub_resource type="LabelSettings" id="LabelSettings_6sy3i"]
-font = SubResource("SystemFont_h0g7u")
-font_size = 15
+font = ExtResource("5_0rro4")
+font_size = 24
 font_color = Color(0.25875205, 0.9700323, 0.50856924, 1)
 shadow_size = 0
 shadow_color = Color(0, 0, 0, 0.25882354)
