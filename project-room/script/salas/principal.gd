@@ -21,6 +21,8 @@ extends Node2D
 
 @onready var modelos_salas: Node2D = get_node_or_null("Salas") as Node2D
 @onready var color_rect: ColorRect = get_node_or_null("ColorRect") as ColorRect
+@onready var sala_02: Sala = $Salas/Sala02
+@onready var sala_geral: Node2D= $".."
 @onready var tutorial: Node2D = $Tutorial
 @onready var label_salas:= $ColorRect2/Label
 
@@ -64,6 +66,29 @@ func solicitar_transicao_de_sala(_sala_origem: Node2D, cena_ao_entrar_na_porta: 
 	transicao_em_andamento = false
 	SaveManager.solicitar_salvamento()
 
+func _process(_delta: float) -> void:
+	if tutorial == null:
+		return
+	
+	if salas_passadas == 1 and tutorial.tutorial == 1:
+		tutorial.tutorial_1.visible = true
+	elif (salas_passadas == 1 and tutorial.tutorial == 2 and
+		sala_atual.porta_liberada):
+		tutorial.tutorial_2.visible = true
+	elif (salas_passadas == 1 and tutorial.tutorial == 3):
+		tutorial.tutorial_3.visible = true
+	elif (salas_passadas == 1 and tutorial.tutorial == 4):
+		tutorial.tutorial_4.visible = true
+	elif salas_passadas == 1 and tutorial.tutorial == 5:
+		tutorial.tutorial_5.visible = true
+	elif salas_passadas == 1 and tutorial.tutorial == 6:
+		tutorial.tutorial_6.visible = true
+	elif salas_passadas == 1 and tutorial.tutorial == 7:
+		tutorial.tutorial_7.visible = true
+	elif salas_passadas == 1 and tutorial.tutorial == 8:
+		tutorial.tutorial_8.visible = true
+
+	
 
 func _input(_event: InputEvent) -> void:
 	if transicao_em_andamento:

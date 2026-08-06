@@ -393,6 +393,45 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
+
+[node name="ColorRect2" type="ColorRect" parent="Tutorial_4" unique_id=815869001]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 475.0
+offset_top = -3.0
+offset_bottom = -600.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
+
+[node name="ColorRect4" type="ColorRect" parent="Tutorial_4" unique_id=715730742]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = -1134.0
+offset_bottom = -598.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
+
+[node name="ColorRect5" type="ColorRect" parent="Tutorial_4" unique_id=676364982]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = -1.0
+offset_right = -678.0
+offset_bottom = -630.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
@@ -464,11 +503,49 @@ anchors_preset = 0
 offset_right = 1153.0
 offset_bottom = 649.0
 
-[node name="ColorRect" type="ColorRect" parent="Tutorial_5" unique_id=1817853463]
+[node name="ColorRect" type="ColorRect" parent="Tutorial_5" unique_id=932037740]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
+
+[node name="ColorRect2" type="ColorRect" parent="Tutorial_5" unique_id=730150734]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -3.0
+offset_bottom = -602.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
+
+[node name="ColorRect3" type="ColorRect" parent="Tutorial_5" unique_id=1125426772]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 332.0
+offset_top = 45.0
+offset_bottom = -579.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
+
+[node name="ColorRect4" type="ColorRect" parent="Tutorial_5" unique_id=1860387535]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = 45.0
+offset_right = -1135.0
+offset_bottom = -579.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
@@ -544,6 +621,32 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 152.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
+
+[node name="ColorRect3" type="ColorRect" parent="Tutorial_6" unique_id=1870263097]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -9.0
+offset_top = -15.0
+offset_right = -978.0
+offset_bottom = -578.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
+
+[node name="ColorRect2" type="ColorRect" parent="Tutorial_6" unique_id=69844468]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 175.0
+offset_top = -3.0
+offset_bottom = -497.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
@@ -622,6 +725,18 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 63.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
+
+[node name="ColorRect2" type="ColorRect" parent="Tutorial_7" unique_id=936719807]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -115.0
+offset_bottom = -586.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
@@ -694,11 +809,40 @@ anchors_preset = 0
 offset_right = 1153.0
 offset_bottom = 649.0
 
-[node name="ColorRect" type="ColorRect" parent="Tutorial_8" unique_id=1773051617]
+[node name="ColorRect" type="ColorRect" parent="Tutorial_8" unique_id=1799059257]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 0.5
+offset_top = 80.0
+offset_right = 0.5
+offset_bottom = -0.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
+
+[node name="ColorRect3" type="ColorRect" parent="Tutorial_8" unique_id=1450485981]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -6.0
+offset_right = -927.0
+offset_bottom = -569.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
+
+[node name="ColorRect2" type="ColorRect" parent="Tutorial_8" unique_id=577441631]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 363.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = -569.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)

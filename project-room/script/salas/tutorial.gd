@@ -11,4 +11,7 @@ extends Node2D
 @onready var tutorial_6: Control = $Tutorial_6
 @onready var tutorial_7: Control = $Tutorial_7
 @onready var tutorial_8: Control = $Tutorial_8
+@onready var tutorial_geral : Array = [tutorial_0, tutorial_1, tutorial_2,
+										tutorial_3, tutorial_4, tutorial_5,
+										tutorial_6, tutorial_7, tutorial_8]
 var tutorial = 0

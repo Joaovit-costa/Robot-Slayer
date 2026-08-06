@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://qlqku25i4wls" path="res://res/design/Design-Robot Slayer/sprits/porta fr.png" id="3_ru08q"]
 [ext_resource type="FontFile" uid="uid://c8fuwo26umfpq" path="res://res/design/Font/PixelPurl.ttf" id="4_7kh3g"]
 [ext_resource type="PackedScene" uid="uid://dw5vop8713vt3" path="res://res/Cenas/entidades/inimigo.tscn" id="5_dnvnk"]
+[ext_resource type="Script" uid="uid://b547wbkrtg5cj" path="res://script/data/dataDrops.gd" id="7_6ko4q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dnvnk"]
 atlas = ExtResource("3_ru08q")
@@ -95,6 +96,13 @@ shadow_color = Color(0, 0, 0, 0.25882354)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_range_porta"]
 size = Vector2(150, 90)
 
+[sub_resource type="Resource" id="Resource_g0hxb"]
+script = ExtResource("7_6ko4q")
+nome = "Eile"
+quantidade = 1
+chance_comum = 100
+metadata/_custom_type_script = "uid://b547wbkrtg5cj"
+
 [node name="Sala02" type="Node2D" unique_id=375855543 node_paths=PackedStringArray("portas")]
 script = ExtResource("1_52nwy")
 portas = [NodePath("StaticBody2D/AnimatedSprite2D")]
@@ -156,4 +164,9 @@ alvos = [NodePath("../Inimigo")]
 
 [node name="Inimigo" parent="." unique_id=1858431150 node_paths=PackedStringArray("protagonista_ref") instance=ExtResource("5_dnvnk")]
 position = Vector2(846, 195)
+vitalidade = 1
+defesa = 0
+experiencia_min = 25
+experiencia_max = 30
+drops = Array[ExtResource("7_6ko4q")]([SubResource("Resource_g0hxb")])
 protagonista_ref = NodePath("../Protagonista")

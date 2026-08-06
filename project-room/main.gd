@@ -37,7 +37,46 @@ func _process(_delta: float) -> void:
 		_alternar_menu(menu_status)
 
 	_aplicar_estado_telas()
+	if sala.color_rect.visible:
+		return
+	var mudou_direcao = Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_down")
+	if mudou_direcao and sala.tutorial.tutorial == 0:
+		sala.tutorial.tutorial_0.visible = false
+		sala.tutorial.tutorial = 1
 
+	elif Input.is_action_just_pressed("ui_attack") and sala.tutorial.tutorial == 1 and sala.tutorial.tutorial_1.visible:
+		sala.tutorial.tutorial = 2
+		sala.tutorial.tutorial_1.visible = false
+
+	elif sala.tutorial.tutorial == 2 and menu_inventario.visible and sala.tutorial.tutorial_2.visible:
+		sala.tutorial.tutorial = 3
+		sala.tutorial.tutorial_2.visible = false
+
+	elif sala.tutorial.tutorial == 3 and menu_status.visible and sala.tutorial.tutorial_3.visible:
+		sala.tutorial.tutorial = 4
+		sala.tutorial.tutorial_3.visible = false
+
+	elif Input.is_action_just_pressed("ui_attack") and sala.tutorial.tutorial >= 4:
+		# Simplificado: se a tela X está visível, o tutorial com certeza é o X
+		if sala.tutorial.tutorial == 4:
+			sala.tutorial.tutorial = 5
+			sala.tutorial.tutorial_4.visible = false
+		elif sala.tutorial.tutorial == 5:
+			sala.tutorial.tutorial = 6
+			sala.tutorial.tutorial_5.visible = false
+		elif sala.tutorial.tutorial == 6:
+			sala.tutorial.tutorial = 7
+			sala.tutorial.tutorial_6.visible = false
+		elif sala.tutorial.tutorial == 7:
+			sala.tutorial.tutorial = 8
+			sala.tutorial.tutorial_7.visible = false
+		elif sala.tutorial.tutorial == 8:
+			sala.tutorial.tutorial = 9
+			sala.tutorial.tutorial_8.visible = false
+		
+	for tutorial in sala.tutorial.tutorial_geral:
+		if tutorial.visible and sala != null:
+			sala.process_mode = Node.PROCESS_MODE_DISABLED
 
 func _pause_esta_aberto() -> bool:
 	return menu_pause_instance != null

@@ -22,6 +22,7 @@ func _physics_process(_delta: float) -> void:
 	atualizar_informacao_dos_alvos()
 	if sem_inimigos_na_lista_de_alvos and not porta_liberada:
 		_liberar_porta()
+	
 
 
 func atualizar_informacao_dos_alvos() -> void:

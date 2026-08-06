@@ -399,8 +399,8 @@ vitalidade = 2
 forca = 1
 velocidade = 70.0
 inteligencia = 10
-experiencia_min = 16
-experiencia_max = 27
+experiencia_min = 12
+experiencia_max = 22
 drops = Array[ExtResource("3_af4mk")]([SubResource("Resource_o106a"), SubResource("Resource_udxoo")])
 distancia_ataque = 280.0
 

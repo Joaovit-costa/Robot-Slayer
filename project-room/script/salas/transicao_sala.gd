@@ -11,13 +11,7 @@ func _physics_process(delta: float) -> void:
 		return
 	if sala.salas_passadas == 0 and tutorial.tutorial == 0:
 		tutorial.tutorial_0.visible = true
-	
-	if (Input.is_action_pressed("ui_left") or
-		Input.is_action_pressed("ui_right") or
-		Input.is_action_pressed("ui_up") or
-		Input.is_action_pressed("ui_down")):
-		tutorial.tutorial_0.visible = false
-		tutorial.tutorial = 1
+		
 
 func _on_area_2d_body_entered(body: Node) -> void:
 	var player := body as protagonista
