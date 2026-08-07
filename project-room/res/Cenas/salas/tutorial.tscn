@@ -2,6 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://c8fuwo26umfpq" path="res://res/design/Font/PixelPurl.ttf" id="1_gv057"]
 [ext_resource type="Script" uid="uid://6twjumk16mli" path="res://script/salas/tutorial.gd" id="1_o42rq"]
+[ext_resource type="PackedScene" uid="uid://ckd5xwhthbw1b" path="res://res/Cenas/menu/inventario/menu_inventario.tscn" id="3_r22e2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o42rq"]
 bg_color = Color(0.1254902, 0.1254902, 0.1254902, 0.76862746)
@@ -919,6 +920,525 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="Tutorial_8/Panel" unique_id=795401151]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 307.0
+offset_right = 278.0
+offset_bottom = 333.0
+text = "Clique na tela para continuar"
+label_settings = SubResource("LabelSettings_tjiiu")
+horizontal_alignment = 1
+
+[node name="Tutorial_9" type="Control" parent="." unique_id=1791510157]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 649.0
+
+[node name="InventoryMenu" parent="Tutorial_9" unique_id=1694092285 instance=ExtResource("3_r22e2")]
+layout_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial_9" unique_id=25230247]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.5
+offset_top = 533.0
+offset_right = 0.5
+offset_bottom = -0.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect3" type="ColorRect" parent="Tutorial_9" unique_id=51520927]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -5.0
+offset_right = -603.0
+offset_bottom = -116.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect2" type="ColorRect" parent="Tutorial_9" unique_id=848620846]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 550.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = -528.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect4" type="ColorRect" parent="Tutorial_9" unique_id=1329081347]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 949.0
+offset_top = 121.0
+offset_right = 18.0
+offset_bottom = -116.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="Line2D" type="Line2D" parent="Tutorial_9" unique_id=2001681893]
+position = Vector2(89, 263)
+points = PackedVector2Array(299, 72, 461, 76)
+width = 1.755
+
+[node name="Panel" type="Panel" parent="Tutorial_9" unique_id=775819614]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -461.5
+offset_top = -169.5
+offset_right = -182.5
+offset_bottom = 167.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ua4e2")
+
+[node name="Panel2" type="Panel" parent="Tutorial_9/Panel" unique_id=491976874]
+layout_mode = 0
+offset_top = 49.0
+offset_right = 279.0
+offset_bottom = 50.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Panel3" type="Panel" parent="Tutorial_9/Panel" unique_id=715999935]
+layout_mode = 0
+offset_top = 296.0
+offset_right = 279.0
+offset_bottom = 297.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Label" type="Label" parent="Tutorial_9/Panel" unique_id=1095954884]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 49.0
+text = "Tutorial 4: Área de itens"
+label_settings = SubResource("LabelSettings_ua4e2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial_9/Panel" unique_id=1176778014]
+layout_mode = 0
+offset_top = 67.0
+offset_right = 279.0
+offset_bottom = 138.0
+text = "Nessa área aparece todos os itens
+que você tem. Você consegue itens
+em lojas e derrotando inimigos"
+label_settings = SubResource("LabelSettings_1w0f6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Tutorial_9/Panel" unique_id=1999212401]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 307.0
+offset_right = 278.0
+offset_bottom = 333.0
+text = "Clique na tela para continuar"
+label_settings = SubResource("LabelSettings_tjiiu")
+horizontal_alignment = 1
+
+[node name="Tutorial_10" type="Control" parent="." unique_id=1696533707]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 649.0
+
+[node name="InventoryMenu" parent="Tutorial_10" unique_id=802534677 instance=ExtResource("3_r22e2")]
+layout_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial_10" unique_id=221428309]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.5
+offset_top = 533.0
+offset_right = 0.5
+offset_bottom = -0.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect3" type="ColorRect" parent="Tutorial_10" unique_id=1086275989]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -5.0
+offset_right = -593.0
+offset_bottom = -116.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect2" type="ColorRect" parent="Tutorial_10" unique_id=642828996]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 560.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = -520.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect4" type="ColorRect" parent="Tutorial_10" unique_id=992870784]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 630.0
+offset_top = 129.0
+offset_right = 18.0
+offset_bottom = -116.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect5" type="ColorRect" parent="Tutorial_10" unique_id=1373898234]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 560.0
+offset_top = 199.0
+offset_right = -523.0
+offset_bottom = -116.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="Line2D" type="Line2D" parent="Tutorial_10" unique_id=428350385]
+position = Vector2(95, 105)
+points = PackedVector2Array(298, 72, 465, 57)
+width = 1.755
+
+[node name="Panel" type="Panel" parent="Tutorial_10" unique_id=1897518313]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -461.5
+offset_top = -169.5
+offset_right = -182.5
+offset_bottom = 167.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ua4e2")
+
+[node name="Panel2" type="Panel" parent="Tutorial_10/Panel" unique_id=226773081]
+layout_mode = 0
+offset_top = 49.0
+offset_right = 279.0
+offset_bottom = 50.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Panel3" type="Panel" parent="Tutorial_10/Panel" unique_id=1711166516]
+layout_mode = 0
+offset_top = 296.0
+offset_right = 279.0
+offset_bottom = 297.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Label" type="Label" parent="Tutorial_10/Panel" unique_id=1079934402]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 49.0
+text = "Tutorial 5: Item"
+label_settings = SubResource("LabelSettings_ua4e2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial_10/Panel" unique_id=1625858548]
+layout_mode = 0
+offset_top = 67.0
+offset_right = 279.0
+offset_bottom = 138.0
+text = "Você já possui um item, que foi
+dropado do inimigo que você matou.
+Após clicar nele você consegue ver
+as especificações do item"
+label_settings = SubResource("LabelSettings_1w0f6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Tutorial_10/Panel" unique_id=1201428280]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 307.0
+offset_right = 278.0
+offset_bottom = 333.0
+text = "Clique no item para continuar"
+label_settings = SubResource("LabelSettings_tjiiu")
+horizontal_alignment = 1
+
+[node name="Tutorial_11" type="Control" parent="." unique_id=1017341820]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 649.0
+
+[node name="InventoryMenu" parent="Tutorial_11" unique_id=1411047487 instance=ExtResource("3_r22e2")]
+layout_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial_11" unique_id=1900067122]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.5
+offset_top = 387.0
+offset_right = 0.5
+offset_bottom = -0.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect3" type="ColorRect" parent="Tutorial_11" unique_id=141984381]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -5.0
+offset_right = -946.0
+offset_bottom = -262.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect2" type="ColorRect" parent="Tutorial_11" unique_id=728832577]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 207.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = -465.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect4" type="ColorRect" parent="Tutorial_11" unique_id=1491127645]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 520.0
+offset_top = 184.0
+offset_right = 18.0
+offset_bottom = -262.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="Line2D" type="Line2D" parent="Tutorial_11" unique_id=1687999934]
+position = Vector2(213, 216)
+points = PackedVector2Array(307, 72, 470, 72)
+width = 1.755
+
+[node name="Panel" type="Panel" parent="Tutorial_11" unique_id=710287558]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 80.5
+offset_top = -192.5
+offset_right = 359.5
+offset_bottom = 144.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ua4e2")
+
+[node name="Panel2" type="Panel" parent="Tutorial_11/Panel" unique_id=880749001]
+layout_mode = 0
+offset_top = 49.0
+offset_right = 279.0
+offset_bottom = 50.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Panel3" type="Panel" parent="Tutorial_11/Panel" unique_id=843995763]
+layout_mode = 0
+offset_top = 296.0
+offset_right = 279.0
+offset_bottom = 297.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Label" type="Label" parent="Tutorial_11/Panel" unique_id=1209961699]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 49.0
+text = "Tutorial 6: Especificações"
+label_settings = SubResource("LabelSettings_ua4e2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial_11/Panel" unique_id=2033259720]
+layout_mode = 0
+offset_top = 67.0
+offset_right = 279.0
+offset_bottom = 138.0
+text = "Após clicar em um item você cosegue
+ver suas especificações. Aque vai
+mostrar o tipo do item, sua raridade e
+o principal que é as melhorias dele."
+label_settings = SubResource("LabelSettings_1w0f6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Tutorial_11/Panel" unique_id=1413729602]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 307.0
+offset_right = 278.0
+offset_bottom = 333.0
+text = "Clique na tela para continuar"
+label_settings = SubResource("LabelSettings_tjiiu")
+horizontal_alignment = 1
+
+[node name="Tutorial_12" type="Control" parent="." unique_id=666673816]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 649.0
+
+[node name="InventoryMenu" parent="Tutorial_12" unique_id=1570522730 instance=ExtResource("3_r22e2")]
+layout_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial_12" unique_id=1650158900]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.5
+offset_top = 471.0
+offset_right = 0.5
+offset_bottom = -0.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect3" type="ColorRect" parent="Tutorial_12" unique_id=1057628922]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -5.0
+offset_right = -902.0
+offset_bottom = -178.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect2" type="ColorRect" parent="Tutorial_12" unique_id=253640631]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 251.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = -257.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect4" type="ColorRect" parent="Tutorial_12" unique_id=1516316093]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 469.0
+offset_top = 392.0
+offset_right = 18.0
+offset_bottom = -178.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="Line2D" type="Line2D" parent="Tutorial_12" unique_id=703973828]
+position = Vector2(194, 360)
+points = PackedVector2Array(275, 72, 470, 72)
+width = 1.755
+
+[node name="Panel" type="Panel" parent="Tutorial_12" unique_id=650705664]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 80.5
+offset_top = -192.5
+offset_right = 359.5
+offset_bottom = 144.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ua4e2")
+
+[node name="Panel2" type="Panel" parent="Tutorial_12/Panel" unique_id=1909269239]
+layout_mode = 0
+offset_top = 49.0
+offset_right = 279.0
+offset_bottom = 50.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Panel3" type="Panel" parent="Tutorial_12/Panel" unique_id=1850011626]
+layout_mode = 0
+offset_top = 296.0
+offset_right = 279.0
+offset_bottom = 297.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Label" type="Label" parent="Tutorial_12/Panel" unique_id=1137632611]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 49.0
+text = "Tutorial 6: Slot extensor"
+label_settings = SubResource("LabelSettings_ua4e2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial_12/Panel" unique_id=202191085]
+layout_mode = 0
+offset_top = 67.0
+offset_right = 279.0
+offset_bottom = 138.0
+text = "Após clicar em um item você cosegue
+ver suas especificações. Aque vai
+mostrar o tipo do item, sua raridade e
+o principal que é as melhorias dele."
+label_settings = SubResource("LabelSettings_1w0f6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Tutorial_12/Panel" unique_id=599811849]
 layout_mode = 0
 offset_left = 1.0
 offset_top = 307.0
