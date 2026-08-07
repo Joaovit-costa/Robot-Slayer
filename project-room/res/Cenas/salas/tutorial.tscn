@@ -23,7 +23,7 @@ shadow_size = 6
 shadow_color = Color(0.44705883, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ua4e2"]
-bg_color = Color(0.07823252, 0.083870925, 0.13585454, 1)
+bg_color = Color(0.20388302, 0.21767494, 0.3229487, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -43,7 +43,7 @@ font_size = 27
 [sub_resource type="LabelSettings" id="LabelSettings_1w0f6"]
 font = ExtResource("1_gv057")
 font_size = 21
-font_color = Color(0, 0.96127254, 0.96699184, 1)
+font_color = Color(0.66814005, 0.9576811, 0.9558553, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_tjiiu"]
 font = ExtResource("1_gv057")
@@ -105,7 +105,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
 
 [node name="Panel" type="Panel" parent="Tutorial_0" unique_id=72218943]
 layout_mode = 0
@@ -173,7 +173,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
 
 [node name="Panel" type="Panel" parent="Tutorial_1" unique_id=788012884]
 layout_mode = 0
@@ -242,7 +242,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
 
 [node name="Panel" type="Panel" parent="Tutorial_2" unique_id=1921831196]
 layout_mode = 1
@@ -318,7 +318,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
 
 [node name="Panel" type="Panel" parent="Tutorial_3" unique_id=1163022608]
 layout_mode = 1
@@ -396,7 +396,7 @@ anchor_bottom = 1.0
 offset_top = 49.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
 
 [node name="ColorRect2" type="ColorRect" parent="Tutorial_4" unique_id=815869001]
 layout_mode = 1
@@ -408,7 +408,7 @@ offset_top = -3.0
 offset_bottom = -600.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
 
 [node name="ColorRect4" type="ColorRect" parent="Tutorial_4" unique_id=715730742]
 layout_mode = 1
@@ -416,12 +416,12 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -1.0
-offset_top = -1.0
+offset_top = -3.0
 offset_right = -1134.0
-offset_bottom = -598.0
+offset_bottom = -600.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
 
 [node name="ColorRect5" type="ColorRect" parent="Tutorial_4" unique_id=676364982]
 layout_mode = 1
@@ -434,7 +434,11 @@ offset_right = -678.0
 offset_bottom = -630.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="Line2D" type="Line2D" parent="Tutorial_4" unique_id=1236370680]
+points = PackedVector2Array(474, 48, 534, 159)
+width = 1.755
 
 [node name="Panel" type="Panel" parent="Tutorial_4" unique_id=322998206]
 layout_mode = 1
@@ -511,7 +515,7 @@ anchor_bottom = 1.0
 offset_top = 70.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
 
 [node name="ColorRect2" type="ColorRect" parent="Tutorial_5" unique_id=730150734]
 layout_mode = 1
@@ -519,11 +523,11 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -4.0
-offset_top = -3.0
-offset_bottom = -602.0
+offset_top = -5.0
+offset_bottom = -604.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
 
 [node name="ColorRect3" type="ColorRect" parent="Tutorial_5" unique_id=1125426772]
 layout_mode = 1
@@ -535,7 +539,7 @@ offset_top = 45.0
 offset_bottom = -579.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
 
 [node name="ColorRect4" type="ColorRect" parent="Tutorial_5" unique_id=1860387535]
 layout_mode = 1
@@ -548,7 +552,11 @@ offset_right = -1135.0
 offset_bottom = -579.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="Line2D" type="Line2D" parent="Tutorial_5" unique_id=466192930]
+points = PackedVector2Array(331, 69, 534, 159)
+width = 1.755
 
 [node name="Panel" type="Panel" parent="Tutorial_5" unique_id=1227948785]
 layout_mode = 1
@@ -624,7 +632,7 @@ anchor_bottom = 1.0
 offset_top = 152.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
 
 [node name="ColorRect3" type="ColorRect" parent="Tutorial_6" unique_id=1870263097]
 layout_mode = 1
@@ -637,7 +645,7 @@ offset_right = -978.0
 offset_bottom = -578.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
 
 [node name="ColorRect2" type="ColorRect" parent="Tutorial_6" unique_id=69844468]
 layout_mode = 1
@@ -649,7 +657,11 @@ offset_top = -3.0
 offset_bottom = -497.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="Line2D" type="Line2D" parent="Tutorial_6" unique_id=1515572948]
+points = PackedVector2Array(175, 115, 439, 169)
+width = 1.755
 
 [node name="Panel" type="Panel" parent="Tutorial_6" unique_id=282736343]
 layout_mode = 1
@@ -728,7 +740,7 @@ anchor_bottom = 1.0
 offset_top = 63.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
 
 [node name="ColorRect2" type="ColorRect" parent="Tutorial_7" unique_id=936719807]
 layout_mode = 1
@@ -739,7 +751,11 @@ offset_right = -115.0
 offset_bottom = -586.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="Line2D" type="Line2D" parent="Tutorial_7" unique_id=492933116]
+points = PackedVector2Array(1040, 62, 711, 159)
+width = 1.755
 
 [node name="Panel" type="Panel" parent="Tutorial_7" unique_id=665673753]
 layout_mode = 1
@@ -820,7 +836,7 @@ offset_right = 0.5
 offset_bottom = -0.5
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
 
 [node name="ColorRect3" type="ColorRect" parent="Tutorial_8" unique_id=1450485981]
 layout_mode = 1
@@ -832,7 +848,7 @@ offset_right = -927.0
 offset_bottom = -569.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
 
 [node name="ColorRect2" type="ColorRect" parent="Tutorial_8" unique_id=577441631]
 layout_mode = 1
@@ -845,7 +861,11 @@ offset_right = 5.0
 offset_bottom = -569.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.043137256, 0.05882353, 0.1254902, 0.5058824)
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="Line2D" type="Line2D" parent="Tutorial_8" unique_id=1982755]
+points = PackedVector2Array(362, 76, 534, 159)
+width = 1.755
 
 [node name="Panel" type="Panel" parent="Tutorial_8" unique_id=1830234555]
 layout_mode = 1

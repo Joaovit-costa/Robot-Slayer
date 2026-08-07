@@ -14,6 +14,7 @@ var barraCura: ProgressBar
 var barraExperiencia: ProgressBar
 var label_nivel: Label
 var label_moeda: Label
+var curando := false
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var animation_tree: AnimationTree = $AnimationTree
@@ -43,8 +44,8 @@ var pontosStatus: int = 0
 var status = ["vitalidade", "defesa", "forca", "inteligencia"]
 
 const SPEED: float = 200
-const COOLDOWN_CURA_BASE: float = 10.0
-const COOLDOWN_CURA_MINIMO: float = 3.0
+const COOLDOWN_CURA_BASE: float = 25.0
+const COOLDOWN_CURA_MINIMO: float = 10.0
 const TEMPO_INVULNERABILIDADE_APOS_DANO: float = 0.35
 
 var ultima_direcao: String = "down"
@@ -253,7 +254,9 @@ func _physics_process(delta: float) -> void:
 
 
 	# ============ ANIMACAO ============
-	if atacando:
+	if curando:
+		move_and_slide()
+	elif atacando:
 		animation_state.travel("Attack")
 
 	elif velocity.length() > 5:
@@ -372,9 +375,14 @@ func receber_dano(dano: int) -> void:
 
 func receber_cura(cura: int) -> void:
 	vidaAtual = min(vidaAtual + max(cura, 0), vidaInicial)
-	animation_player.play("cura")
+	curando = true
+	animation_state.travel("cura")
+	await get_tree().create_timer(1.0).timeout
+	curando = false
+
 	_atualizar_barra_vida()
 	_solicitar_salvamento()
+	
 
 
 func aumentar_atributo(nome: String) -> bool:

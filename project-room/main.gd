@@ -56,7 +56,8 @@ func _process(_delta: float) -> void:
 		sala.tutorial.tutorial = 4
 		sala.tutorial.tutorial_3.visible = false
 
-	elif Input.is_action_just_pressed("ui_attack") and sala.tutorial.tutorial >= 4:
+	elif (Input.is_action_just_pressed("ui_attack") and sala.tutorial.tutorial >= 4 and 
+		  not menu_inventario.visible and not menu_status.visible):
 		# Simplificado: se a tela X está visível, o tutorial com certeza é o X
 		if sala.tutorial.tutorial == 4:
 			sala.tutorial.tutorial = 5

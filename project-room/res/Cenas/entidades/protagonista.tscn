@@ -1002,6 +1002,9 @@ blend_point_3/node = SubResource("AnimationNodeAnimation_ya8iw")
 blend_point_3/pos = Vector2(0, -1)
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tdguc"]
+animation = &"cura"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gsa6n"]
 animation = &"morte"
 
@@ -1012,6 +1015,8 @@ states/Idle/node = SubResource("AnimationNodeBlendSpace2D_lb1bu")
 states/Idle/position = Vector2(350.98944, 136.8)
 states/Walk/node = ExtResource("5_yq3lb")
 states/Walk/position = Vector2(350.23682, 50.399998)
+states/cura/node = SubResource("AnimationNodeAnimation_tdguc")
+states/cura/position = Vector2(560, 136.8)
 states/morte/node = SubResource("AnimationNodeAnimation_gsa6n")
 states/morte/position = Vector2(560, 46)
 
