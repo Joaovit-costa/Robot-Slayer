@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://4s5dtyt2xg1i" path="res://res/design/menus/Botão_Fechar.png" id="1_2q23n"]
 [ext_resource type="Script" uid="uid://dumuttyku2ajw" path="res://script/menu/Inventario/menu_inventario.gd" id="1_q7nna"]
+[ext_resource type="FontFile" uid="uid://c8fuwo26umfpq" path="res://res/design/Font/PixelPurl.ttf" id="3_gml74"]
 [ext_resource type="Texture2D" uid="uid://do2vcevn4k7gw" path="res://res/design/menus/Slot_Inventario.png" id="4_gml74"]
 [ext_resource type="Texture2D" uid="uid://dnm2exythe0je" path="res://res/design/menus/Slot_sielecionado.png" id="5_q7nna"]
 [ext_resource type="Script" uid="uid://bu4ch65fqj0s3" path="res://script/menu/Inventario/slot_inventario.gd" id="6_qh40f"]
@@ -20,19 +21,9 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[sub_resource type="SystemFont" id="SystemFont_hrdtk"]
-font_names = PackedStringArray("Gill Sans MT")
-font_italic = true
-font_weight = 625
-hinting = 2
-subpixel_positioning = 0
-multichannel_signed_distance_field = true
-msdf_pixel_range = 0
-msdf_size = 189
-
 [sub_resource type="LabelSettings" id="LabelSettings_gml74"]
-font = SubResource("SystemFont_hrdtk")
-font_size = 25
+font = ExtResource("3_gml74")
+font_size = 41
 font_color = Color(0.19187686, 0, 0.029770289, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hrdtk"]
@@ -50,12 +41,9 @@ corner_radius_bottom_left = 66
 anti_aliasing = false
 anti_aliasing_size = 10.0
 
-[sub_resource type="SystemFont" id="SystemFont_gml74"]
-font_names = PackedStringArray("Segoe UI")
-font_weight = 725
-
 [sub_resource type="LabelSettings" id="LabelSettings_q7nna"]
-font = SubResource("SystemFont_gml74")
+font = ExtResource("3_gml74")
+font_size = 22
 font_color = Color(0.074929185, 2.6652404e-05, 0.29559103, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aot85"]

@@ -94,6 +94,11 @@ border_width_right = 3
 border_width_bottom = 2
 border_color = Color(0.23544675, 0.62973154, 0.45218343, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_8kioa"]
+font = ExtResource("5_8kioa")
+font_size = 47
+font_color = Color(0.5089785, 0.7558547, 0.16558644, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4uw74"]
 bg_color = Color(0, 0, 0, 0.5372549)
 corner_radius_top_left = 10
@@ -114,6 +119,23 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_y80uj"]
+font = ExtResource("5_8kioa")
+font_size = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_4cepl"]
+font = ExtResource("5_8kioa")
+font_size = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_6pp5o"]
+font = ExtResource("5_8kioa")
+font_size = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_4uw74"]
+font = ExtResource("5_8kioa")
+font_size = 23
+font_color = Color(0.50980395, 0.75686276, 0.16470589, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y80uj"]
 bg_color = Color(0, 0.7058824, 0.41568628, 1)
@@ -429,6 +451,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.46666667, 0.88235295, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "Carrinho"
+label_settings = SubResource("LabelSettings_8kioa")
 horizontal_alignment = 1
 text_overrun_behavior = 1
 
@@ -468,6 +491,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.9019608, 1, 0.9490196, 1)
 theme_override_font_sizes/font_size = 18
+label_settings = SubResource("LabelSettings_y80uj")
 text_overrun_behavior = 5
 
 [node name="Quantidade" type="Label" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer/VScrollBar/ListaDeItens/Item1" unique_id=1931883417]
@@ -475,6 +499,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.9019608, 1, 0.9490196, 1)
 theme_override_font_sizes/font_size = 18
+label_settings = SubResource("LabelSettings_4cepl")
 text_overrun_behavior = 1
 
 [node name="Preco" type="Label" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer/VScrollBar/ListaDeItens/Item1" unique_id=1743142142]
@@ -482,6 +507,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.4862745, 1, 0.69803923, 1)
 theme_override_font_sizes/font_size = 18
+label_settings = SubResource("LabelSettings_6pp5o")
 text_overrun_behavior = 1
 
 [node name="TotalLabel" type="Label" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer" unique_id=1893371443]
@@ -489,6 +515,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.46666667, 0.88235295, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "Total: 0.0"
+label_settings = SubResource("LabelSettings_4uw74")
 text_overrun_behavior = 1
 
 [node name="BotaoBuy" type="Button" parent="PainelPrincipal/MarginContainer/HBoxContainer/FundoCarrinho/MarginContainer/VBoxContainer" unique_id=1792092060]

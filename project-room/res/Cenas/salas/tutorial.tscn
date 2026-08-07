@@ -2,7 +2,6 @@
 
 [ext_resource type="FontFile" uid="uid://c8fuwo26umfpq" path="res://res/design/Font/PixelPurl.ttf" id="1_gv057"]
 [ext_resource type="Script" uid="uid://6twjumk16mli" path="res://script/salas/tutorial.gd" id="1_o42rq"]
-[ext_resource type="PackedScene" uid="uid://ckd5xwhthbw1b" path="res://res/Cenas/menu/inventario/menu_inventario.tscn" id="3_r22e2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o42rq"]
 bg_color = Color(0.1254902, 0.1254902, 0.1254902, 0.76862746)
@@ -936,16 +935,13 @@ anchors_preset = 0
 offset_right = 1153.0
 offset_bottom = 649.0
 
-[node name="InventoryMenu" parent="Tutorial_9" unique_id=1694092285 instance=ExtResource("3_r22e2")]
-layout_mode = 1
-
 [node name="ColorRect" type="ColorRect" parent="Tutorial_9" unique_id=25230247]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 0.5
-offset_top = 533.0
+offset_top = 440.0
 offset_right = 0.5
 offset_bottom = -0.5
 grow_horizontal = 2
@@ -959,7 +955,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -5.0
 offset_right = -603.0
-offset_bottom = -116.0
+offset_bottom = -209.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
@@ -985,7 +981,7 @@ anchor_bottom = 1.0
 offset_left = 949.0
 offset_top = 121.0
 offset_right = 18.0
-offset_bottom = -116.0
+offset_bottom = -209.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
@@ -1061,9 +1057,6 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1153.0
 offset_bottom = 649.0
-
-[node name="InventoryMenu" parent="Tutorial_10" unique_id=802534677 instance=ExtResource("3_r22e2")]
-layout_mode = 1
 
 [node name="ColorRect" type="ColorRect" parent="Tutorial_10" unique_id=221428309]
 layout_mode = 1
@@ -1202,9 +1195,6 @@ anchors_preset = 0
 offset_right = 1153.0
 offset_bottom = 649.0
 
-[node name="InventoryMenu" parent="Tutorial_11" unique_id=1411047487 instance=ExtResource("3_r22e2")]
-layout_mode = 1
-
 [node name="ColorRect" type="ColorRect" parent="Tutorial_11" unique_id=1900067122]
 layout_mode = 1
 anchors_preset = 15
@@ -1323,13 +1313,11 @@ label_settings = SubResource("LabelSettings_tjiiu")
 horizontal_alignment = 1
 
 [node name="Tutorial_12" type="Control" parent="." unique_id=666673816]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1153.0
 offset_bottom = 649.0
-
-[node name="InventoryMenu" parent="Tutorial_12" unique_id=1570522730 instance=ExtResource("3_r22e2")]
-layout_mode = 1
 
 [node name="ColorRect" type="ColorRect" parent="Tutorial_12" unique_id=1650158900]
 layout_mode = 1
@@ -1420,7 +1408,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
 layout_mode = 0
 offset_right = 280.0
 offset_bottom = 49.0
-text = "Tutorial 6: Slot extensor"
+text = "Tutorial 7: Slot extensor"
 label_settings = SubResource("LabelSettings_ua4e2")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1430,10 +1418,9 @@ layout_mode = 0
 offset_top = 67.0
 offset_right = 279.0
 offset_bottom = 138.0
-text = "Após clicar em um item você cosegue
-ver suas especificações. Aque vai
-mostrar o tipo do item, sua raridade e
-o principal que é as melhorias dele."
+text = "Esses slots são separados para itens
+do tipo extensor, esses itens
+desbloqueião mais slots de itens."
 label_settings = SubResource("LabelSettings_1w0f6")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1445,5 +1432,521 @@ offset_top = 307.0
 offset_right = 278.0
 offset_bottom = 333.0
 text = "Clique na tela para continuar"
+label_settings = SubResource("LabelSettings_tjiiu")
+horizontal_alignment = 1
+
+[node name="Tutorial_13" type="Control" parent="." unique_id=10306596]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 649.0
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial_13" unique_id=1874157227]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.5
+offset_top = 527.0
+offset_right = 0.5
+offset_bottom = -0.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect3" type="ColorRect" parent="Tutorial_13" unique_id=2030410239]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 436.0
+offset_right = -599.0
+offset_bottom = -122.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect2" type="ColorRect" parent="Tutorial_13" unique_id=154705347]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = -213.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect4" type="ColorRect" parent="Tutorial_13" unique_id=473436200]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 951.0
+offset_top = 436.0
+offset_right = 18.0
+offset_bottom = -122.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="Line2D" type="Line2D" parent="Tutorial_13" unique_id=1537468969]
+position = Vector2(151, 364)
+points = PackedVector2Array(308, 17, 469, 72)
+width = 1.755
+
+[node name="Panel" type="Panel" parent="Tutorial_13" unique_id=658769612]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -391.5
+offset_top = -246.5
+offset_right = -112.5
+offset_bottom = 90.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ua4e2")
+
+[node name="Panel2" type="Panel" parent="Tutorial_13/Panel" unique_id=208244186]
+layout_mode = 0
+offset_top = 49.0
+offset_right = 279.0
+offset_bottom = 50.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Panel3" type="Panel" parent="Tutorial_13/Panel" unique_id=226414527]
+layout_mode = 0
+offset_top = 296.0
+offset_right = 279.0
+offset_bottom = 297.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Label" type="Label" parent="Tutorial_13/Panel" unique_id=1740876633]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 49.0
+text = "Tutorial 8: Slot equipamentos"
+label_settings = SubResource("LabelSettings_ua4e2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial_13/Panel" unique_id=726443732]
+layout_mode = 0
+offset_top = 67.0
+offset_right = 279.0
+offset_bottom = 138.0
+text = "Os slots de equipamentos é possivel
+equipar itens do tipo equipavel,
+as melhorias dos itens só são
+considerados qundo o item esta
+equipado aqui."
+label_settings = SubResource("LabelSettings_1w0f6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Tutorial_13/Panel" unique_id=1064207033]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 307.0
+offset_right = 278.0
+offset_bottom = 333.0
+text = "Clique na tela para continuar"
+label_settings = SubResource("LabelSettings_tjiiu")
+horizontal_alignment = 1
+
+[node name="Tutorial_14" type="Control" parent="." unique_id=1792748390]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 649.0
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial_14" unique_id=167963019]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.5
+offset_top = 533.0
+offset_right = 0.5
+offset_bottom = -0.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect3" type="ColorRect" parent="Tutorial_14" unique_id=370349037]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -5.0
+offset_right = -603.0
+offset_bottom = -116.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect2" type="ColorRect" parent="Tutorial_14" unique_id=1694396916]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 550.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = -528.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect4" type="ColorRect" parent="Tutorial_14" unique_id=1437639585]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 949.0
+offset_top = 121.0
+offset_right = 18.0
+offset_bottom = -116.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="Line2D" type="Line2D" parent="Tutorial_14" unique_id=1677653756]
+position = Vector2(89, 263)
+points = PackedVector2Array(299, 72, 461, 76)
+width = 1.755
+
+[node name="Panel" type="Panel" parent="Tutorial_14" unique_id=2132741309]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -461.5
+offset_top = -169.5
+offset_right = -182.5
+offset_bottom = 167.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ua4e2")
+
+[node name="Panel2" type="Panel" parent="Tutorial_14/Panel" unique_id=553843834]
+layout_mode = 0
+offset_top = 49.0
+offset_right = 279.0
+offset_bottom = 50.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Panel3" type="Panel" parent="Tutorial_14/Panel" unique_id=1430178357]
+layout_mode = 0
+offset_top = 296.0
+offset_right = 279.0
+offset_bottom = 297.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Label" type="Label" parent="Tutorial_14/Panel" unique_id=425108968]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 49.0
+text = "Tutorial 9: Equipar item"
+label_settings = SubResource("LabelSettings_ua4e2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial_14/Panel" unique_id=1605348049]
+layout_mode = 0
+offset_top = 67.0
+offset_right = 279.0
+offset_bottom = 138.0
+text = "Clique e arraste o item para o slots
+de equipamentos para equipalo."
+label_settings = SubResource("LabelSettings_1w0f6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Tutorial_14/Panel" unique_id=403788934]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 307.0
+offset_right = 278.0
+offset_bottom = 333.0
+text = "Equipe o para continuar"
+label_settings = SubResource("LabelSettings_tjiiu")
+horizontal_alignment = 1
+
+[node name="Tutorial_15" type="Control" parent="." unique_id=1989814331]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 649.0
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial_15" unique_id=1370956140]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.5
+offset_top = 533.0
+offset_right = 0.5
+offset_bottom = -0.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect3" type="ColorRect" parent="Tutorial_15" unique_id=763104126]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -5.0
+offset_right = -265.0
+offset_bottom = -116.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect2" type="ColorRect" parent="Tutorial_15" unique_id=622264644]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 888.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = -578.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect5" type="ColorRect" parent="Tutorial_15" unique_id=594135610]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 938.0
+offset_top = 71.0
+offset_right = 6.0
+offset_bottom = -528.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect4" type="ColorRect" parent="Tutorial_15" unique_id=891122195]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 888.0
+offset_top = 121.0
+offset_right = 18.0
+offset_bottom = -116.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="Line2D" type="Line2D" parent="Tutorial_15" unique_id=456541822]
+position = Vector2(89, 263)
+points = PackedVector2Array(680, -84, 799, -143)
+width = 1.755
+
+[node name="Panel" type="Panel" parent="Tutorial_15" unique_id=288796610]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -147.5
+offset_right = 278.5
+offset_bottom = 189.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ua4e2")
+
+[node name="Panel2" type="Panel" parent="Tutorial_15/Panel" unique_id=1114013661]
+layout_mode = 0
+offset_top = 49.0
+offset_right = 279.0
+offset_bottom = 50.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Panel3" type="Panel" parent="Tutorial_15/Panel" unique_id=2087264333]
+layout_mode = 0
+offset_top = 296.0
+offset_right = 279.0
+offset_bottom = 297.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Label" type="Label" parent="Tutorial_15/Panel" unique_id=1159665988]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 49.0
+text = "Tutorial 10: Fechar inventario"
+label_settings = SubResource("LabelSettings_ua4e2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial_15/Panel" unique_id=479072549]
+layout_mode = 0
+offset_top = 67.0
+offset_right = 279.0
+offset_bottom = 138.0
+text = "Esse botão serve para fechar o menu
+de inventario."
+label_settings = SubResource("LabelSettings_1w0f6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Tutorial_15/Panel" unique_id=62245710]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 307.0
+offset_right = 278.0
+offset_bottom = 333.0
+text = "Feche o inventario para continuar"
+label_settings = SubResource("LabelSettings_tjiiu")
+horizontal_alignment = 1
+
+[node name="Tutorial_16" type="Control" parent="." unique_id=381269565]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 649.0
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial_16" unique_id=226238457]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.5
+offset_top = 533.0
+offset_right = 0.5
+offset_bottom = -0.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect3" type="ColorRect" parent="Tutorial_16" unique_id=1395428774]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -5.0
+offset_right = -265.0
+offset_bottom = -116.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect2" type="ColorRect" parent="Tutorial_16" unique_id=1015137182]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 888.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = -578.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect5" type="ColorRect" parent="Tutorial_16" unique_id=1773731557]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 938.0
+offset_top = 71.0
+offset_right = 6.0
+offset_bottom = -528.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect4" type="ColorRect" parent="Tutorial_16" unique_id=527999698]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 888.0
+offset_top = 121.0
+offset_right = 18.0
+offset_bottom = -116.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="Line2D" type="Line2D" parent="Tutorial_16" unique_id=2023834725]
+position = Vector2(89, 263)
+points = PackedVector2Array(680, -84, 799, -143)
+width = 1.755
+
+[node name="Panel" type="Panel" parent="Tutorial_16" unique_id=1403574652]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -147.5
+offset_right = 278.5
+offset_bottom = 189.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ua4e2")
+
+[node name="Panel2" type="Panel" parent="Tutorial_16/Panel" unique_id=1891205269]
+layout_mode = 0
+offset_top = 49.0
+offset_right = 279.0
+offset_bottom = 50.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Panel3" type="Panel" parent="Tutorial_16/Panel" unique_id=1119438132]
+layout_mode = 0
+offset_top = 296.0
+offset_right = 279.0
+offset_bottom = 297.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Label" type="Label" parent="Tutorial_16/Panel" unique_id=227757861]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 49.0
+text = "Tutorial 12: Pontos de status"
+label_settings = SubResource("LabelSettings_ua4e2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial_16/Panel" unique_id=1334310804]
+layout_mode = 0
+offset_top = 67.0
+offset_right = 279.0
+offset_bottom = 138.0
+text = "Esse botão serve para fechar o menu
+de inventario."
+label_settings = SubResource("LabelSettings_1w0f6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Tutorial_16/Panel" unique_id=15135050]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 307.0
+offset_right = 278.0
+offset_bottom = 333.0
+text = "Feche o inventario para continuar"
 label_settings = SubResource("LabelSettings_tjiiu")
 horizontal_alignment = 1
