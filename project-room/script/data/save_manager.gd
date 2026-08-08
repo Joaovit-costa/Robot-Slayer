@@ -100,6 +100,18 @@ func aplicar_no_gerenciador_salas(gerenciador: Node) -> void:
 		gerenciador.set("sala_atual_id", str(player_data.get("sala_atual_id", "")))
 
 
+func aplicar_no_tutorial(controlador: ControladorTutorial) -> void:
+	if controlador == null:
+		return
+
+	carregar()
+	controlador.tutorial = clampi(
+		int(dados.get("tutorial_etapa", controlador.tutorial)),
+		controlador.ETAPA_MOVIMENTACAO,
+		controlador.ETAPA_CONCLUIDA
+	)
+
+
 func salvar_estado_atual() -> void:
 	carregar()
 
@@ -119,6 +131,10 @@ func salvar_estado_atual() -> void:
 		dados["sala_atual_id"] = str(gerenciador.get("sala_atual_id"))
 		if dados.has("player"):
 			dados["player"]["sala_atual_id"] = str(gerenciador.get("sala_atual_id"))
+
+	var controlador_tutorial := get_tree().get_first_node_in_group("controlador_tutorial") as ControladorTutorial
+	if controlador_tutorial != null:
+		dados["tutorial_etapa"] = controlador_tutorial.tutorial
 
 	_salvar_no_disco()
 

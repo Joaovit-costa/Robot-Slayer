@@ -16,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://byn3sb7v47o3n" path="res://res/Cenas/salas/Compras/Sala13.tscn" id="14_rr14d"]
 [ext_resource type="PackedScene" uid="uid://cms5eh6avaayr" path="res://res/Cenas/salas/Compras/Sala14.tscn" id="15_dljeg"]
 [ext_resource type="Script" uid="uid://yustwypgupc6" path="res://script/menu/hud.gd" id="16_kg3yw"]
-[ext_resource type="PackedScene" uid="uid://drj31x4lf5a5t" path="res://res/Cenas/salas/tutorial.tscn" id="16_rr14d"]
 [ext_resource type="Texture2D" uid="uid://disji1duvvnmh" path="res://res/design/menus/Botão_Vida.png" id="17_x2ond"]
 [ext_resource type="FontFile" uid="uid://c8fuwo26umfpq" path="res://res/design/Font/PixelPurl.ttf" id="18_rr14d"]
 [ext_resource type="Texture2D" uid="uid://durywh67qgeg2" path="res://res/design/Design-Robot Slayer/sprits/moeda.png" id="18_v8hnl"]
@@ -128,6 +127,15 @@ shadow_color = Color(1, 0.43529412, 0.3764706, 0.5294118)
 script = ExtResource("1_8fdge")
 salas_tutorial = [NodePath("Salas/Sala"), NodePath("Salas/Sala02"), NodePath("Salas/Sala03")]
 salas = [NodePath("Salas/Sala4"), NodePath("Salas/Sala5"), NodePath("Salas/Sala6"), NodePath("Salas/Sala7"), NodePath("Salas/Sala8"), NodePath("Salas/Sala9"), NodePath("Salas/Sala10"), NodePath("Salas/Sala11"), NodePath("Salas/Sala12"), NodePath("Salas/Sala13"), NodePath("Salas/Sala14")]
+duracao_fade = null
+crescimento_status_por_sala = null
+crescimento_xp_por_sala = null
+crescimento_velocidade_por_sala = null
+limite_multiplicador_status = null
+limite_multiplicador_xp = null
+limite_multiplicador_velocidade = null
+limite_multiplicador_moedas = null
+status_inicial_player_referencia = null
 
 [node name="Salas" type="Node2D" parent="." unique_id=1083966473]
 
@@ -256,8 +264,6 @@ layout_mode = 2
 texture = ExtResource("18_v8hnl")
 expand_mode = 3
 stretch_mode = 5
-
-[node name="Tutorial" parent="." unique_id=1020319752 instance=ExtResource("16_rr14d")]
 
 [node name="TalaMorte" parent="." unique_id=314636302 instance=ExtResource("19_x2ond")]
 visible = false

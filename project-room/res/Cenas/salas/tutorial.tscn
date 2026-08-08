@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://drj31x4lf5a5t"]
 
 [ext_resource type="FontFile" uid="uid://c8fuwo26umfpq" path="res://res/design/Font/PixelPurl.ttf" id="1_gv057"]
-[ext_resource type="Script" uid="uid://6twjumk16mli" path="res://script/salas/tutorial.gd" id="1_o42rq"]
+[ext_resource type="Script" uid="uid://b4ckamdvkbwsi" path="res://script/salas/tutorial.gd" id="1_o42rq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o42rq"]
 bg_color = Color(0.1254902, 0.1254902, 0.1254902, 0.76862746)
@@ -98,7 +98,7 @@ anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 
-[node name="ColorRect" type="ColorRect" parent="Tutorial_0" unique_id=1353065412]
+[node name="ColorRect5" type="ColorRect" parent="Tutorial_0" unique_id=1353065412]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -166,7 +166,7 @@ anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 
-[node name="ColorRect" type="ColorRect" parent="Tutorial_1" unique_id=1357964191]
+[node name="ColorRect6" type="ColorRect" parent="Tutorial_1" unique_id=1357964191]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -235,7 +235,7 @@ anchors_preset = 0
 offset_right = 1153.0
 offset_bottom = 649.0
 
-[node name="ColorRect" type="ColorRect" parent="Tutorial_2" unique_id=2014335026]
+[node name="ColorRect7" type="ColorRect" parent="Tutorial_2" unique_id=2014335026]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -311,7 +311,7 @@ anchors_preset = 0
 offset_right = 1153.0
 offset_bottom = 649.0
 
-[node name="ColorRect" type="ColorRect" parent="Tutorial_3" unique_id=1617543050]
+[node name="ColorRect8" type="ColorRect" parent="Tutorial_3" unique_id=1617543050]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -346,7 +346,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
 layout_mode = 0
 offset_right = 280.0
 offset_bottom = 49.0
-text = "Tutorial 4: Status"
+text = "Tutorial 11: Status"
 label_settings = SubResource("LabelSettings_ua4e2")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -388,7 +388,7 @@ anchors_preset = 0
 offset_right = 1153.0
 offset_bottom = 649.0
 
-[node name="ColorRect" type="ColorRect" parent="Tutorial_4" unique_id=716029617]
+[node name="ColorRect9" type="ColorRect" parent="Tutorial_4" unique_id=716029617]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -398,7 +398,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
 
-[node name="ColorRect2" type="ColorRect" parent="Tutorial_4" unique_id=815869001]
+[node name="ColorRect10" type="ColorRect" parent="Tutorial_4" unique_id=815869001]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -410,7 +410,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
 
-[node name="ColorRect4" type="ColorRect" parent="Tutorial_4" unique_id=715730742]
+[node name="ColorRect11" type="ColorRect" parent="Tutorial_4" unique_id=715730742]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -423,7 +423,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
 
-[node name="ColorRect5" type="ColorRect" parent="Tutorial_4" unique_id=676364982]
+[node name="ColorRect12" type="ColorRect" parent="Tutorial_4" unique_id=676364982]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -466,7 +466,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
 layout_mode = 0
 offset_right = 280.0
 offset_bottom = 49.0
-text = "Tutorial 5: Vida"
+text = "Tutorial 15: Vida"
 label_settings = SubResource("LabelSettings_ua4e2")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -524,7 +524,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -4.0
 offset_top = -5.0
-offset_bottom = -604.0
+offset_bottom = -603.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
@@ -534,8 +534,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 332.0
-offset_top = 45.0
+offset_left = 330.0
+offset_top = 46.0
+offset_right = 2.0
 offset_bottom = -579.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -584,7 +585,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
 layout_mode = 0
 offset_right = 280.0
 offset_bottom = 49.0
-text = "Tutorial 6: Experiência"
+text = "Tutorial 16: Experiência"
 label_settings = SubResource("LabelSettings_ua4e2")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -624,7 +625,7 @@ anchors_preset = 0
 offset_right = 1153.0
 offset_bottom = 649.0
 
-[node name="ColorRect" type="ColorRect" parent="Tutorial_6" unique_id=793223672]
+[node name="ColorRect13" type="ColorRect" parent="Tutorial_6" unique_id=793223672]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -634,7 +635,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
 
-[node name="ColorRect3" type="ColorRect" parent="Tutorial_6" unique_id=1870263097]
+[node name="ColorRect14" type="ColorRect" parent="Tutorial_6" unique_id=1870263097]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -647,7 +648,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
 
-[node name="ColorRect2" type="ColorRect" parent="Tutorial_6" unique_id=69844468]
+[node name="ColorRect15" type="ColorRect" parent="Tutorial_6" unique_id=69844468]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -689,7 +690,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
 layout_mode = 0
 offset_right = 280.0
 offset_bottom = 49.0
-text = "Tutorial 7: Salas"
+text = "Tutorial 17: Salas"
 label_settings = SubResource("LabelSettings_ua4e2")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -732,7 +733,7 @@ anchors_preset = 0
 offset_right = 1153.0
 offset_bottom = 649.0
 
-[node name="ColorRect" type="ColorRect" parent="Tutorial_7" unique_id=1700824856]
+[node name="ColorRect16" type="ColorRect" parent="Tutorial_7" unique_id=1700824856]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -742,7 +743,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
 
-[node name="ColorRect2" type="ColorRect" parent="Tutorial_7" unique_id=936719807]
+[node name="ColorRect17" type="ColorRect" parent="Tutorial_7" unique_id=936719807]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -783,7 +784,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
 layout_mode = 0
 offset_right = 280.0
 offset_bottom = 49.0
-text = "Tutorial 8: Moedas"
+text = "Tutorial 18: Moedas"
 label_settings = SubResource("LabelSettings_ua4e2")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -825,7 +826,7 @@ anchors_preset = 0
 offset_right = 1153.0
 offset_bottom = 649.0
 
-[node name="ColorRect" type="ColorRect" parent="Tutorial_8" unique_id=1799059257]
+[node name="ColorRect18" type="ColorRect" parent="Tutorial_8" unique_id=1799059257]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -838,7 +839,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
 
-[node name="ColorRect3" type="ColorRect" parent="Tutorial_8" unique_id=1450485981]
+[node name="ColorRect19" type="ColorRect" parent="Tutorial_8" unique_id=1450485981]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -850,7 +851,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
 
-[node name="ColorRect2" type="ColorRect" parent="Tutorial_8" unique_id=577441631]
+[node name="ColorRect20" type="ColorRect" parent="Tutorial_8" unique_id=577441631]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -900,7 +901,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
 layout_mode = 0
 offset_right = 280.0
 offset_bottom = 49.0
-text = "Tutorial 9: Próxima Sala"
+text = "Tutorial 19: Próxima Sala"
 label_settings = SubResource("LabelSettings_ua4e2")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1818,6 +1819,7 @@ label_settings = SubResource("LabelSettings_tjiiu")
 horizontal_alignment = 1
 
 [node name="Tutorial_16" type="Control" parent="." unique_id=381269565]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1153.0
@@ -1829,7 +1831,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 0.5
-offset_top = 533.0
+offset_top = 177.0
 offset_right = 0.5
 offset_bottom = -0.5
 grow_horizontal = 2
@@ -1842,8 +1844,8 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -5.0
-offset_right = -265.0
-offset_bottom = -116.0
+offset_right = 3.0
+offset_bottom = -513.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
@@ -1853,23 +1855,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 888.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = -578.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
-
-[node name="ColorRect5" type="ColorRect" parent="Tutorial_16" unique_id=1773731557]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 938.0
-offset_top = 71.0
-offset_right = 6.0
-offset_bottom = -528.0
+offset_left = 448.0
+offset_top = 136.0
+offset_bottom = -472.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
@@ -1879,17 +1867,17 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 888.0
-offset_top = 121.0
-offset_right = 18.0
-offset_bottom = -116.0
+offset_left = -2.0
+offset_top = 136.0
+offset_right = -940.0
+offset_bottom = -472.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
 
 [node name="Line2D" type="Line2D" parent="Tutorial_16" unique_id=2023834725]
 position = Vector2(89, 263)
-points = PackedVector2Array(680, -84, 799, -143)
+points = PackedVector2Array(497, -81, 359, -106)
 width = 1.755
 
 [node name="Panel" type="Panel" parent="Tutorial_16" unique_id=1403574652]
@@ -1935,8 +1923,8 @@ layout_mode = 0
 offset_top = 67.0
 offset_right = 279.0
 offset_bottom = 138.0
-text = "Esse botão serve para fechar o menu
-de inventario."
+text = "Aqui mostra os pontos que você tem
+para distribuir em seus status."
 label_settings = SubResource("LabelSettings_1w0f6")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1947,6 +1935,257 @@ offset_left = 1.0
 offset_top = 307.0
 offset_right = 278.0
 offset_bottom = 333.0
-text = "Feche o inventario para continuar"
+text = "Clique na tela para continuar"
+label_settings = SubResource("LabelSettings_tjiiu")
+horizontal_alignment = 1
+
+[node name="Tutorial_17" type="Control" parent="." unique_id=1627026406]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 649.0
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial_17" unique_id=238597601]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.5
+offset_top = 439.0
+offset_right = 0.5
+offset_bottom = -0.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect3" type="ColorRect" parent="Tutorial_17" unique_id=1242144696]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -5.0
+offset_right = 3.0
+offset_bottom = -459.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect2" type="ColorRect" parent="Tutorial_17" unique_id=251148269]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 591.0
+offset_top = 190.0
+offset_right = 2.0
+offset_bottom = -210.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect4" type="ColorRect" parent="Tutorial_17" unique_id=1418128744]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = 190.0
+offset_right = -942.0
+offset_bottom = -210.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="Line2D" type="Line2D" parent="Tutorial_17" unique_id=961269331]
+position = Vector2(274, 392)
+points = PackedVector2Array(525, -92, 317, -89)
+width = 1.755
+
+[node name="Panel" type="Panel" parent="Tutorial_17" unique_id=932227557]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 221.5
+offset_top = -189.5
+offset_right = 500.5
+offset_bottom = 147.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ua4e2")
+
+[node name="Panel2" type="Panel" parent="Tutorial_17/Panel" unique_id=375786335]
+layout_mode = 0
+offset_top = 49.0
+offset_right = 279.0
+offset_bottom = 50.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Panel3" type="Panel" parent="Tutorial_17/Panel" unique_id=1831695491]
+layout_mode = 0
+offset_top = 296.0
+offset_right = 279.0
+offset_bottom = 297.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Label" type="Label" parent="Tutorial_17/Panel" unique_id=1843950566]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 49.0
+text = "Tutorial 13: Botões de status"
+label_settings = SubResource("LabelSettings_ua4e2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial_17/Panel" unique_id=619410656]
+layout_mode = 0
+offset_top = 67.0
+offset_right = 279.0
+offset_bottom = 138.0
+text = "Para distribuir seus pontos de status
+basta clicar em seus respectivos
+botoes, seguindo os icones e os
+nomes ao lado. Aqui mostra tambem os
+status de seu personagem, onde força
+aumenta o dano, defesa diminui o dano
+recebido, vitalidade aumenta sua vida
+total e inteligencia aumenta o quanto
+você cura."
+label_settings = SubResource("LabelSettings_1w0f6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Tutorial_17/Panel" unique_id=394302686]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 307.0
+offset_right = 278.0
+offset_bottom = 333.0
+text = "Clique na tela para continuar"
+label_settings = SubResource("LabelSettings_tjiiu")
+horizontal_alignment = 1
+
+[node name="Tutorial_18" type="Control" parent="." unique_id=2064259832]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 649.0
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial_18" unique_id=1331507789]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.5
+offset_top = 195.0
+offset_right = 0.5
+offset_bottom = -0.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect3" type="ColorRect" parent="Tutorial_18" unique_id=628506333]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -5.0
+offset_right = 3.0
+offset_bottom = -523.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect2" type="ColorRect" parent="Tutorial_18" unique_id=1779154088]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 956.0
+offset_top = 126.0
+offset_right = 2.0
+offset_bottom = -454.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect4" type="ColorRect" parent="Tutorial_18" unique_id=1456462906]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = 126.0
+offset_right = -274.0
+offset_bottom = -454.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="Line2D" type="Line2D" parent="Tutorial_18" unique_id=1124889210]
+position = Vector2(324, 255)
+points = PackedVector2Array(555, -92, 366, -92)
+width = 1.755
+
+[node name="Panel" type="Panel" parent="Tutorial_18" unique_id=1832238451]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -163.745
+offset_top = -184.5
+offset_right = 115.255005
+offset_bottom = 152.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ua4e2")
+
+[node name="Panel2" type="Panel" parent="Tutorial_18/Panel" unique_id=1861831298]
+layout_mode = 0
+offset_top = 49.0
+offset_right = 279.0
+offset_bottom = 50.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Panel3" type="Panel" parent="Tutorial_18/Panel" unique_id=1098590069]
+layout_mode = 0
+offset_top = 296.0
+offset_right = 279.0
+offset_bottom = 297.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Label" type="Label" parent="Tutorial_18/Panel" unique_id=687363852]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 49.0
+text = "Tutorial 14: Fechar"
+label_settings = SubResource("LabelSettings_ua4e2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial_18/Panel" unique_id=369038676]
+layout_mode = 0
+offset_top = 67.0
+offset_right = 279.0
+offset_bottom = 138.0
+text = "Para fechar o menu de status basta
+clicar neste botão"
+label_settings = SubResource("LabelSettings_1w0f6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Tutorial_18/Panel" unique_id=605446799]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 307.0
+offset_right = 278.0
+offset_bottom = 333.0
+text = "Feche os status para continuar"
 label_settings = SubResource("LabelSettings_tjiiu")
 horizontal_alignment = 1

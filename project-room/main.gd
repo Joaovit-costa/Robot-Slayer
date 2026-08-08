@@ -6,6 +6,7 @@ extends Node2D
 @onready var menu_status = get_node_or_null("CanvasLayer/MenuStatus") as Control
 @onready var fundo_escuro: ColorRect = get_node_or_null("CanvasLayer/MeshInstance2D") as ColorRect
 @onready var sala: Node2D = get_node_or_null("sala") as Node2D
+@onready var tutorial: ControladorTutorial = get_node_or_null("CanvasLayerTutorial/Tutorial") as ControladorTutorial
 
 const ACAO_INVENTARIO := &"ui_inventario"
 const ACAO_STATUS := &"ui_status"
@@ -18,11 +19,22 @@ var tecla_inventario_estava_pressionada := false
 var tecla_loja_estava_pressionada := false
 var tecla_status_estava_pressionada := false
 var menu_pause_instance: CanvasLayer = null
+var titulo_item_antes_tutorial := ""
+var quantidade_equipamentos_antes_tutorial := 0
 
 
 func _ready() -> void:
 	_fechar_menus()
 	_aplicar_estado_telas()
+	menu_inventario.z_index = 80
+	menu_loja_cura.z_index = 80
+	menu_loja_arma.z_index = 80
+	menu_status.z_index = 80
+	fundo_escuro.z_index = 75
+	if tutorial != null:
+		tutorial.process_mode = Node.PROCESS_MODE_ALWAYS
+		tutorial.menu_compras.visible = false
+		SaveManager.aplicar_no_tutorial(tutorial)
 
 
 func _process(_delta: float) -> void:
@@ -36,48 +48,111 @@ func _process(_delta: float) -> void:
 	elif menu_status != null and _status_foi_acionado():
 		_alternar_menu(menu_status)
 
+	if sala != null and sala.color_rect != null and not sala.color_rect.visible:
+		_processar_tutorial()
+	_atualizar_exibicao_tutorial()
 	_aplicar_estado_telas()
-	if sala.color_rect.visible:
+
+
+func _processar_tutorial() -> void:
+	if tutorial == null or not tutorial.tutorial_esta_ativo():
 		return
-	var mudou_direcao = Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_down")
-	if mudou_direcao and sala.tutorial.tutorial == 0:
-		sala.tutorial.tutorial_0.visible = false
-		sala.tutorial.tutorial = 1
 
-	elif Input.is_action_just_pressed("ui_attack") and sala.tutorial.tutorial == 1 and sala.tutorial.tutorial_1.visible:
-		sala.tutorial.tutorial = 2
-		sala.tutorial.tutorial_1.visible = false
+	var etapa := tutorial.tutorial
+	var houve_clique := Input.is_action_just_pressed("ui_attack")
+	var mudou_direcao := (
+		Input.is_action_pressed("ui_left")
+		or Input.is_action_pressed("ui_right")
+		or Input.is_action_pressed("ui_up")
+		or Input.is_action_pressed("ui_down")
+	)
 
-	elif sala.tutorial.tutorial == 2 and menu_inventario.visible and sala.tutorial.tutorial_2.visible:
-		sala.tutorial.tutorial = 3
-		sala.tutorial.tutorial_2.visible = false
+	if etapa == tutorial.ETAPA_MOVIMENTACAO and mudou_direcao:
+		tutorial.avancar()
+	elif etapa == tutorial.ETAPA_ATAQUE and houve_clique:
+		tutorial.avancar()
+	elif etapa == tutorial.ETAPA_ABRIR_INVENTARIO and menu_inventario.visible:
+		tutorial.avancar_para(tutorial.ETAPA_INVENTARIO_PRIMEIRA)
+		titulo_item_antes_tutorial = _obter_titulo_item_selecionado()
+		quantidade_equipamentos_antes_tutorial = _quantidade_itens_equipados()
+	elif etapa == tutorial.ETAPA_INVENTARIO_PRIMEIRA and menu_inventario.visible and houve_clique:
+		tutorial.avancar()
+	elif etapa == tutorial.ETAPA_INVENTARIO_PRIMEIRA + 1 and menu_inventario.visible and _titulo_do_item_foi_alterado():
+		tutorial.avancar()
+	elif etapa > tutorial.ETAPA_INVENTARIO_PRIMEIRA + 1 and etapa < tutorial.ETAPA_INVENTARIO_FECHAR - 1 and menu_inventario.visible and houve_clique:
+		tutorial.avancar()
+	elif etapa == tutorial.ETAPA_INVENTARIO_FECHAR - 1 and menu_inventario.visible and _quantidade_itens_equipados() > quantidade_equipamentos_antes_tutorial:
+		tutorial.avancar()
+	elif etapa == tutorial.ETAPA_INVENTARIO_FECHAR and not menu_inventario.visible:
+		tutorial.avancar_para(tutorial.ETAPA_ABRIR_STATUS)
+	elif etapa == tutorial.ETAPA_ABRIR_STATUS and menu_status.visible:
+		tutorial.avancar_para(tutorial.ETAPA_STATUS_PRIMEIRA)
+	elif etapa >= tutorial.ETAPA_STATUS_PRIMEIRA and etapa < tutorial.ETAPA_STATUS_FECHAR and menu_status.visible and houve_clique:
+		tutorial.avancar()
+	elif etapa == tutorial.ETAPA_STATUS_FECHAR and not menu_status.visible:
+		tutorial.avancar_para(tutorial.ETAPA_INTERFACE_VIDA)
+	elif etapa >= tutorial.ETAPA_INTERFACE_VIDA and etapa < tutorial.ETAPA_INTERFACE_ULTIMA and not menu_inventario.visible and not menu_status.visible and houve_clique:
+		tutorial.avancar()
+	elif etapa == tutorial.ETAPA_INTERFACE_ULTIMA and not menu_inventario.visible and not menu_status.visible and houve_clique:
+		tutorial.avancar_para(tutorial.ETAPA_CONCLUIDA)
 
-	elif sala.tutorial.tutorial == 3 and menu_status.visible and sala.tutorial.tutorial_3.visible:
-		sala.tutorial.tutorial = 4
-		sala.tutorial.tutorial_3.visible = false
 
-	elif (Input.is_action_just_pressed("ui_attack") and sala.tutorial.tutorial >= 4 and 
-		  not menu_inventario.visible and not menu_status.visible):
-		# Simplificado: se a tela X está visível, o tutorial com certeza é o X
-		if sala.tutorial.tutorial == 4:
-			sala.tutorial.tutorial = 5
-			sala.tutorial.tutorial_4.visible = false
-		elif sala.tutorial.tutorial == 5:
-			sala.tutorial.tutorial = 6
-			sala.tutorial.tutorial_5.visible = false
-		elif sala.tutorial.tutorial == 6:
-			sala.tutorial.tutorial = 7
-			sala.tutorial.tutorial_6.visible = false
-		elif sala.tutorial.tutorial == 7:
-			sala.tutorial.tutorial = 8
-			sala.tutorial.tutorial_7.visible = false
-		elif sala.tutorial.tutorial == 8:
-			sala.tutorial.tutorial = 9
-			sala.tutorial.tutorial_8.visible = false
-		
-	for tutorial in sala.tutorial.tutorial_geral:
-		if tutorial.visible and sala != null:
-			sala.process_mode = Node.PROCESS_MODE_DISABLED
+func _atualizar_exibicao_tutorial() -> void:
+	if tutorial == null or sala == null or not tutorial.tutorial_esta_ativo():
+		if tutorial != null:
+			tutorial.ocultar_etapas()
+		return
+
+	if sala.salas_passadas == 0:
+		if tutorial.tutorial == tutorial.ETAPA_MOVIMENTACAO:
+			tutorial.mostrar_etapa_atual()
+		else:
+			tutorial.ocultar_etapas()
+		return
+
+	if sala.salas_passadas != 1:
+		tutorial.ocultar_etapas()
+		return
+
+	if tutorial.tutorial == tutorial.ETAPA_ABRIR_INVENTARIO:
+		if sala.sala_atual != null and sala.sala_atual.porta_liberada:
+			tutorial.mostrar_etapa_atual()
+		else:
+			tutorial.ocultar_etapas()
+		return
+
+	if tutorial.tutorial >= tutorial.ETAPA_INVENTARIO_PRIMEIRA and tutorial.tutorial <= tutorial.ETAPA_INVENTARIO_FECHAR:
+		if menu_inventario != null and menu_inventario.visible:
+			tutorial.mostrar_etapa_atual()
+		else:
+			tutorial.mostrar_etapa(tutorial.ETAPA_ABRIR_INVENTARIO)
+		return
+
+	if tutorial.tutorial >= tutorial.ETAPA_STATUS_PRIMEIRA and tutorial.tutorial <= tutorial.ETAPA_STATUS_FECHAR:
+		if menu_status != null and menu_status.visible:
+			tutorial.mostrar_etapa_atual()
+		else:
+			tutorial.mostrar_etapa(tutorial.ETAPA_ABRIR_STATUS)
+		return
+
+	tutorial.mostrar_etapa_atual()
+
+
+func _obter_titulo_item_selecionado() -> String:
+	if menu_inventario == null or not menu_inventario.has_method("obter_titulo_item_selecionado"):
+		return ""
+	return str(menu_inventario.obter_titulo_item_selecionado())
+
+
+func _titulo_do_item_foi_alterado() -> bool:
+	var titulo_atual := _obter_titulo_item_selecionado()
+	return not titulo_atual.is_empty() and titulo_atual != titulo_item_antes_tutorial
+
+
+func _quantidade_itens_equipados() -> int:
+	if menu_inventario == null or not menu_inventario.has_method("quantidade_itens_equipados"):
+		return 0
+	return int(menu_inventario.quantidade_itens_equipados())
 
 func _pause_esta_aberto() -> bool:
 	return menu_pause_instance != null
@@ -121,8 +196,9 @@ func _aplicar_estado_telas() -> void:
 	if menu_aberto:
 		SoundManager.parar_passo()
 
+	var tutorial_visivel := tutorial != null and tutorial.tem_etapa_visivel()
 	if sala != null:
-		sala.process_mode = Node.PROCESS_MODE_DISABLED if menu_aberto else Node.PROCESS_MODE_INHERIT
+		sala.process_mode = Node.PROCESS_MODE_DISABLED if menu_aberto or tutorial_visivel else Node.PROCESS_MODE_INHERIT
 
 	if fundo_escuro != null:
 		fundo_escuro.visible = menu_aberto and not pause_aberto

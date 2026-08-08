@@ -1,16 +1,16 @@
 extends Node2D
 
 @export_file("*.tscn") var proxima_sala_path: String
-@onready var tutorial: Node2D = $"../Tutorial"
+@onready var tutorial: ControladorTutorial = get_node_or_null("../../CanvasLayerTutorial/Tutorial") as ControladorTutorial
 @onready var sala: Node2D = $".."
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if sala == null:
 		return
 	if tutorial == null:
 		return
 	if sala.salas_passadas == 0 and tutorial.tutorial == 0:
-		tutorial.tutorial_0.visible = true
+		tutorial.mostrar_etapa_atual()
 		
 
 func _on_area_2d_body_entered(body: Node) -> void:

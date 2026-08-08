@@ -186,6 +186,22 @@ func _tipo_item_para_texto(tipo_item: int) -> String:
 			return "Inventario"
 
 
+func obter_titulo_item_selecionado() -> String:
+	return label_titulo.text
+
+
+func quantidade_itens_equipados() -> int:
+	if inventario_ref == null:
+		return 0
+
+	var quantidade := 0
+	for id_slot in Inventario.SLOTS_EQUIPAVEIS:
+		if not inventario_ref.get_item_no_slot(id_slot).is_empty():
+			quantidade += 1
+
+	return quantidade
+
+
 # Fecha o menu quando o botao de fechar for pressionado.
 func _on_botao_fechar_pressed() -> void:
 	visible = false

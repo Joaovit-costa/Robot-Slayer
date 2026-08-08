@@ -23,8 +23,9 @@ extends Node2D
 @onready var color_rect: ColorRect = get_node_or_null("ColorRect") as ColorRect
 @onready var sala_02: Sala = $Salas/Sala02
 @onready var sala_geral: Node2D= $".."
-@onready var tutorial: Node2D = $Tutorial
+@onready var tutorial: ControladorTutorial = get_node_or_null("../CanvasLayerTutorial/Tutorial") as ControladorTutorial
 @onready var label_salas:= $ColorRect2/Label
+@onready var tala_morte: CanvasLayer = $TalaMorte
 
 const POSICAO_MODELOS_DESATIVADOS := Vector2(1000000, 1000000)
 const TIPO_LOJA_NENHUMA := &""
@@ -45,7 +46,6 @@ func _ready() -> void:
 	_configurar_color_rect()
 	_desativar_modelos_de_sala()
 	_iniciar_primeira_sala()
-	tutorial.menu_compras.visible = false
 
 
 func solicitar_transicao_de_sala(_sala_origem: Node2D, cena_ao_entrar_na_porta: String = "") -> void:
@@ -65,30 +65,6 @@ func solicitar_transicao_de_sala(_sala_origem: Node2D, cena_ao_entrar_na_porta: 
 	_liberar_inputs_da_transicao()
 	transicao_em_andamento = false
 	SaveManager.solicitar_salvamento()
-
-func _process(_delta: float) -> void:
-	if tutorial == null:
-		return
-	
-	if salas_passadas == 1 and tutorial.tutorial == 1:
-		tutorial.tutorial_1.visible = true
-	elif (salas_passadas == 1 and tutorial.tutorial == 2 and
-		sala_atual.porta_liberada):
-		tutorial.tutorial_2.visible = true
-	elif (salas_passadas == 1 and tutorial.tutorial == 3):
-		tutorial.tutorial_3.visible = true
-	elif (salas_passadas == 1 and tutorial.tutorial == 4):
-		tutorial.tutorial_4.visible = true
-	elif salas_passadas == 1 and tutorial.tutorial == 5:
-		tutorial.tutorial_5.visible = true
-	elif salas_passadas == 1 and tutorial.tutorial == 6:
-		tutorial.tutorial_6.visible = true
-	elif salas_passadas == 1 and tutorial.tutorial == 7:
-		tutorial.tutorial_7.visible = true
-	elif salas_passadas == 1 and tutorial.tutorial == 8:
-		tutorial.tutorial_8.visible = true
-
-	
 
 func _input(_event: InputEvent) -> void:
 	if transicao_em_andamento:
@@ -331,13 +307,13 @@ func _obter_tipo_loja_da_sala(nome_sala: StringName) -> StringName:
 
 
 func _on_area_loja_body_entered(body: Node, tipo_loja: StringName) -> void:
-	if body is protagonista:
+	if body is protagonista and tutorial != null:
 		tutorial.menu_compras.visible = true
 		loja_disponivel = tipo_loja
 
 
 func _on_area_loja_body_exited(body: Node, tipo_loja: StringName) -> void:
-	if body is protagonista and loja_disponivel == tipo_loja:
+	if body is protagonista and loja_disponivel == tipo_loja and tutorial != null:
 		tutorial.menu_compras.visible = false
 		loja_disponivel = TIPO_LOJA_NENHUMA
 

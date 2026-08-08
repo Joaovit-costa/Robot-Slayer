@@ -11,6 +11,8 @@ var em_transicao: bool = false
 
 func _ready() -> void:
 	get_tree().paused = false
+	menu_inicial.z_index = 100
+	node_2d.z_index = 90
 	
 	# =========================
 	# JOGO
