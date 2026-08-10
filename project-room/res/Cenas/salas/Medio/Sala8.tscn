@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ciwckplj5adkj" path="res://script/salas/Salas.gd" id="1_bom82"]
 [ext_resource type="Texture2D" uid="uid://cbdsfook6job" path="res://res/design/Design-Robot Slayer/sprits/mapas finalizados/sala 1.png" id="2_bgjnc"]
 [ext_resource type="Texture2D" uid="uid://qlqku25i4wls" path="res://res/design/Design-Robot Slayer/sprits/porta fr.png" id="3_8fntl"]
+[ext_resource type="Texture2D" uid="uid://c6ab1f55bf4m3" path="res://res/design/Design-Robot Slayer/sprits/mapas finalizados/sala 1 2.png" id="3_keuhi"]
 [ext_resource type="PackedScene" uid="uid://crm7vecx3vhjy" path="res://res/Cenas/entidades/protagonista.tscn" id="4_4slpw"]
 [ext_resource type="Texture2D" uid="uid://rmksy3cmfdtm" path="res://res/design/Design-Robot Slayer/sprits/porta lateral- fr separados.png" id="4_8fntl"]
 [ext_resource type="PackedScene" uid="uid://dk2ldp063c478" path="res://res/Cenas/entidades/inimigo_atirador.tscn" id="5_4slpw"]
@@ -355,6 +356,11 @@ offset_bottom = 648.0
 size_flags_horizontal = 4
 texture = ExtResource("2_bgjnc")
 metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="StaticBody2D" unique_id=499786118]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("3_keuhi")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=40858931]
 position = Vector2(0, -1)

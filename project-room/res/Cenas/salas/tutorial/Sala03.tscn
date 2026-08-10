@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ciwckplj5adkj" path="res://script/salas/Salas.gd" id="1_6sy3i"]
 [ext_resource type="Texture2D" uid="uid://72inw3mec0sk" path="res://res/design/Design-Robot Slayer/sprits/mapas finalizados/créditos sala.png" id="2_lrnw8"]
 [ext_resource type="Texture2D" uid="uid://qlqku25i4wls" path="res://res/design/Design-Robot Slayer/sprits/porta fr.png" id="3_0rro4"]
+[ext_resource type="Texture2D" uid="uid://bgfjt0mfk13pa" path="res://res/design/Design-Robot Slayer/sprits/mapas finalizados/créditos sala (1).png" id="3_3pigp"]
 [ext_resource type="PackedScene" uid="uid://crm7vecx3vhjy" path="res://res/Cenas/entidades/protagonista.tscn" id="4_3pigp"]
 [ext_resource type="Texture2D" uid="uid://rmksy3cmfdtm" path="res://res/design/Design-Robot Slayer/sprits/porta lateral- fr separados.png" id="4_lrnw8"]
 [ext_resource type="FontFile" uid="uid://c8fuwo26umfpq" path="res://res/design/Font/PixelPurl.ttf" id="5_0rro4"]
@@ -272,6 +273,16 @@ offset_bottom = 648.0
 size_flags_horizontal = 4
 texture = ExtResource("2_lrnw8")
 metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="StaticBody2D" unique_id=1395127906]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1072.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_3pigp")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1904755029]
 polygon = PackedVector2Array(0, 0, 0, 134, 59, 134, 61, 323, 210, 364, 1034, 364, 1037, 647, 907, 647, 909, 486, 222, 482, 62, 447, 63, 487, 1, 486, 0, 645, 907, 648, 1152, 648, 1153, 0)

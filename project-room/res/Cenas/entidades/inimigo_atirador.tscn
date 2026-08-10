@@ -5,18 +5,48 @@
 [ext_resource type="Script" uid="uid://b547wbkrtg5cj" path="res://script/data/dataDrops.gd" id="3_af4mk"]
 [ext_resource type="Texture2D" uid="uid://bm728ocadt4eg" path="res://res/design/Design-Robot Slayer/sprits/enemy 2/enemy 2.png" id="4_af4mk"]
 
+[sub_resource type="Resource" id="Resource_af4mk"]
+script = ExtResource("3_af4mk")
+nome = "White Hat Mod"
+quantidade = 1
+chance_comum = 19
+chance_incomum = 15
+chance_raro = 12
+chance_epico = 9
+chance_lendario = 3
+metadata/_custom_type_script = "uid://b547wbkrtg5cj"
+
 [sub_resource type="Resource" id="Resource_o106a"]
 script = ExtResource("3_af4mk")
-nome = "Enginer"
+nome = "Vítreo Mod"
 quantidade = 1
-chance_incomum = 55
+chance_comum = 16
+chance_incomum = 13
+chance_raro = 9
+chance_epico = 5
+chance_lendario = 2
 metadata/_custom_type_script = "uid://b547wbkrtg5cj"
 
 [sub_resource type="Resource" id="Resource_udxoo"]
 script = ExtResource("3_af4mk")
-nome = "Pyromancer"
+nome = "Lume Mod"
 quantidade = 1
-chance_raro = 25
+chance_comum = 16
+chance_incomum = 12
+chance_raro = 8
+chance_epico = 3
+chance_lendario = 1
+metadata/_custom_type_script = "uid://b547wbkrtg5cj"
+
+[sub_resource type="Resource" id="Resource_rkymc"]
+script = ExtResource("3_af4mk")
+nome = "Enginer"
+quantidade = 1
+chance_comum = 5
+chance_incomum = 5
+chance_raro = 5
+chance_epico = 5
+chance_lendario = 5
 metadata/_custom_type_script = "uid://b547wbkrtg5cj"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o106a"]
@@ -399,9 +429,9 @@ vitalidade = 2
 forca = 1
 velocidade = 70.0
 inteligencia = 10
-experiencia_min = 12
-experiencia_max = 22
-drops = Array[ExtResource("3_af4mk")]([SubResource("Resource_o106a"), SubResource("Resource_udxoo")])
+experiencia_min = 9
+experiencia_max = 18
+drops = Array[ExtResource("3_af4mk")]([SubResource("Resource_af4mk"), SubResource("Resource_o106a"), SubResource("Resource_udxoo"), SubResource("Resource_rkymc")])
 distancia_ataque = 280.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1837195616]

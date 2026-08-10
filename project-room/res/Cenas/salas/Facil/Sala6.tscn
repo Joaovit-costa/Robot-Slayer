@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://crm7vecx3vhjy" path="res://res/Cenas/entidades/protagonista.tscn" id="3_p8g1w"]
 [ext_resource type="Texture2D" uid="uid://rmksy3cmfdtm" path="res://res/design/Design-Robot Slayer/sprits/porta lateral- fr separados.png" id="4_p8g1w"]
 [ext_resource type="FontFile" uid="uid://c8fuwo26umfpq" path="res://res/design/Font/PixelPurl.ttf" id="5_t0bfb"]
+[ext_resource type="Texture2D" uid="uid://bskw5mvl6whxx" path="res://res/design/Design-Robot Slayer/sprits/mapas finalizados/mapa-3-pixilart (2).png" id="6_ytlm4"]
 [ext_resource type="PackedScene" uid="uid://dk2ldp063c478" path="res://res/Cenas/entidades/inimigo_atirador.tscn" id="7_ytlm4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dnvnk"]
@@ -355,9 +356,14 @@ size_flags_horizontal = 4
 texture = ExtResource("1_bx4u3")
 metadata/_edit_use_anchors_ = true
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=283128097]
+[node name="TextureRect2" type="TextureRect" parent="StaticBody2D" unique_id=1205052673]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("6_ytlm4")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=7157595]
 position = Vector2(0, -1)
-polygon = PackedVector2Array(1, 1, 1152, 1, 1151, 648, 983, 649, 983, 544, 990, 542, 991, 429, 1107, 432, 1108, 500, 1122, 500, 1122, 513, 1149, 515, 1148, 454, 1121, 452, 1121, 284, 1144, 236, 1150, 235, 1151, 204, 1121, 204, 1120, 226, 1104, 226, 1103, 237, 988, 236, 987, 189, 898, 188, 900, 143, 838, 141, 837, 119, 795, 120, 793, 133, 779, 130, 779, 120, 728, 119, 729, 109, 712, 106, 712, 89, 481, 89, 480, 119, 350, 119, 350, 380, 166, 380, 164, 470, 33, 470, 32, 647, 229, 647, 230, 537, 541, 538, 938, 537, 939, 648, 983, 649, 940, 649, 1, 648)
+polygon = PackedVector2Array(1, 1, 1152, 1, 1151, 648, 983, 649, 983, 544, 990, 542, 991, 450, 1107, 450, 1108, 500, 1122, 500, 1122, 513, 1149, 515, 1148, 454, 1121, 452, 1121, 284, 1144, 236, 1150, 235, 1151, 204, 1121, 204, 1120, 226, 1104, 226, 1103, 237, 988, 236, 987, 189, 898, 188, 900, 143, 838, 141, 837, 119, 795, 120, 793, 133, 779, 130, 779, 120, 728, 119, 729, 109, 712, 106, 712, 89, 481, 89, 480, 119, 350, 119, 350, 380, 166, 380, 164, 470, 33, 470, 32, 647, 229, 647, 230, 552, 541, 551, 936, 552, 939, 648, 983, 649, 940, 649, 1, 648)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D" unique_id=429342269]
 position = Vector2(589, 45.000004)

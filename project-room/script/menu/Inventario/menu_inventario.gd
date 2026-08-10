@@ -11,7 +11,6 @@ extends Control
 @onready var label_inteligencia: Label = $PainelPrincipal/Conteudo/PainelEsquerdo/VBoxContainer/GridContainer/inteligencia
 @onready var label_vitalidade: Label = $PainelPrincipal/Conteudo/PainelEsquerdo/VBoxContainer/GridContainer/vitalidade
 
-var data_bk
 var inventario_ref: Inventario
 var slots: Array = []
 var slot_selecionado: int = -1
@@ -32,16 +31,10 @@ func _process(_delta: float) -> void:
 		DisplayServer.cursor_set_shape(DisplayServer.CURSOR_ARROW)
 
 
-# Guarda os dados do drag atual e restaura o visual quando o drop falha.
+# Guarda os dados do drag atual e restaura o visual ao final de qualquer arraste.
 func _notification(what: int) -> void:
-	if what == Node.NOTIFICATION_DRAG_BEGIN:
-		data_bk = get_viewport().gui_get_drag_data()
 	if what == Node.NOTIFICATION_DRAG_END:
-		if not is_drag_successful() and typeof(data_bk) == TYPE_DICTIONARY:
-			var slot_origem: TextureButton = _buscar_slot_por_id(int(data_bk.get("slot_origem", -1)))
-			if slot_origem != null:
-				slot_origem.atualizar_visual()
-		data_bk = null
+		call_deferred("_atualizar_slots")
 
 
 # Cria a instancia do inventario e a instancia do banco de itens deste menu.
@@ -83,13 +76,6 @@ func _atualizar_slots() -> void:
 	if slot_selecionado != -1:
 		_mostrar_item_do_slot(slot_selecionado)
 
-
-# Procura um slot pelo id para restaurar visual no fim do drag.
-func _buscar_slot_por_id(id_slot: int) -> TextureButton:
-	for slot in slots:
-		if slot.idSlot == id_slot:
-			return slot
-	return null
 
 func _on_slot_pressed(slot) -> void:
 	slot_selecionado = slot.idSlot

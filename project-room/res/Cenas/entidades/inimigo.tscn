@@ -6,16 +6,28 @@
 
 [sub_resource type="Resource" id="Resource_btc3j"]
 script = ExtResource("2_55jdp")
-nome = "Eile"
+nome = "Pyromancer"
 quantidade = 1
-chance_comum = 80
+chance_comum = 15
+chance_incomum = 11
+chance_raro = 7
+chance_epico = 3
+chance_lendario = 1
 metadata/_custom_type_script = "uid://b547wbkrtg5cj"
 
 [sub_resource type="Resource" id="Resource_63nhv"]
 script = ExtResource("2_55jdp")
 nome = "Heater"
 quantidade = 1
-chance_raro = 25
+chance_comum = 16
+chance_incomum = 13
+chance_raro = 9
+chance_epico = 4
+chance_lendario = 1
+metadata/_custom_type_script = "uid://b547wbkrtg5cj"
+
+[sub_resource type="Resource" id="Resource_ky534"]
+script = ExtResource("2_55jdp")
 metadata/_custom_type_script = "uid://b547wbkrtg5cj"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_btc3j"]
@@ -904,9 +916,9 @@ defesa = 1
 forca = 1
 inteligencia = 5
 multiplicadores = Array[float]([1.0, 1.2, 1.3])
-experiencia_min = 12
-experiencia_max = 22
-drops = Array[ExtResource("2_55jdp")]([SubResource("Resource_btc3j"), SubResource("Resource_63nhv")])
+experiencia_min = 9
+experiencia_max = 18
+drops = Array[ExtResource("2_55jdp")]([SubResource("Resource_btc3j"), SubResource("Resource_63nhv"), SubResource("Resource_ky534")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1323380247]
 position = Vector2(3.5, -2)

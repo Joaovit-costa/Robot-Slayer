@@ -105,8 +105,13 @@ func aplicar_no_tutorial(controlador: ControladorTutorial) -> void:
 		return
 
 	carregar()
+	var etapa_salva := int(dados.get("tutorial_etapa", controlador.tutorial))
+	# A etapa 19 era a conclusao antes da inclusao do tutorial de cura.
+	if int(dados.get("tutorial_versao", 1)) < 2 and etapa_salva >= 19:
+		etapa_salva = ControladorTutorial.ETAPA_CONCLUIDA
+
 	controlador.tutorial = clampi(
-		int(dados.get("tutorial_etapa", controlador.tutorial)),
+		etapa_salva,
 		controlador.ETAPA_MOVIMENTACAO,
 		controlador.ETAPA_CONCLUIDA
 	)
@@ -135,6 +140,7 @@ func salvar_estado_atual() -> void:
 	var controlador_tutorial := get_tree().get_first_node_in_group("controlador_tutorial") as ControladorTutorial
 	if controlador_tutorial != null:
 		dados["tutorial_etapa"] = controlador_tutorial.tutorial
+		dados["tutorial_versao"] = 2
 
 	_salvar_no_disco()
 

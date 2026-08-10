@@ -54,7 +54,19 @@ func _process(_delta: float) -> void:
 		return
 	
 	if Input.is_action_just_pressed("ui_cancel"):
-		if get_tree().paused:
+		if node_2d.menu_inventario.visible:
+			node_2d.menu_inventario.visible = false
+			return
+		if node_2d.menu_loja_cura.visible:
+			node_2d.menu_loja_cura.visible = false
+			return
+		if node_2d.menu_loja_arma.visible:
+			node_2d.menu_loja_arma.visible = false
+			return
+		if node_2d.menu_status.visible:
+			node_2d.menu_status.visible = false
+			return
+		if pause_menu.visible:
 			_fechar_pause()
 		else:
 			_abrir_pause()
@@ -67,17 +79,21 @@ func _process(_delta: float) -> void:
 func _abrir_pause() -> void:
 	if em_transicao:
 		return
-	
+
 	pause_menu.visible = true
-	get_tree().paused = true
+
+	# Pausa somente o jogo.
+	node_2d.process_mode = Node.PROCESS_MODE_DISABLED
 
 
 func _fechar_pause() -> void:
 	if em_transicao:
 		return
-	
+
 	pause_menu.visible = false
-	get_tree().paused = false
+
+	# Retoma somente o jogo.
+	node_2d.process_mode = Node.PROCESS_MODE_INHERIT
 
 
 # =========================================================

@@ -60,6 +60,7 @@ func _processar_tutorial() -> void:
 
 	var etapa := tutorial.tutorial
 	var houve_clique := Input.is_action_just_pressed("ui_attack")
+	var usou_cura := Input.is_action_just_pressed("ui_healing")
 	var mudou_direcao := (
 		Input.is_action_pressed("ui_left")
 		or Input.is_action_pressed("ui_right")
@@ -91,13 +92,19 @@ func _processar_tutorial() -> void:
 		tutorial.avancar()
 	elif etapa == tutorial.ETAPA_STATUS_FECHAR and not menu_status.visible:
 		tutorial.avancar_para(tutorial.ETAPA_INTERFACE_VIDA)
-	elif etapa >= tutorial.ETAPA_INTERFACE_VIDA and etapa < tutorial.ETAPA_INTERFACE_ULTIMA and not menu_inventario.visible and not menu_status.visible and houve_clique:
+	elif etapa >= tutorial.ETAPA_INTERFACE_VIDA and etapa < tutorial.ETAPA_INTERFACE_ULTIMA - 1 and not menu_inventario.visible and not menu_status.visible and houve_clique:
 		tutorial.avancar()
+	elif etapa == tutorial.ETAPA_INTERFACE_ULTIMA - 1 and not menu_inventario.visible and not menu_status.visible and houve_clique:
+		tutorial.avancar_para(tutorial.ETAPA_CURA)
+	elif etapa == tutorial.ETAPA_CURA and not menu_inventario.visible and not menu_status.visible and usou_cura:
+		tutorial.avancar_para(tutorial.ETAPA_INTERFACE_ULTIMA)
 	elif etapa == tutorial.ETAPA_INTERFACE_ULTIMA and not menu_inventario.visible and not menu_status.visible and houve_clique:
 		tutorial.avancar_para(tutorial.ETAPA_CONCLUIDA)
 
 
 func _atualizar_exibicao_tutorial() -> void:
+	if sala.color_rect.visible:
+		return
 	if tutorial == null or sala == null or not tutorial.tutorial_esta_ativo():
 		if tutorial != null:
 			tutorial.ocultar_etapas()

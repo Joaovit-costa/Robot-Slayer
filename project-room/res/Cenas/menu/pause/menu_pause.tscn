@@ -59,10 +59,10 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_volf8")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ptq8l")
 
 [node name="BotaoSair" type="Button" parent="." unique_id=1528678558]
-offset_left = 424.0
-offset_top = 372.0
-offset_right = 684.0
-offset_bottom = 490.0
+offset_left = 504.0
+offset_top = 357.0
+offset_right = 598.0
+offset_bottom = 448.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_4uk07")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_wwi5q")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_62ek5")

@@ -901,7 +901,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
 layout_mode = 0
 offset_right = 280.0
 offset_bottom = 49.0
-text = "Tutorial 19: Próxima Sala"
+text = "Tutorial 20: Próxima Sala"
 label_settings = SubResource("LabelSettings_ua4e2")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -2189,3 +2189,122 @@ offset_bottom = 333.0
 text = "Feche os status para continuar"
 label_settings = SubResource("LabelSettings_tjiiu")
 horizontal_alignment = 1
+
+[node name="Tutorial_19" type="Control" parent="." unique_id=1140138133]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 649.0
+
+[node name="ColorRect16" type="ColorRect" parent="Tutorial_19" unique_id=2028605412]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 349.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect17" type="ColorRect" parent="Tutorial_19" unique_id=54356994]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1136.0
+offset_top = 289.0
+offset_right = 3.0
+offset_bottom = -300.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect18" type="ColorRect" parent="Tutorial_19" unique_id=1527285769]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -79.0
+offset_bottom = -300.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect19" type="ColorRect" parent="Tutorial_19" unique_id=751092224]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1074.0
+offset_right = 4.0
+offset_bottom = -360.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="Line2D" type="Line2D" parent="Tutorial_19" unique_id=2017896413]
+points = PackedVector2Array(1074, 320, 714, 320)
+width = 1.755
+
+[node name="Panel" type="Panel" parent="Tutorial_19" unique_id=1325305067]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -139.5
+offset_top = -168.5
+offset_right = 139.5
+offset_bottom = 168.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ua4e2")
+
+[node name="Panel2" type="Panel" parent="Tutorial_19/Panel" unique_id=45248620]
+layout_mode = 0
+offset_top = 49.0
+offset_right = 279.0
+offset_bottom = 50.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Label" type="Label" parent="Tutorial_19/Panel" unique_id=591736823]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 49.0
+text = "Tutorial 19: Cura"
+label_settings = SubResource("LabelSettings_ua4e2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial_19/Panel" unique_id=1922849230]
+layout_mode = 0
+offset_top = 67.0
+offset_right = 279.0
+offset_bottom = 138.0
+text = "Aqui fica a sua cura. Você consegue
+se curar pressionando a tecla G. O
+tempo de espera para curar novamente
+varia de acordo com seus pontos de
+inteligência."
+label_settings = SubResource("LabelSettings_1w0f6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Tutorial_19/Panel" unique_id=118944521]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 307.0
+offset_right = 278.0
+offset_bottom = 333.0
+text = "Pressione G para continuar"
+label_settings = SubResource("LabelSettings_tjiiu")
+horizontal_alignment = 1
+
+[node name="Panel3" type="Panel" parent="Tutorial_19/Panel" unique_id=622156632]
+layout_mode = 0
+offset_top = 296.0
+offset_right = 279.0
+offset_bottom = 297.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")

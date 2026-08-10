@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://crm7vecx3vhjy" path="res://res/Cenas/entidades/protagonista.tscn" id="3_4uty1"]
 [ext_resource type="Texture2D" uid="uid://rmksy3cmfdtm" path="res://res/design/Design-Robot Slayer/sprits/porta lateral- fr separados.png" id="4_4uty1"]
 [ext_resource type="FontFile" uid="uid://c8fuwo26umfpq" path="res://res/design/Font/PixelPurl.ttf" id="5_br4vi"]
+[ext_resource type="Texture2D" uid="uid://boclsld3hbv1o" path="res://res/design/Design-Robot Slayer/sprits/robô mercador.png" id="6_gswp1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c1yxq"]
 atlas = ExtResource("2_yk5w4")
@@ -256,6 +257,56 @@ font_color = Color(0.31891868, 0.9976707, 0.9999998, 1)
 shadow_size = 0
 shadow_color = Color(0, 0, 0, 0.25882354)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_l66q8"]
+atlas = ExtResource("6_gswp1")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pqo86"]
+atlas = ExtResource("6_gswp1")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jc5ax"]
+atlas = ExtResource("6_gswp1")
+region = Rect2(100, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohhph"]
+atlas = ExtResource("6_gswp1")
+region = Rect2(0, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eio0k"]
+atlas = ExtResource("6_gswp1")
+region = Rect2(50, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4tyf"]
+atlas = ExtResource("6_gswp1")
+region = Rect2(100, 50, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w8eof"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l66q8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pqo86")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jc5ax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohhph")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eio0k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4tyf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gswp1"]
 size = Vector2(120, 61)
 
@@ -312,6 +363,12 @@ label_settings = SubResource("LabelSettings_4uty1")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="StaticBody2D" unique_id=106685446]
+position = Vector2(809, 134)
+scale = Vector2(1.7199997, 1.7199997)
+sprite_frames = SubResource("SpriteFrames_w8eof")
+frame_progress = 0.18253033
 
 [node name="Range Porta" type="Node2D" parent="." unique_id=1250745122]
 

@@ -100,7 +100,7 @@ size = Vector2(150, 90)
 script = ExtResource("7_6ko4q")
 nome = "Eile"
 quantidade = 1
-chance_comum = 100
+chance_comum = 110
 metadata/_custom_type_script = "uid://b547wbkrtg5cj"
 
 [node name="Sala02" type="Node2D" unique_id=375855543 node_paths=PackedStringArray("portas")]
@@ -166,7 +166,7 @@ alvos = [NodePath("../Inimigo")]
 position = Vector2(846, 195)
 vitalidade = 1
 defesa = 0
-experiencia_min = 25
-experiencia_max = 30
+experiencia_min = 35
+experiencia_max = 45
 drops = Array[ExtResource("7_6ko4q")]([SubResource("Resource_g0hxb")])
 protagonista_ref = NodePath("../Protagonista")
