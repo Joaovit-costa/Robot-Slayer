@@ -356,11 +356,6 @@ size_flags_horizontal = 4
 texture = ExtResource("1_bx4u3")
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect2" type="TextureRect" parent="StaticBody2D" unique_id=1205052673]
-offset_right = 1152.0
-offset_bottom = 648.0
-texture = ExtResource("6_ytlm4")
-
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=7157595]
 position = Vector2(0, -1)
 polygon = PackedVector2Array(1, 1, 1152, 1, 1151, 648, 983, 649, 983, 544, 990, 542, 991, 450, 1107, 450, 1108, 500, 1122, 500, 1122, 513, 1149, 515, 1148, 454, 1121, 452, 1121, 284, 1144, 236, 1150, 235, 1151, 204, 1121, 204, 1120, 226, 1104, 226, 1103, 237, 988, 236, 987, 189, 898, 188, 900, 143, 838, 141, 837, 119, 795, 120, 793, 133, 779, 130, 779, 120, 728, 119, 729, 109, 712, 106, 712, 89, 481, 89, 480, 119, 350, 119, 350, 380, 166, 380, 164, 470, 33, 470, 32, 647, 229, 647, 230, 552, 541, 551, 936, 552, 939, 648, 983, 649, 940, 649, 1, 648)
@@ -424,3 +419,8 @@ protagonista_ref = NodePath("../Protagonista")
 [node name="InimigoAtirador2" parent="." unique_id=203839667 node_paths=PackedStringArray("protagonista_ref") instance=ExtResource("7_ytlm4")]
 position = Vector2(571, 224)
 protagonista_ref = NodePath("../Protagonista")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=897991097]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("6_ytlm4")

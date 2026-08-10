@@ -17,25 +17,30 @@ script = ExtResource("1_main")
 layer = 2
 
 [node name="MeshInstance2D" type="ColorRect" parent="CanvasLayer" unique_id=645080566]
+visible = false
 modulate = Color(0, 0, 0, 0.44705883)
 offset_right = 0.9892658
 offset_bottom = 0.98405457
 scale = Vector2(1164.5, 658.50006)
 
 [node name="InventoryMenu" parent="CanvasLayer" unique_id=1694092285 instance=ExtResource("2_u7f18")]
+visible = false
 
 [node name="LojaItens" parent="CanvasLayer" unique_id=1042815808 instance=ExtResource("4_1bvp3")]
+visible = false
 
 [node name="LojaItens2" parent="CanvasLayer" unique_id=1585348748 instance=ExtResource("4_lquwl")]
+visible = false
 
 [node name="MenuStatus" parent="CanvasLayer" unique_id=2147151198 instance=ExtResource("5_lquwl")]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 
-[node name="CanvasLayerTutorial" type="CanvasLayer" parent="."]
+[node name="CanvasLayerTutorial" type="CanvasLayer" parent="." unique_id=1934998517]
 layer = 3
 
-[node name="Tutorial" parent="CanvasLayerTutorial" instance=ExtResource("6_tutorial")]
+[node name="Tutorial" parent="CanvasLayerTutorial" unique_id=1704119716 instance=ExtResource("6_tutorial")]

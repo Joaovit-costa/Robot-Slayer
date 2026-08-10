@@ -350,11 +350,6 @@ portas = [NodePath("StaticBody2D/AnimatedSprite2D"), NodePath("StaticBody2D/Anim
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2110749635]
 collision_mask = 6
 
-[node name="TextureRect2" type="TextureRect" parent="StaticBody2D" unique_id=955158357]
-offset_right = 1152.0
-offset_bottom = 648.0
-texture = ExtResource("2_mfx26")
-
 [node name="TextureRect" type="TextureRect" parent="StaticBody2D" unique_id=255655657]
 offset_right = 1152.0
 offset_bottom = 648.0
@@ -437,3 +432,8 @@ protagonista_ref = NodePath("../Protagonista")
 [node name="Inimigo3" parent="." unique_id=450088377 node_paths=PackedStringArray("protagonista_ref") instance=ExtResource("6_740vb")]
 position = Vector2(186, 166)
 protagonista_ref = NodePath("../Protagonista")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1694056632]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_mfx26")
