@@ -4,12 +4,14 @@ extends Node2D
 @onready var menu_loja_cura: Control = get_node_or_null("CanvasLayer/LojaItens") as Control
 @onready var menu_loja_arma: Control = get_node_or_null("CanvasLayer/LojaItens2") as Control
 @onready var menu_status = get_node_or_null("CanvasLayer/MenuStatus") as Control
+@onready var menu_habilidades = get_node_or_null("CanvasLayer/MenuHabilidades") as Control
 @onready var fundo_escuro: ColorRect = get_node_or_null("CanvasLayer/MeshInstance2D") as ColorRect
 @onready var sala: Node2D = get_node_or_null("sala") as Node2D
 @onready var tutorial: ControladorTutorial = get_node_or_null("CanvasLayerTutorial/Tutorial") as ControladorTutorial
 
 const ACAO_INVENTARIO := &"ui_inventario"
 const ACAO_STATUS := &"ui_status"
+const ACAO_HABILIDADE := &"ui_habilidadeMenu"
 const ACAO_LOJA := &"ui_interagir"
 
 const TIPO_LOJA_CURA := &"cura"
@@ -18,6 +20,7 @@ const TIPO_LOJA_ARMA := &"arma"
 var tecla_inventario_estava_pressionada := false
 var tecla_loja_estava_pressionada := false
 var tecla_status_estava_pressionada := false
+var tecla_habilidade_estava_pressionada := false
 var menu_pause_instance: CanvasLayer = null
 var titulo_item_antes_tutorial := ""
 var quantidade_equipamentos_antes_tutorial := 0
@@ -30,6 +33,7 @@ func _ready() -> void:
 	menu_loja_cura.z_index = 80
 	menu_loja_arma.z_index = 80
 	menu_status.z_index = 80
+	menu_habilidades.z_index = 80
 	fundo_escuro.z_index = 75
 	if tutorial != null:
 		tutorial.process_mode = Node.PROCESS_MODE_ALWAYS
@@ -47,6 +51,8 @@ func _process(_delta: float) -> void:
 		_alternar_loja_disponivel()
 	elif menu_status != null and _status_foi_acionado():
 		_alternar_menu(menu_status)
+	elif menu_habilidades != null and _habilidade_foi_acionado():
+		_alternar_menu(menu_habilidades)
 
 	if sala != null and sala.color_rect != null and not sala.color_rect.visible:
 		_processar_tutorial()
@@ -183,6 +189,8 @@ func _fechar_menus() -> void:
 		menu_loja_arma.visible = false
 	if menu_status != null:
 		menu_status.visible = false
+	if menu_habilidades != null:
+		menu_habilidades.visible = false
 
 
 func _aplicar_estado_telas() -> void:
@@ -190,6 +198,7 @@ func _aplicar_estado_telas() -> void:
 	var loja_cura_aberta := menu_loja_cura != null and menu_loja_cura.visible
 	var loja_arma_aberta := menu_loja_arma != null and menu_loja_arma.visible
 	var status_aberto: bool = menu_status != null and menu_status.visible
+	var habilidades_aberto: bool = menu_habilidades != null and menu_habilidades.visible
 	var pause_aberto := _pause_esta_aberto()
 
 	var menu_aberto := (
@@ -198,6 +207,7 @@ func _aplicar_estado_telas() -> void:
 		or loja_arma_aberta
 		or status_aberto
 		or pause_aberto
+		or habilidades_aberto
 	)
 
 	if menu_aberto:
@@ -218,6 +228,8 @@ func _aplicar_estado_telas() -> void:
 		menu_loja_arma.process_mode = Node.PROCESS_MODE_INHERIT
 	if menu_status != null:
 		menu_status.process_mode = Node.PROCESS_MODE_INHERIT
+	if menu_habilidades != null:
+		menu_habilidades.process_mode = Node.PROCESS_MODE_INHERIT
 
 func _obter_tipo_loja_disponivel() -> StringName:
 	if sala == null:
@@ -258,6 +270,14 @@ func _status_foi_acionado() -> bool:
 	tecla_status_estava_pressionada = pressionada_agora
 	return acabou_de_pressionar
 
+func _habilidade_foi_acionado() -> bool:
+	if InputMap.has_action(ACAO_HABILIDADE):
+		return Input.is_action_just_pressed(ACAO_HABILIDADE)
+
+	var pressionada_agora := Input.is_physical_key_pressed(KEY_R)
+	var acabou_de_pressionar := pressionada_agora and not tecla_habilidade_estava_pressionada
+	tecla_habilidade_estava_pressionada = pressionada_agora
+	return acabou_de_pressionar
 
 func _alternar_loja_disponivel() -> void:
 	if menu_loja_cura != null and menu_loja_cura.visible:
