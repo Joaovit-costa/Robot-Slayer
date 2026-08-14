@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://5ee6001d602f"]
+
+[ext_resource type="Texture2D" uid="uid://ximbp84brf4q" path="res://icon.svg" id="1_by7cv"]
+[ext_resource type="Script" uid="uid://2k05rx51a7ft" path="res://script/menu/slot_habilidade.gd" id="2_1uypx"]
+[ext_resource type="Texture2D" uid="uid://c71clt78eof7i" path="res://res/design/menus/Botão_Ataque (2).png" id="2_vo44l"]
+[ext_resource type="FontFile" uid="uid://c8fuwo26umfpq" path="res://res/design/Font/PixelPurl.ttf" id="3_1uypx"]
+[ext_resource type="Texture2D" uid="uid://ch73s3u00wfut" path="res://res/design/menus/Slot_Trancado_V2.png" id="4_r28mx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_do1ju"]
+bg_color = Color(0.2338984, 0.46504986, 2.8878452e-07, 1)
+corner_radius_bottom_right = 21
+corner_radius_bottom_left = 21
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8dsse"]
+bg_color = Color(0.35698137, 0.0026406755, 0.022013538, 1)
+border_width_left = 10
+border_width_top = 5
+border_width_right = 10
+border_width_bottom = 5
+border_color = Color(0.35686275, 0.003921569, 0.023529412, 1)
+corner_radius_bottom_right = 21
+corner_radius_bottom_left = 21
+
+[sub_resource type="LabelSettings" id="LabelSettings_bdvg5"]
+font = ExtResource("3_1uypx")
+font_size = 27
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xu4j8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ck5d"]
+bg_color = Color(0.015686275, 0, 0.105882354, 0.6627451)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_livba"]
+bg_color = Color(0.015686275, 0, 0.105882354, 0.4627451)
+
+[node name="Slot_habilidade" type="TextureRect" unique_id=1336906291]
+custom_minimum_size = Vector2(155.07, 213.73)
+texture = ExtResource("1_by7cv")
+script = ExtResource("2_1uypx")
+
+[node name="Icone_habilidade" type="TextureRect" parent="." unique_id=1197315966]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.5
+offset_top = -81.49999
+offset_right = 60.5
+offset_bottom = 39.499992
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_vo44l")
+
+[node name="Button_equipar" type="Button" parent="." unique_id=593583409]
+layout_mode = 0
+offset_top = 171.0
+offset_right = 155.0
+offset_bottom = 213.5
+theme_override_fonts/font = ExtResource("3_1uypx")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_do1ju")
+text = "Equipar"
+
+[node name="Button_desequipar" type="Button" parent="." unique_id=2104126389]
+layout_mode = 0
+offset_top = 170.5
+offset_right = 155.0
+offset_bottom = 213.5
+theme_override_fonts/font = ExtResource("3_1uypx")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_8dsse")
+text = "Desequipar"
+
+[node name="Bloqueado" type="TextureRect" parent="." unique_id=132058131]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_r28mx")
+
+[node name="Label" type="Label" parent="Bloqueado" unique_id=690522005]
+layout_mode = 0
+offset_left = 34.109985
+offset_top = 133.895
+offset_right = 122.109985
+offset_bottom = 157.89502
+text = "Bloqueado"
+label_settings = SubResource("LabelSettings_bdvg5")
+
+[node name="Button_descricao" type="Button" parent="." unique_id=66302227]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -42.229996
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_xu4j8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5ck5d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_livba")
+
+[connection signal="pressed" from="Button_descricao" to="." method="_on_button_descricao_pressed"]

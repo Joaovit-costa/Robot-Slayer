@@ -66,6 +66,9 @@ func _process(_delta: float) -> void:
 		if node_2d.menu_status.visible:
 			node_2d.menu_status.visible = false
 			return
+		if node_2d.menu_habilidades.visible:
+			node_2d.menu_habilidades.visible = false
+			return
 		if pause_menu.visible:
 			_fechar_pause()
 		else:
