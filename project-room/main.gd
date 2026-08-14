@@ -63,7 +63,6 @@ func _process(_delta: float) -> void:
 func _processar_tutorial() -> void:
 	if tutorial == null or not tutorial.tutorial_esta_ativo():
 		return
-
 	var etapa := tutorial.tutorial
 	var houve_clique := Input.is_action_just_pressed("ui_attack")
 	var usou_cura := Input.is_action_just_pressed("ui_healing")
@@ -78,7 +77,7 @@ func _processar_tutorial() -> void:
 		tutorial.avancar()
 	elif etapa == tutorial.ETAPA_ATAQUE and houve_clique:
 		tutorial.avancar()
-	elif etapa == tutorial.ETAPA_ABRIR_INVENTARIO and menu_inventario.visible:
+	elif etapa == tutorial.ETAPA_ABRIR_INVENTARIO and menu_inventario.visible and sala.sala_atual.sem_inimigos_na_lista_de_alvos:
 		tutorial.avancar_para(tutorial.ETAPA_INVENTARIO_PRIMEIRA)
 		titulo_item_antes_tutorial = _obter_titulo_item_selecionado()
 		quantidade_equipamentos_antes_tutorial = _quantidade_itens_equipados()
@@ -102,7 +101,7 @@ func _processar_tutorial() -> void:
 		tutorial.avancar()
 	elif etapa == tutorial.ETAPA_INTERFACE_ULTIMA - 1 and not menu_inventario.visible and not menu_status.visible and houve_clique:
 		tutorial.avancar_para(tutorial.ETAPA_CURA)
-	elif etapa == tutorial.ETAPA_CURA and not menu_inventario.visible and not menu_status.visible and usou_cura:
+	elif etapa == tutorial.ETAPA_CURA and not menu_inventario.visible and not menu_status.visible and (usou_cura or sala.sala_atual.protagonista_ref.cooldownDaCura >= 1):
 		tutorial.avancar_para(tutorial.ETAPA_INTERFACE_ULTIMA)
 	elif etapa == tutorial.ETAPA_INTERFACE_ULTIMA and not menu_inventario.visible and not menu_status.visible and houve_clique:
 		tutorial.avancar_para(tutorial.ETAPA_CONCLUIDA)

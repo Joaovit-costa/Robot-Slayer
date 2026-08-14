@@ -357,11 +357,6 @@ size_flags_horizontal = 4
 texture = ExtResource("1_sgivu")
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect2" type="TextureRect" parent="StaticBody2D" unique_id=210230273]
-offset_right = 1152.0
-offset_bottom = 648.0
-texture = ExtResource("3_vp3wm")
-
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1119523616]
 position = Vector2(0, -1)
 polygon = PackedVector2Array(-1, -1, 1152, 2, 1153, 652, 1103, 648, 1104, 628, 1099, 627, 1099, 619, 1082, 614, 1080, 567, 1098, 565, 1099, 531, 1141, 530, 1141, 459, 1123, 459, 1124, 442, 1140, 441, 1142, 411, 1123, 411, 1122, 243, 1144, 193, 1143, 108, 1083, 110, 1083, 79, 1042, 79, 1042, 108, 1028, 118, 996, 120, 994, 183, 974, 184, 974, 127, 919, 128, 918, 116, 869, 113, 866, 57, 810, 57, 810, 107, 797, 107, 797, 122, 774, 122, 774, 114, 734, 112, 695, 110, 695, 69, 661, 69, 661, 76, 647, 76, 646, 72, 636, 72, 635, 89, 497, 90, 498, 56, 294, 57, 295, 76, 269, 75, 269, 57, 164, 57, 165, 77, 88, 77, 88, 120, 80, 120, 79, 131, 23, 131, 23, 145, 1, 146, 1, 206, 32, 259, 31, 426, 41, 432, 44, 467, 61, 467, 61, 513, 126, 513, 126, 543, 131, 544, 131, 590, 120, 590, 110, 595, 25, 596, 24, 554, 2, 555, 1, 646, 685, 646, 684, 543, 428, 542, 427, 524, 962, 523, 961, 542, 774, 542, 775, 583, 763, 583, 762, 597, 705, 596, 705, 647, 1101, 649, 705, 648, -2, 648)
@@ -425,3 +420,8 @@ protagonista_ref = NodePath("../Protagonista")
 [node name="InimigoAtirador" parent="." unique_id=1370755289 node_paths=PackedStringArray("protagonista_ref") instance=ExtResource("7_eltl0")]
 position = Vector2(1050, 366)
 protagonista_ref = NodePath("../Protagonista")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1684702096]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("3_vp3wm")

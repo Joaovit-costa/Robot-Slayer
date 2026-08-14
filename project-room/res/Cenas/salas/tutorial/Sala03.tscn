@@ -274,16 +274,6 @@ size_flags_horizontal = 4
 texture = ExtResource("2_lrnw8")
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect2" type="TextureRect" parent="StaticBody2D" unique_id=1395127906]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 1072.0
-offset_bottom = 648.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_3pigp")
-
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1904755029]
 polygon = PackedVector2Array(0, 0, 0, 134, 59, 134, 61, 323, 210, 364, 1034, 364, 1037, 647, 907, 647, 909, 486, 222, 482, 62, 447, 63, 487, 1, 486, 0, 645, 907, 648, 1152, 648, 1153, 0)
 
@@ -328,3 +318,13 @@ disabled = true
 [node name="Protagonista" parent="." unique_id=369473398 node_paths=PackedStringArray("alvos") instance=ExtResource("4_3pigp")]
 position = Vector2(979, 604)
 alvos = [null]
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1395127906]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1072.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_3pigp")

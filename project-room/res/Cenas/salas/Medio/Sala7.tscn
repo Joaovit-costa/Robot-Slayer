@@ -357,11 +357,6 @@ size_flags_horizontal = 4
 texture = ExtResource("1_6ysol")
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect2" type="TextureRect" parent="StaticBody2D" unique_id=981535738]
-offset_right = 1152.0
-offset_bottom = 648.0
-texture = ExtResource("3_77lis")
-
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1375911921]
 position = Vector2(6.1035156e-05, -0.9999962)
 scale = Vector2(0.99999994, 0.99999994)
@@ -430,3 +425,8 @@ protagonista_ref = NodePath("../Protagonista")
 [node name="Inimigo" parent="." unique_id=1858431150 node_paths=PackedStringArray("protagonista_ref") instance=ExtResource("7_y301l")]
 position = Vector2(749, 155)
 protagonista_ref = NodePath("../Protagonista")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1140033742]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("3_77lis")
