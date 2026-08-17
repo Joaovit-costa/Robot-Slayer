@@ -21,7 +21,10 @@ func atacar(atacado, cooldowns: Array[float], forca: int, multiplicadores: Array
 	else:
 		atacado.vitalidade = max(atacado.vitalidade - dano, 0)
 		atacado.barraVida.value = atacado.vitalidade
-
+	
+	if atacado is protagonista:
+		atacado.dano_recebido_sem_morrer += forca
+	
 	return cooldown_gerado
 
 
@@ -50,6 +53,10 @@ func cura(curado, tempo_para_cura: float) -> void:
 		if barra_vida != null:
 			barra_vida.value = int(curado.get("vitalidade"))
 	curado.set("cooldownDaCura", max(0.0, tempo_para_cura))
+	
+	if curado is protagonista:
+		curado.salas_dificeis_sem_cura = 0
+		curado.curou_na_sala = true
 
 
 func subirNivel(player) -> void:

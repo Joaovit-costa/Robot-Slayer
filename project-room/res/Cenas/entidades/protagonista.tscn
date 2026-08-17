@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://crm7vecx3vhjy"]
 
 [ext_resource type="Script" uid="uid://cdgeykgg3b6sh" path="res://script/entidades/protagonista.gd" id="1_uw4sx"]
+[ext_resource type="PackedScene" uid="uid://c0jpn3qbvot8p" path="res://res/Cenas/entidades/missil_reto.tscn" id="2_tdguc"]
 [ext_resource type="Texture2D" uid="uid://cbqmsmc45nyt3" path="res://res/design/Design-Robot Slayer/sprits/player.png" id="3_p6cgy"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://cpf7i64nh7j40" path="res://res/walk.tres" id="5_yq3lb"]
 
@@ -1024,6 +1025,7 @@ states/morte/position = Vector2(560, 46)
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_uw4sx")
+cena_missil = ExtResource("2_tdguc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1873306950]
 position = Vector2(3.5, -2)

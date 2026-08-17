@@ -3,6 +3,7 @@ class_name protagonista
 
 # ============ REFERENCIAS ============
 @export var alvos: Array[inimigo]
+@export var cena_missil: PackedScene
 @onready var hud: Hud = get_tree().get_first_node_in_group("hud") as Hud
 
 @onready var alcance: Area2D = $Sprite2D/Area2D
@@ -42,8 +43,9 @@ var nivel: int = 1
 var moedas: int = 0
 var pontosStatus: int = 0
 var status = ["vitalidade", "defesa", "forca", "inteligencia"]
+var dano_missil : int
 
-const SPEED: float = 200
+var SPEED: float = 200
 const COOLDOWN_CURA_BASE: float = 25.0
 const COOLDOWN_CURA_MINIMO: float = 10.0
 const TEMPO_INVULNERABILIDADE_APOS_DANO: float = 0.35
@@ -54,6 +56,15 @@ var direcao_ataque: Vector2 = Vector2.DOWN
 var posicao_alcance_original: Vector2 = Vector2.ZERO
 
 var experienciaNecessaria = int(nivel * 1.2 + 40)
+
+var inimigos_derrotados_usando_missil_reto := 0
+var dano_recebido_sem_morrer := 0
+var derrotados_utilizando_dash := 0
+var salas_dificeis_sem_cura := 0
+
+var ataque_com := ""
+var dash_ativo := false
+var curou_na_sala := false
 
 # Sistema de cura
 var cooldownDaCura: float = 0.0
@@ -99,9 +110,15 @@ const DURACAO_ANIMACAO_ATAQUE: float = 0.9
 const ALCANCE_GOLPE: float = 80.0
 # =================================
 
+@onready var habilidades := [$"../../../CanvasLayer/MenuHabilidades/Panel/HBoxContainer/Control/SlotEquipados",
+						$"../../../CanvasLayer/MenuHabilidades/Panel/HBoxContainer/Control/SlotEquipados2",
+						$"../../../CanvasLayer/MenuHabilidades/Panel/HBoxContainer/Control/SlotEquipados3"]
+
 
 func _ready() -> void:
+	add_to_group("player")
 	hud = get_tree().get_first_node_in_group("hud") as Hud
+	var _main := get_tree().get_first_node_in_group("Main")
 
 	if hud == null:
 		return
@@ -111,14 +128,13 @@ func _ready() -> void:
 	barraExperiencia = hud.barra_de_experiencia
 	label_nivel = hud.label_nivel
 	label_moeda = hud.label_moeda
-
-
+	
 	preparar_atributos_para_sala()
 	# A preparacao pode ter ocorrido antes de o HUD entrar na arvore; sincroniza
 	# novamente agora que as barras visuais existem.
 	sincronizar_vida()
 	cooldownDaCura = minf(cooldownDaCura, calcular_cooldown_cura())
-
+	
 	barraExperiencia.max_value = experienciaNecessaria
 	barraExperiencia.value = experiencia
 
@@ -159,7 +175,7 @@ func _physics_process(delta: float) -> void:
 	# ativa evita que a lista de sobreposicoes fique vazia entre os frames.
 	if hitbox_ataque.disabled:
 		hitbox_ataque.set_deferred("disabled", false)
-
+		
 	# ============ MOVIMENTO ============
 	var direcao = Vector2(
 		Input.get_axis("ui_left", "ui_right"),
@@ -281,6 +297,13 @@ func _physics_process(delta: float) -> void:
 	)
 	# ==================================
 
+	if (Input.is_action_pressed("habilidade1") and habilidades[0].tempo_restante <= 0):
+		verificar_habilidade_equipada(0)
+	if (Input.is_action_pressed("habilidade2") and habilidades[1].tempo_restante <= 0):
+		verificar_habilidade_equipada(1)
+	if (Input.is_action_pressed("habilidade3") and habilidades[2].tempo_restante <= 0):
+		verificar_habilidade_equipada(2)
+	
 
 	# ============ MOVIMENTO FINAL ============
 	move_and_slide()
@@ -304,7 +327,45 @@ func _physics_process(delta: float) -> void:
 
 
 
+func verificar_habilidade_equipada(tecla):
+	var _gerenciador_habilidades = get_tree().get_first_node_in_group("gerenciador_habilidades")
+	if habilidades[tecla].Nome == "Investida":
+		_gerenciador_habilidades.usar_habilidade(habilidades[tecla])
+		Investida()
+	elif habilidades[tecla].Nome == "Míssil de Precisão":
+		_gerenciador_habilidades.usar_habilidade(habilidades[tecla])
+		disparar_missil_reto()
+	elif habilidades[tecla].Nome == "Campo de Força":
+		_gerenciador_habilidades.usar_habilidade(habilidades[tecla])
+		print(habilidades[tecla].Nome)
+	elif habilidades[tecla].Nome == "Míssil Teleguiado":
+		_gerenciador_habilidades.usar_habilidade(habilidades[tecla])
+		print(habilidades[tecla].Nome)
+	elif habilidades[tecla].Nome == "Investida Ofensiva":
+		_gerenciador_habilidades.usar_habilidade(habilidades[tecla])
+		print(habilidades[tecla].Nome)
+	elif habilidades[tecla].Nome == "Fúria":
+		_gerenciador_habilidades.usar_habilidade(habilidades[tecla])
+		print(habilidades[tecla].Nome)
 
+func Investida():
+	SPEED *= 7
+	dash_ativo = true
+	await get_tree().create_timer(0.15).timeout
+	SPEED /= 7
+
+func disparar_missil_reto() -> void:
+	var missil := cena_missil.instantiate() as Missil
+
+	get_tree().current_scene.add_child(missil)
+
+	missil.global_position = global_position
+
+	var mouse_pos := get_global_mouse_position()
+	dano_missil = int((forca * 17 / 100) + (inteligencia * 9 / 100))
+	var direcao := global_position.direction_to(mouse_pos)
+
+	missil.configurar(direcao, dano_missil)
 
 func _sincronizar_menu_status() -> void:
 	var menus_status := get_tree().get_nodes_in_group("menu_status")
@@ -622,6 +683,7 @@ func _on_area_2d_body_entered(body: Node) -> void:
 
 func _processar_morte() -> void:
 	morto = true
+	dano_recebido_sem_morrer = 0
 
 	# Impede o jogador de continuar se movimentando
 	velocity = Vector2.ZERO

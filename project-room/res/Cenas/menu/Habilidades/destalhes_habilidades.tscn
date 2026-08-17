@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://buqemofm4djmi"]
 
 [ext_resource type="Texture2D" uid="uid://c71clt78eof7i" path="res://res/design/menus/Botão_Ataque (2).png" id="1_6q10r"]
-[ext_resource type="Script" uid="uid://c1p00gg6dk0lq" path="res://script/menu/destalhes_habilidades.gd" id="1_43v76"]
+[ext_resource type="Script" uid="uid://c1p00gg6dk0lq" path="res://script/menu/Habilidades/destalhes_habilidades.gd" id="1_43v76"]
 [ext_resource type="FontFile" uid="uid://c8fuwo26umfpq" path="res://res/design/Font/PixelPurl.ttf" id="2_43v76"]
+[ext_resource type="Texture2D" uid="uid://dh22iaoe4mscr" path="res://res/design/Design-Robot Slayer/sprits/moldura de mods.png" id="2_qarr8"]
 [ext_resource type="Texture2D" uid="uid://dicv3jk6d2ypu" path="res://res/design/menus/Slot_Grande_Trancado.png" id="3_qarr8"]
 [ext_resource type="Texture2D" uid="uid://4s5dtyt2xg1i" path="res://res/design/menus/Botão_Fechar.png" id="4_rm54l"]
 
@@ -32,7 +33,8 @@ border_blend = true
 
 [sub_resource type="LabelSettings" id="LabelSettings_pmyxy"]
 font = ExtResource("2_43v76")
-font_size = 27
+font_size = 30
+font_color = Color(0.69604886, 0.591155, 1, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_o0upv"]
 font = ExtResource("2_43v76")
@@ -41,21 +43,7 @@ font_size = 21
 [sub_resource type="LabelSettings" id="LabelSettings_262rn"]
 font = ExtResource("2_43v76")
 font_size = 27
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vo0wq"]
-bg_color = Color(0.2338984, 0.46504986, 2.8878452e-07, 1)
-corner_radius_top_left = 21
-corner_radius_top_right = 21
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oihr3"]
-bg_color = Color(0.35698137, 0.0026406755, 0.022013538, 1)
-border_width_left = 10
-border_width_top = 5
-border_width_right = 10
-border_width_bottom = 5
-border_color = Color(0.35686275, 0.003921569, 0.023529412, 1)
-corner_radius_bottom_right = 21
-corner_radius_bottom_left = 21
+font_color = Color(0.69411767, 0.5921569, 1, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ckdjs"]
 font = ExtResource("2_43v76")
@@ -70,6 +58,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_43v76")
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1914855975]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0014441512, 7.52043e-09, 0.033812005, 0.5294118)
+
 [node name="Panel" type="Panel" parent="." unique_id=316277648]
 layout_mode = 1
 anchors_preset = 8
@@ -77,10 +74,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -401.0
-offset_top = -246.5
-offset_right = 401.0
-offset_bottom = 246.5
+offset_left = -295.375
+offset_top = -224.6875
+offset_right = 295.375
+offset_bottom = 224.6875
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0ds0x")
@@ -94,42 +91,44 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 6
 
-[node name="Control" type="Control" parent="Panel/HBoxContainer" unique_id=697194959]
-custom_minimum_size = Vector2(200.78, 0)
+[node name="Control" type="VBoxContainer" parent="Panel/HBoxContainer" unique_id=1700390771]
+clip_contents = true
+custom_minimum_size = Vector2(186.535, 0)
 layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/Control" unique_id=1344415204]
-custom_minimum_size = Vector2(173.655, 173.65)
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/Control" unique_id=129291727]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_qarr8")
+expand_mode = 1
+
+[node name="Icone_habilidade" type="TextureRect" parent="Panel/HBoxContainer/Control/TextureRect" unique_id=1344415204]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -85.39
-offset_top = -139.0
-offset_right = 88.265
-offset_bottom = 34.650024
+offset_left = -59.0
+offset_top = -57.5
+offset_right = 57.003357
+offset_bottom = 58.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_6q10r")
+expand_mode = 1
 
-[node name="Label" type="Label" parent="Panel/HBoxContainer/Control/TextureRect" unique_id=545227532]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -28.8275
-offset_top = 12.349976
-offset_right = 29.1725
-offset_bottom = 41.349976
-grow_horizontal = 2
-grow_vertical = 0
+[node name="Nome_habilidade" type="Label" parent="Panel/HBoxContainer/Control" unique_id=545227532]
+custom_minimum_size = Vector2(185.785, 0)
+layout_mode = 2
 text = "Nome"
 label_settings = SubResource("LabelSettings_hdwe6")
 horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="Panel" type="Panel" parent="Panel/HBoxContainer" unique_id=648194042]
 custom_minimum_size = Vector2(1.395, 0)
@@ -152,41 +151,24 @@ text = "Descrição"
 label_settings = SubResource("LabelSettings_pmyxy")
 
 [node name="Descricao" type="Label" parent="Panel/HBoxContainer/GridContainer" unique_id=1865456624]
+custom_minimum_size = Vector2(346.695, 0)
 layout_mode = 2
 label_settings = SubResource("LabelSettings_o0upv")
+autowrap_mode = 3
 
-[node name="Label3" type="Label" parent="Panel/HBoxContainer/GridContainer" unique_id=1663143387]
+[node name="Label2" type="Label" parent="Panel/HBoxContainer/GridContainer" unique_id=1663143387]
 layout_mode = 2
 text = "Missao de desbloqueio"
 label_settings = SubResource("LabelSettings_262rn")
 
 [node name="Missao" type="Label" parent="Panel/HBoxContainer/GridContainer" unique_id=1549445106]
+custom_minimum_size = Vector2(346.695, 0)
 layout_mode = 2
 label_settings = SubResource("LabelSettings_o0upv")
+autowrap_mode = 3
 
-[node name="Button4" type="Button" parent="Panel" unique_id=1955266253]
-layout_mode = 0
-offset_left = 612.0
-offset_top = 134.5
-offset_right = 767.0
-offset_bottom = 238.0
-theme_override_fonts/font = ExtResource("2_43v76")
-theme_override_font_sizes/font_size = 25
-theme_override_styles/normal = SubResource("StyleBoxFlat_vo0wq")
-text = "Equipar"
-
-[node name="Button3" type="Button" parent="Panel" unique_id=1752964544]
-layout_mode = 0
-offset_left = 612.0
-offset_top = 240.5
-offset_right = 767.0
-offset_bottom = 343.5
-theme_override_fonts/font = ExtResource("2_43v76")
-theme_override_font_sizes/font_size = 25
-theme_override_styles/normal = SubResource("StyleBoxFlat_oihr3")
-text = "Desequipar"
-
-[node name="TextureRect" type="TextureRect" parent="Panel" unique_id=349032599]
+[node name="Bloquear" type="TextureRect" parent="Panel" unique_id=349032599]
+visible = false
 layout_mode = 0
 offset_left = 612.0
 offset_top = 135.5
@@ -194,7 +176,7 @@ offset_right = 767.0
 offset_bottom = 344.5
 texture = ExtResource("3_qarr8")
 
-[node name="Label" type="Label" parent="Panel/TextureRect" unique_id=464568393]
+[node name="Label" type="Label" parent="Panel/Bloquear" unique_id=464568393]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

@@ -48,23 +48,42 @@ func _ready() -> void:
 	_iniciar_primeira_sala()
 
 
-func solicitar_transicao_de_sala(_sala_origem: Node2D, cena_ao_entrar_na_porta: String = "") -> void:
+func solicitar_transicao_de_sala(
+	_sala_origem: Node2D,
+	cena_ao_entrar_na_porta: String = ""
+) -> void:
+
 	if transicao_em_andamento:
 		return
 
+	var player := get_tree().get_first_node_in_group("player") as protagonista
+
+	if player == null:
+		return
+
+	if _sala_origem.dificuldade.text == "Difícil" and not player.curou_na_sala:
+		player.salas_dificeis_sem_cura += 1
+
+	player.curou_na_sala = false
+
+	# Salva ANTES de criar o próximo player.
+	SaveManager.salvar_estado_atual()
+
 	transicao_em_andamento = true
 	_bloquear_inputs_da_transicao()
+
 	await _fazer_fade(1.0)
 
 	salas_passadas += 1
 
 	_criar_sala_por_progresso(cena_ao_entrar_na_porta)
+
 	label_salas.text = "sala " + str(salas_passadas)
 
 	await _fazer_fade(0.0)
+
 	_liberar_inputs_da_transicao()
 	transicao_em_andamento = false
-	SaveManager.solicitar_salvamento()
 
 func _input(_event: InputEvent) -> void:
 	if transicao_em_andamento:

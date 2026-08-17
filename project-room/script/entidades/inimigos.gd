@@ -328,6 +328,8 @@ func _processar_morte() -> void:
 		animation_player.seek(0.0, true)
 		animation_player.play(animacao_morte)
 		sprite.visible = true
+	if protagonista_ref.dash_ativo:
+		protagonista_ref.derrotados_utilizando_dash += 1
 	barraVida.visible = false
 	alcance.queue_free()
 	colision.queue_free()

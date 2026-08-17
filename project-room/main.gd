@@ -25,8 +25,18 @@ var menu_pause_instance: CanvasLayer = null
 var titulo_item_antes_tutorial := ""
 var quantidade_equipamentos_antes_tutorial := 0
 
+var habilidade1_desbloqueada := false
+var habilidade2_desbloqueada := false
+var habilidade3_desbloqueada := false
+var habilidade4_desbloqueada := false
+var habilidade5_desbloqueada := false
+var habilidade6_desbloqueada := false
 
 func _ready() -> void:
+	add_to_group("Main")
+	var player = get_tree().get_first_node_in_group("player")
+	SaveManager.aplicar_habilidades_desbloqueadas()
+	
 	_fechar_menus()
 	_aplicar_estado_telas()
 	menu_inventario.z_index = 80
@@ -53,12 +63,35 @@ func _process(_delta: float) -> void:
 		_alternar_menu(menu_status)
 	elif menu_habilidades != null and _habilidade_foi_acionado():
 		_alternar_menu(menu_habilidades)
-
+	
+	desbloquear_habilidade()
+	
 	if sala != null and sala.color_rect != null and not sala.color_rect.visible:
 		_processar_tutorial()
 	_atualizar_exibicao_tutorial()
 	_aplicar_estado_telas()
 
+func desbloquear_habilidade():
+	var player = get_tree().get_first_node_in_group("player")
+	
+	if tutorial.tutorial >= 60 and not habilidade1_desbloqueada:
+		habilidade1_desbloqueada = true
+		SaveManager.solicitar_salvamento()
+	if sala.salas_passadas - 3 > 5 and not habilidade2_desbloqueada:
+		habilidade2_desbloqueada = true
+		SaveManager.solicitar_salvamento()
+	if player.dano_recebido_sem_morrer >= 200 and not habilidade3_desbloqueada:
+		habilidade3_desbloqueada = true
+		SaveManager.solicitar_salvamento()
+	if player.inimigos_derrotados_usando_missil_reto >= 30 and not habilidade4_desbloqueada:
+		habilidade4_desbloqueada = true
+		SaveManager.solicitar_salvamento()
+	if player.derrotados_utilizando_dash >= 35 and not habilidade5_desbloqueada:
+		habilidade5_desbloqueada = true
+		SaveManager.solicitar_salvamento()
+	if player.salas_dificeis_sem_cura >= 3 and not habilidade6_desbloqueada:
+		habilidade6_desbloqueada = true
+		SaveManager.solicitar_salvamento()
 
 func _processar_tutorial() -> void:
 	if tutorial == null or not tutorial.tutorial_esta_ativo():

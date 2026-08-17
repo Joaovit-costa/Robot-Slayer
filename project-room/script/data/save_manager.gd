@@ -68,6 +68,37 @@ func aplicar_no_player(player: protagonista) -> void:
 	player.pontosStatus = max(0, int(player_data.get("pontosStatus", player.pontosStatus)))
 	player.experienciaNecessaria = max(1, int(player_data.get("experienciaNecessaria", player.experienciaNecessaria)))
 	player.cooldownDaCura = maxf(0.0, float(player_data.get("cooldownDaCura", player.cooldownDaCura)))
+	player.inimigos_derrotados_usando_missil_reto = max(0,
+	int(
+		player_data.get(
+		"inimigos_derrotados_usando_missil_reto",
+		player.inimigos_derrotados_usando_missil_reto
+	))
+)
+
+	player.dano_recebido_sem_morrer = max(
+		0,
+		int(player_data.get(
+			"dano_recebido_sem_morrer",
+			player.dano_recebido_sem_morrer
+		))
+	)
+
+	player.derrotados_utilizando_dash = max(
+		0,
+		int(player_data.get(
+			"derrotados_utilizando_dash",
+			player.derrotados_utilizando_dash
+		))
+	)
+
+	player.salas_dificeis_sem_cura = max(
+		0,
+		int(player_data.get(
+			"salas_dificeis_sem_cura",
+			player.salas_dificeis_sem_cura
+		))
+	)
 	player.sincronizar_vida()
 	aplicando_save = false
 
@@ -116,6 +147,64 @@ func aplicar_no_tutorial(controlador: ControladorTutorial) -> void:
 		controlador.ETAPA_CONCLUIDA
 	)
 
+func aplicar_no_gerenciador_habilidades(gerenciador: Node) -> void:
+	if gerenciador == null:
+		return
+
+	carregar()
+
+	if not dados.has("habilidades_equipadas"):
+		return
+
+	var habilidades: Array = dados.get("habilidades_equipadas", [])
+
+	aplicando_save = true
+
+	gerenciador.carregar_habilidades_equipadas(habilidades)
+
+	aplicando_save = false
+
+func aplicar_habilidades_desbloqueadas() -> void:
+	carregar()
+
+	if not dados.has("habilidades_desbloqueadas"):
+		return
+
+	var gerenciador_habilidades = get_tree().get_first_node_in_group(
+		"Main"
+	)
+
+	if gerenciador_habilidades == null:
+		return
+
+	var habilidades: Dictionary = dados.get(
+		"habilidades_desbloqueadas",
+		{}
+	)
+
+	gerenciador_habilidades.habilidade1_desbloqueada = bool(
+		habilidades.get("habilidade1", false)
+	)
+
+	gerenciador_habilidades.habilidade2_desbloqueada = bool(
+		habilidades.get("habilidade2", false)
+	)
+
+	gerenciador_habilidades.habilidade3_desbloqueada = bool(
+		habilidades.get("habilidade3", false)
+	)
+
+	gerenciador_habilidades.habilidade4_desbloqueada = bool(
+		habilidades.get("habilidade4", false)
+	)
+
+	gerenciador_habilidades.habilidade5_desbloqueada = bool(
+		habilidades.get("habilidade5", false)
+	)
+
+	gerenciador_habilidades.habilidade6_desbloqueada = bool(
+		habilidades.get("habilidade6", false)
+	)
 
 func salvar_estado_atual() -> void:
 	carregar()
@@ -129,6 +218,11 @@ func salvar_estado_atual() -> void:
 	var inventario := get_tree().get_first_node_in_group("inventario_principal") as Inventario
 	if inventario != null:
 		dados["inventario"] = inventario.get_lista_itens()
+	
+	var gerenciador_habilidades := _buscar_gerenciador_habilidades()
+
+	if gerenciador_habilidades != null:
+		dados["habilidades_equipadas"] = gerenciador_habilidades.get_habilidades_equipadas()
 
 	var gerenciador := _buscar_gerenciador_salas()
 	if gerenciador != null:
@@ -136,7 +230,20 @@ func salvar_estado_atual() -> void:
 		dados["sala_atual_id"] = str(gerenciador.get("sala_atual_id"))
 		if dados.has("player"):
 			dados["player"]["sala_atual_id"] = str(gerenciador.get("sala_atual_id"))
+	var main = get_tree().get_first_node_in_group(
+		"Main"
+	)
 
+	if main != null:
+		dados["habilidades_desbloqueadas"] = {
+			"habilidade1": main.habilidade1_desbloqueada,
+			"habilidade2": main.habilidade2_desbloqueada,
+			"habilidade3": main.habilidade3_desbloqueada,
+			"habilidade4": main.habilidade4_desbloqueada,
+			"habilidade5": main.habilidade5_desbloqueada,
+			"habilidade6": main.habilidade6_desbloqueada
+		}
+		
 	var controlador_tutorial := get_tree().get_first_node_in_group("controlador_tutorial") as ControladorTutorial
 	if controlador_tutorial != null:
 		dados["tutorial_etapa"] = controlador_tutorial.tutorial
@@ -187,6 +294,10 @@ func _coletar_player(player: protagonista) -> Dictionary:
 		"pontosStatus": player.pontosStatus,
 		"experienciaNecessaria": player.experienciaNecessaria,
 		"cooldownDaCura": player.cooldownDaCura,
+		"inimigos_derrotados_usando_missil_reto": player.inimigos_derrotados_usando_missil_reto,
+		"dano_recebido_sem_morrer": player.dano_recebido_sem_morrer,
+		"derrotados_utilizando_dash": player.derrotados_utilizando_dash,
+		"salas_dificeis_sem_cura": player.salas_dificeis_sem_cura,
 		"sala_atual_id": str(dados.get("sala_atual_id", ""))
 	}
 
@@ -205,4 +316,11 @@ func _buscar_gerenciador_salas() -> Node:
 	for node in get_tree().get_nodes_in_group("gerenciador_salas"):
 		if node != null and is_instance_valid(node):
 			return node
+	return null
+
+func _buscar_gerenciador_habilidades() -> Node:
+	for node in get_tree().get_nodes_in_group("gerenciador_habilidades"):
+		if node != null and is_instance_valid(node):
+			return node
+
 	return null

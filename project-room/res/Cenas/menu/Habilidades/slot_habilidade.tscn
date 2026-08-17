@@ -1,15 +1,25 @@
 [gd_scene format=3 uid="uid://5ee6001d602f"]
 
-[ext_resource type="Texture2D" uid="uid://ximbp84brf4q" path="res://icon.svg" id="1_by7cv"]
-[ext_resource type="Script" uid="uid://2k05rx51a7ft" path="res://script/menu/slot_habilidade.gd" id="2_1uypx"]
+[ext_resource type="Texture2D" uid="uid://dh22iaoe4mscr" path="res://res/design/Design-Robot Slayer/sprits/moldura de mods.png" id="1_vo44l"]
+[ext_resource type="Script" uid="uid://2k05rx51a7ft" path="res://script/menu/Habilidades/slot_habilidade.gd" id="2_1uypx"]
 [ext_resource type="Texture2D" uid="uid://c71clt78eof7i" path="res://res/design/menus/Botão_Ataque (2).png" id="2_vo44l"]
 [ext_resource type="FontFile" uid="uid://c8fuwo26umfpq" path="res://res/design/Font/PixelPurl.ttf" id="3_1uypx"]
 [ext_resource type="Texture2D" uid="uid://ch73s3u00wfut" path="res://res/design/menus/Slot_Trancado_V2.png" id="4_r28mx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_do1ju"]
 bg_color = Color(0.2338984, 0.46504986, 2.8878452e-07, 1)
-corner_radius_bottom_right = 21
-corner_radius_bottom_left = 21
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vo44l"]
+bg_color = Color(0.11332882, 0.2485328, 0, 1)
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h4tuv"]
+bg_color = Color(0.17202115, 0.35296363, 0, 1)
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8dsse"]
 bg_color = Color(0.35698137, 0.0026406755, 0.022013538, 1)
@@ -18,8 +28,28 @@ border_width_top = 5
 border_width_right = 10
 border_width_bottom = 5
 border_color = Color(0.35686275, 0.003921569, 0.023529412, 1)
-corner_radius_bottom_right = 21
-corner_radius_bottom_left = 21
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1uypx"]
+bg_color = Color(0.17895567, 0.0017332576, 0.00517701, 1)
+border_width_left = 10
+border_width_top = 5
+border_width_right = 10
+border_width_bottom = 5
+border_color = Color(0.18039216, 0, 0.003921569, 1)
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r28mx"]
+bg_color = Color(0.26665527, 0.0021801426, 0.013007961, 1)
+border_width_left = 10
+border_width_top = 5
+border_width_right = 10
+border_width_bottom = 5
+border_color = Color(0.26666668, 0.003921569, 0.011764706, 1)
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [sub_resource type="LabelSettings" id="LabelSettings_bdvg5"]
 font = ExtResource("3_1uypx")
@@ -36,7 +66,8 @@ bg_color = Color(0.015686275, 0, 0.105882354, 0.4627451)
 
 [node name="Slot_habilidade" type="TextureRect" unique_id=1336906291]
 custom_minimum_size = Vector2(155.07, 213.73)
-texture = ExtResource("1_by7cv")
+texture = ExtResource("1_vo44l")
+expand_mode = 5
 script = ExtResource("2_1uypx")
 
 [node name="Icone_habilidade" type="TextureRect" parent="." unique_id=1197315966]
@@ -53,15 +84,18 @@ offset_bottom = 39.499992
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_vo44l")
+expand_mode = 1
 
 [node name="Button_equipar" type="Button" parent="." unique_id=593583409]
 layout_mode = 0
 offset_top = 171.0
 offset_right = 155.0
-offset_bottom = 213.5
+offset_bottom = 214.0
 theme_override_fonts/font = ExtResource("3_1uypx")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_do1ju")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vo44l")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h4tuv")
 text = "Equipar"
 
 [node name="Button_desequipar" type="Button" parent="." unique_id=2104126389]
@@ -72,10 +106,11 @@ offset_bottom = 213.5
 theme_override_fonts/font = ExtResource("3_1uypx")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_8dsse")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1uypx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_r28mx")
 text = "Desequipar"
 
 [node name="Bloqueado" type="TextureRect" parent="." unique_id=132058131]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -83,6 +118,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_r28mx")
+expand_mode = 1
 
 [node name="Label" type="Label" parent="Bloqueado" unique_id=690522005]
 layout_mode = 0
@@ -105,4 +141,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_xu4j8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_5ck5d")
 theme_override_styles/hover = SubResource("StyleBoxFlat_livba")
 
+[connection signal="pressed" from="Button_equipar" to="." method="_on_button_equipar_pressed"]
+[connection signal="pressed" from="Button_desequipar" to="." method="_on_button_desequipar_pressed"]
 [connection signal="pressed" from="Button_descricao" to="." method="_on_button_descricao_pressed"]

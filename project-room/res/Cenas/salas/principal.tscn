@@ -20,6 +20,7 @@
 [ext_resource type="FontFile" uid="uid://c8fuwo26umfpq" path="res://res/design/Font/PixelPurl.ttf" id="18_rr14d"]
 [ext_resource type="Texture2D" uid="uid://durywh67qgeg2" path="res://res/design/Design-Robot Slayer/sprits/moeda.png" id="18_v8hnl"]
 [ext_resource type="PackedScene" uid="uid://bhmku6r2vq1l3" path="res://res/Cenas/menu/Tela_morte.tscn" id="19_x2ond"]
+[ext_resource type="Texture2D" uid="uid://dh22iaoe4mscr" path="res://res/design/Design-Robot Slayer/sprits/moldura de mods.png" id="20_rr14d"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_e81ng"]
 font = ExtResource("18_rr14d")
@@ -123,19 +124,35 @@ outline_color = Color(0.0861352, 1.4126375e-05, 0.3682633, 1)
 shadow_size = 5
 shadow_color = Color(1, 0.43529412, 0.3764706, 0.5294118)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6gb8d"]
+bg_color = Color(0.012254003, 0.013632284, 0.106257044, 0.78039217)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.19607843, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 11
+corner_radius_top_right = 11
+corner_radius_bottom_right = 11
+corner_radius_bottom_left = 11
+
+[sub_resource type="LabelSettings" id="LabelSettings_r4n4n"]
+font = ExtResource("18_rr14d")
+font_size = 29
+font_color = Color(0.6117647, 1, 1, 1)
+shadow_color = Color(0.058517456, 2.2140146e-06, 0.32859713, 0.69411767)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2dd3m"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nqcv1"]
+bg_color = Color(0.007843138, 0.007843138, 0.05882353, 0.6666667)
+
 [node name="sala" type="Node2D" unique_id=1911979741 node_paths=PackedStringArray("salas_tutorial", "salas")]
 script = ExtResource("1_8fdge")
 salas_tutorial = [NodePath("Salas/Sala"), NodePath("Salas/Sala02"), NodePath("Salas/Sala03")]
 salas = [NodePath("Salas/Sala4"), NodePath("Salas/Sala5"), NodePath("Salas/Sala6"), NodePath("Salas/Sala7"), NodePath("Salas/Sala8"), NodePath("Salas/Sala9"), NodePath("Salas/Sala10"), NodePath("Salas/Sala11"), NodePath("Salas/Sala12"), NodePath("Salas/Sala13"), NodePath("Salas/Sala14")]
-duracao_fade = null
-crescimento_status_por_sala = null
-crescimento_xp_por_sala = null
-crescimento_velocidade_por_sala = null
-limite_multiplicador_status = null
-limite_multiplicador_xp = null
-limite_multiplicador_velocidade = null
-limite_multiplicador_moedas = null
-status_inicial_player_referencia = null
 
 [node name="Salas" type="Node2D" parent="." unique_id=1083966473]
 
@@ -264,6 +281,133 @@ layout_mode = 2
 texture = ExtResource("18_v8hnl")
 expand_mode = 3
 stretch_mode = 5
+
+[node name="Panel" type="Panel" parent="Hud" unique_id=1317372251]
+offset_left = 906.0
+offset_top = 529.0
+offset_right = 1134.0
+offset_bottom = 630.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6gb8d")
+
+[node name="GridContainer" type="GridContainer" parent="Hud" unique_id=2025984811]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -219.0
+offset_top = -114.0
+offset_right = -31.0
+offset_bottom = -27.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = -3
+columns = 3
+
+[node name="Label" type="Label" parent="Hud/GridContainer" unique_id=1762087036]
+layout_mode = 2
+text = "Z"
+label_settings = SubResource("LabelSettings_r4n4n")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Label2" type="Label" parent="Hud/GridContainer" unique_id=1198802024]
+layout_mode = 2
+text = "X"
+label_settings = SubResource("LabelSettings_r4n4n")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Label3" type="Label" parent="Hud/GridContainer" unique_id=725386092]
+layout_mode = 2
+text = "C"
+label_settings = SubResource("LabelSettings_r4n4n")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="Hud/GridContainer" unique_id=1430752490]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("20_rr14d")
+expand_mode = 1
+
+[node name="Icone_habilidade_hud" type="TextureRect" parent="Hud/GridContainer/TextureRect" unique_id=1578394112]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Hud/GridContainer/TextureRect" unique_id=2104460265]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_2dd3m")
+theme_override_styles/fill = SubResource("StyleBoxFlat_nqcv1")
+fill_mode = 3
+show_percentage = false
+
+[node name="TextureRect2" type="TextureRect" parent="Hud/GridContainer" unique_id=1978948481]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("20_rr14d")
+expand_mode = 1
+
+[node name="Icone_habilidade_hud_2" type="TextureRect" parent="Hud/GridContainer/TextureRect2" unique_id=46777425]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 54.0
+offset_bottom = 54.0
+expand_mode = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Hud/GridContainer/TextureRect2" unique_id=901587369]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_2dd3m")
+theme_override_styles/fill = SubResource("StyleBoxFlat_nqcv1")
+fill_mode = 3
+show_percentage = false
+
+[node name="TextureRect3" type="TextureRect" parent="Hud/GridContainer" unique_id=805406685]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("20_rr14d")
+expand_mode = 1
+
+[node name="Icone_habilidade_hud_3" type="TextureRect" parent="Hud/GridContainer/TextureRect3" unique_id=1041481597]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 54.0
+offset_bottom = 54.0
+expand_mode = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Hud/GridContainer/TextureRect3" unique_id=25687027]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_2dd3m")
+theme_override_styles/fill = SubResource("StyleBoxFlat_nqcv1")
+fill_mode = 3
+show_percentage = false
 
 [node name="TalaMorte" parent="." unique_id=314636302 instance=ExtResource("19_x2ond")]
 visible = false

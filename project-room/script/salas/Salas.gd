@@ -12,6 +12,8 @@ var sem_inimigos_na_lista_de_alvos: bool = true
 var inimigos_na_lista_de_alvos: Array[inimigo] = []
 var porta_liberada: bool = false
 
+@onready var dificuldade: Label = $StaticBody2D/ColorRect2/Label
+
 func _ready() -> void:
 	protagonista_ref = get_node_or_null(protagonista_path) as protagonista
 	_configurar_range_porta(false)
@@ -80,7 +82,6 @@ func _on_range_porta_body_entered(body: Node) -> void:
 	var player := body as protagonista
 	if player == null:
 		return
-
 	var gerenciador_salas := _buscar_gerenciador_salas()
 	if gerenciador_salas != null:
 		gerenciador_salas.solicitar_transicao_de_sala(

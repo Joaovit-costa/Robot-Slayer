@@ -1,11 +1,16 @@
 [gd_scene format=3 uid="uid://m71q60ei4x7t"]
 
-[ext_resource type="Script" uid="uid://bjkwu5ioaqdeg" path="res://script/menu/menu_habilidades.gd" id="1_cid6v"]
+[ext_resource type="Script" uid="uid://bjkwu5ioaqdeg" path="res://script/menu/Habilidades/menu_habilidades.gd" id="1_cid6v"]
 [ext_resource type="Texture2D" uid="uid://disji1duvvnmh" path="res://res/design/menus/Botão_Vida.png" id="1_do1ju"]
-[ext_resource type="FontFile" uid="uid://c8fuwo26umfpq" path="res://res/design/Font/PixelPurl.ttf" id="2_on3vi"]
+[ext_resource type="PackedScene" uid="uid://ddj637wycrvog" path="res://res/Cenas/menu/Habilidades/Slot_equipados.tscn" id="2_8cguq"]
 [ext_resource type="PackedScene" uid="uid://5ee6001d602f" path="res://res/Cenas/menu/Habilidades/slot_habilidade.tscn" id="4_do1ju"]
+[ext_resource type="Texture2D" uid="uid://c71clt78eof7i" path="res://res/design/menus/Botão_Ataque (2).png" id="5_4btqe"]
+[ext_resource type="Texture2D" uid="uid://bpynhwi2u6nt0" path="res://res/design/Design-Robot Slayer/sprits/camp icone.png" id="6_4btqe"]
 [ext_resource type="Texture2D" uid="uid://4s5dtyt2xg1i" path="res://res/design/menus/Botão_Fechar.png" id="6_8cguq"]
+[ext_resource type="Texture2D" uid="uid://b3jc8ihfrnjko" path="res://res/design/Design-Robot Slayer/sprits/mira icone.png" id="7_8cguq"]
+[ext_resource type="Texture2D" uid="uid://gs72yisvf88b" path="res://res/design/Design-Robot Slayer/sprits/icone rage.png" id="8_7bitv"]
 [ext_resource type="PackedScene" uid="uid://buqemofm4djmi" path="res://res/Cenas/menu/Habilidades/destalhes_habilidades.tscn" id="8_rrrd5"]
+[ext_resource type="Texture2D" uid="uid://bu71dy21tkce3" path="res://res/design/menus/Botão_Inteligencia.png" id="9_d0irt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7bitv"]
 bg_color = Color(0.0032683366, 0, 0.15381888, 1)
@@ -17,10 +22,6 @@ corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
-
-[sub_resource type="LabelSettings" id="LabelSettings_kc8mt"]
-font = ExtResource("2_on3vi")
-font_size = 47
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d0irt"]
 bg_color = Color(0.44160062, 0.9567968, 0.9821724, 1)
@@ -57,106 +58,39 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_7bitv")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel" unique_id=1060010236]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -223.0
+offset_right = 355.0
+offset_bottom = 223.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 6
+theme_override_constants/separation = 39
 
-[node name="Control" type="Control" parent="Panel/HBoxContainer" unique_id=1302535485]
-custom_minimum_size = Vector2(138.42, 0)
+[node name="Control" type="VBoxContainer" parent="Panel/HBoxContainer" unique_id=1658015874]
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 53
+alignment = 1
 
-[node name="TextureButton3" type="TextureButton" parent="Panel/HBoxContainer/Control" unique_id=1816662585]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -37.20999
-offset_top = 102.0
-offset_right = 42.79001
-offset_bottom = 182.0
-grow_horizontal = 2
-grow_vertical = 2
-texture_normal = ExtResource("1_do1ju")
-stretch_mode = 0
+[node name="SlotEquipados" parent="Panel/HBoxContainer/Control" unique_id=245547831 node_paths=PackedStringArray("Tela_descricao") instance=ExtResource("2_8cguq")]
+layout_mode = 2
+Tela_descricao = NodePath("../../../../DestalhesHabilidades")
+tecla = "Z"
 
-[node name="Label" type="Label" parent="Panel/HBoxContainer/Control/TextureButton3" unique_id=1230170420]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_top = -37.0
-offset_right = 20.0
-offset_bottom = 4.0
-grow_horizontal = 2
-text = "C"
-label_settings = SubResource("LabelSettings_kc8mt")
-horizontal_alignment = 1
+[node name="SlotEquipados2" parent="Panel/HBoxContainer/Control" unique_id=1702581862 node_paths=PackedStringArray("Tela_descricao") instance=ExtResource("2_8cguq")]
+layout_mode = 2
+Tela_descricao = NodePath("../../../../DestalhesHabilidades")
+tecla = "X"
 
-[node name="TextureButton2" type="TextureButton" parent="Panel/HBoxContainer/Control" unique_id=15671742]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -37.20999
-offset_top = -168.0
-offset_right = 42.79001
-offset_bottom = -88.0
-grow_horizontal = 2
-grow_vertical = 2
-texture_normal = ExtResource("1_do1ju")
-stretch_mode = 0
-
-[node name="Label" type="Label" parent="Panel/HBoxContainer/Control/TextureButton2" unique_id=1222378914]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_top = -37.0
-offset_right = 20.0
-offset_bottom = 4.0
-grow_horizontal = 2
-text = "Z"
-label_settings = SubResource("LabelSettings_kc8mt")
-horizontal_alignment = 1
-
-[node name="TextureButton" type="TextureButton" parent="Panel/HBoxContainer/Control" unique_id=1795186299]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -37.20999
-offset_top = -33.0
-offset_right = 42.79001
-offset_bottom = 47.0
-grow_horizontal = 2
-grow_vertical = 2
-texture_normal = ExtResource("1_do1ju")
-stretch_mode = 0
-
-[node name="Label" type="Label" parent="Panel/HBoxContainer/Control/TextureButton" unique_id=1320812284]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_top = -37.0
-offset_right = 20.0
-offset_bottom = 4.0
-grow_horizontal = 2
-text = "X"
-label_settings = SubResource("LabelSettings_kc8mt")
-horizontal_alignment = 1
+[node name="SlotEquipados3" parent="Panel/HBoxContainer/Control" unique_id=1088342039 node_paths=PackedStringArray("Tela_descricao") instance=ExtResource("2_8cguq")]
+layout_mode = 2
+Tela_descricao = NodePath("../../../../DestalhesHabilidades")
+tecla = "C"
 
 [node name="Panel" type="Panel" parent="Panel/HBoxContainer" unique_id=1511010511]
 custom_minimum_size = Vector2(1.395, 0)
@@ -173,27 +107,57 @@ columns = 3
 
 [node name="Slot_habilidade" parent="Panel/HBoxContainer/GridContainer" unique_id=1336906291 node_paths=PackedStringArray("Tela_descricao") instance=ExtResource("4_do1ju")]
 layout_mode = 2
+Textura_habilidade = ExtResource("5_4btqe")
+Nome_habilidade = "Investida"
+Descrico_habilidade = "Realiza uma rápida investida na direção em que o jogador está olhando, permitindo atravessar rapidamente pequenas distâncias e escapar de ataques inimigos."
+Missao_habilidade = "Completar o tutorial."
 Tela_descricao = NodePath("../../../../DestalhesHabilidades")
+cooldown = 1.0
 
 [node name="Slot_habilidade2" parent="Panel/HBoxContainer/GridContainer" unique_id=521626192 node_paths=PackedStringArray("Tela_descricao") instance=ExtResource("4_do1ju")]
 layout_mode = 2
+Textura_habilidade = ExtResource("1_do1ju")
+Nome_habilidade = "Míssil de Precisão"
+Descrico_habilidade = "Dispara um míssil em linha reta na direção em que o jogador está mirando. O projétil causa dano aos inimigos atingidos e seu poder aumenta conforme a Força e a Inteligência do jogador."
+Missao_habilidade = "Conclua 5 salas de combate."
 Tela_descricao = NodePath("../../../../DestalhesHabilidades")
+cooldown = 7.0
 
 [node name="Slot_habilidade3" parent="Panel/HBoxContainer/GridContainer" unique_id=1925818103 node_paths=PackedStringArray("Tela_descricao") instance=ExtResource("4_do1ju")]
 layout_mode = 2
+Textura_habilidade = ExtResource("6_4btqe")
+Nome_habilidade = "Campo de Força"
+Descrico_habilidade = "Ativa um campo de energia ao redor do jogador capaz de bloquear completamente os ataques inimigos. O campo possui resistência própria e permanece ativo até que seja destruído. Sua resistência aumenta conforme a Defesa e a Vitalidade do jogador."
+Missao_habilidade = "Sofra 200 pontos de dano durante suas partidas sem morrer."
 Tela_descricao = NodePath("../../../../DestalhesHabilidades")
+cooldown = 30.0
 
 [node name="Slot_habilidade4" parent="Panel/HBoxContainer/GridContainer" unique_id=365830002 node_paths=PackedStringArray("Tela_descricao") instance=ExtResource("4_do1ju")]
 layout_mode = 2
+Textura_habilidade = ExtResource("7_8cguq")
+Nome_habilidade = "Míssil Teleguiado"
+Descrico_habilidade = "Dispara um míssil equipado com um sistema de rastreamento capaz de perseguir os inimigos. Seu dano aumenta conforme a Força e a Inteligência do jogador."
+Missao_habilidade = "Derrote 30 inimigos utilizando o Míssil de Precisão."
 Tela_descricao = NodePath("../../../../DestalhesHabilidades")
+cooldown = 14.0
 
 [node name="Slot_habilidade5" parent="Panel/HBoxContainer/GridContainer" unique_id=1442075183 node_paths=PackedStringArray("Tela_descricao") instance=ExtResource("4_do1ju")]
 layout_mode = 2
+Textura_habilidade = ExtResource("9_d0irt")
+Nome_habilidade = "Investida Ofensiva"
+Descrico_habilidade = "Uma versão aprimorada do Dash. Durante a investida, o jogador causa dano aos inimigos atingidos pelo caminho. O dano aumenta conforme a Força do jogador."
+Missao_habilidade = "Derrote 35 inimigos utilizando o Dash."
 Tela_descricao = NodePath("../../../../DestalhesHabilidades")
+cooldown = 5.0
 
 [node name="Slot_habilidade6" parent="Panel/HBoxContainer/GridContainer" unique_id=1508117521 node_paths=PackedStringArray("Tela_descricao") instance=ExtResource("4_do1ju")]
 layout_mode = 2
+Textura_habilidade = ExtResource("8_7bitv")
+Nome_habilidade = "Fúria"
+Descrico_habilidade = "Ativa um estado de sobrecarga que aumenta drasticamente a Força e a Defesa do jogador, mas reduz temporariamente sua Inteligência. Durante o efeito, o jogador se torna mais resistente e causa mais dano."
+Missao_habilidade = "Conclua 3 salas difíceis sem utilizar uma poção de cura."
 Tela_descricao = NodePath("../../../../DestalhesHabilidades")
+cooldown = 50.0
 
 [node name="TextureButton" type="TextureButton" parent="Panel" unique_id=1207112556]
 layout_mode = 1

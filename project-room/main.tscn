@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://mnt8tq7ix0xp" path="res://res/Cenas/menu/status/menu_status.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://drj31x4lf5a5t" path="res://res/Cenas/salas/tutorial.tscn" id="6_tutorial"]
 [ext_resource type="PackedScene" uid="uid://m71q60ei4x7t" path="res://res/Cenas/menu/Habilidades/menu_habilidades.tscn" id="7_5vw27"]
-[ext_resource type="Script" uid="uid://bjkwu5ioaqdeg" path="res://script/menu/menu_habilidades.gd" id="8_kek77"]
 
 [node name="Node2D" type="Node2D" unique_id=434612123]
 script = ExtResource("1_main")
@@ -38,7 +37,6 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 
 [node name="MenuHabilidades" parent="CanvasLayer" unique_id=885926616 instance=ExtResource("7_5vw27")]
-script = ExtResource("8_kek77")
 
 [node name="CanvasLayerTutorial" type="CanvasLayer" parent="." unique_id=755193937]
 layer = 3

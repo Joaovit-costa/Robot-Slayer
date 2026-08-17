@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://ddj637wycrvog"]
+
+[ext_resource type="Texture2D" uid="uid://dh22iaoe4mscr" path="res://res/design/Design-Robot Slayer/sprits/moldura de mods.png" id="1_ex8w1"]
+[ext_resource type="Script" uid="uid://bgbaj8uyxstmj" path="res://script/menu/Habilidades/slot_equipados.gd" id="2_1381e"]
+[ext_resource type="FontFile" uid="uid://c8fuwo26umfpq" path="res://res/design/Font/PixelPurl.ttf" id="3_uc6by"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lgmtx"]
+font = ExtResource("3_uc6by")
+font_size = 47
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m8xcp"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a4f12"]
+bg_color = Color(0.015686275, 0, 0.105882354, 0.6627451)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qxenb"]
+bg_color = Color(0.015686275, 0, 0.105882354, 0.4627451)
+
+[node name="SlotEquipados" type="TextureRect" unique_id=1665465541]
+custom_minimum_size = Vector2(80, 80)
+offset_right = 80.0
+offset_bottom = 80.0
+texture = ExtResource("1_ex8w1")
+expand_mode = 1
+script = ExtResource("2_1381e")
+
+[node name="Label" type="Label" parent="." unique_id=498860144]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -37.0
+offset_right = 20.0
+offset_bottom = 4.0
+grow_horizontal = 2
+text = "C"
+label_settings = SubResource("LabelSettings_lgmtx")
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=221099157]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.075
+anchor_top = 0.075
+anchor_right = 0.925
+anchor_bottom = 0.925
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Button_descricao" type="Button" parent="." unique_id=879592003]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_m8xcp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a4f12")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qxenb")
+
+[connection signal="pressed" from="Button_descricao" to="." method="_on_button_descricao_pressed"]
