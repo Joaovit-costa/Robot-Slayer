@@ -56,16 +56,6 @@ func solicitar_transicao_de_sala(
 	if transicao_em_andamento:
 		return
 
-	var player := get_tree().get_first_node_in_group("player") as protagonista
-
-	if player == null:
-		return
-
-	if _sala_origem.dificuldade.text == "Difícil" and not player.curou_na_sala:
-		player.salas_dificeis_sem_cura += 1
-
-	player.curou_na_sala = false
-
 	# Salva ANTES de criar o próximo player.
 	SaveManager.salvar_estado_atual()
 

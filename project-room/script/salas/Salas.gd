@@ -82,12 +82,21 @@ func _on_range_porta_body_entered(body: Node) -> void:
 	var player := body as protagonista
 	if player == null:
 		return
+	
 	var gerenciador_salas := _buscar_gerenciador_salas()
+	
+	if dificuldade.text == "Difícil" and not player.curou_na_sala:
+		player.salas_dificeis_sem_cura += 1
+
+	player.curou_na_sala = false
+	SaveManager.solicitar_salvamento()
+	
 	if gerenciador_salas != null:
 		gerenciador_salas.solicitar_transicao_de_sala(
 			self,
 			cena_ao_entrar_na_porta
 		)
+
 		return
 
 	if not cena_ao_entrar_na_porta.is_empty():

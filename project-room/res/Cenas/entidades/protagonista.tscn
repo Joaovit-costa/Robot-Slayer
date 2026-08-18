@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://cdgeykgg3b6sh" path="res://script/entidades/protagonista.gd" id="1_uw4sx"]
 [ext_resource type="PackedScene" uid="uid://c0jpn3qbvot8p" path="res://res/Cenas/entidades/missil_reto.tscn" id="2_tdguc"]
+[ext_resource type="PackedScene" uid="uid://cq0r3018ivq6x" path="res://res/Cenas/entidades/missil_teleguiado.tscn" id="3_bb0ik"]
 [ext_resource type="Texture2D" uid="uid://cbqmsmc45nyt3" path="res://res/design/Design-Robot Slayer/sprits/player.png" id="3_p6cgy"]
+[ext_resource type="PackedScene" uid="uid://da84djl2ehude" path="res://res/Cenas/entidades/escudo.tscn" id="5_bb0ik"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://cpf7i64nh7j40" path="res://res/walk.tres" id="5_yq3lb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bb0ik"]
@@ -1021,11 +1023,15 @@ states/cura/position = Vector2(560, 136.8)
 states/morte/node = SubResource("AnimationNodeAnimation_gsa6n")
 states/morte/position = Vector2(560, 46)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_yq3lb"]
+radius = 49.0
+
 [node name="Protagonista" type="CharacterBody2D" unique_id=369473398 groups=["player"]]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_uw4sx")
 cena_missil = ExtResource("2_tdguc")
+cena_missil_teleguiado = ExtResource("3_bb0ik")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1873306950]
 position = Vector2(3.5, -2)
@@ -1063,4 +1069,18 @@ parameters/Attack/blend_position = Vector2(0, 0)
 parameters/Idle/blend_position = Vector2(0, 0)
 parameters/Walk/blend_position = Vector2(0, 0.22727275)
 
+[node name="Escudo" parent="." unique_id=1615020640 instance=ExtResource("5_bb0ik")]
+visible = false
+
+[node name="Area2D" type="Area2D" parent="." unique_id=824339896]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=895303382]
+shape = SubResource("CircleShape2D_yq3lb")
+disabled = true
+
 [connection signal="body_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_dash_body_entered"]
+
+[editable path="Escudo"]

@@ -32,9 +32,13 @@ func _process(_delta: float) -> void:
 		if slot.Nome == Nome_habilidade:
 			esta_equipada = true
 			break
-
-	button_equipar.visible = not esta_equipada
-	button_desequipar.visible = esta_equipada
+	
+	if bloqueado.visible:
+		button_equipar.visible = false
+		button_desequipar.visible = false
+	else:
+		button_equipar.visible = not esta_equipada
+		button_desequipar.visible = esta_equipada
 
 
 func _on_button_descricao_pressed() -> void:

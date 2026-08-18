@@ -1,15 +1,13 @@
 [gd_scene format=3 uid="uid://c0jpn3qbvot8p"]
 
 [ext_resource type="Script" uid="uid://c4b4u4v4w11nu" path="res://script/entidades/missil_reto.gd" id="1_t7pdv"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4nmpe"]
-bg_color = Color(0, 0, 0, 1)
+[ext_resource type="Texture2D" uid="uid://c2026mmogcetb" path="res://res/design/Design-Robot Slayer/sprits/roket_H.png" id="2_qh8qc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t7pdv"]
-size = Vector2(19, 7)
+size = Vector2(39.5, 15)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t7pdv"]
-radius = 21.0
+radius = 24.0
 
 [node name="MissilReto" type="Control" unique_id=1302750138]
 layout_mode = 3
@@ -20,18 +18,21 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_t7pdv")
 
-[node name="Panel" type="Panel" parent="." unique_id=1315257222]
+[node name="Panel" type="TextureRect" parent="." unique_id=1857243594]
 layout_mode = 0
-offset_right = 19.0
-offset_bottom = 7.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_4nmpe")
+offset_left = -21.0
+offset_top = -13.0
+offset_right = 29.26667
+offset_bottom = 13.0
+texture = ExtResource("2_qh8qc")
+expand_mode = 1
 
 [node name="Area2D" type="Area2D" parent="Panel" unique_id=363390943]
 collision_layer = 0
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Area2D" unique_id=355866921]
-position = Vector2(9.5, 3.5)
+position = Vector2(20.25, 13.5)
 shape = SubResource("RectangleShape2D_t7pdv")
 
 [node name="AreaExplosao" type="Area2D" parent="." unique_id=1654679119]
@@ -39,5 +40,4 @@ collision_layer = 0
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaExplosao" unique_id=1079326986]
-position = Vector2(10, 4)
 shape = SubResource("CircleShape2D_t7pdv")

@@ -1,16 +1,16 @@
 [gd_scene format=3 uid="uid://m71q60ei4x7t"]
 
 [ext_resource type="Script" uid="uid://bjkwu5ioaqdeg" path="res://script/menu/Habilidades/menu_habilidades.gd" id="1_cid6v"]
-[ext_resource type="Texture2D" uid="uid://disji1duvvnmh" path="res://res/design/menus/Botão_Vida.png" id="1_do1ju"]
 [ext_resource type="PackedScene" uid="uid://ddj637wycrvog" path="res://res/Cenas/menu/Habilidades/Slot_equipados.tscn" id="2_8cguq"]
+[ext_resource type="Texture2D" uid="uid://dj245xxdccmeu" path="res://res/design/Design-Robot Slayer/sprits/dash.png" id="4_8cguq"]
 [ext_resource type="PackedScene" uid="uid://5ee6001d602f" path="res://res/Cenas/menu/Habilidades/slot_habilidade.tscn" id="4_do1ju"]
-[ext_resource type="Texture2D" uid="uid://c71clt78eof7i" path="res://res/design/menus/Botão_Ataque (2).png" id="5_4btqe"]
+[ext_resource type="Texture2D" uid="uid://lkldbt5e4ryx" path="res://res/design/Design-Robot Slayer/sprits/roket.png" id="5_7bitv"]
 [ext_resource type="Texture2D" uid="uid://bpynhwi2u6nt0" path="res://res/design/Design-Robot Slayer/sprits/camp icone.png" id="6_4btqe"]
 [ext_resource type="Texture2D" uid="uid://4s5dtyt2xg1i" path="res://res/design/menus/Botão_Fechar.png" id="6_8cguq"]
 [ext_resource type="Texture2D" uid="uid://b3jc8ihfrnjko" path="res://res/design/Design-Robot Slayer/sprits/mira icone.png" id="7_8cguq"]
 [ext_resource type="Texture2D" uid="uid://gs72yisvf88b" path="res://res/design/Design-Robot Slayer/sprits/icone rage.png" id="8_7bitv"]
+[ext_resource type="Texture2D" uid="uid://cx02bhnm5pfbm" path="res://res/design/Design-Robot Slayer/sprits/dash punch.png" id="8_kc8mt"]
 [ext_resource type="PackedScene" uid="uid://buqemofm4djmi" path="res://res/Cenas/menu/Habilidades/destalhes_habilidades.tscn" id="8_rrrd5"]
-[ext_resource type="Texture2D" uid="uid://bu71dy21tkce3" path="res://res/design/menus/Botão_Inteligencia.png" id="9_d0irt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7bitv"]
 bg_color = Color(0.0032683366, 0, 0.15381888, 1)
@@ -80,17 +80,17 @@ alignment = 1
 [node name="SlotEquipados" parent="Panel/HBoxContainer/Control" unique_id=245547831 node_paths=PackedStringArray("Tela_descricao") instance=ExtResource("2_8cguq")]
 layout_mode = 2
 Tela_descricao = NodePath("../../../../DestalhesHabilidades")
-tecla = "Z"
+tecla = "C"
 
 [node name="SlotEquipados2" parent="Panel/HBoxContainer/Control" unique_id=1702581862 node_paths=PackedStringArray("Tela_descricao") instance=ExtResource("2_8cguq")]
 layout_mode = 2
 Tela_descricao = NodePath("../../../../DestalhesHabilidades")
-tecla = "X"
+tecla = "V"
 
 [node name="SlotEquipados3" parent="Panel/HBoxContainer/Control" unique_id=1088342039 node_paths=PackedStringArray("Tela_descricao") instance=ExtResource("2_8cguq")]
 layout_mode = 2
 Tela_descricao = NodePath("../../../../DestalhesHabilidades")
-tecla = "C"
+tecla = "B"
 
 [node name="Panel" type="Panel" parent="Panel/HBoxContainer" unique_id=1511010511]
 custom_minimum_size = Vector2(1.395, 0)
@@ -107,7 +107,7 @@ columns = 3
 
 [node name="Slot_habilidade" parent="Panel/HBoxContainer/GridContainer" unique_id=1336906291 node_paths=PackedStringArray("Tela_descricao") instance=ExtResource("4_do1ju")]
 layout_mode = 2
-Textura_habilidade = ExtResource("5_4btqe")
+Textura_habilidade = ExtResource("4_8cguq")
 Nome_habilidade = "Investida"
 Descrico_habilidade = "Realiza uma rápida investida na direção em que o jogador está olhando, permitindo atravessar rapidamente pequenas distâncias e escapar de ataques inimigos."
 Missao_habilidade = "Completar o tutorial."
@@ -116,7 +116,7 @@ cooldown = 1.0
 
 [node name="Slot_habilidade2" parent="Panel/HBoxContainer/GridContainer" unique_id=521626192 node_paths=PackedStringArray("Tela_descricao") instance=ExtResource("4_do1ju")]
 layout_mode = 2
-Textura_habilidade = ExtResource("1_do1ju")
+Textura_habilidade = ExtResource("5_7bitv")
 Nome_habilidade = "Míssil de Precisão"
 Descrico_habilidade = "Dispara um míssil em linha reta na direção em que o jogador está mirando. O projétil causa dano aos inimigos atingidos e seu poder aumenta conforme a Força e a Inteligência do jogador."
 Missao_habilidade = "Conclua 5 salas de combate."
@@ -139,16 +139,16 @@ Nome_habilidade = "Míssil Teleguiado"
 Descrico_habilidade = "Dispara um míssil equipado com um sistema de rastreamento capaz de perseguir os inimigos. Seu dano aumenta conforme a Força e a Inteligência do jogador."
 Missao_habilidade = "Derrote 30 inimigos utilizando o Míssil de Precisão."
 Tela_descricao = NodePath("../../../../DestalhesHabilidades")
-cooldown = 14.0
+cooldown = 2.0
 
 [node name="Slot_habilidade5" parent="Panel/HBoxContainer/GridContainer" unique_id=1442075183 node_paths=PackedStringArray("Tela_descricao") instance=ExtResource("4_do1ju")]
 layout_mode = 2
-Textura_habilidade = ExtResource("9_d0irt")
+Textura_habilidade = ExtResource("8_kc8mt")
 Nome_habilidade = "Investida Ofensiva"
 Descrico_habilidade = "Uma versão aprimorada do Dash. Durante a investida, o jogador causa dano aos inimigos atingidos pelo caminho. O dano aumenta conforme a Força do jogador."
 Missao_habilidade = "Derrote 35 inimigos utilizando o Dash."
 Tela_descricao = NodePath("../../../../DestalhesHabilidades")
-cooldown = 5.0
+cooldown = 3.5
 
 [node name="Slot_habilidade6" parent="Panel/HBoxContainer/GridContainer" unique_id=1508117521 node_paths=PackedStringArray("Tela_descricao") instance=ExtResource("4_do1ju")]
 layout_mode = 2

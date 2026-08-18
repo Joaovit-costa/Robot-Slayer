@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://cq0r3018ivq6x"]
+
+[ext_resource type="Script" uid="uid://bpgx76a742wep" path="res://script/entidades/missil_teleguiado.gd" id="1_8s8nl"]
+[ext_resource type="Texture2D" uid="uid://c2026mmogcetb" path="res://res/design/Design-Robot Slayer/sprits/roket_H.png" id="2_0xqsq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qvnl3"]
+size = Vector2(28.75, 10.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mvqex"]
+radius = 17.029387
+
+[node name="MissilTeleguiado" type="Control" unique_id=1165391659]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_8s8nl")
+
+[node name="Panel" type="TextureRect" parent="." unique_id=148637152]
+layout_mode = 0
+offset_left = -16.0
+offset_top = -10.0
+offset_right = 20.733334
+offset_bottom = 9.0
+texture = ExtResource("2_0xqsq")
+expand_mode = 1
+
+[node name="Area2D" type="Area2D" parent="Panel" unique_id=22083089]
+collision_layer = 0
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Area2D" unique_id=1965016125]
+position = Vector2(15.625, 9.75)
+shape = SubResource("RectangleShape2D_qvnl3")
+
+[node name="AreaExplosao" type="Area2D" parent="." unique_id=2129712356]
+collision_layer = 0
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaExplosao" unique_id=1300122926]
+shape = SubResource("CircleShape2D_mvqex")

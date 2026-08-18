@@ -307,21 +307,21 @@ columns = 3
 
 [node name="Label" type="Label" parent="Hud/GridContainer" unique_id=1762087036]
 layout_mode = 2
-text = "Z"
+text = "C"
 label_settings = SubResource("LabelSettings_r4n4n")
 horizontal_alignment = 1
 vertical_alignment = 2
 
 [node name="Label2" type="Label" parent="Hud/GridContainer" unique_id=1198802024]
 layout_mode = 2
-text = "X"
+text = "V"
 label_settings = SubResource("LabelSettings_r4n4n")
 horizontal_alignment = 1
 vertical_alignment = 2
 
 [node name="Label3" type="Label" parent="Hud/GridContainer" unique_id=725386092]
 layout_mode = 2
-text = "C"
+text = "B"
 label_settings = SubResource("LabelSettings_r4n4n")
 horizontal_alignment = 1
 vertical_alignment = 2

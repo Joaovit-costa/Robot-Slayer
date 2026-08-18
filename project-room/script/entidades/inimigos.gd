@@ -330,6 +330,8 @@ func _processar_morte() -> void:
 		sprite.visible = true
 	if protagonista_ref.dash_ativo:
 		protagonista_ref.derrotados_utilizando_dash += 1
+	if protagonista_ref.ataque_com == "true":
+		protagonista_ref.inimigos_derrotados_usando_missil_reto += 1
 	barraVida.visible = false
 	alcance.queue_free()
 	colision.queue_free()

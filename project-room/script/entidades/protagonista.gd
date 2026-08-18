@@ -4,6 +4,7 @@ class_name protagonista
 # ============ REFERENCIAS ============
 @export var alvos: Array[inimigo]
 @export var cena_missil: PackedScene
+@export var cena_missil_teleguiado: PackedScene
 @onready var hud: Hud = get_tree().get_first_node_in_group("hud") as Hud
 
 @onready var alcance: Area2D = $Sprite2D/Area2D
@@ -20,6 +21,10 @@ var curando := false
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var animation_state = animation_tree.get("parameters/playback")
+@onready var escudo: Node2D = $Escudo
+@onready var vida_escudo: ProgressBar = $Escudo/ProgressBar
+@onready var area_dash_ofensivo: CollisionShape2D = $Area2D/CollisionShape2D
+
 
 @onready var Mecanicas = load("res://script/data/Mecanicas.gd")
 @onready var mecanicas = Mecanicas.new()
@@ -62,9 +67,11 @@ var dano_recebido_sem_morrer := 0
 var derrotados_utilizando_dash := 0
 var salas_dificeis_sem_cura := 0
 
-var ataque_com := ""
+var ataque_com := "false"
 var dash_ativo := false
+var furia_ativa := false
 var curou_na_sala := false
+var escudo_ativo := false
 
 # Sistema de cura
 var cooldownDaCura: float = 0.0
@@ -304,6 +311,15 @@ func _physics_process(delta: float) -> void:
 	if (Input.is_action_pressed("habilidade3") and habilidades[2].tempo_restante <= 0):
 		verificar_habilidade_equipada(2)
 	
+	if furia_ativa or escudo_ativo:
+		for hab in habilidades:
+			if hab.Nome == "Fúria" and furia_ativa:
+				hab.tempo_restante = hab.cooldown
+			if hab.Nome == "Campo de Força" and escudo_ativo:
+				hab.tempo_restante = hab.cooldown
+				if vida_escudo.value <= 0:
+					escudo_ativo = false
+					escudo.visible = false
 
 	# ============ MOVIMENTO FINAL ============
 	move_and_slide()
@@ -334,27 +350,47 @@ func verificar_habilidade_equipada(tecla):
 		Investida()
 	elif habilidades[tecla].Nome == "Míssil de Precisão":
 		_gerenciador_habilidades.usar_habilidade(habilidades[tecla])
-		disparar_missil_reto()
+		disparar_missil_reto(self)
 	elif habilidades[tecla].Nome == "Campo de Força":
 		_gerenciador_habilidades.usar_habilidade(habilidades[tecla])
-		print(habilidades[tecla].Nome)
+		campo_forca()
 	elif habilidades[tecla].Nome == "Míssil Teleguiado":
 		_gerenciador_habilidades.usar_habilidade(habilidades[tecla])
-		print(habilidades[tecla].Nome)
+		disparar_missil_teleguiado(self)
 	elif habilidades[tecla].Nome == "Investida Ofensiva":
 		_gerenciador_habilidades.usar_habilidade(habilidades[tecla])
-		print(habilidades[tecla].Nome)
+		investida_ofenciva()
 	elif habilidades[tecla].Nome == "Fúria":
 		_gerenciador_habilidades.usar_habilidade(habilidades[tecla])
-		print(habilidades[tecla].Nome)
+		furia()
 
 func Investida():
 	SPEED *= 7
 	dash_ativo = true
-	await get_tree().create_timer(0.15).timeout
+	await get_tree().create_timer(0.08).timeout
+	dash_ativo = false
 	SPEED /= 7
 
-func disparar_missil_reto() -> void:
+func investida_ofenciva():
+	SPEED *= 6
+	dash_ativo = true
+	area_dash_ofensivo.set_deferred("disabled", false)
+	await get_tree().create_timer(0.12).timeout
+	area_dash_ofensivo.set_deferred("disabled", true)
+	dash_ativo = false
+	SPEED /= 6
+
+func _on_area_dash_body_entered(body: Node2D) -> void:
+	if body.is_in_group("inimigos"):
+		body.receber_dano(forca * 0.6)
+		if body.vitalidade <= 0:
+				_acumular_drops_do_inimigo(body)
+				alvos.erase(body)
+				var sala_do_alvo := body.get_parent()
+				if sala_do_alvo != null:
+					sala_do_alvo.move_child(body, 1)
+
+func disparar_missil_reto(player: protagonista) -> void:
 	var missil := cena_missil.instantiate() as Missil
 
 	get_tree().current_scene.add_child(missil)
@@ -362,10 +398,44 @@ func disparar_missil_reto() -> void:
 	missil.global_position = global_position
 
 	var mouse_pos := get_global_mouse_position()
-	dano_missil = int((forca * 17 / 100) + (inteligencia * 9 / 100))
+	dano_missil = int((forca * 80 / 100) + (inteligencia * 20 / 100))
+	if furia_ativa:
+		dano_missil *= 1.6
 	var direcao := global_position.direction_to(mouse_pos)
 
-	missil.configurar(direcao, dano_missil)
+	missil.configurar(direcao, dano_missil, player)
+
+func disparar_missil_teleguiado(player: protagonista) -> void:
+	var missil_teleguiado := cena_missil_teleguiado.instantiate() as MissilTeleguiado
+
+	get_tree().current_scene.add_child(missil_teleguiado)
+
+	missil_teleguiado.global_position = global_position
+
+	var mouse_pos := get_global_mouse_position()
+	dano_missil = int((forca * 35 / 100) + (inteligencia * 10 / 100))
+	if furia_ativa:
+		dano_missil *= 1.6
+	var direcao := global_position.direction_to(mouse_pos)
+
+	missil_teleguiado.configurar(direcao, dano_missil, player)
+
+func furia():
+	furia_ativa = true
+	SPEED *= 1.4
+	
+	await get_tree().create_timer(15.0).timeout
+	
+	furia_ativa = false
+	SPEED /= 1.4
+
+func campo_forca():
+	escudo_ativo = true
+	escudo.visible = true
+	vida_escudo.max_value = vidaInicial * 0.8
+	vida_escudo.value = vidaInicial * 0.8
+
+
 
 func _sincronizar_menu_status() -> void:
 	var menus_status := get_tree().get_nodes_in_group("menu_status")
@@ -429,7 +499,10 @@ func receber_dano(dano: int) -> void:
 		return
 
 	invulnerabilidade_restante = TEMPO_INVULNERABILIDADE_APOS_DANO
-	vidaAtual = max(vidaAtual - dano_final, 0)
+	if not escudo_ativo:
+		vidaAtual = max(vidaAtual - dano_final, 0)
+	else:
+		vida_escudo.value = max(vida_escudo.value - dano_final, 0)
 	_atualizar_barra_vida()
 	_solicitar_salvamento()
 
@@ -666,6 +739,10 @@ func _aplicar_dano_da_hitbox(body: Node) -> void:
 		forca * multiplicadores[indice_ataque_atual] - alvo.defesa,
 		1
 	)
+	
+	if furia_ativa:
+		dano *= 2
+	
 	# A animacao de dano deve apontar o inimigo para quem o atingiu.
 	var direcao_dano: Vector2 = alvo.global_position.direction_to(global_position)
 	alvo.receber_dano(dano, direcao_dano)
