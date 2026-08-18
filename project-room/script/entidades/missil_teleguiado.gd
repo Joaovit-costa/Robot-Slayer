@@ -37,7 +37,7 @@ func _encontrar_alvo() -> void:
 		if not inimigo is Node2D:
 			continue
 
-		if not is_instance_valid(inimigo):
+		if not is_instance_valid(inimigo) or inimigo.vitalidade == 0:
 			continue
 
 		var distancia := global_position.distance_to(inimigo.global_position)

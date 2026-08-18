@@ -24,6 +24,8 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if not is_instance_valid(player):
+		explodir()
 	if explodiu:
 		return
 
@@ -40,7 +42,8 @@ func configurar(direcao_missil: Vector2, dano_missil: int, jogador: protagonista
 
 
 func _on_area_2d_body_entered(corpo: Node2D) -> void:
-	if explodiu:
+	if explodiu or not is_instance_valid(player):
+		queue_free()
 		return
 
 	# Se atingiu um inimigo, causa o dano direto
@@ -55,7 +58,7 @@ func _on_area_2d_body_entered(corpo: Node2D) -> void:
 				var sala_do_alvo := corpo.get_parent()
 				if sala_do_alvo != null:
 					sala_do_alvo.move_child(corpo, 1)
-
+		
 		explodir()
 		return
 
@@ -96,5 +99,6 @@ func explodir() -> void:
 				if sala_do_alvo != null:
 					sala_do_alvo.move_child(inimigo, 1)
 	
-	player.ataque_com = "false"
+	if is_instance_valid(player):
+		player.ataque_com = "false"
 	queue_free()

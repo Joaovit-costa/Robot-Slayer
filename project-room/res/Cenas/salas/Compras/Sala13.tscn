@@ -319,6 +319,7 @@ size = Vector2(294, 210.5)
 [node name="Sala13" type="Node2D" unique_id=1991925353 node_paths=PackedStringArray("portas")]
 script = ExtResource("1_4uty1")
 portas = [NodePath("StaticBody2D/AnimatedSprite2D"), NodePath("StaticBody2D/AnimatedSprite2D2")]
+cena_ao_entrar_na_porta = "uid://b8350klyejcnk"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1024148448]
 collision_mask = 6

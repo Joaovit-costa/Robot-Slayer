@@ -7,11 +7,11 @@ extends Node2D
 @export var duracao_fade: float = 1.0
 
 @export_group("Balanceamento")
-@export var crescimento_status_por_sala: float = 0.12
-@export var crescimento_xp_por_sala: float = 0.18
-@export var crescimento_velocidade_por_sala: float = 0.03
-@export var limite_multiplicador_status: float = 4.0
-@export var limite_multiplicador_xp: float = 6.0
+@export var crescimento_status_por_sala: float = 0.24
+@export var crescimento_xp_por_sala: float = 0.2
+@export var crescimento_velocidade_por_sala: float = 0.0
+@export var limite_multiplicador_status: float = 10.0
+@export var limite_multiplicador_xp: float = 8.0
 @export var limite_multiplicador_velocidade: float = 1.6
 @export var limite_multiplicador_moedas: float = 4.0
 # Soma dos atributos iniciais reais do protagonista: 6 vitalidade + 6 defesa
@@ -339,7 +339,7 @@ func _balancear_sala(nova_sala: Node2D) -> void:
 	var referencia_player := _calcular_referencia_player(player)
 	var fator_player :float= max(0.8, referencia_player / float(max(status_inicial_player_referencia, 1)))
 	var multiplicador_status :float= clamp(
-		1.0 + (salas_passadas * crescimento_status_por_sala * fator_player),
+		1.0 + (salas_passadas / 2 * crescimento_status_por_sala * fator_player),
 		1.0,
 		limite_multiplicador_status
 	)

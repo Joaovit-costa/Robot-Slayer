@@ -153,6 +153,9 @@ bg_color = Color(0.007843138, 0.007843138, 0.05882353, 0.6666667)
 script = ExtResource("1_8fdge")
 salas_tutorial = [NodePath("Salas/Sala"), NodePath("Salas/Sala02"), NodePath("Salas/Sala03")]
 salas = [NodePath("Salas/Sala4"), NodePath("Salas/Sala5"), NodePath("Salas/Sala6"), NodePath("Salas/Sala7"), NodePath("Salas/Sala8"), NodePath("Salas/Sala9"), NodePath("Salas/Sala10"), NodePath("Salas/Sala11"), NodePath("Salas/Sala12"), NodePath("Salas/Sala13"), NodePath("Salas/Sala14")]
+crescimento_status_por_sala = 0.5
+crescimento_xp_por_sala = 0.35
+status_inicial_player_referencia = 19
 
 [node name="Salas" type="Node2D" parent="." unique_id=1083966473]
 
