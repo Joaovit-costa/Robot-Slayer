@@ -13,6 +13,9 @@ func _ready() -> void:
 	# mesmo quando o jogo estiver pausado.
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	
+	fundo.z_index = 1970
+	fundo.z_index = 1975
+	
 	# Garante que fique acima das outras interfaces.
 	layer = 10
 	

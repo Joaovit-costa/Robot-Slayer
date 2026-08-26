@@ -337,14 +337,14 @@ font_color = Color(0.9956657, 0.7662683, 0.6869504, 1)
 shadow_size = 0
 shadow_color = Color(0, 0, 0, 0.25882354)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ssuwu"]
+size = Vector2(533, 127.5)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sehwp"]
 size = Vector2(120, 61)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qk8l3"]
 size = Vector2(48, 163.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ssuwu"]
-size = Vector2(533, 127.5)
 
 [node name="Sala10" type="Node2D" unique_id=1864636230 node_paths=PackedStringArray("portas")]
 script = ExtResource("1_sehwp")
@@ -395,23 +395,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Range Porta" type="Node2D" parent="." unique_id=424796874]
-
-[node name="Area2D" type="Area2D" parent="Range Porta" unique_id=969111915]
-position = Vector2(294, 58)
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Range Porta/Area2D" unique_id=16629334]
-position = Vector2(271, 8)
-shape = SubResource("RectangleShape2D_sehwp")
-disabled = true
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Range Porta/Area2D" unique_id=1940285321]
-position = Vector2(848, 265)
-shape = SubResource("RectangleShape2D_qk8l3")
-disabled = true
-
 [node name="Protagonista" parent="." unique_id=369473398 node_paths=PackedStringArray("alvos") instance=ExtResource("4_qk8l3")]
 position = Vector2(50, 338)
 alvos = [NodePath("../Inimigo"), NodePath("../Inimigo2"), NodePath("../Inimigo3"), NodePath("../Inimigo4"), NodePath("../InimigoAtirador")]
@@ -448,6 +431,23 @@ texture = ExtResource("3_sehwp")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1819037900]
 position = Vector2(693.5, 477.25)
 shape = SubResource("RectangleShape2D_ssuwu")
+
+[node name="Range Porta" type="Node2D" parent="." unique_id=424796874]
+
+[node name="Area2D" type="Area2D" parent="Range Porta" unique_id=969111915]
+position = Vector2(294, 58)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Range Porta/Area2D" unique_id=16629334]
+position = Vector2(271, 8)
+shape = SubResource("RectangleShape2D_sehwp")
+disabled = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Range Porta/Area2D" unique_id=1940285321]
+position = Vector2(848, 265)
+shape = SubResource("RectangleShape2D_qk8l3")
+disabled = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

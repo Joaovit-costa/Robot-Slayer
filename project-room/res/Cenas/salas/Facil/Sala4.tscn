@@ -330,13 +330,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="LabelSettings" id="LabelSettings_2swl4"]
-font = ExtResource("5_eltl0")
-font_size = 22
-font_color = Color(0.73137057, 1, 0.7107406, 1)
-shadow_size = 0
-shadow_color = Color(0, 0, 0, 0.25882354)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gqxr0"]
 size = Vector2(120, 61)
 
@@ -345,6 +338,13 @@ size = Vector2(48, 163.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6r8fa"]
 size = Vector2(533, 127.5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2swl4"]
+font = ExtResource("5_eltl0")
+font_size = 22
+font_color = Color(0.73137057, 1, 0.7107406, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 0.25882354)
 
 [node name="Sala4" type="Node2D" unique_id=683622350 node_paths=PackedStringArray("portas")]
 script = ExtResource("1_vp3wm")
@@ -374,26 +374,6 @@ position = Vector2(1130, 309)
 scale = Vector2(2.0000014, 2.5396824)
 sprite_frames = SubResource("SpriteFrames_gqxr0")
 animation = &"porta_direita"
-
-[node name="ColorRect2" type="ColorRect" parent="StaticBody2D" unique_id=925904332]
-offset_left = 25.0
-offset_top = 116.0
-offset_right = 122.0
-offset_bottom = 144.0
-color = Color(0.35750926, 0.518128, 0, 1)
-
-[node name="Label" type="Label" parent="StaticBody2D/ColorRect2" unique_id=1911693515]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Fácil"
-label_settings = SubResource("LabelSettings_2swl4")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
 
 [node name="Range Porta" type="Node2D" parent="." unique_id=732461891]
 
@@ -436,6 +416,26 @@ texture = ExtResource("3_vp3wm")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=151107944]
 position = Vector2(693.5, 477.25)
 shape = SubResource("RectangleShape2D_6r8fa")
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=925904332]
+offset_left = 25.0
+offset_top = 116.0
+offset_right = 122.0
+offset_bottom = 144.0
+color = Color(0.35750926, 0.518128, 0, 1)
+
+[node name="Label" type="Label" parent="ColorRect2" unique_id=1911693515]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Fácil"
+label_settings = SubResource("LabelSettings_2swl4")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

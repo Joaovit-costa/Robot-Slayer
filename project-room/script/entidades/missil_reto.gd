@@ -20,7 +20,7 @@ func _ready() -> void:
 	if collision_explosao.shape is CircleShape2D:
 		collision_explosao.shape.radius = raio_explosao
 
-	z_index = 90
+	z_index = 203
 
 
 func _physics_process(delta: float) -> void:

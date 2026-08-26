@@ -3,6 +3,9 @@ extends Sala
 @onready var texture_rect_2: TextureRect = $Area2D/TextureRect2
 var inimigos_na_parede = []
 
+func _ready() -> void:
+	texture_rect_2.z_index=210
+
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	texture_rect_2.modulate.a = 0.3
 	inimigos_na_parede.append(body)

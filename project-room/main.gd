@@ -39,12 +39,12 @@ func _ready() -> void:
 	
 	_fechar_menus()
 	_aplicar_estado_telas()
-	menu_inventario.z_index = 80
-	menu_loja_cura.z_index = 80
-	menu_loja_arma.z_index = 80
-	menu_status.z_index = 80
-	menu_habilidades.z_index = 80
-	fundo_escuro.z_index = 75
+	menu_inventario.z_index = 2000
+	menu_loja_cura.z_index = 2000
+	menu_loja_arma.z_index = 2000
+	menu_status.z_index = 2000
+	menu_habilidades.z_index = 2000
+	fundo_escuro.z_index = 1999
 	if tutorial != null:
 		tutorial.process_mode = Node.PROCESS_MODE_ALWAYS
 		tutorial.menu_compras.visible = false

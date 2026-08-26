@@ -12,12 +12,16 @@ var sem_inimigos_na_lista_de_alvos: bool = true
 var inimigos_na_lista_de_alvos: Array[inimigo] = []
 var porta_liberada: bool = false
 
-@onready var dificuldade: Label = $StaticBody2D/ColorRect2/Label
+@onready var color_rect_2: ColorRect = $ColorRect2
+@onready var dificuldade: Label = $ColorRect2/Label
 
 func _ready() -> void:
 	protagonista_ref = get_node_or_null(protagonista_path) as protagonista
 	_configurar_range_porta(false)
 	atualizar_informacao_dos_alvos()
+	if color_rect_2 != null:
+		color_rect_2.z_index = 1980
+		dificuldade.z_index = 1980
 
 
 func _physics_process(_delta: float) -> void:

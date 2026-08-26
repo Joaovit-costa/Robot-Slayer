@@ -26,6 +26,8 @@ extends Node2D
 @onready var tutorial: ControladorTutorial = get_node_or_null("../CanvasLayerTutorial/Tutorial") as ControladorTutorial
 @onready var label_salas:= $ColorRect2/Label
 @onready var tala_morte: CanvasLayer = $TalaMorte
+@onready var color_rect_2: ColorRect = $ColorRect2
+@onready var hud: Hud = $Hud
 
 const POSICAO_MODELOS_DESATIVADOS := Vector2(1000000, 1000000)
 const TIPO_LOJA_NENHUMA := &""
@@ -43,6 +45,7 @@ func _ready() -> void:
 	add_to_group("gerenciador_salas")
 	SaveManager.aplicar_no_gerenciador_salas(self)
 	label_salas.text = "sala " + str(salas_passadas)
+	color_rect_2.z_index = 1980
 	_configurar_color_rect()
 	_desativar_modelos_de_sala()
 	_iniciar_primeira_sala()

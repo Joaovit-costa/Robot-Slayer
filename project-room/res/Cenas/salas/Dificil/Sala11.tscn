@@ -330,18 +330,18 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mi273"]
+size = Vector2(120, 61)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g358c"]
+size = Vector2(48, 163.5)
+
 [sub_resource type="LabelSettings" id="LabelSettings_j0r7y"]
 font = ExtResource("5_0ioxr")
 font_size = 22
 font_color = Color(0.9956657, 0.7662683, 0.6869504, 1)
 shadow_size = 0
 shadow_color = Color(0, 0, 0, 0.25882354)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mi273"]
-size = Vector2(120, 61)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g358c"]
-size = Vector2(48, 163.5)
 
 [node name="Sala11" type="Node2D" unique_id=1877165852 node_paths=PackedStringArray("portas")]
 script = ExtResource("1_o0h8g")
@@ -371,26 +371,6 @@ position = Vector2(1128.0001, 352)
 scale = Vector2(2.0000014, 2.5396824)
 sprite_frames = SubResource("SpriteFrames_p83rf")
 animation = &"porta_direita"
-
-[node name="ColorRect2" type="ColorRect" parent="StaticBody2D" unique_id=1549208611]
-offset_left = 25.0
-offset_top = 116.0
-offset_right = 122.0
-offset_bottom = 144.0
-color = Color(0.49419194, 0, 0.0052196835, 1)
-
-[node name="Label" type="Label" parent="StaticBody2D/ColorRect2" unique_id=313304100]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Difícil"
-label_settings = SubResource("LabelSettings_j0r7y")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
 
 [node name="Range Porta" type="Node2D" parent="." unique_id=304629865]
 
@@ -437,3 +417,23 @@ protagonista_ref = NodePath("../Protagonista")
 offset_right = 1152.0
 offset_bottom = 648.0
 texture = ExtResource("6_mi273")
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1549208611]
+offset_left = 25.0
+offset_top = 116.0
+offset_right = 122.0
+offset_bottom = 144.0
+color = Color(0.49419194, 0, 0.0052196835, 1)
+
+[node name="Label" type="Label" parent="ColorRect2" unique_id=313304100]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Difícil"
+label_settings = SubResource("LabelSettings_j0r7y")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

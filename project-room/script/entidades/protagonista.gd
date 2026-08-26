@@ -334,14 +334,18 @@ func _physics_process(delta: float) -> void:
 		SoundManager.parar_passo()
 	# ======================================
 
-
+	atualizar_hierarquia()
 	# 🎧 VERIFICAR VIDA (MUSICA)
 	verificar_vida()
 	
 	if vidaAtual <= 0 and not morto:
 		_processar_morte()
 
+func atualizar_hierarquia():
+	z_index = int(global_position.y / 20)
 
+	for inimigo in alvos:
+		inimigo.z_index = int(inimigo.global_position.y / 20)
 
 func verificar_habilidade_equipada(tecla):
 	var _gerenciador_habilidades = get_tree().get_first_node_in_group("gerenciador_habilidades")

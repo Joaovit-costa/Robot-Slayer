@@ -328,13 +328,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="LabelSettings" id="LabelSettings_gbbn7"]
-font = ExtResource("5_c1yxq")
-font_size = 24
-font_color = Color(0.31891868, 0.9976707, 0.9999998, 1)
-shadow_size = 0
-shadow_color = Color(0, 0, 0, 0.25882354)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_l66q8"]
 atlas = ExtResource("6_na8y8")
 region = Rect2(0, 0, 50, 50)
@@ -394,6 +387,13 @@ size = Vector2(48, 163.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cx20y"]
 size = Vector2(294, 210.5)
 
+[sub_resource type="LabelSettings" id="LabelSettings_gbbn7"]
+font = ExtResource("5_c1yxq")
+font_size = 24
+font_color = Color(0.31891868, 0.9976707, 0.9999998, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 0.25882354)
+
 [node name="Sala14" type="Node2D" unique_id=2082946013 node_paths=PackedStringArray("portas")]
 script = ExtResource("1_51cia")
 portas = [NodePath("StaticBody2D/AnimatedSprite2D"), NodePath("StaticBody2D/AnimatedSprite2D2")]
@@ -422,26 +422,6 @@ position = Vector2(1121, 347)
 scale = Vector2(2.0000014, 2.5396824)
 sprite_frames = SubResource("SpriteFrames_tqgws")
 animation = &"porta_direita"
-
-[node name="ColorRect2" type="ColorRect" parent="StaticBody2D" unique_id=2096200002]
-offset_left = 25.0
-offset_top = 116.0
-offset_right = 122.0
-offset_bottom = 144.0
-color = Color(0, 0.30586714, 0.3601189, 1)
-
-[node name="Label" type="Label" parent="StaticBody2D/ColorRect2" unique_id=1606640996]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Compras"
-label_settings = SubResource("LabelSettings_gbbn7")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="StaticBody2D" unique_id=1639526736]
 position = Vector2(809, 134)
@@ -476,3 +456,23 @@ shape = SubResource("RectangleShape2D_cx20y")
 [node name="Protagonista" parent="." unique_id=369473398 node_paths=PackedStringArray("alvos") instance=ExtResource("3_51cia")]
 position = Vector2(54, 341)
 alvos = [null]
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=2096200002]
+offset_left = 25.0
+offset_top = 116.0
+offset_right = 122.0
+offset_bottom = 144.0
+color = Color(0, 0.30586714, 0.3601189, 1)
+
+[node name="Label" type="Label" parent="ColorRect2" unique_id=1606640996]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Compras"
+label_settings = SubResource("LabelSettings_gbbn7")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
