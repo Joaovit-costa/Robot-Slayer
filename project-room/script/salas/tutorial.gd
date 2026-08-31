@@ -5,6 +5,7 @@ const ETAPA_MOVIMENTACAO := 0
 const ETAPA_ATAQUE := 1
 const ETAPA_ABRIR_INVENTARIO := 2
 const ETAPA_ABRIR_STATUS := 3
+const ETAPA_ABRIR_HABILIDADE := 20
 const ETAPA_INTERFACE_VIDA := 4
 const ETAPA_INTERFACE_ULTIMA := 8
 const ETAPA_CURA := 19
@@ -13,6 +14,8 @@ const ETAPA_INVENTARIO_PRIMEIRA := 9
 const ETAPA_INVENTARIO_FECHAR := 15
 const ETAPA_STATUS_PRIMEIRA := 16
 const ETAPA_STATUS_FECHAR := 18
+const ETAPA_HABILIDADE_PRIMEIRA := 21
+const ETAPA_HABILIDADE_FECHAR := 27
 @onready var menu_compras: Control = $Menu_Compras
 @onready var tutorial_geral: Array[Control] = []
 

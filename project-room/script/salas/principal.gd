@@ -3,6 +3,7 @@ extends Node2D
 
 @export var salas_tutorial: Array[Node2D] = []
 @export var salas: Array[Node2D] = []
+@export var salasBoss: Array[Node2D] = []
 @export var sala_inicial: Node2D
 @export var duracao_fade: float = 1.0
 
@@ -20,6 +21,7 @@ extends Node2D
 @export_group("")
 
 @onready var modelos_salas: Node2D = get_node_or_null("Salas") as Node2D
+@onready var modelos_salas_boss: Node2D = get_node_or_null("SalasBoss") as Node2D
 @onready var color_rect: ColorRect = get_node_or_null("ColorRect") as ColorRect
 @onready var sala_02: Sala = $Salas/Sala02
 @onready var sala_geral: Node2D= $".."
@@ -152,10 +154,15 @@ func _cena_ao_entrar_eh_tutorial(cena_path: String) -> bool:
 
 func _criar_sala_aleatoria() -> void:
 	var modelos_disponiveis: Array[Node2D] = []
-
-	for sala in salas:
-		if sala != null and is_instance_valid(sala):
-			modelos_disponiveis.append(sala)
+	
+	if salas_passadas % 10 != 0:
+		for sala in salas:
+			if sala != null and is_instance_valid(sala):
+				modelos_disponiveis.append(sala)
+	elif salas_passadas % 10 == 0:
+		for sala in salasBoss:
+			if sala != null and is_instance_valid(sala):
+				modelos_disponiveis.append(sala)
 
 	if modelos_disponiveis.is_empty():
 		return
@@ -225,7 +232,7 @@ func _remover_sala_atual() -> void:
 
 
 func _desativar_modelos_de_sala() -> void:
-	if modelos_salas == null:
+	if modelos_salas == null or modelos_salas_boss == null:
 		return
 
 	modelos_salas.visible = false
@@ -233,6 +240,15 @@ func _desativar_modelos_de_sala() -> void:
 	modelos_salas.position = POSICAO_MODELOS_DESATIVADOS
 
 	for sala_modelo in modelos_salas.get_children():
+		if sala_modelo is Node2D:
+			sala_modelo.visible = false
+			sala_modelo.process_mode = Node.PROCESS_MODE_DISABLED
+	
+	modelos_salas_boss.visible = false
+	modelos_salas_boss.process_mode = Node.PROCESS_MODE_DISABLED
+	modelos_salas_boss.position = POSICAO_MODELOS_DESATIVADOS
+
+	for sala_modelo in modelos_salas_boss.get_children():
 		if sala_modelo is Node2D:
 			sala_modelo.visible = false
 			sala_modelo.process_mode = Node.PROCESS_MODE_DISABLED

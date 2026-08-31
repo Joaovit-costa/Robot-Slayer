@@ -2308,3 +2308,961 @@ offset_top = 296.0
 offset_right = 279.0
 offset_bottom = 297.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Tutorial_20" type="Control" parent="." unique_id=1409522146]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 649.0
+
+[node name="ColorRect7" type="ColorRect" parent="Tutorial_20" unique_id=313591659]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="Panel" type="Panel" parent="Tutorial_20" unique_id=849515512]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -139.5
+offset_top = -168.5
+offset_right = 139.5
+offset_bottom = 168.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ua4e2")
+
+[node name="Panel2" type="Panel" parent="Tutorial_20/Panel" unique_id=693756428]
+layout_mode = 0
+offset_top = 49.0
+offset_right = 279.0
+offset_bottom = 50.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Label" type="Label" parent="Tutorial_20/Panel" unique_id=1068582846]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 49.0
+text = "Tutorial 20: Habilidades"
+label_settings = SubResource("LabelSettings_ua4e2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial_20/Panel" unique_id=628684570]
+layout_mode = 0
+offset_top = 67.0
+offset_right = 279.0
+offset_bottom = 138.0
+text = "Precione a tecla R para abrir o menu de habilidades."
+label_settings = SubResource("LabelSettings_1w0f6")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label3" type="Label" parent="Tutorial_20/Panel" unique_id=1922745858]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 296.0
+offset_right = 278.0
+offset_bottom = 329.0
+text = "Veja suas habilidades para continuar."
+label_settings = SubResource("LabelSettings_tjiiu")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Panel3" type="Panel" parent="Tutorial_20/Panel" unique_id=1624827328]
+layout_mode = 0
+offset_top = 296.0
+offset_right = 279.0
+offset_bottom = 297.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Tutorial_21" type="Control" parent="." unique_id=1762931465]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 649.0
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial_21" unique_id=1468491547]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.5
+offset_top = 556.0
+offset_right = 0.5
+offset_bottom = -0.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect3" type="ColorRect" parent="Tutorial_21" unique_id=1656641465]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -5.0
+offset_right = -779.0
+offset_bottom = -93.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect2" type="ColorRect" parent="Tutorial_21" unique_id=1125369353]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 374.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = -553.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect4" type="ColorRect" parent="Tutorial_21" unique_id=1192794607]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 941.0
+offset_top = 96.0
+offset_right = 18.0
+offset_bottom = -93.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="Line2D" type="Line2D" parent="Tutorial_21" unique_id=582278438]
+position = Vector2(89, 263)
+points = PackedVector2Array(242, 55, 284, 55)
+width = 1.755
+
+[node name="Panel" type="Panel" parent="Tutorial_21" unique_id=598379037]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -523.5
+offset_top = -173.5
+offset_right = -244.5
+offset_bottom = 163.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ua4e2")
+
+[node name="Panel2" type="Panel" parent="Tutorial_21/Panel" unique_id=815401836]
+layout_mode = 0
+offset_top = 49.0
+offset_right = 279.0
+offset_bottom = 50.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Panel3" type="Panel" parent="Tutorial_21/Panel" unique_id=269681688]
+layout_mode = 0
+offset_top = 296.0
+offset_right = 279.0
+offset_bottom = 297.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Label" type="Label" parent="Tutorial_21/Panel" unique_id=85388860]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 49.0
+text = "Tutorial 21: Habilidades"
+label_settings = SubResource("LabelSettings_ua4e2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial_21/Panel" unique_id=1109654805]
+layout_mode = 0
+offset_top = 67.0
+offset_right = 279.0
+offset_bottom = 138.0
+text = "Nessa areá ficam todas as habilidades de seu personagem, como podem ver todas estão bloqueadas, e para você desbloquealas você precisa realizar a missao da habilidade, cada habilidade tem uma missao diferente, algumas mais faceis outras muito dificeis."
+label_settings = SubResource("LabelSettings_1w0f6")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label3" type="Label" parent="Tutorial_21/Panel" unique_id=1816113548]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 307.0
+offset_right = 278.0
+offset_bottom = 333.0
+text = "Clique na tela para continuar"
+label_settings = SubResource("LabelSettings_tjiiu")
+horizontal_alignment = 1
+
+[node name="Tutorial_22" type="Control" parent="." unique_id=2074645003]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 649.0
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial_22" unique_id=1861662190]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.5
+offset_top = 510.0
+offset_right = 0.5
+offset_bottom = -0.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect3" type="ColorRect" parent="Tutorial_22" unique_id=628007473]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -5.0
+offset_right = -947.0
+offset_bottom = -139.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect2" type="ColorRect" parent="Tutorial_22" unique_id=179857014]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 206.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = -542.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect4" type="ColorRect" parent="Tutorial_22" unique_id=339191040]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 308.0
+offset_top = 107.0
+offset_right = 18.0
+offset_bottom = -139.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="Line2D" type="Line2D" parent="Tutorial_22" unique_id=1047924197]
+position = Vector2(89, 263)
+points = PackedVector2Array(219, 55, 357, 55)
+width = 1.755
+
+[node name="Panel" type="Panel" parent="Tutorial_22" unique_id=1851944450]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -131.5
+offset_top = -193.5
+offset_right = 147.5
+offset_bottom = 143.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ua4e2")
+
+[node name="Panel2" type="Panel" parent="Tutorial_22/Panel" unique_id=956201119]
+layout_mode = 0
+offset_top = 49.0
+offset_right = 279.0
+offset_bottom = 50.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Panel3" type="Panel" parent="Tutorial_22/Panel" unique_id=2034036020]
+layout_mode = 0
+offset_top = 296.0
+offset_right = 279.0
+offset_bottom = 297.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Label" type="Label" parent="Tutorial_22/Panel" unique_id=1635793544]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 49.0
+text = "Tutorial 22: Habilidades"
+label_settings = SubResource("LabelSettings_ua4e2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial_22/Panel" unique_id=687934527]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -133.5
+offset_top = 60.0
+offset_right = 133.5
+offset_bottom = 163.0
+grow_horizontal = 2
+text = "Aqui fica as habilidades que estão equipadas e logo acima a tecla à ser precionada para utilizar essa habilidade."
+label_settings = SubResource("LabelSettings_1w0f6")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label3" type="Label" parent="Tutorial_22/Panel" unique_id=939787487]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 307.0
+offset_right = 278.0
+offset_bottom = 333.0
+text = "Clique na tela para continuar"
+label_settings = SubResource("LabelSettings_tjiiu")
+horizontal_alignment = 1
+
+[node name="Tutorial_23" type="Control" parent="." unique_id=1394223506]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 649.0
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial_23" unique_id=333602471]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.5
+offset_top = 326.0
+offset_right = 0.5
+offset_bottom = -0.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect3" type="ColorRect" parent="Tutorial_23" unique_id=2117063216]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -5.0
+offset_right = -787.0
+offset_bottom = -322.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect2" type="ColorRect" parent="Tutorial_23" unique_id=1578974464]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 366.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = -558.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect4" type="ColorRect" parent="Tutorial_23" unique_id=1722008482]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 541.0
+offset_top = 91.0
+offset_right = 18.0
+offset_bottom = -323.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="Line2D" type="Line2D" parent="Tutorial_23" unique_id=761724394]
+position = Vector2(89, 263)
+points = PackedVector2Array(221, -78, 277, -78)
+width = 1.755
+
+[node name="Panel" type="Panel" parent="Tutorial_23" unique_id=569180268]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -545.5
+offset_top = -292.5
+offset_right = -266.5
+offset_bottom = 44.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ua4e2")
+
+[node name="Panel2" type="Panel" parent="Tutorial_23/Panel" unique_id=1675167611]
+layout_mode = 0
+offset_top = 49.0
+offset_right = 279.0
+offset_bottom = 50.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Panel3" type="Panel" parent="Tutorial_23/Panel" unique_id=488063439]
+layout_mode = 0
+offset_top = 296.0
+offset_right = 279.0
+offset_bottom = 297.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Label" type="Label" parent="Tutorial_23/Panel" unique_id=1523339807]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 49.0
+text = "Tutorial 23: Habilidades"
+label_settings = SubResource("LabelSettings_ua4e2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial_23/Panel" unique_id=1379998318]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -133.5
+offset_top = 60.0
+offset_right = 133.5
+offset_bottom = 163.0
+grow_horizontal = 2
+text = "Para você conseguir ver mais invormações da habilidade clique no icone dela."
+label_settings = SubResource("LabelSettings_1w0f6")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label3" type="Label" parent="Tutorial_23/Panel" unique_id=1871365962]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 307.0
+offset_right = 278.0
+offset_bottom = 333.0
+text = "Clique na habilidade para continuar"
+label_settings = SubResource("LabelSettings_tjiiu")
+horizontal_alignment = 1
+
+[node name="Tutorial_24" type="Control" parent="." unique_id=1782729061]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 649.0
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial_24" unique_id=1053820215]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.5
+offset_top = 497.0
+offset_right = 0.5
+offset_bottom = -0.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect3" type="ColorRect" parent="Tutorial_24" unique_id=551788347]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -5.0
+offset_right = -693.0
+offset_bottom = -152.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect2" type="ColorRect" parent="Tutorial_24" unique_id=1752669137]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 460.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = -486.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect4" type="ColorRect" parent="Tutorial_24" unique_id=1126728184]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 849.0
+offset_top = 163.0
+offset_right = 18.0
+offset_bottom = -152.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="Line2D" type="Line2D" parent="Tutorial_24" unique_id=436099989]
+position = Vector2(183, 419)
+points = PackedVector2Array(158, -78, 277, -78)
+width = 1.755
+
+[node name="Panel" type="Panel" parent="Tutorial_24" unique_id=1300723399]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -513.5
+offset_top = -185.5
+offset_right = -234.5
+offset_bottom = 151.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ua4e2")
+
+[node name="Panel2" type="Panel" parent="Tutorial_24/Panel" unique_id=34454080]
+layout_mode = 0
+offset_top = 49.0
+offset_right = 279.0
+offset_bottom = 50.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Panel3" type="Panel" parent="Tutorial_24/Panel" unique_id=1751460722]
+layout_mode = 0
+offset_top = 296.0
+offset_right = 279.0
+offset_bottom = 297.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Label" type="Label" parent="Tutorial_24/Panel" unique_id=1083861790]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 49.0
+text = "Tutorial 24: Habilidades"
+label_settings = SubResource("LabelSettings_ua4e2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial_24/Panel" unique_id=347326217]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -133.5
+offset_top = 60.0
+offset_right = 133.5
+offset_bottom = 163.0
+grow_horizontal = 2
+text = "Nesta parte é possivel ver uma breve descrição dessa habilidade e qual é a missao que tem que ser feita para desbloquear ela."
+label_settings = SubResource("LabelSettings_1w0f6")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label3" type="Label" parent="Tutorial_24/Panel" unique_id=778983649]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 307.0
+offset_right = 278.0
+offset_bottom = 333.0
+text = "Clique na tela para continuar"
+label_settings = SubResource("LabelSettings_tjiiu")
+horizontal_alignment = 1
+
+[node name="Tutorial_25" type="Control" parent="." unique_id=332556285]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 649.0
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial_25" unique_id=2130224704]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.5
+offset_top = 440.0
+offset_right = 0.5
+offset_bottom = -0.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect3" type="ColorRect" parent="Tutorial_25" unique_id=855138038]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -5.0
+offset_right = -862.0
+offset_bottom = -209.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect2" type="ColorRect" parent="Tutorial_25" unique_id=1616169953]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 291.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = -442.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect4" type="ColorRect" parent="Tutorial_25" unique_id=960987899]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 471.0
+offset_top = 207.0
+offset_right = 18.0
+offset_bottom = -209.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="Line2D" type="Line2D" parent="Tutorial_25" unique_id=557360415]
+position = Vector2(313, 412)
+points = PackedVector2Array(158, -78, 294, -78)
+width = 1.755
+
+[node name="Panel" type="Panel" parent="Tutorial_25" unique_id=1692468783]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 28.5
+offset_top = -177.5
+offset_right = 307.5
+offset_bottom = 159.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ua4e2")
+
+[node name="Panel2" type="Panel" parent="Tutorial_25/Panel" unique_id=1782546593]
+layout_mode = 0
+offset_top = 49.0
+offset_right = 279.0
+offset_bottom = 50.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Panel3" type="Panel" parent="Tutorial_25/Panel" unique_id=794755505]
+layout_mode = 0
+offset_top = 296.0
+offset_right = 279.0
+offset_bottom = 297.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Label" type="Label" parent="Tutorial_25/Panel" unique_id=1835077821]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 49.0
+text = "Tutorial 25: Habilidades"
+label_settings = SubResource("LabelSettings_ua4e2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial_25/Panel" unique_id=2113324177]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -133.5
+offset_top = 60.0
+offset_right = 133.5
+offset_bottom = 163.0
+grow_horizontal = 2
+text = "Aqui mosta o icone e nome da habilidade foi selecionada."
+label_settings = SubResource("LabelSettings_1w0f6")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label3" type="Label" parent="Tutorial_25/Panel" unique_id=1557733446]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 307.0
+offset_right = 278.0
+offset_bottom = 333.0
+text = "Clique na tela para continuar"
+label_settings = SubResource("LabelSettings_tjiiu")
+horizontal_alignment = 1
+
+[node name="Tutorial_26" type="Control" parent="." unique_id=2030885767]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 649.0
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial_26" unique_id=1587733888]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 821.0
+offset_top = 148.0
+offset_right = -255.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect3" type="ColorRect" parent="Tutorial_26" unique_id=1661100340]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -5.0
+offset_right = -332.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect2" type="ColorRect" parent="Tutorial_26" unique_id=1030814162]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 821.0
+offset_top = -5.0
+offset_right = 4.0
+offset_bottom = -579.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect4" type="ColorRect" parent="Tutorial_26" unique_id=529741714]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 898.0
+offset_top = 70.0
+offset_right = 5.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="Line2D" type="Line2D" parent="Tutorial_26" unique_id=2075366133]
+position = Vector2(522, 412)
+points = PackedVector2Array(154, -284, 299, -305)
+width = 1.755
+
+[node name="Panel" type="Panel" parent="Tutorial_26" unique_id=122106026]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -177.5
+offset_top = -199.5
+offset_right = 101.5
+offset_bottom = 137.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ua4e2")
+
+[node name="Panel2" type="Panel" parent="Tutorial_26/Panel" unique_id=157099142]
+layout_mode = 0
+offset_top = 49.0
+offset_right = 279.0
+offset_bottom = 50.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Panel3" type="Panel" parent="Tutorial_26/Panel" unique_id=1156367380]
+layout_mode = 0
+offset_top = 296.0
+offset_right = 279.0
+offset_bottom = 297.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Label" type="Label" parent="Tutorial_26/Panel" unique_id=954928232]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 49.0
+text = "Tutorial 26: Habilidades"
+label_settings = SubResource("LabelSettings_ua4e2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial_26/Panel" unique_id=753079871]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -133.5
+offset_top = 60.0
+offset_right = 133.5
+offset_bottom = 163.0
+grow_horizontal = 2
+text = "Feche o menu de detalhes da habilidade"
+label_settings = SubResource("LabelSettings_1w0f6")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label3" type="Label" parent="Tutorial_26/Panel" unique_id=506751240]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 307.0
+offset_right = 278.0
+offset_bottom = 333.0
+text = "Feche o menu para continuar"
+label_settings = SubResource("LabelSettings_tjiiu")
+horizontal_alignment = 1
+
+[node name="Tutorial_27" type="Control" parent="." unique_id=999207746]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 649.0
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial_27" unique_id=1829882922]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 931.0
+offset_top = 123.0
+offset_right = -151.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect3" type="ColorRect" parent="Tutorial_27" unique_id=2039879587]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -4.0
+offset_right = -222.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect2" type="ColorRect" parent="Tutorial_27" unique_id=1796162282]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 931.0
+offset_top = -5.0
+offset_right = 4.0
+offset_bottom = -595.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="ColorRect4" type="ColorRect" parent="Tutorial_27" unique_id=1536246053]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1002.0
+offset_top = 54.0
+offset_right = 5.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05882353, 0.1254902, 0.8784314)
+
+[node name="Line2D" type="Line2D" parent="Tutorial_27" unique_id=252664339]
+position = Vector2(522, 412)
+points = PackedVector2Array(154, -284, 409, -324)
+width = 1.755
+
+[node name="Panel" type="Panel" parent="Tutorial_27" unique_id=1155614865]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -177.5
+offset_top = -199.5
+offset_right = 101.5
+offset_bottom = 137.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ua4e2")
+
+[node name="Panel2" type="Panel" parent="Tutorial_27/Panel" unique_id=394482367]
+layout_mode = 0
+offset_top = 49.0
+offset_right = 279.0
+offset_bottom = 50.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Panel3" type="Panel" parent="Tutorial_27/Panel" unique_id=1686777001]
+layout_mode = 0
+offset_top = 296.0
+offset_right = 279.0
+offset_bottom = 297.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r22e2")
+
+[node name="Label" type="Label" parent="Tutorial_27/Panel" unique_id=217361578]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 49.0
+text = "Tutorial 27: Habilidades"
+label_settings = SubResource("LabelSettings_ua4e2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial_27/Panel" unique_id=395375252]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -133.5
+offset_top = 60.0
+offset_right = 133.5
+offset_bottom = 163.0
+grow_horizontal = 2
+text = "Feche o menu de habilidades."
+label_settings = SubResource("LabelSettings_1w0f6")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label3" type="Label" parent="Tutorial_27/Panel" unique_id=166710749]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 307.0
+offset_right = 278.0
+offset_bottom = 333.0
+text = "Feche o menu para continuar"
+label_settings = SubResource("LabelSettings_tjiiu")
+horizontal_alignment = 1

@@ -8,6 +8,7 @@ extends Control
 @onready var progress_bar: ProgressBar = $"../../sala/Hud/GridContainer/TextureRect/ProgressBar"
 @onready var progress_bar1: ProgressBar = $"../../sala/Hud/GridContainer/TextureRect2/ProgressBar"
 @onready var progress_bar2: ProgressBar = $"../../sala/Hud/GridContainer/TextureRect3/ProgressBar"
+@onready var destalhes_habilidades: Descricao = $DestalhesHabilidades
 
 
 @onready var slot_equipados: TextureRect = $Panel/HBoxContainer/Control/SlotEquipados

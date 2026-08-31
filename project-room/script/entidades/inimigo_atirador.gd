@@ -42,7 +42,7 @@ func _physics_process(delta: float) -> void:
 		direcao_animacao = direcao
 
 	# Se estiver perto demais, recua
-	elif distancia < distancia_minima_tiro:
+	elif distancia < distancia_minima_tiro and temperamento != "bravo":
 		velocity = -direcao * velocidade
 		direcao_animacao = -direcao
 

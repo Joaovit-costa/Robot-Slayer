@@ -16,7 +16,10 @@
 [ext_resource type="PackedScene" uid="uid://byn3sb7v47o3n" path="res://res/Cenas/salas/Compras/Sala13.tscn" id="14_rr14d"]
 [ext_resource type="PackedScene" uid="uid://cms5eh6avaayr" path="res://res/Cenas/salas/Compras/Sala14.tscn" id="15_dljeg"]
 [ext_resource type="Script" uid="uid://yustwypgupc6" path="res://script/menu/hud.gd" id="16_kg3yw"]
+[ext_resource type="PackedScene" uid="uid://bmdy4cl2suu0y" path="res://res/Cenas/salas/Boss/SalaBoss1.tscn" id="16_r4n4n"]
 [ext_resource type="Texture2D" uid="uid://disji1duvvnmh" path="res://res/design/menus/Botão_Vida.png" id="17_x2ond"]
+[ext_resource type="PackedScene" uid="uid://c23h664nhn7be" path="res://res/Cenas/salas/Boss/SalaBoss2.tscn" id="17_yyrut"]
+[ext_resource type="PackedScene" uid="uid://bvipvb75ff6p1" path="res://res/Cenas/salas/Boss/SalaBoss3.tscn" id="18_62pwx"]
 [ext_resource type="FontFile" uid="uid://c8fuwo26umfpq" path="res://res/design/Font/PixelPurl.ttf" id="18_rr14d"]
 [ext_resource type="Texture2D" uid="uid://durywh67qgeg2" path="res://res/design/Design-Robot Slayer/sprits/moeda.png" id="18_v8hnl"]
 [ext_resource type="PackedScene" uid="uid://bhmku6r2vq1l3" path="res://res/Cenas/menu/Tela_morte.tscn" id="19_x2ond"]
@@ -149,12 +152,14 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nqcv1"]
 bg_color = Color(0.007843138, 0.007843138, 0.05882353, 0.6666667)
 
-[node name="sala" type="Node2D" unique_id=1911979741 node_paths=PackedStringArray("salas_tutorial", "salas")]
+[node name="sala" type="Node2D" unique_id=1911979741 node_paths=PackedStringArray("salas_tutorial", "salas", "salasBoss")]
 script = ExtResource("1_8fdge")
 salas_tutorial = [NodePath("Salas/Sala"), NodePath("Salas/Sala02"), NodePath("Salas/Sala03")]
 salas = [NodePath("Salas/Sala4"), NodePath("Salas/Sala5"), NodePath("Salas/Sala6"), NodePath("Salas/Sala7"), NodePath("Salas/Sala8"), NodePath("Salas/Sala9"), NodePath("Salas/Sala10"), NodePath("Salas/Sala11"), NodePath("Salas/Sala12"), NodePath("Salas/Sala13"), NodePath("Salas/Sala14")]
+salasBoss = [NodePath("SalasBoss/SalaBoss1"), NodePath("SalasBoss/SalaBoss2"), NodePath("SalasBoss/SalaBoss3")]
 crescimento_status_por_sala = 0.5
 crescimento_xp_por_sala = 0.275
+limite_multiplicador_xp = 7.0
 status_inicial_player_referencia = 19
 
 [node name="Salas" type="Node2D" parent="." unique_id=1083966473]
@@ -186,6 +191,14 @@ status_inicial_player_referencia = 19
 [node name="Sala13" parent="Salas" unique_id=1991925353 instance=ExtResource("14_rr14d")]
 
 [node name="Sala14" parent="Salas" unique_id=2082946013 instance=ExtResource("15_dljeg")]
+
+[node name="SalasBoss" type="Node2D" parent="." unique_id=2100043265]
+
+[node name="SalaBoss1" parent="SalasBoss" unique_id=2075432569 instance=ExtResource("16_r4n4n")]
+
+[node name="SalaBoss2" parent="SalasBoss" unique_id=1012090324 instance=ExtResource("17_yyrut")]
+
+[node name="SalaBoss3" parent="SalasBoss" unique_id=898814928 instance=ExtResource("18_62pwx")]
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=1039176049]
 offset_left = 25.0

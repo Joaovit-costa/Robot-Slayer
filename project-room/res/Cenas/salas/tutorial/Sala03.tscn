@@ -261,6 +261,7 @@ shadow_color = Color(0, 0, 0, 0.25882354)
 size = Vector2(38, 180)
 
 [node name="Sala03" type="Node2D" unique_id=1910874650 node_paths=PackedStringArray("portas")]
+visible = false
 script = ExtResource("1_6sy3i")
 portas = [NodePath("StaticBody2D/AnimatedSprite2D2")]
 

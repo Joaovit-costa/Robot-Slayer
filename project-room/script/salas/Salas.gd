@@ -13,12 +13,15 @@ var inimigos_na_lista_de_alvos: Array[inimigo] = []
 var porta_liberada: bool = false
 
 @onready var color_rect_2: ColorRect = $ColorRect2
+@onready var texturarect: TextureRect = get_node_or_null("TextureRect2") as TextureRect
 @onready var dificuldade: Label = $ColorRect2/Label
 
 func _ready() -> void:
 	protagonista_ref = get_node_or_null(protagonista_path) as protagonista
 	_configurar_range_porta(false)
 	atualizar_informacao_dos_alvos()
+	if texturarect != null:
+		texturarect.z_index=210
 	if color_rect_2 != null:
 		color_rect_2.z_index = 1980
 		dificuldade.z_index = 1980
@@ -89,8 +92,7 @@ func _on_range_porta_body_entered(body: Node) -> void:
 	
 	var gerenciador_salas := _buscar_gerenciador_salas()
 	
-	if dificuldade.text == "Difícil" and not player.curou_na_sala:
-		player.salas_dificeis_sem_cura += 1
+	
 
 	player.curou_na_sala = false
 	SaveManager.solicitar_salvamento()
@@ -100,7 +102,13 @@ func _on_range_porta_body_entered(body: Node) -> void:
 			self,
 			cena_ao_entrar_na_porta
 		)
-
+		
+		if dificuldade == null:
+			return
+	
+		if dificuldade.text == "Difícil" and not player.curou_na_sala:
+			player.salas_dificeis_sem_cura += 1
+			
 		return
 
 	if not cena_ao_entrar_na_porta.is_empty():
