@@ -20,7 +20,6 @@ var curando := false
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var animation_tree: AnimationTree = $AnimationTree
-@onready var animation_state = animation_tree.get("parameters/playback")
 @onready var escudo: Node2D = $Escudo
 @onready var vida_escudo: ProgressBar = $Escudo/ProgressBar
 @onready var area_dash_ofensivo: CollisionShape2D = $Area2D/CollisionShape2D
@@ -72,6 +71,9 @@ var dash_ativo := false
 var furia_ativa := false
 var curou_na_sala := false
 var escudo_ativo := false
+var animacao_especial: StringName = &""
+var direcao_animacao_especial: Vector2 = Vector2.DOWN
+var sequencia_animacao_especial: int = 0
 
 # Sistema de cura
 var cooldownDaCura: float = 0.0
@@ -159,7 +161,9 @@ func _ready() -> void:
 	) as Inventario
 
 	# ============ ANIMACAO ============
-	animation_tree.active = true
+	# As animacoes sao escolhidas diretamente para permitir alternar todo o
+	# conjunto normal pelo equivalente `_fur` sem duplicar a maquina de estados.
+	animation_tree.active = false
 	posicao_alcance_original = alcance.position
 	# A hitbox permanece na fisica para que get_overlapping_bodies() tenha
 	# tempo de registrar os corpos. O dano continua protegido por `atacando`.
@@ -279,29 +283,7 @@ func _physics_process(delta: float) -> void:
 	# ============ ANIMACAO ============
 	if curando:
 		move_and_slide()
-	elif atacando:
-		animation_state.travel("Attack")
-
-	elif velocity.length() > 5:
-		animation_state.travel("Walk")
-
-	else:
-		animation_state.travel("Idle")
-
-	animation_tree.set(
-		"parameters/Idle/blend_position",
-		direcao_animacao
-	)
-
-	animation_tree.set(
-		"parameters/Walk/blend_position",
-		direcao_animacao
-	)
-
-	animation_tree.set(
-		"parameters/Attack/blend_position",
-		direcao_ataque if atacando else direcao_animacao
-	)
+	_reproduzir_animacao_atual()
 	# ==================================
 
 	if (Input.is_action_pressed("habilidade1") and habilidades[0].tempo_restante <= 0):
@@ -369,6 +351,7 @@ func verificar_habilidade_equipada(tecla):
 		furia()
 
 func Investida():
+	_iniciar_animacao_especial(&"dash", direcao_animacao)
 	SPEED *= 7
 	dash_ativo = true
 	await get_tree().create_timer(0.08).timeout
@@ -376,6 +359,7 @@ func Investida():
 	SPEED /= 7
 
 func investida_ofenciva():
+	_iniciar_animacao_especial(&"dash_ofencivo", direcao_animacao)
 	SPEED *= 6
 	dash_ativo = true
 	area_dash_ofensivo.set_deferred("disabled", false)
@@ -402,10 +386,11 @@ func disparar_missil_reto(player: protagonista) -> void:
 	missil.global_position = global_position
 
 	var mouse_pos := get_global_mouse_position()
+	var direcao := global_position.direction_to(mouse_pos)
+	_iniciar_animacao_especial(&"shot", direcao)
 	dano_missil = int((forca * 80 / 100) + (inteligencia * 20 / 100))
 	if furia_ativa:
 		dano_missil *= 1.6
-	var direcao := global_position.direction_to(mouse_pos)
 
 	missil.configurar(direcao, dano_missil, player)
 
@@ -417,10 +402,11 @@ func disparar_missil_teleguiado(player: protagonista) -> void:
 	missil_teleguiado.global_position = global_position
 
 	var mouse_pos := get_global_mouse_position()
+	var direcao := global_position.direction_to(mouse_pos)
+	_iniciar_animacao_especial(&"shot", direcao)
 	dano_missil = int((forca * 35 / 100) + (inteligencia * 10 / 100))
 	if furia_ativa:
 		dano_missil *= 1.6
-	var direcao := global_position.direction_to(mouse_pos)
 
 	missil_teleguiado.configurar(direcao, dano_missil, player)
 
@@ -432,6 +418,98 @@ func furia():
 	
 	furia_ativa = false
 	SPEED /= 1.4
+
+
+func _reproduzir_animacao_atual() -> void:
+	var nome_base: StringName
+
+	if curando:
+		nome_base = &"cura"
+	elif atacando:
+		nome_base = _nome_animacao_direcional(&"attack", direcao_ataque)
+	elif animacao_especial != &"":
+		nome_base = _nome_animacao_direcional(
+			animacao_especial,
+			direcao_animacao_especial
+		)
+	elif velocity.length() > 5.0:
+		nome_base = _nome_animacao_direcional(&"walk", direcao_animacao)
+	else:
+		nome_base = _nome_animacao_direcional(&"idle", direcao_animacao)
+
+	_reproduzir_animacao(_nome_animacao_com_furia(nome_base))
+
+
+func _nome_animacao_direcional(
+	prefixo: StringName,
+	direcao: Vector2
+) -> StringName:
+	return StringName("%s_%s" % [prefixo, _sufixo_direcao(direcao)])
+
+
+func _sufixo_direcao(direcao: Vector2) -> String:
+	if direcao.is_zero_approx():
+		return ultima_direcao
+
+	if absf(direcao.x) > absf(direcao.y):
+		return "right" if direcao.x > 0.0 else "left"
+
+	return "down" if direcao.y > 0.0 else "up"
+
+
+func _nome_animacao_com_furia(nome_base: StringName) -> StringName:
+	if furia_ativa:
+		var nome_furia := StringName(str(nome_base) + "_fur")
+		if animation_player.has_animation(nome_furia):
+			return nome_furia
+
+	return nome_base
+
+
+func _reproduzir_animacao(nome_animacao: StringName) -> void:
+	if not animation_player.has_animation(nome_animacao):
+		push_warning("Animacao nao encontrada: %s" % nome_animacao)
+		return
+
+	if animation_player.current_animation != nome_animacao:
+		animation_player.play(nome_animacao)
+
+
+func _iniciar_animacao_especial(
+	prefixo: StringName,
+	direcao: Vector2
+) -> void:
+	animacao_especial = prefixo
+	direcao_animacao_especial = (
+		direcao.normalized()
+		if not direcao.is_zero_approx()
+		else direcao_animacao
+	)
+	sequencia_animacao_especial += 1
+
+	var nome_base := _nome_animacao_direcional(
+		prefixo,
+		direcao_animacao_especial
+	)
+	var duracao := _duracao_animacao(nome_base, 0.1)
+	_encerrar_animacao_especial_apos(duracao, sequencia_animacao_especial)
+
+
+func _encerrar_animacao_especial_apos(
+	duracao: float,
+	sequencia: int
+) -> void:
+	await get_tree().create_timer(duracao).timeout
+	if sequencia == sequencia_animacao_especial:
+		animacao_especial = &""
+
+
+func _duracao_animacao(nome_base: StringName, valor_padrao: float) -> float:
+	var nome_animacao := _nome_animacao_com_furia(nome_base)
+	if not animation_player.has_animation(nome_animacao):
+		return valor_padrao
+
+	return animation_player.get_animation(nome_animacao).length
 
 func campo_forca():
 	escudo_ativo = true
@@ -514,8 +592,8 @@ func receber_dano(dano: int) -> void:
 func receber_cura(cura: int) -> void:
 	vidaAtual = min(vidaAtual + max(cura, 0), vidaInicial)
 	curando = true
-	animation_state.travel("cura")
-	await get_tree().create_timer(1.0).timeout
+	_reproduzir_animacao(_nome_animacao_com_furia(&"cura"))
+	await get_tree().create_timer(_duracao_animacao(&"cura", 1.0)).timeout
 	curando = false
 
 	_atualizar_barra_vida()
@@ -644,12 +722,26 @@ func _entregar_drops_pendentes() -> void:
 		return
 
 	for item in drops_pendentes:
-
-		inventario_ref.adicionar_item(
-			str(item.get("nome", "")),
-			int(item.get("raridade", ItensData.Raridade.COMUM)),
-			int(item.get("quantidade", 1))
+		var nome_item := str(item.get("nome", ""))
+		var quantidade := int(item.get("quantidade", 1))
+		var raridade := int(item.get("raridade", ItensData.Raridade.COMUM))
+		var item_adicionado := inventario_ref.adicionar_item(
+			nome_item,
+			raridade,
+			quantidade
 		)
+
+		if item_adicionado and hud != null:
+			var dados_item := inventario_ref.buscar_info_item(nome_item)
+			var icone_item: Texture2D = null
+			if dados_item != null:
+				icone_item = dados_item.icone
+			hud.mostrar_item_dropado(
+				nome_item,
+				quantidade,
+				icone_item,
+				raridade
+			)
 
 	drops_pendentes.clear()
 
@@ -803,9 +895,12 @@ func _processar_morte() -> void:
 	_solicitar_salvamento()
 
 	# Toca a animação de morte
-	animation_state.travel("morte")
+	var nome_animacao_morte := _nome_animacao_com_furia(&"morte")
+	_reproduzir_animacao(nome_animacao_morte)
 	
-	await get_tree().create_timer(1.5).timeout
+	await get_tree().create_timer(
+		_duracao_animacao(&"morte", 1.5)
+	).timeout
 
 	# Depois da animação, mostra a tela de morte
 	_exibir_tela_morte()

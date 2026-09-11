@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dnm2exythe0je" path="res://res/design/menus/Slot_sielecionado.png" id="5_q7nna"]
 [ext_resource type="Script" uid="uid://bu4ch65fqj0s3" path="res://script/menu/Inventario/slot_inventario.gd" id="6_qh40f"]
 [ext_resource type="Texture2D" uid="uid://ch73s3u00wfut" path="res://res/design/menus/Slot_Trancado_V2.png" id="8_qh40f"]
+[ext_resource type="Texture2D" uid="uid://dodmgytumx02j" path="res://res/design/menus/Icone_Lixo.png" id="9_lixo"]
+[ext_resource type="Script" uid="uid://bj0sjflk1r0ql" path="res://script/menu/Inventario/slot_lixeira.gd" id="10_lixo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rydth"]
 bg_color = Color(8.856058e-06, 0.7195523, 0.99945563, 1)
@@ -1346,6 +1348,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_joibv")
+
+[node name="SlotLixeira" type="TextureRect" parent="PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("9_lixo")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("10_lixo")
 
 [connection signal="pressed" from="PainelPrincipal/BotãoFechar" to="." method="_on_botao_fechar_pressed"]
 [connection signal="button_down" from="PainelPrincipal/Conteudo/PainelEsquerdo/MarginContainer/HBoxContainer/Slot25" to="PainelPrincipal/Conteudo/PainelEsquerdo/MarginContainer/HBoxContainer/Slot25" method="_on_button_down"]

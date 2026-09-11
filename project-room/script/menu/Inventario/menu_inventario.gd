@@ -10,6 +10,7 @@ extends Control
 @onready var label_defesa: Label = $PainelPrincipal/Conteudo/PainelEsquerdo/VBoxContainer/GridContainer/defesa
 @onready var label_inteligencia: Label = $PainelPrincipal/Conteudo/PainelEsquerdo/VBoxContainer/GridContainer/inteligencia
 @onready var label_vitalidade: Label = $PainelPrincipal/Conteudo/PainelEsquerdo/VBoxContainer/GridContainer/vitalidade
+@onready var slot_lixeira: Control = $PainelPrincipal/Conteudo/VBoxContainer/HBoxContainer/SlotLixeira
 
 var inventario_ref: Inventario
 var slots: Array = []
@@ -20,6 +21,7 @@ var label_buffs_extra: Label
 # Inicializa o menu, cria dependencias e sincroniza os slots com a lista.
 func _ready() -> void:
 	_configurar_dependencias()
+	slot_lixeira.call("configurar", inventario_ref)
 	_registrar_slots()
 	_atualizar_slots()
 	_limpar_painel_especificacoes()

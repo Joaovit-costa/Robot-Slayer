@@ -201,6 +201,18 @@ func remover_item(nome: String, quantidade: int = 1, id_slot: int = -1) -> bool:
 	return true
 
 
+# Descarta de uma vez toda a pilha ou equipamento presente no slot informado.
+func remover_item_do_slot(id_slot: int) -> bool:
+	if get_item_no_slot(id_slot).is_empty():
+		return false
+
+	_remover_item_por_slot(id_slot)
+	_normalizar_slots_bloqueados()
+	_emitir_atualizacao()
+	_solicitar_salvamento()
+	return true
+
+
 # Move item entre slots, troca itens ou empilha quando a regra permitir.
 func mover_item(slot_origem: int, slot_destino: int) -> bool:
 	if slot_origem == slot_destino:
