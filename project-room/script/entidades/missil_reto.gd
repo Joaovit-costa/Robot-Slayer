@@ -1,6 +1,8 @@
 extends Control
 class_name Missil
 
+const Z_INDEX_EXPLOSAO := 500
+
 @export var velocidade: float = 400.0
 @export var dano: int = 10
 @export var dano_explosao: int = 10
@@ -10,15 +12,23 @@ var direcao: Vector2 = Vector2.ZERO
 var explodiu: bool = false
 var player: protagonista
 
+@onready var area_impacto: Area2D = $Panel/Area2D
+@onready var area_explosao: Area2D = $AreaExplosao
+@onready var colisor_impacto: CollisionShape2D = $Panel/Area2D/CollisionShape2D
+@onready var colisor_explosao: CollisionShape2D = $AreaExplosao/CollisionShape2D
+@onready var sprite_animado: AnimatedSprite2D = $Panel as AnimatedSprite2D
+
 
 func _ready() -> void:
-	$Panel/Area2D.body_entered.connect(_on_area_2d_body_entered)
+	area_impacto.body_entered.connect(_on_area_2d_body_entered)
+	area_explosao.monitoring = false
 
 	# Configura a área da explosão.
-	var collision_explosao := $AreaExplosao/CollisionShape2D
+	if colisor_explosao.shape is CircleShape2D:
+		colisor_explosao.shape.radius = raio_explosao
 
-	if collision_explosao.shape is CircleShape2D:
-		collision_explosao.shape.radius = raio_explosao
+	if sprite_animado != null:
+		sprite_animado.play(&"default")
 
 	z_index = 203
 
@@ -42,29 +52,12 @@ func configurar(direcao_missil: Vector2, dano_missil: int, jogador: protagonista
 
 
 func _on_area_2d_body_entered(corpo: Node2D) -> void:
-	if explodiu or not is_instance_valid(player):
-		queue_free()
+	if explodiu:
 		return
 
-	# Se atingiu um inimigo, causa o dano direto
-	# e depois explode.
-	if corpo.is_in_group("inimigos"):
-		if corpo.has_method("receber_dano"):
-			player.ataque_com = "true"
-			corpo.receber_dano(dano)
-			if corpo.vitalidade <= 0:
-				player._acumular_drops_do_inimigo(corpo)
-				player.alvos.erase(corpo)
-				var sala_do_alvo := corpo.get_parent()
-				if sala_do_alvo != null:
-					sala_do_alvo.move_child(corpo, 1)
-		
-		explodir()
-		return
-
-	# Se atingiu uma parede, explode.
+	# Qualquer corpo presente na máscara do míssil (cenário ou inimigo)
+	# provoca a explosão.
 	explodir()
-	return
 
 
 func explodir() -> void:
@@ -73,32 +66,75 @@ func explodir() -> void:
 
 	explodiu = true
 
-	# Impede que o míssil continue se movimentando.
+	# Congela o míssil e impede novos impactos durante a explosão.
 	set_physics_process(false)
+	area_impacto.set_deferred("monitoring", false)
+	colisor_impacto.set_deferred("disabled", true)
 
-	# Ativa temporariamente a área da explosão.
-	var area_explosao: Area2D = $AreaExplosao
-	area_explosao.monitoring = true
+	# Inicia o efeito visual no exato ponto do impacto.
+	if sprite_animado != null:
+		rotation = 0.0
+		# O cenário usa uma base de Z 200 e sobreposições que chegam a 410.
+		# O Z absoluto mantém a explosão acima do mundo sem cobrir a interface.
+		sprite_animado.z_as_relative = false
+		sprite_animado.z_index = Z_INDEX_EXPLOSAO
+		sprite_animado.play(&"Explosao")
 
-	# Espera a física atualizar os corpos detectados.
-	await get_tree().physics_frame
+	# A consulta é adiada para fora do sinal de colisão, quando o espaço de
+	# física pode ser consultado com segurança.
+	call_deferred("_atingir_alvos_na_explosao")
 
-	var inimigos_atingidos := area_explosao.get_overlapping_bodies()
+	# Mantém o nó vivo até todos os quadros da explosão terminarem.
+	if sprite_animado != null:
+		await sprite_animado.animation_finished
+	else:
+		await get_tree().create_timer(0.15).timeout
 
-	for inimigo in inimigos_atingidos:
-		if not inimigo.is_in_group("inimigos"):
+	queue_free()
+
+
+func _atingir_alvos_na_explosao() -> void:
+	if not is_inside_tree() or colisor_explosao.shape == null:
+		return
+
+	var consulta := PhysicsShapeQueryParameters2D.new()
+	consulta.shape = colisor_explosao.shape
+	consulta.transform = colisor_explosao.global_transform
+	consulta.collision_mask = area_explosao.collision_mask
+	consulta.collide_with_areas = false
+	consulta.collide_with_bodies = true
+
+	var alvos_atingidos: Array[inimigo] = []
+	for resultado in get_world_2d().direct_space_state.intersect_shape(
+		consulta,
+		64
+	):
+		var alvo := resultado.get("collider") as inimigo
+		if (
+			alvo == null
+			or alvo.vitalidade <= 0
+			or alvo in alvos_atingidos
+		):
 			continue
 
-		if inimigo.has_method("receber_dano"):
-			player.ataque_com = "true"
-			inimigo.receber_dano(dano_explosao)
-			if inimigo.vitalidade <= 0:
-				player._acumular_drops_do_inimigo(inimigo)
-				player.alvos.erase(inimigo)
-				var sala_do_alvo := inimigo.get_parent()
-				if sala_do_alvo != null:
-					sala_do_alvo.move_child(inimigo, 1)
-	
-	if is_instance_valid(player):
-		player.ataque_com = "false"
-	queue_free()
+		alvos_atingidos.append(alvo)
+		_aplicar_dano_da_explosao(alvo)
+
+
+func _aplicar_dano_da_explosao(alvo: inimigo) -> void:
+	if not is_instance_valid(player):
+		return
+
+	player.ataque_com = "true"
+	var direcao_impacto := alvo.global_position.direction_to(global_position)
+	alvo.receber_dano(dano_explosao, direcao_impacto)
+	player.ataque_com = "false"
+
+	if alvo.vitalidade > 0:
+		return
+
+	player._acumular_drops_do_inimigo(alvo)
+	player.alvos.erase(alvo)
+	var sala_do_alvo := alvo.get_parent()
+	if sala_do_alvo != null:
+		sala_do_alvo.move_child(alvo, 1)

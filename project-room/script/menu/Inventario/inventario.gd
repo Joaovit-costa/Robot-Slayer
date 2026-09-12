@@ -96,6 +96,51 @@ func buscar_info_item(nome: String) -> ItensData:
 	return banco_itens.buscar_item_por_nome(nome)
 
 
+# Soma somente os equipamentos realmente encaixados e limita o total para que
+# quatro itens raros nao eliminem a progressao de dificuldade das salas.
+func calcular_buffs_equipados() -> Dictionary:
+	var totais := {
+		"forca": 0.0,
+		"defesa": 0.0,
+		"velocidade": 0.0,
+		"inteligencia": 0.0,
+		"vitalidade": 0.0
+	}
+
+	for id_slot in SLOTS_EQUIPAVEIS:
+		var item := get_item_no_slot(id_slot)
+		if item.is_empty():
+			continue
+
+		var dados_item := buscar_info_item(str(item.get("nome", "")))
+		if dados_item == null or dados_item.tipo != ItensData.TipoItem.EQUIPAVEL:
+			continue
+
+		var raridade := clampi(
+			int(item.get("raridade", ItensData.Raridade.COMUM)),
+			ItensData.Raridade.COMUM,
+			ItensData.Raridade.LENDARIO
+		)
+		var buffs: Dictionary = dados_item.buffs_por_raridade.get(
+			raridade,
+			{}
+		)
+		for atributo in totais.keys():
+			totais[atributo] = float(totais[atributo]) + float(
+				buffs.get(atributo, 0.0)
+			)
+
+	for atributo in totais.keys():
+		var limite := (
+			Balanceamento.LIMITE_BUFF_VELOCIDADE
+			if atributo == "velocidade"
+			else Balanceamento.LIMITE_BUFF_STATUS
+		)
+		totais[atributo] = clampf(float(totais[atributo]), 0.0, limite)
+
+	return totais
+
+
 # Adiciona item novo, empilha itens de mochila e salva a raridade no registro.
 func adicionar_item(nome: String, raridade: int, quantidade: int = 1, id_slot: int = -1) -> bool:
 	var dados_item := buscar_info_item(nome)

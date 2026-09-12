@@ -1,7 +1,5 @@
 extends RefCounted
 
-const PONTOS_STATUS_POR_NIVEL: int = 3
-
 func atacar(atacado, cooldowns: Array[float], forca: int, multiplicadores: Array[float]) -> float:
 	if atacado == null or cooldowns.is_empty() or cooldowns.size() != multiplicadores.size():
 		return 0.0
@@ -14,7 +12,7 @@ func atacar(atacado, cooldowns: Array[float], forca: int, multiplicadores: Array
 
 	var indice_ataque := randi() % cooldowns.size()
 	var cooldown_gerado: float = cooldowns[indice_ataque]
-	var dano : float= max(forca * multiplicadores[indice_ataque] - atacado.defesa, 1)
+	var dano := float(forca) * multiplicadores[indice_ataque]
 
 	if atacado.has_method("receber_dano"):
 		atacado.receber_dano(int(dano))
@@ -44,7 +42,22 @@ func cura(curado, tempo_para_cura: float) -> void:
 	if curado == null:
 		return
 
-	var quantidade_cura: int = max(0, int(int(curado.get("inteligencia")) * 1.5))
+	var inteligencia_efetiva := int(curado.get("inteligencia"))
+	if curado.has_method("obter_inteligencia_efetiva"):
+		inteligencia_efetiva = int(curado.obter_inteligencia_efetiva())
+
+	var vida_maxima := maxi(int(curado.get("vidaInicial")), 1)
+	var quantidade_cura: int
+	if curado is protagonista:
+		quantidade_cura = mini(
+			int(round(vida_maxima * 0.40)),
+			maxi(1, int(round(vida_maxima * 0.12 + inteligencia_efetiva * 1.2)))
+		)
+	else:
+		quantidade_cura = mini(
+			int(round(vida_maxima * 0.20)),
+			maxi(1, inteligencia_efetiva)
+		)
 	if curado.has_method("receber_cura"):
 		curado.receber_cura(quantidade_cura)
 	else:
@@ -65,7 +78,9 @@ func subirNivel(player) -> void:
 		
 	player.nivel += 1
 	player.experiencia -= player.experienciaNecessaria
-	player.experienciaNecessaria = int(player.nivel * 1.2 + 40)
+	player.experienciaNecessaria = Balanceamento.experiencia_para_proximo_nivel(
+		player.nivel
+	)
 	player.barraExperiencia.max_value = player.experienciaNecessaria
-	player.pontosExperiencia += PONTOS_STATUS_POR_NIVEL
-	player.pontosStatus += PONTOS_STATUS_POR_NIVEL
+	player.pontosExperiencia += Balanceamento.PONTOS_STATUS_POR_NIVEL
+	player.pontosStatus += Balanceamento.PONTOS_STATUS_POR_NIVEL

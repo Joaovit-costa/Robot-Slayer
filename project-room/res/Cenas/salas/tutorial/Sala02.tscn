@@ -169,4 +169,5 @@ defesa = 0
 experiencia_min = 35
 experiencia_max = 45
 drops = Array[ExtResource("7_6ko4q")]([SubResource("Resource_g0hxb")])
+garantir_drop_item = true
 protagonista_ref = NodePath("../Protagonista")

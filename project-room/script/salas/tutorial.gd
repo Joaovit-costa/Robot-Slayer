@@ -1,6 +1,8 @@
 class_name ControladorTutorial
 extends Node2D
 
+signal etapa_alterada(nova_etapa: int)
+
 const ETAPA_MOVIMENTACAO := 0
 const ETAPA_ATAQUE := 1
 const ETAPA_ABRIR_INVENTARIO := 2
@@ -50,6 +52,7 @@ func avancar_para(proxima_etapa: int) -> void:
 	tutorial = clampi(proxima_etapa, ETAPA_MOVIMENTACAO, ETAPA_CONCLUIDA)
 	_ocultar_todas_as_etapas()
 	if tutorial != etapa_anterior:
+		etapa_alterada.emit(tutorial)
 		SaveManager.solicitar_salvamento()
 
 

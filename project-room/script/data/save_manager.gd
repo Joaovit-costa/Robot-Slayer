@@ -66,7 +66,14 @@ func aplicar_no_player(player: protagonista) -> void:
 	player.nivel = max(1, int(player_data.get("nivel", player.nivel)))
 	player.moedas = max(0, int(player_data.get("moedas", player.moedas)))
 	player.pontosStatus = max(0, int(player_data.get("pontosStatus", player.pontosStatus)))
-	player.experienciaNecessaria = max(1, int(player_data.get("experienciaNecessaria", player.experienciaNecessaria)))
+	# Recalcula em vez de perpetuar formulas antigas gravadas no save.
+	player.experienciaNecessaria = Balanceamento.experiencia_para_proximo_nivel(
+		player.nivel
+	)
+	player.experiencia = mini(
+		player.experiencia,
+		player.experienciaNecessaria - 1
+	)
 	player.cooldownDaCura = maxf(0.0, float(player_data.get("cooldownDaCura", player.cooldownDaCura)))
 	player.inimigos_derrotados_usando_missil_reto = max(0,
 	int(

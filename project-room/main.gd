@@ -76,22 +76,22 @@ func _process(_delta: float) -> void:
 func desbloquear_habilidade():
 	var player = get_tree().get_first_node_in_group("player")
 	
-	if tutorial.tutorial >= 60 and not habilidade1_desbloqueada:
+	if true and not habilidade1_desbloqueada:
 		habilidade1_desbloqueada = true
 		SaveManager.solicitar_salvamento()
-	if sala.salas_passadas - 3 > 5 and not habilidade2_desbloqueada:
+	if true and not habilidade2_desbloqueada:
 		habilidade2_desbloqueada = true
 		SaveManager.solicitar_salvamento()
-	if player.dano_recebido_sem_morrer >= 200 and not habilidade3_desbloqueada:
+	if true and not habilidade3_desbloqueada:
 		habilidade3_desbloqueada = true
 		SaveManager.solicitar_salvamento()
-	if player.inimigos_derrotados_usando_missil_reto >= 30 and not habilidade4_desbloqueada:
+	if true and not habilidade4_desbloqueada:
 		habilidade4_desbloqueada = true
 		SaveManager.solicitar_salvamento()
-	if player.derrotados_utilizando_dash >= 35 and not habilidade5_desbloqueada:
+	if true and not habilidade5_desbloqueada:
 		habilidade5_desbloqueada = true
 		SaveManager.solicitar_salvamento()
-	if player.salas_dificeis_sem_cura >= 3 and not habilidade6_desbloqueada:
+	if true and not habilidade6_desbloqueada:
 		habilidade6_desbloqueada = true
 		SaveManager.solicitar_salvamento()
 

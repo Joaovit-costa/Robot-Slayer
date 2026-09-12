@@ -53,3 +53,28 @@ func sortear_raridade() -> int:
 			return int(entrada.get("raridade", ItensData.Raridade.COMUM))
 
 	return -1
+
+
+# Usa os valores configurados como pesos depois que a chance de item passou.
+func sortear_raridade_ponderada() -> int:
+	var tabela := [
+		{"raridade": ItensData.Raridade.COMUM, "peso": chance_comum},
+		{"raridade": ItensData.Raridade.INCOMUM, "peso": chance_incomum},
+		{"raridade": ItensData.Raridade.RARO, "peso": chance_raro},
+		{"raridade": ItensData.Raridade.EPICO, "peso": chance_epico},
+		{"raridade": ItensData.Raridade.LENDARIO, "peso": chance_lendario}
+	]
+	var peso_total := 0
+	for entrada in tabela:
+		peso_total += maxi(int(entrada.get("peso", 0)), 0)
+
+	if peso_total <= 0:
+		return -1
+
+	var resultado := randi_range(1, peso_total)
+	for entrada in tabela:
+		resultado -= maxi(int(entrada.get("peso", 0)), 0)
+		if resultado <= 0:
+			return int(entrada.get("raridade", ItensData.Raridade.COMUM))
+
+	return ItensData.Raridade.COMUM

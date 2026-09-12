@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://da84djl2ehude"]
 
-[ext_resource type="Texture2D" uid="uid://bpynhwi2u6nt0" path="res://res/design/Design-Robot Slayer/sprits/camp icone.png" id="1_edip2"]
+[ext_resource type="Texture2D" uid="uid://blkenjyae5ooy" path="res://res/design/Design-Robot Slayer/sprits/escudo-new.png" id="1_edip2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5j4l5"]
 bg_color = Color(5.968213e-06, 0.68725145, 0.682285, 1)
@@ -14,8 +14,6 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_o7c7l"]
-
 [node name="Escudo" type="Node2D" unique_id=1615020640]
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=1491584033]
@@ -27,10 +25,8 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_5j4l5")
 value = 39.39
 show_percentage = false
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1958462221]
-modulate = Color(0.5568628, 1, 1, 0.45882353)
-self_modulate = Color(1, 0.7882353, 1, 0.4509804)
-position = Vector2(0, 12)
-scale = Vector2(53.000004, 45.67021)
-mesh = SubResource("CapsuleMesh_o7c7l")
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1044860661]
+position = Vector2(-1.4210855e-14, 5.9999995)
+scale = Vector2(1.7375002, 1.7004828)
 texture = ExtResource("1_edip2")
+hframes = 4

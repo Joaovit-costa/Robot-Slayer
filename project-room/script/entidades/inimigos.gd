@@ -39,6 +39,8 @@ var vidaInicial: int
 @export var experiencia_min: int = 0
 @export var experiencia_max: int = 0
 @export var drops: Array[DropData] = []
+@export_range(0.0, 1.0, 0.001) var chance_drop_item: float = 0.015
+@export var garantir_drop_item: bool = false
 @export_group("")
 var drops_escolhidos: Array[Dictionary] = []
 
@@ -339,9 +341,10 @@ func _processar_morte() -> void:
 	set_process(false)
 
 
-# Sorteia todos os itens cadastrados usando quantidade como numero de tentativas.
+# Faz apenas uma tentativa rara por inimigo e limita a recompensa a um item.
 func _sortear_drops() -> Array[Dictionary]:
 	var sorteados: Array[Dictionary] = []
+	var candidatos: Array[DropData] = []
 
 	for drop in drops:
 		if drop == null:
@@ -351,11 +354,25 @@ func _sortear_drops() -> Array[Dictionary]:
 		if nome_drop.is_empty():
 			continue
 
-		for _tentativa in range(max(0, drop.quantidade)):
-			var raridade_sorteada := drop.sortear_raridade()
-			if raridade_sorteada == -1:
-				continue
-			_adicionar_drop_sorteado(sorteados, nome_drop, raridade_sorteada)
+		for _quantidade in range(maxi(drop.quantidade, 1)):
+			candidatos.append(drop)
+
+	if candidatos.is_empty():
+		return sorteados
+
+	if not garantir_drop_item and randf() > clampf(chance_drop_item, 0.0, 1.0):
+		return sorteados
+
+	var escolhido := candidatos.pick_random() as DropData
+	var raridade_sorteada := escolhido.sortear_raridade_ponderada()
+	if raridade_sorteada == -1:
+		return sorteados
+
+	_adicionar_drop_sorteado(
+		sorteados,
+		escolhido.nome.strip_edges(),
+		raridade_sorteada
+	)
 
 	return sorteados
 

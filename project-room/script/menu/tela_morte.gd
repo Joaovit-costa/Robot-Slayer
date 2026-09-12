@@ -89,7 +89,15 @@ func _trocar_sala() -> void:
 		push_error("Gerenciador de salas nao encontrado.")
 		return
 
-	# Ajusta o progresso antes da transicao para que a nova sala use o valor certo.
-	sala.salas_passadas = max(sala.salas_passadas - 5, 0)
-	await sala.solicitar_transicao_de_sala(sala)
+	# O recuo preserva o tutorial e nao e compensado pelo incremento normal
+	# de uma transicao feita pela porta.
+	var salas_recuadas := Balanceamento.salas_recuadas_ao_morrer(
+		sala.salas_passadas
+	)
+	if sala.salas_passadas >= Balanceamento.PRIMEIRA_SALA_FORA_DO_TUTORIAL:
+		sala.salas_passadas = maxi(
+			sala.salas_passadas - salas_recuadas,
+			Balanceamento.PRIMEIRA_SALA_FORA_DO_TUTORIAL
+		)
+	await sala.solicitar_transicao_de_sala(sala, "", false)
 	SaveManager.solicitar_salvamento()

@@ -94,6 +94,7 @@ func _on_range_porta_body_entered(body: Node) -> void:
 	
 	
 
+	var curou_nesta_sala := player.curou_na_sala
 	player.curou_na_sala = false
 	SaveManager.solicitar_salvamento()
 	
@@ -106,7 +107,7 @@ func _on_range_porta_body_entered(body: Node) -> void:
 		if dificuldade == null:
 			return
 	
-		if dificuldade.text == "Difícil" and not player.curou_na_sala:
+		if dificuldade.text == "Difícil" and not curou_nesta_sala:
 			player.salas_dificeis_sem_cura += 1
 			
 		return

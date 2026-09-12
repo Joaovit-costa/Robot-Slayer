@@ -22,6 +22,7 @@ var curando := false
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var escudo: Node2D = $Escudo
 @onready var vida_escudo: ProgressBar = $Escudo/ProgressBar
+@onready var sprite_escudo: Sprite2D = $Escudo/Sprite2D
 @onready var area_dash_ofensivo: CollisionShape2D = $Area2D/CollisionShape2D
 
 
@@ -59,7 +60,7 @@ var direcao_animacao: Vector2 = Vector2.DOWN
 var direcao_ataque: Vector2 = Vector2.DOWN
 var posicao_alcance_original: Vector2 = Vector2.ZERO
 
-var experienciaNecessaria = int(nivel * 1.2 + 40)
+var experienciaNecessaria := Balanceamento.experiencia_para_proximo_nivel(nivel)
 
 var inimigos_derrotados_usando_missil_reto := 0
 var dano_recebido_sem_morrer := 0
@@ -91,6 +92,7 @@ var dropsRecebido: bool = false
 var drops_pendentes: Array[Dictionary] = []
 var possui_inimigos_na_sala: bool = false
 var multiplicador_moedas_sala: float = 1.0
+var chance_moedas_sala: float = Balanceamento.CHANCE_MOEDAS_SALA
 
 # inventario
 var inventario_ref: Inventario
@@ -116,6 +118,7 @@ var cooldowns: Array[float] = [1.0, 1.3, 1.7]
 var multiplicadores: Array[float] = [1.0, 1.2, 1.5]
 var cooldown: float = 0.0
 const DURACAO_ANIMACAO_ATAQUE: float = 0.9
+const ATRASO_LANCAMENTO_MISSIL: float = 0.5
 const ALCANCE_GOLPE: float = 80.0
 # =================================
 
@@ -159,12 +162,15 @@ func _ready() -> void:
 	inventario_ref = get_tree().get_first_node_in_group(
 		"inventario_principal"
 	) as Inventario
+	call_deferred("_configurar_inventario_e_buffs")
 
 	# ============ ANIMACAO ============
 	# As animacoes sao escolhidas diretamente para permitir alternar todo o
 	# conjunto normal pelo equivalente `_fur` sem duplicar a maquina de estados.
 	animation_tree.active = false
 	posicao_alcance_original = alcance.position
+	vida_escudo.value_changed.connect(_on_vida_escudo_alterada)
+	_atualizar_visual_escudo()
 	# A hitbox permanece na fisica para que get_overlapping_bodies() tenha
 	# tempo de registrar os corpos. O dano continua protegido por `atacando`.
 	alcance.monitoring = true
@@ -196,7 +202,7 @@ func _physics_process(delta: float) -> void:
 	if direcao != Vector2.ZERO:
 		direcao = direcao.normalized()
 
-	velocity = direcao * SPEED
+	velocity = direcao * obter_velocidade_efetiva()
 	# ===================================
 	# ============ DIRECAO ANIMACAO ============
 	if velocity.length() > 0:
@@ -253,8 +259,14 @@ func _physics_process(delta: float) -> void:
 
 		experiencia += experienciaDropada
 
-		var moedasDropadas := int(round(randi_range(5, 15) * multiplicador_moedas_sala))
-		moedas += moedasDropadas
+		if randf() <= chance_moedas_sala:
+			var moedas_dropadas := int(round(
+				randi_range(
+					Balanceamento.MOEDAS_MINIMAS_POR_DROP,
+					Balanceamento.MOEDAS_MAXIMAS_POR_DROP
+				) * multiplicador_moedas_sala
+			))
+			moedas += moedas_dropadas
 
 		label_moeda.text = str(moedas)
 
@@ -370,7 +382,7 @@ func investida_ofenciva():
 
 func _on_area_dash_body_entered(body: Node2D) -> void:
 	if body.is_in_group("inimigos"):
-		body.receber_dano(forca * 0.6)
+		body.receber_dano(obter_forca_efetiva() * 0.6)
 		if body.vitalidade <= 0:
 				_acumular_drops_do_inimigo(body)
 				alvos.erase(body)
@@ -379,36 +391,48 @@ func _on_area_dash_body_entered(body: Node2D) -> void:
 					sala_do_alvo.move_child(body, 1)
 
 func disparar_missil_reto(player: protagonista) -> void:
+	var mouse_pos := get_global_mouse_position()
+	var direcao := global_position.direction_to(mouse_pos)
+	_iniciar_animacao_especial(&"shot", direcao)
+	_reproduzir_animacao_atual()
+	var dano_do_missil := int(
+		(obter_forca_efetiva() * 80 / 100)
+		+ (obter_inteligencia_efetiva() * 20 / 100)
+	)
+	if furia_ativa:
+		dano_do_missil *= 1.6
+
+	await get_tree().create_timer(ATRASO_LANCAMENTO_MISSIL).timeout
+	if morto or not is_inside_tree() or not is_instance_valid(player):
+		return
+
 	var missil := cena_missil.instantiate() as Missil
-
 	get_tree().current_scene.add_child(missil)
-
 	missil.global_position = global_position
 
-	var mouse_pos := get_global_mouse_position()
-	var direcao := global_position.direction_to(mouse_pos)
-	_iniciar_animacao_especial(&"shot", direcao)
-	dano_missil = int((forca * 80 / 100) + (inteligencia * 20 / 100))
-	if furia_ativa:
-		dano_missil *= 1.6
-
-	missil.configurar(direcao, dano_missil, player)
+	missil.configurar(direcao, dano_do_missil, player)
 
 func disparar_missil_teleguiado(player: protagonista) -> void:
-	var missil_teleguiado := cena_missil_teleguiado.instantiate() as MissilTeleguiado
-
-	get_tree().current_scene.add_child(missil_teleguiado)
-
-	missil_teleguiado.global_position = global_position
-
 	var mouse_pos := get_global_mouse_position()
 	var direcao := global_position.direction_to(mouse_pos)
 	_iniciar_animacao_especial(&"shot", direcao)
-	dano_missil = int((forca * 35 / 100) + (inteligencia * 10 / 100))
+	_reproduzir_animacao_atual()
+	var dano_do_missil := int(
+		(obter_forca_efetiva() * 35 / 100)
+		+ (obter_inteligencia_efetiva() * 10 / 100)
+	)
 	if furia_ativa:
-		dano_missil *= 1.6
+		dano_do_missil *= 1.6
 
-	missil_teleguiado.configurar(direcao, dano_missil, player)
+	await get_tree().create_timer(ATRASO_LANCAMENTO_MISSIL).timeout
+	if morto or not is_inside_tree() or not is_instance_valid(player):
+		return
+
+	var missil_teleguiado := cena_missil_teleguiado.instantiate() as MissilTeleguiado
+	get_tree().current_scene.add_child(missil_teleguiado)
+	missil_teleguiado.global_position = global_position
+
+	missil_teleguiado.configurar(direcao, dano_do_missil, player)
 
 func furia():
 	furia_ativa = true
@@ -514,8 +538,39 @@ func _duracao_animacao(nome_base: StringName, valor_padrao: float) -> float:
 func campo_forca():
 	escudo_ativo = true
 	escudo.visible = true
-	vida_escudo.max_value = vidaInicial * 0.8
-	vida_escudo.value = vidaInicial * 0.8
+	vida_escudo.max_value = (
+		vidaInicial * 0.5 + obter_defesa_efetiva() * 1.5
+	)
+	vida_escudo.value = vida_escudo.max_value
+	_atualizar_visual_escudo()
+
+
+func _on_vida_escudo_alterada(_novo_valor: float) -> void:
+	_atualizar_visual_escudo()
+
+
+func _atualizar_visual_escudo() -> void:
+	if (
+		not escudo_ativo
+		or vida_escudo.max_value <= 0.0
+		or vida_escudo.value <= 0.0
+	):
+		if vida_escudo.value <= 0.0:
+			escudo_ativo = false
+		escudo.visible = false
+		return
+
+	escudo.visible = true
+	var percentual := vida_escudo.value / vida_escudo.max_value
+
+	if percentual > 0.75:
+		sprite_escudo.frame = 0
+	elif percentual > 0.50:
+		sprite_escudo.frame = 1
+	elif percentual > 0.25:
+		sprite_escudo.frame = 2
+	else:
+		sprite_escudo.frame = 3
 
 
 
@@ -545,7 +600,7 @@ func verificar_vida():
 
 
 func calcular_vida_maxima() -> int:
-	return max(vitalidade * 5, 1)
+	return max(obter_vitalidade_efetiva() * 5, 1)
 
 
 func calcular_cooldown_cura() -> float:
@@ -553,8 +608,93 @@ func calcular_cooldown_cura() -> float:
 	# para inteligencia baixa, tornando cura praticamente inutil em combate.
 	return maxf(
 		COOLDOWN_CURA_MINIMO,
-		COOLDOWN_CURA_BASE - (float(inteligencia) * 0.25)
+		COOLDOWN_CURA_BASE - (float(obter_inteligencia_efetiva()) * 0.25)
 	)
+
+
+func obter_forca_efetiva() -> int:
+	return _atributo_com_buff(forca, "forca")
+
+
+func obter_defesa_efetiva() -> int:
+	return _atributo_com_buff(defesa, "defesa")
+
+
+func obter_vitalidade_efetiva() -> int:
+	return _atributo_com_buff(vitalidade, "vitalidade")
+
+
+func obter_inteligencia_efetiva() -> int:
+	return _atributo_com_buff(inteligencia, "inteligencia")
+
+
+func obter_velocidade_efetiva() -> float:
+	return SPEED * (1.0 + _obter_buff_equipamento("velocidade"))
+
+
+func _atributo_com_buff(valor_base: int, atributo: String) -> int:
+	return maxi(1, int(round(
+		valor_base * (1.0 + _obter_buff_equipamento(atributo))
+	)))
+
+
+func _obter_buff_equipamento(atributo: String) -> float:
+	_tentar_obter_inventario()
+
+	if inventario_ref == null:
+		return 0.0
+
+	var buffs := inventario_ref.calcular_buffs_equipados()
+	return float(buffs.get(atributo, 0.0))
+
+
+func _tentar_obter_inventario() -> void:
+	if inventario_ref != null and is_instance_valid(inventario_ref):
+		return
+
+	inventario_ref = null
+	if not is_inside_tree():
+		return
+
+	var arvore := get_tree()
+	if arvore == null:
+		return
+
+	inventario_ref = arvore.get_first_node_in_group(
+		"inventario_principal"
+	) as Inventario
+
+
+func _configurar_inventario_e_buffs() -> void:
+	_tentar_obter_inventario()
+
+	if inventario_ref == null:
+		return
+
+	if not inventario_ref.inventario_atualizado.is_connected(
+		_on_inventario_atualizado
+	):
+		inventario_ref.inventario_atualizado.connect(
+			_on_inventario_atualizado
+		)
+	_on_inventario_atualizado()
+
+
+func _on_inventario_atualizado() -> void:
+	var nova_vida_maxima := calcular_vida_maxima()
+	if vidaInicial <= 0 or nova_vida_maxima == vidaInicial:
+		return
+
+	var percentual_vida := float(vidaAtual) / float(vidaInicial)
+	vidaInicial = nova_vida_maxima
+	vidaAtual = clampi(
+		int(round(vidaInicial * percentual_vida)),
+		0,
+		vidaInicial
+	)
+	_atualizar_barra_vida()
+	if barraCura != null:
+		barraCura.max_value = calcular_cooldown_cura()
 
 
 func preparar_atributos_para_sala() -> void:
@@ -570,13 +710,16 @@ func preparar_atributos_para_sala() -> void:
 
 
 func sincronizar_vida() -> void:
-	vidaInicial = max(vidaInicial, calcular_vida_maxima())
+	vidaInicial = calcular_vida_maxima()
 	vidaAtual = clamp(vidaAtual, 0, vidaInicial)
 	_atualizar_barra_vida()
 
 
 func receber_dano(dano: int) -> void:
-	var dano_final :float= max(dano, 0)
+	var dano_final := Balanceamento.dano_apos_defesa(
+		float(dano),
+		obter_defesa_efetiva()
+	)
 	if dano_final <= 0 or invulnerabilidade_restante > 0.0:
 		return
 
@@ -611,9 +754,13 @@ func aumentar_atributo(nome: String) -> bool:
 		"defesa":
 			defesa += 1
 		"vitalidade":
+			var vida_maxima_anterior := vidaInicial
 			vitalidade += 1
 			vidaInicial = calcular_vida_maxima()
-			vidaAtual = min(vidaAtual + 5, vidaInicial)
+			vidaAtual = min(
+				vidaAtual + vidaInicial - vida_maxima_anterior,
+				vidaInicial
+			)
 			_atualizar_barra_vida()
 		"inteligencia":
 			inteligencia += 1
@@ -671,8 +818,12 @@ func recalcular_experiencia_dropada() -> void:
 	alvos = alvos_validos
 
 
-func configurar_recompensas_sala(novo_multiplicador_moedas: float) -> void:
+func configurar_recompensas_sala(
+	novo_multiplicador_moedas: float,
+	nova_chance_moedas: float = Balanceamento.CHANCE_MOEDAS_SALA
+) -> void:
 	multiplicador_moedas_sala = maxf(1.0, novo_multiplicador_moedas)
+	chance_moedas_sala = clampf(nova_chance_moedas, 0.0, 1.0)
 
 
 func _acumular_drops_do_inimigo(alvo: inimigo) -> void:
@@ -713,10 +864,7 @@ func _adicionar_drop_pendente(
 
 func _entregar_drops_pendentes() -> void:
 
-	if inventario_ref == null:
-		inventario_ref = get_tree().get_first_node_in_group(
-			"inventario_principal"
-		) as Inventario
+	_tentar_obter_inventario()
 
 	if inventario_ref == null:
 		return
@@ -832,7 +980,8 @@ func _aplicar_dano_da_hitbox(body: Node) -> void:
 	inimigos_acertados_no_ataque.append(alvo)
 
 	var dano: float = max(
-		forca * multiplicadores[indice_ataque_atual] - alvo.defesa,
+		obter_forca_efetiva() * multiplicadores[indice_ataque_atual]
+		- alvo.defesa,
 		1
 	)
 	
@@ -869,28 +1018,7 @@ func _processar_morte() -> void:
 	# Para o som de passos
 	SoundManager.parar_passo()
 
-	# Reduz os atributos
-	var diminuidos: Array = [
-		status.pick_random(),
-		status.pick_random(),
-		status.pick_random()
-	]
-
-	for diminuido in diminuidos:
-		if diminuido == "vitalidade" and vitalidade > 3:
-			vitalidade -= 3
-
-		elif diminuido == "defesa" and defesa > 3:
-			defesa -= 3
-
-		elif diminuido == "forca" and forca > 3:
-			forca -= 3
-
-		elif diminuido == "inteligencia" and inteligencia > 3:
-			inteligencia -= 3
-
-	if nivel > 3:
-		nivel -= 3
+	_aplicar_penalidade_de_morte()
 
 	_solicitar_salvamento()
 
@@ -904,6 +1032,48 @@ func _processar_morte() -> void:
 
 	# Depois da animação, mostra a tela de morte
 	_exibir_tela_morte()
+
+
+func _aplicar_penalidade_de_morte() -> void:
+	var niveis_perdidos := mini(
+		Balanceamento.NIVEIS_PERDIDOS_AO_MORRER,
+		maxi(nivel - 1, 0)
+	)
+	if niveis_perdidos <= 0:
+		return
+
+	var pontos_a_perder := (
+		niveis_perdidos * Balanceamento.PONTOS_STATUS_POR_NIVEL
+	)
+	var pontos_nao_gastos_perdidos := mini(pontosStatus, pontos_a_perder)
+	pontosStatus -= pontos_nao_gastos_perdidos
+	pontos_a_perder -= pontos_nao_gastos_perdidos
+
+	var minimos := {
+		"vitalidade": 3,
+		"defesa": 3,
+		"forca": 3,
+		"inteligencia": 3
+	}
+	var atributos := status.duplicate()
+	atributos.shuffle()
+	for atributo in atributos:
+		if pontos_a_perder <= 0:
+			break
+		var valor_atual := int(get(atributo))
+		if valor_atual <= int(minimos[atributo]):
+			continue
+		set(atributo, valor_atual - 1)
+		pontos_a_perder -= 1
+
+	nivel -= niveis_perdidos
+	pontosExperiencia = maxi(
+		pontosExperiencia
+		- niveis_perdidos * Balanceamento.PONTOS_STATUS_POR_NIVEL,
+		0
+	)
+	experienciaNecessaria = Balanceamento.experiencia_para_proximo_nivel(nivel)
+	experiencia = mini(experiencia, experienciaNecessaria - 1)
 
 
 func _exibir_tela_morte() -> void:

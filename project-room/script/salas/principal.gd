@@ -7,19 +7,6 @@ extends Node2D
 @export var sala_inicial: Node2D
 @export var duracao_fade: float = 1.0
 
-@export_group("Balanceamento")
-@export var crescimento_status_por_sala: float = 0.24
-@export var crescimento_xp_por_sala: float = 0.2
-@export var crescimento_velocidade_por_sala: float = 0.0
-@export var limite_multiplicador_status: float = 10.0
-@export var limite_multiplicador_xp: float = 8.0
-@export var limite_multiplicador_velocidade: float = 1.6
-@export var limite_multiplicador_moedas: float = 4.0
-# Soma dos atributos iniciais reais do protagonista: 6 vitalidade + 6 defesa
-# (a defesa base e multiplicada por 3) + 5 forca + 4 inteligencia.
-@export var status_inicial_player_referencia: int = 21
-@export_group("")
-
 @onready var modelos_salas: Node2D = get_node_or_null("Salas") as Node2D
 @onready var modelos_salas_boss: Node2D = get_node_or_null("SalasBoss") as Node2D
 @onready var color_rect: ColorRect = get_node_or_null("ColorRect") as ColorRect
@@ -55,7 +42,8 @@ func _ready() -> void:
 
 func solicitar_transicao_de_sala(
 	_sala_origem: Node2D,
-	cena_ao_entrar_na_porta: String = ""
+	cena_ao_entrar_na_porta: String = "",
+	contabilizar_progresso: bool = true
 ) -> void:
 
 	if transicao_em_andamento:
@@ -69,7 +57,8 @@ func solicitar_transicao_de_sala(
 
 	await _fazer_fade(1.0)
 
-	salas_passadas += 1
+	if contabilizar_progresso:
+		salas_passadas += 1
 
 	_criar_sala_por_progresso(cena_ao_entrar_na_porta)
 
@@ -86,6 +75,10 @@ func _input(_event: InputEvent) -> void:
 
 
 func _iniciar_primeira_sala() -> void:
+	if salas_passadas >= salas_tutorial.size():
+		_criar_sala_aleatoria()
+		return
+
 	var modelo := _obter_sala_por_id(sala_atual_id)
 
 	if modelo == null:
@@ -109,10 +102,9 @@ func _criar_sala_por_progresso(cena_ao_entrar_na_porta: String = "") -> void:
 		_criar_sala_por_modelo(sala_tutorial)
 		return
 
-	if cena_ao_entrar_na_porta.is_empty() or _cena_ao_entrar_eh_tutorial(cena_ao_entrar_na_porta):
-		_criar_sala_aleatoria()
-	else:
-		_criar_sala_por_cena(cena_ao_entrar_na_porta)
+	# Depois do tutorial, o gerenciador escolhe a sala pela progressao. Caminhos
+	# fixos antigos nas lojas nao devem furar a curva de quantidade de inimigos.
+	_criar_sala_aleatoria()
 
 
 func _obter_sala_tutorial_por_progresso() -> Node2D:
@@ -154,14 +146,40 @@ func _cena_ao_entrar_eh_tutorial(cena_path: String) -> bool:
 
 func _criar_sala_aleatoria() -> void:
 	var modelos_disponiveis: Array[Node2D] = []
-	
-	if salas_passadas % 10 != 0:
-		for sala in salas:
-			if sala != null and is_instance_valid(sala):
-				modelos_disponiveis.append(sala)
-	elif salas_passadas % 10 == 0:
+
+	if salas_passadas > 0 and salas_passadas % 10 == 0:
 		for sala in salasBoss:
 			if sala != null and is_instance_valid(sala):
+				modelos_disponiveis.append(sala)
+	elif salas_passadas > 0 and salas_passadas % 5 == 0:
+		for sala in salas:
+			if (
+				sala != null
+				and is_instance_valid(sala)
+				and _modelo_eh_loja(sala)
+			):
+				modelos_disponiveis.append(sala)
+	else:
+		var quantidade_alvo := Balanceamento.quantidade_inimigos_alvo(
+			salas_passadas
+		)
+		var menor_diferenca := 999999
+
+		for sala in salas:
+			if (
+				sala == null
+				or not is_instance_valid(sala)
+				or _modelo_eh_loja(sala)
+			):
+				continue
+
+			var diferenca := absi(
+				_contar_inimigos_do_modelo(sala) - quantidade_alvo
+			)
+			if diferenca < menor_diferenca:
+				menor_diferenca = diferenca
+				modelos_disponiveis.clear()
+			if diferenca == menor_diferenca:
 				modelos_disponiveis.append(sala)
 
 	if modelos_disponiveis.is_empty():
@@ -169,6 +187,18 @@ func _criar_sala_aleatoria() -> void:
 
 	var indice := randi_range(0, modelos_disponiveis.size() - 1)
 	_criar_sala_por_modelo(modelos_disponiveis[indice])
+
+
+func _modelo_eh_loja(modelo: Node2D) -> bool:
+	return _obter_tipo_loja_da_sala(modelo.name) != TIPO_LOJA_NENHUMA
+
+
+func _contar_inimigos_do_modelo(modelo: Node2D) -> int:
+	var quantidade := 0
+	for node in modelo.find_children("*", "CharacterBody2D", true, false):
+		if node is inimigo:
+			quantidade += 1
+	return quantidade
 
 
 func _criar_sala_por_cena(cena_path: String) -> void:
@@ -352,30 +382,47 @@ func _balancear_sala(nova_sala: Node2D) -> void:
 
 	var player := nova_sala.get_node_or_null("Protagonista") as protagonista
 	if player != null and player.has_method("preparar_atributos_para_sala"):
-		# Aplica o save antes de medir a referencia: a dificuldade deve refletir
-		# os atributos com os quais o jogador realmente entra na sala.
 		player.preparar_atributos_para_sala()
-	var referencia_player := _calcular_referencia_player(player)
-	var fator_player :float= max(0.8, referencia_player / float(max(status_inicial_player_referencia, 1)))
-	var multiplicador_status :float= clamp(
-		1.0 + (salas_passadas / 2 * crescimento_status_por_sala * fator_player),
-		1.0,
-		limite_multiplicador_status
+
+	var multiplicador_vida := Balanceamento.interpolar(
+		Balanceamento.MULTIPLICADOR_VIDA_INICIAL,
+		Balanceamento.MULTIPLICADOR_VIDA_FINAL,
+		salas_passadas
 	)
-	var multiplicador_xp :float= clamp(
-		1.0 + (salas_passadas * crescimento_xp_por_sala * fator_player),
-		1.0,
-		limite_multiplicador_xp
+	var multiplicador_defesa := Balanceamento.interpolar(
+		Balanceamento.MULTIPLICADOR_DEFESA_INICIAL,
+		Balanceamento.MULTIPLICADOR_DEFESA_FINAL,
+		salas_passadas
 	)
-	var multiplicador_velocidade :float= clamp(
-		1.0 + (salas_passadas * crescimento_velocidade_por_sala),
-		1.0,
-		limite_multiplicador_velocidade
+	var multiplicador_forca := Balanceamento.interpolar(
+		Balanceamento.MULTIPLICADOR_FORCA_INICIAL,
+		Balanceamento.MULTIPLICADOR_FORCA_FINAL,
+		salas_passadas
 	)
-	var multiplicador_moedas: float = clamp(
-		multiplicador_xp,
-		1.0,
-		limite_multiplicador_moedas
+	var bonus_forca := Balanceamento.interpolar(
+		0.0,
+		Balanceamento.BONUS_FORCA_FINAL,
+		salas_passadas
+	)
+	var multiplicador_inteligencia := Balanceamento.interpolar(
+		Balanceamento.MULTIPLICADOR_INTELIGENCIA_INICIAL,
+		Balanceamento.MULTIPLICADOR_INTELIGENCIA_FINAL,
+		salas_passadas
+	)
+	var multiplicador_xp := Balanceamento.interpolar(
+		Balanceamento.MULTIPLICADOR_XP_INICIAL,
+		Balanceamento.MULTIPLICADOR_XP_FINAL,
+		salas_passadas
+	)
+	var multiplicador_velocidade := Balanceamento.interpolar(
+		Balanceamento.MULTIPLICADOR_VELOCIDADE_INICIAL,
+		Balanceamento.MULTIPLICADOR_VELOCIDADE_FINAL,
+		salas_passadas
+	)
+	var multiplicador_moedas := Balanceamento.interpolar(
+		Balanceamento.MULTIPLICADOR_MOEDAS_INICIAL,
+		Balanceamento.MULTIPLICADOR_MOEDAS_FINAL,
+		salas_passadas
 	)
 	var inimigos: Array[inimigo] = []
 	for node in nova_sala.find_children("*", "CharacterBody2D", true, false):
@@ -383,60 +430,80 @@ func _balancear_sala(nova_sala: Node2D) -> void:
 		if alvo != null:
 			inimigos.append(alvo)
 
-	# Em salas com muitos inimigos, cada um ataca menos frequentemente. Isso
-	# limita o dano agregado sem reduzir a variedade ou a quantidade de inimigos.
-	var multiplicador_cooldown_ataque: float = clampf(
-		1.0 + (maxi(inimigos.size(), 1) - 1) * 0.75,
-		1.0,
-		4.0
+	# Salas cheias ainda recebem uma pequena compensacao de cooldown, sem
+	# neutralizar o aumento de perigo causado pelos inimigos adicionais.
+	var multiplicador_cooldown_ataque := Balanceamento.interpolar(
+		Balanceamento.MULTIPLICADOR_COOLDOWN_INICIAL,
+		Balanceamento.MULTIPLICADOR_COOLDOWN_FINAL,
+		salas_passadas
+	) * (
+		1.0
+		+ (maxi(inimigos.size(), 1) - 1)
+		* Balanceamento.AUMENTO_COOLDOWN_POR_INIMIGO_EXTRA
 	)
-	var multiplicador_ataque: float = 1.0 + (
-		(multiplicador_status - 1.0) * 0.4
-	)
+
+	var sala_boss := str(nova_sala.name).begins_with("SalaBoss")
 
 	if player != null and player.has_method("configurar_recompensas_sala"):
-		player.configurar_recompensas_sala(multiplicador_moedas)
-
-	for alvo in inimigos:
-		_balancear_inimigo(
-			alvo,
-			multiplicador_status,
-			multiplicador_xp,
-			multiplicador_velocidade,
-			multiplicador_ataque,
-			multiplicador_cooldown_ataque
+		player.configurar_recompensas_sala(
+			multiplicador_moedas,
+			Balanceamento.chance_moedas_por_sala(sala_boss)
 		)
 
-
-func _calcular_referencia_player(player: protagonista) -> int:
-	if player == null:
-		return status_inicial_player_referencia
-
-	return max(
-		player.vitalidade
-		+ player.defesa
-		+ player.forca
-		+ player.inteligencia,
-		1
-	)
+	for alvo in inimigos:
+		alvo.chance_drop_item = Balanceamento.chance_item_por_inimigo(
+			salas_passadas,
+			sala_boss
+		)
+		_balancear_inimigo(
+			alvo,
+			multiplicador_vida,
+			multiplicador_defesa,
+			multiplicador_forca,
+			bonus_forca,
+			multiplicador_inteligencia,
+			multiplicador_xp,
+			multiplicador_velocidade,
+			multiplicador_cooldown_ataque,
+			sala_boss
+		)
 
 
 func _balancear_inimigo(
 	alvo: inimigo,
-	multiplicador_status: float,
+	multiplicador_vida: float,
+	multiplicador_defesa: float,
+	multiplicador_forca: float,
+	bonus_forca: float,
+	multiplicador_inteligencia: float,
 	multiplicador_xp: float,
 	multiplicador_velocidade: float,
-	multiplicador_ataque: float,
-	multiplicador_cooldown_ataque: float
+	multiplicador_cooldown_ataque: float,
+	sala_boss: bool
 ) -> void:
-	alvo.vitalidade = max(1, int(round(alvo.vitalidade * multiplicador_status)))
-	alvo.defesa = max(0, int(round(alvo.defesa * multiplicador_status)))
-	alvo.forca = max(1, int(round(alvo.forca * multiplicador_ataque)))
-	alvo.inteligencia = max(0, int(round(alvo.inteligencia * multiplicador_status)))
+	var bonus_vida := Balanceamento.BONUS_VIDA_BOSS if sala_boss else 1.0
+	var bonus_defesa := Balanceamento.BONUS_DEFESA_BOSS if sala_boss else 1.0
+	var bonus_ataque := Balanceamento.BONUS_FORCA_BOSS if sala_boss else 1.0
+	var bonus_xp := Balanceamento.BONUS_XP_BOSS if sala_boss else 1.0
+
+	alvo.vitalidade = max(1, int(round(
+		alvo.vitalidade * multiplicador_vida * bonus_vida
+	)))
+	alvo.defesa = max(0, int(round(
+		alvo.defesa * multiplicador_defesa * bonus_defesa
+	)))
+	alvo.forca = max(1, int(round(
+		(alvo.forca * multiplicador_forca + bonus_forca) * bonus_ataque
+	)))
+	alvo.inteligencia = max(0, int(round(
+		alvo.inteligencia * multiplicador_inteligencia
+	)))
 	alvo.velocidade *= multiplicador_velocidade
 	alvo.multiplicador_cooldown_ataque = multiplicador_cooldown_ataque
-	alvo.experiencia_min = max(1, int(round(alvo.experiencia_min * multiplicador_xp)))
+	alvo.experiencia_min = max(1, int(round(
+		alvo.experiencia_min * multiplicador_xp * bonus_xp
+	)))
 	alvo.experiencia_max = max(
 		alvo.experiencia_min,
-		int(round(alvo.experiencia_max * multiplicador_xp))
+		int(round(alvo.experiencia_max * multiplicador_xp * bonus_xp))
 	)

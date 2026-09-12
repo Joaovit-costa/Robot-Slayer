@@ -53,10 +53,22 @@ func atualizar_menu_status() -> void:
 
 	texto_pontos_status.text = "Pontos de Status: %d" % player_ref.pontosStatus
 
-	valor_forca.text = str(player_ref.forca)
-	valor_defesa.text = str(player_ref.defesa)
-	valor_vitalidade.text = str(player_ref.vitalidade)
-	valor_inteligencia.text = str(player_ref.inteligencia)
+	valor_forca.text = _formatar_atributo(
+		player_ref.forca,
+		player_ref.obter_forca_efetiva()
+	)
+	valor_defesa.text = _formatar_atributo(
+		player_ref.defesa,
+		player_ref.obter_defesa_efetiva()
+	)
+	valor_vitalidade.text = _formatar_atributo(
+		player_ref.vitalidade,
+		player_ref.obter_vitalidade_efetiva()
+	)
+	valor_inteligencia.text = _formatar_atributo(
+		player_ref.inteligencia,
+		player_ref.obter_inteligencia_efetiva()
+	)
 
 	var pode_gastar: bool = player_ref.pontosStatus > 0
 
@@ -64,6 +76,12 @@ func atualizar_menu_status() -> void:
 	botao_defesa.disabled = !pode_gastar
 	botao_vitalidade.disabled = !pode_gastar
 	botao_inteligencia.disabled = !pode_gastar
+
+
+func _formatar_atributo(valor_base: int, valor_efetivo: int) -> String:
+	if valor_base == valor_efetivo:
+		return str(valor_base)
+	return "%d (+%d)" % [valor_efetivo, valor_efetivo - valor_base]
 
 
 func _desabilitar_botoes_status() -> void:
